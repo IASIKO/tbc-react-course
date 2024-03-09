@@ -1,0 +1,269 @@
+.wrap {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  background: #a23f25;
+}
+
+.container {
+  max-width: 1140px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 15px;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.contactRow p {
+  z-index: 1;
+  font-weight: 200;
+}
+
+.contactRow p a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  margin-right: 0.5rem;
+}
+
+.authRow {
+  display: flex;
+  justify-content: end;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.socialMedia {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
+.socialMedia p {
+  width: 100%;
+  margin-bottom: 0;
+  margin-top: 0;
+  display: flex;
+}
+
+.socialMedia p a {
+  height: 30px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.reg p {
+  font-weight: 200;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.reg p a {
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-right: 0.9rem;
+}
+
+/* NAVBAR */
+
+.navBar {
+  background: transparent;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 0 0;
+}
+
+.navContainer {
+  max-width: 1140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.navbarBrand {
+  font-weight: 700;
+  font-size: 28px;
+  position: relative;
+  text-transform: uppercase;
+  color: var(--white);
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.navbarBrand span {
+  color: var(--gray);
+}
+
+.navBarPages {
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navBarPages ul {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+}
+
+.navBarPages ul li a {
+  font-size: 18px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: var(--gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 1;
+}
+
+.navBarPages ul li a:hover {
+  cursor: pointer;
+  color: #a23f25;
+  transition: all 500ms ease;
+}
+
+/* BACKGROUND LAYOUT */
+
+.backgroundLayout {
+  background-image: url("./Assets/images/bg_1.jpg");
+  background-position: center center;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  position: relative;
+  z-index: 0;
+  height: 100vh;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.4;
+  background: #000000;
+}
+
+.backgroundText {
+  padding: 30px 0;
+  transform: rotate(-4deg);
+  text-align: center;
+  max-width: 560px;
+  margin: auto;
+}
+
+.backgroundText h1 {
+  position: absolute;
+  top: 40vh;
+  font-size: 80px;
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--white);
+  line-height: 1.1;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.backgroundText h1 span {
+  color: var(--white);
+}
+
+/* FOOTER */
+
+.footerWraper {
+  font-size: 16px;
+  padding: 6em 0 0 0;
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footerContentContainer {
+  max-width: 1140px;
+  margin: auto;
+}
+
+.footerRow {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.footerColumn {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.footerColumn div {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footerColumn div h2 {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.footerColumn div ul li {
+  color: var(--gray);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.footerColumn div input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.footerRulesContainer {
+  background: black;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.rulesContainer {
+  max-width: 1140px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.rulesRow {
+  display: flex;
+  flex-wrap: wrap;
+}
