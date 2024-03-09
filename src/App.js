@@ -1,9 +1,72 @@
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-     Hello World!
-    </div>
+    <>
+      <header>
+        <div className="wrap">
+          <div className="container">
+            <div className="row">
+              <div className="contactRow">
+                <p>
+                  <a href="#">
+                    <span>+00 1234 567</span>
+                  </a>
+                  <a href="#">
+                    <span>youremail@email.com</span>
+                  </a>
+                </p>
+              </div>
+
+              <div className="authRow">
+                <div className="socialMedia">
+                  <p>
+                    <a href="#">F</a>
+                    <a href="#">T</a>
+                    <a href="#">I</a>
+                  </p>
+                </div>
+                <div className="reg">
+                  <p>
+                    <a href="#">sign up</a>
+                    <a href="#">log in</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <nav className="navBar">
+          <div className="navContainer">
+            <a className="navbarBrand" href="#">
+              Liquor <span>store</span>
+            </a>
+
+            <div className="navBarPages">
+              <ul>
+                <li>
+                  <a href="#">Home</a>
+                </li>
+                <li>
+                  <a href="#">About</a>
+                </li>
+                <li>
+                  <a href="#">Products</a>
+                </li>
+                <li>
+                  <a href="#">Blog</a>
+                </li>
+                <li>
+                  <a href="#">Contact</a>
+                </li>
+              </ul>
+            </div>
+            <div style={{ color: "orange" }}>Cart</div>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 }
 
