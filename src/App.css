@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--white);
 }
 
 .reg p {
@@ -97,7 +97,7 @@
   font-size: 24px;
   position: relative;
   text-transform: uppercase;
-  color: white;
+  color: var(--white);
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -107,7 +107,7 @@
 }
 
 .navbarBrand span {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--gray);
 }
 
 .navBarPages {
@@ -129,9 +129,89 @@
   padding-bottom: 1.5rem;
   padding-left: 20px;
   padding-right: 20px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--gray);
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 1px;
   opacity: 1;
+}
+
+.navBarPages ul li a:hover {
+  cursor: pointer;
+  color: #a23f25;
+  transition: all 500ms ease;
+}
+
+/* FOOTER */
+
+.footerWraper {
+  font-size: 16px;
+  padding: 6em 0 0 0;
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footerContentContainer {
+  max-width: 1140px;
+}
+
+.footerRow {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.footerColumn {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.footerColumn div {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footerColumn div h2 {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.footerColumn div ul li {
+  color: var(--gray);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.footerColumn div input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.footerRulesContainer {
+  background: black;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.rulesContainer {
+  max-width: 1140px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.rulesRow {
+  display: flex;
+  flex-wrap: wrap;
 }
