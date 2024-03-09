@@ -21,9 +21,9 @@ function App() {
               <div className="authRow">
                 <div className="socialMedia">
                   <p>
-                    <a href="#">F</a>
-                    <a href="#">T</a>
-                    <a href="#">I</a>
+                    <a href="#">FB</a>
+                    <a href="#">TW</a>
+                    <a href="#">IN</a>
                   </p>
                 </div>
                 <div className="reg">
@@ -72,7 +72,7 @@ function App() {
           <div className="backgroundOverlay"></div>
           <div className="backgroundText">
             <h1>
-              Good <span>Drink</span> for Good <span>Moments</span>.  
+              Good <span>Drink</span> for Good <span>Moments</span>.
             </h1>
           </div>
         </div>
