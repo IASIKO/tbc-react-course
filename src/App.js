@@ -67,6 +67,17 @@ function App() {
         </nav>
       </header>
 
+      <main>
+        <div className="backgroundLayout">
+          <div className="backgroundOverlay"></div>
+          <div className="backgroundText">
+            <h1>
+              Good <span>Drink</span> for Good <span>Moments</span>.  
+            </h1>
+          </div>
+        </div>
+      </main>
+
       <footer className="footerWraper">
         <div className="footerContentContainer">
           <div className="footerRow">
