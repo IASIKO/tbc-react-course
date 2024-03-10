@@ -73,6 +73,14 @@ function App() {
           <div className="backgroundText">
             <h1>
               Good <span>Drink</span> for Good <span>Moments</span>.
+              <p>
+                <a href="#" className="shopNowBtn">
+                  Shop Now
+                </a>
+                <a href="#" className="readMoreBtn">
+                  Read more
+                </a>
+              </p>
             </h1>
           </div>
         </div>

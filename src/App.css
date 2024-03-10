@@ -193,6 +193,35 @@
   color: var(--white);
 }
 
+.backgroundText p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 20px 0;
+}
+
+.backgroundText p a {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.shopNowBtn {
+  background: #b7472a;
+  border: 1px solid #b7472a;
+  color: var(--white);
+  border-radius: 3px;
+  padding: 0.5rem 1.5rem;
+}
+
+.readMoreBtn {
+  border: 1px solid white;
+  background: transparent;
+  color: var(--white);
+  border-radius: 3px;
+  padding: 0.5rem 1.5rem;
+}
+
 /* FOOTER */
 
 .footerWraper {
