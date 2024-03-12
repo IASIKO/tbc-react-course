@@ -59,7 +59,9 @@ module.exports = {
         lg: "992px",
         xl: "1200px",
       },
-      backgroundOpacity: ['active'],
+      backgroundImage: {
+        'landing-bgImage': "url('/src/Assets/images/bg_1.jpg')",
+      }
     },
   },
   plugins: [],
