@@ -1,0 +1,146 @@
+.wrap {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  background: #a23f25;
+}
+
+.container {
+  max-width: 1140px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 15px;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.contactRow p {
+  z-index: 1;
+  font-weight: 200;
+}
+
+.contactRow p a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  margin-right: 0.5rem;
+}
+
+.authRow {
+  display: flex;
+  justify-content: end;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.socialMedia {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
+.socialMedia p {
+  width: 100%;
+  margin-bottom: 0;
+  margin-top: 0;
+  display: flex;
+}
+
+.socialMedia p a {
+  height: 30px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.reg p {
+  font-weight: 200;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.reg p a {
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-right: 0.9rem;
+}
+
+/* NAVBAR */
+
+.navBar {
+  background: transparent;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 0 0;
+}
+
+.navContainer {
+  max-width: 1140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.navbarBrand {
+  font-weight: 700;
+  font-size: 28px;
+  position: relative;
+  text-transform: uppercase;
+  color: var(--white);
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.navbarBrand span {
+  color: var(--gray);
+}
+
+.navBarPages {
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navBarPages ul {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+}
+
+.navBarPages ul li a {
+  font-size: 18px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: var(--gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 1;
+}
+
+.navBarPages ul li a:hover {
+  cursor: pointer;
+  color: #a23f25;
+  transition: all 500ms ease;
+}

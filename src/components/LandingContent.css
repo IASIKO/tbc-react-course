@@ -1,0 +1,74 @@
+.backgroundLayout {
+  background-image: url("../Assets/images/bg_1.jpg");
+  background-position: center center;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  position: relative;
+  z-index: 0;
+  height: 100vh;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.4;
+  background: #000000;
+}
+
+.backgroundText {
+  padding: 30px 0;
+  transform: rotate(-4deg);
+  text-align: center;
+  max-width: 560px;
+  margin: auto;
+}
+
+.backgroundText h1 {
+  position: absolute;
+  top: 40vh;
+  font-size: 80px;
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--white);
+  line-height: 1.1;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.backgroundText h1 span {
+  color: var(--white);
+}
+
+.backgroundText p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 20px 0;
+}
+
+.backgroundText p a {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.shopNowBtn {
+  background: #b7472a;
+  border: 1px solid #b7472a;
+  color: var(--white);
+  border-radius: 3px;
+  padding: 0.5rem 1.5rem;
+}
+
+.readMoreBtn {
+  border: 1px solid white;
+  background: transparent;
+  color: var(--white);
+  border-radius: 3px;
+  padding: 0.5rem 1.5rem;
+}
