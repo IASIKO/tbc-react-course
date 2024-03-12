@@ -59,6 +59,7 @@ module.exports = {
         lg: "992px",
         xl: "1200px",
       },
+      backgroundOpacity: ['active'],
     },
   },
   plugins: [],
