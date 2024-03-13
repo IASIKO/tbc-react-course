@@ -60,8 +60,21 @@ module.exports = {
         xl: "1200px",
       },
       backgroundImage: {
-        'landing-bgImage': "url('/src/Assets/images/bg_1.jpg')",
-      }
+        "landing-bgImage": "url('/src/Assets/images/bg_1.jpg')",
+        "about-image": "url('/src/Assets/images/about-image.jpg')",
+      },
+      // animation: {
+      //   "spin-slow": "spin 3s linear infinite",
+      // },
+      keyframes: {
+        fall: {
+          "0%": { transform: " translate3d(0,40px,0)" },
+          "50%": { transform: "translate3d(0,0,0)" },
+        },
+      },
+      animation: {
+        fall: "fall 2s ease",
+      },
     },
   },
   plugins: [],
