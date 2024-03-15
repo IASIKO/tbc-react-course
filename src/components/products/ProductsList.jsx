@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../UI/Search";
+import Search from "../Search";
 import Product from "./Product";
 import Button from "../UI/Button";
 
