@@ -1,6 +1,7 @@
 import React from "react";
 import Search from "../UI/Search";
 import Product from "./Product";
+import Button from "../UI/Button";
 
 const productsData = [
   {
@@ -66,6 +67,9 @@ const ProductsList = () => {
               <Product key={index} productInfo={product} />
             ))}
           </div>
+        </div>
+        <div className="flex justify-center my-[30px]">
+          <Button>View All Products</Button>
         </div>
       </section>
     </>

@@ -5,10 +5,10 @@ import ProductsList from "./components/products/ProductsList";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col h-screen">
       <Header />
       {/* <LandingContent /> */}
-      <main className="flex-[1_0_100%] overflow-y-auto">
+      <main className="basis-full overflow-auto">
         <ProductsList />
       </main>
       <Footer />
