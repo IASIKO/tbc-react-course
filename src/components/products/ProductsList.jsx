@@ -40,9 +40,9 @@ const productsData = [
   },
   {
     image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-6.jpg.webp",
-    category: "Tequila",
-    name: "Macallan",
+      "https://preview.colorlib.com/theme/liquorstore/images/prod-7.jpg.webp",
+    category: "Vodka",
+    name: "Old Monk",
     price: 69,
   },
 ];

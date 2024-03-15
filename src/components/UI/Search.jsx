@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 const Search = () => {
   return (
@@ -8,9 +9,7 @@ const Search = () => {
         placeholder="Search product..."
         className="border px-[15px] rounded-md w-[400px] outline-none"
       />
-      <button className="cursor-pointer ml-[5px] bg-[#b7472a] border-[#b7472a] text-white rounded-md px-[15px]">
-        Search
-      </button>
+      <Button>Search</Button>
     </div>
   );
 };
