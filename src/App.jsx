@@ -8,7 +8,7 @@ function App() {
     <div className="flex flex-col h-screen">
       <Header />
       {/* <LandingContent /> */}
-      <main className="basis-full overflow-auto">
+      <main >
         <ProductsList />
       </main>
       <Footer />

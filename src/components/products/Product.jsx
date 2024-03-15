@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../UI/Button";
 
 const Product = ({ productInfo }) => {
   return (
@@ -14,6 +15,9 @@ const Product = ({ productInfo }) => {
           {productInfo.name}
         </h2>
         <p className="italic text-black">${productInfo.price}</p>
+      </div>
+      <div className="mb-[30px]">
+        <Button>Add to Cart</Button>
       </div>
     </div>
   );

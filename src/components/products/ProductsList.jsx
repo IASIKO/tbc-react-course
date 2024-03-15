@@ -68,7 +68,7 @@ const ProductsList = () => {
             ))}
           </div>
         </div>
-        <div className="flex justify-center my-[30px]">
+        <div className="flex justify-center my-[60px]">
           <Button>View All Products</Button>
         </div>
       </section>
