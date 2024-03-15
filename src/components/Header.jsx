@@ -61,7 +61,7 @@ const Header = () => {
         </div>
       </div>
 
-      <nav className="bg-transparent absolute top-[35px] left-0 right-0 z-10">
+      <nav className="bg-black right-0 z-10">
         <div className="max-w-[1140px] flex items-center justify-between m-auto">
           <a
             href="#"

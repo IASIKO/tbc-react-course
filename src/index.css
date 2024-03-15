@@ -30,12 +30,13 @@
 body {
   font-family: "Spectral", serif;
   background: #fff;
-  font-size: 16px;
+  font-size: 21px;
   line-height: 1.8;
   font-weight: 300;
   color: gray;
+  height: 100%;
+  margin: 0;
 }
-
 
 * {
   box-sizing: border-box;
