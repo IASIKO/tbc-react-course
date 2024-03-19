@@ -76,7 +76,12 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
+                  end
                 >
                   Home
                 </NavLink>
@@ -84,7 +89,11 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/about"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
                 >
                   About
                 </NavLink>
@@ -92,7 +101,11 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/products"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
                 >
                   Products
                 </NavLink>
@@ -100,7 +113,11 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/blog"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
                 >
                   Blog
                 </NavLink>
@@ -108,7 +125,11 @@ const Header = () => {
               <li>
                 <NavLink
                   to="/contact"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
                 >
                   Contact
                 </NavLink>
