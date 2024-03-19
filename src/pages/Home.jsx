@@ -1,4 +1,4 @@
-import LandingContent from "../components/LandingContent";
+import LandingContent from "../components/Home/LandingContent";
 
 const Home = () => {
   return (

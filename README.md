@@ -74,3 +74,4 @@ libraries:
 
 tailwind
 react-router-dom
+react-icons

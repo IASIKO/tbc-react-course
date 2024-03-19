@@ -1,4 +1,4 @@
-import ProductsList from "./products/ProductsList";
+import ProductsList from "../Products/ProductsList";
 
 const blogListData = [
   {
