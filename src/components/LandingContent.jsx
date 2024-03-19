@@ -1,4 +1,4 @@
-import React from "react";
+import ProductsList from "./products/ProductsList";
 
 const blogListData = [
   {
@@ -128,6 +128,7 @@ const LandingContent = () => {
           </div>
         </div>
       </section>
+      <ProductsList />
     </main>
   );
 };
