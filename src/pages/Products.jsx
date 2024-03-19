@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import TitleBgImage from "../components/UI/TitleBgImage";
 
 const Products = () => {
   return (
-    <div>Products</div>
-  )
-}
+    <>
+      <TitleBgImage>Products</TitleBgImage>
+    </>
+  );
+};
 
-export default Products
+export default Products;

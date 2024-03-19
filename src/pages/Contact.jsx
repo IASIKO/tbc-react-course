@@ -1,8 +1,11 @@
 import React from 'react'
+import TitleBgImage from '../components/UI/TitleBgImage'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <>
+      <TitleBgImage>Contact Us</TitleBgImage>
+    </>
   )
 }
 

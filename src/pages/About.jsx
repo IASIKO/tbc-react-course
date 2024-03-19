@@ -1,8 +1,11 @@
 import React from 'react'
+import TitleBgImage from '../components/UI/TitleBgImage'
 
 const About = () => {
   return (
-    <div>About</div>
+    <>
+      <TitleBgImage>About</TitleBgImage>
+    </>
   )
 }
 
