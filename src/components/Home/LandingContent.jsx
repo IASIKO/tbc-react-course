@@ -1,4 +1,4 @@
-import React from "react";
+import ProductsList from "../Products/ProductsList";
 
 const blogListData = [
   {
@@ -37,7 +37,7 @@ const blogListData = [
 
 const LandingContent = () => {
   return (
-    <main>
+    <>
       <div className=" w-[100%] h-[100vh] bg-landing-bgImage bg-center bg-cover bg-no-repeat relative">
         <div className="absolute top-0 right-0 bottom-0 left-0 opacity-40 bg-black"></div>
         <h1 className="textStroke absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] leading-tight font-bold italic">
@@ -128,7 +128,8 @@ const LandingContent = () => {
           </div>
         </div>
       </section>
-    </main>
+      <ProductsList />
+    </>
   );
 };
 

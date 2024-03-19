@@ -1,19 +1,9 @@
-import Footer from "./components/footer/Footer";
-import Header from "./components/Header";
-// import LandingContent from "./components/LandingContent";
-import ProductsList from "./components/products/ProductsList";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
+
 
 function App() {
-  return (
-    <div className="flex flex-col h-screen">
-      <Header />
-      <main className="overflow-auto">
-        {/* <LandingContent /> */}
-        <ProductsList />
-      </main>
-      <Footer />
-    </div>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;

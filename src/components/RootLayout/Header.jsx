@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -61,7 +62,7 @@ const Header = () => {
         </div>
       </div>
 
-      <nav className="bg-black right-0 z-10">
+      <nav className="absolute left-0 right-0 z-10 bg-transparent">
         <div className="max-w-[1140px] flex items-center justify-between m-auto">
           <a
             href="#"
@@ -73,44 +74,65 @@ const Header = () => {
           <div className="flex basis-auto grow items-center">
             <ul className="flex flex-row ml-auto">
               <li>
-                <a
-                  href="#"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
+                  end
                 >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
                 >
                   About
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                <NavLink
+                  to="/products"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
                 >
                   Products
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                <NavLink
+                  to="/blog"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
                 >
                   Blog
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-[#a23f25] text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                      : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
+                  }
                 >
                   Contact
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
