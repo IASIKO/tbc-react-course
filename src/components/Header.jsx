@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -73,44 +74,44 @@ const Header = () => {
           <div className="flex basis-auto grow items-center">
             <ul className="flex flex-row ml-auto">
               <li>
-                <a
-                  href="#"
+                <NavLink
+                  to="/"
                   className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
                 >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
+                <NavLink
+                  to="/about"
                   className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
                 >
                   About
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
+                <NavLink
+                  to="/products"
                   className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
                 >
                   Products
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
+                <NavLink
+                  to="/blog"
                   className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
                 >
                   Blog
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
+                <NavLink
+                  to="/contact"
                   className="text-[18px] py-[15px] px-[20px] text-gray font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-[#a23f25] hover:transition-all"
                 >
                   Contact
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
