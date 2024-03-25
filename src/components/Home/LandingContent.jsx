@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+import { blogListData } from "../../BlogListData";
 import BlogList from "../Blog/BlogList";
 import ProductsList from "../Products/ProductsList";
+import Button from "../UI/Button";
 
 const LandingContent = () => {
+  const homeBlogListData = blogListData.slice(0, 4);
+
   return (
     <>
       <div className=" w-[100%] h-[100vh] bg-landing-bgImage bg-center bg-cover bg-no-repeat relative">
@@ -59,7 +64,15 @@ const LandingContent = () => {
           </div>
         </div>
       </section>
-      <BlogList />
+      <section>
+        <BlogList blogListData={homeBlogListData} />
+        <div className="flex justify-center">
+          <Button>
+            <Link to="/blog">See More</Link>
+          </Button>
+        </div>
+      </section>
+
       <ProductsList />
     </>
   );

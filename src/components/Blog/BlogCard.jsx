@@ -1,6 +1,6 @@
 import React from "react";
 
-const Blog = ({ listItem }) => {
+const BlogCard = ({ listItem }) => {
   return (
     <div className="mb-[30px] flex">
       <div
@@ -23,4 +23,4 @@ const Blog = ({ listItem }) => {
   );
 };
 
-export default Blog;
+export default BlogCard;
