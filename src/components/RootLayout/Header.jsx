@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -64,12 +64,12 @@ const Header = () => {
 
       <nav className="absolute left-0 right-0 z-10 bg-transparent">
         <div className="max-w-[1140px] flex items-center justify-between m-auto">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="font-bold text-[28px] relative uppercase text-white py-[3px] mr-[10px] leading-loose whitespace-nowrap"
           >
             Liquor <span className="text-gray">store</span>
-          </a>
+          </Link>
 
           <div className="flex basis-auto grow items-center">
             <ul className="flex flex-row ml-auto">

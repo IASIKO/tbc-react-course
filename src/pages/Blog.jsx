@@ -1,7 +1,7 @@
 import React from "react";
 import TitleBgImage from "../components/UI/TitleBgImage";
 import BlogList from "../components/Blog/BlogList";
-import { blogListData } from "../BlogListData";
+import { blogListData } from "../data/BlogListData";
 
 const Blog = () => {
   return (

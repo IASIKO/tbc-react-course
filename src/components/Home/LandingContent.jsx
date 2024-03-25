@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { blogListData } from "../../BlogListData";
+import { blogListData } from "../../data/BlogListData";
 import BlogList from "../Blog/BlogList";
 import ProductsList from "../Products/ProductsList";
 import Button from "../UI/Button";
