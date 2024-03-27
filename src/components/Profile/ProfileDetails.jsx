@@ -24,7 +24,7 @@ const ProfileDetails = () => {
             </div>
           </div>
           <div className="flex flex-col w-[100%] my-[10px]">
-            <h2 className="text-black font-normal">State/Country</h2>
+            <h2 className="text-black font-normal">State / Country</h2>
             <div className="border-[1px] border-solid border-red py-[5px]">
               <span className="pl-[20px]">Georgia</span>
             </div>
@@ -72,7 +72,10 @@ const ProfileDetails = () => {
             </div>
           </div>
           <form>
-            <div className="flex mb-[30px] pt-[60px]">
+            <h3 className="text-[25px] font-medium text-black pt-[60px]">
+              Change Password
+            </h3>
+            <div className="flex mb-[30px]">
               <div className="flex flex-col w-[50%]">
                 <label className="uppercase text-[#b7472a] text-[15px] font-medium">
                   new password
