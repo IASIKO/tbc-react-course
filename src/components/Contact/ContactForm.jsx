@@ -33,7 +33,7 @@ const ContactForm = () => {
                 email address
               </label>
               <input
-                type="text"
+                type="email"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
                 placeholder="Email"
               />
