@@ -1,41 +1,12 @@
+import { Link } from "react-router-dom";
+import { blogListData } from "../../data/BlogListData";
+import BlogList from "../Blog/BlogList";
 import ProductsList from "../Products/ProductsList";
-
-const blogListData = [
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/image_1.jpg.webp",
-    date: "23 April 2020",
-    title: "The Recipe from a Winemaker’s Restaurent",
-    description:
-      "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/image_2.jpg.webp",
-    date: "23 April 2020",
-    title: "The Recipe from a Winemaker’s Restaurent",
-    description:
-      "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/image_3.jpg.webp",
-    date: "23 April 2020",
-    title: "The Recipe from a Winemaker’s Restaurent",
-    description:
-      "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/image_4.jpg.webp",
-    date: "23 April 2020",
-    title: "The Recipe from a Winemaker’s Restaurent",
-    description:
-      "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
-  },
-];
+import Button from "../UI/Button";
 
 const LandingContent = () => {
+  const homeBlogListData = blogListData.slice(0, 4);
+
   return (
     <>
       <div className=" w-[100%] h-[100vh] bg-landing-bgImage bg-center bg-cover bg-no-repeat relative">
@@ -66,7 +37,7 @@ const LandingContent = () => {
         <div className="max-w-[960px] px-[15px] flex justify-center items-center m-auto">
           <div className="h-[780px] w-[100%] flex flex-wrap bg-about-image bg-cover bg-no-repeat bg-center "></div>
           <div className="pl-[30px] py-[30px] max-w-[50%] flex flex-[0_0_50%] flex-col animate-[fall_2s_ease_100ms]">
-            <span className="text-[#a23f25] text-[21px] font-normal italic">
+            <span className="text-red text-[21px] font-normal italic">
               Since 1905
             </span>
             <h2 className="text-[45px] font-bold text-black leading-normal">
@@ -85,7 +56,7 @@ const LandingContent = () => {
               to its own, safe country.
             </p>
             <p className="text-[35px] text-black mb-[10px]">
-              <strong className="italic text-[#a23f25] font-semibold">
+              <strong className="italic text-red font-semibold">
                 115{" "}
               </strong>
               <span>Years of Experience In Business</span>
@@ -94,41 +65,16 @@ const LandingContent = () => {
         </div>
       </section>
 
-      <section className="py-[60px] relative">
-        <div className="max-w-[1140px] px-[15px] m-auto animate-[fall_2s_ease_100ms]">
-          <div className="mb-[30px]">
-            <div className="text-center">
-              <span className="text-[#a23f25] text-[21px] font-normal italic">
-                Blog
-              </span>
-              <h2 className="text-[40px] font-bold text-black">Recent Blog</h2>
-            </div>
-          </div>
-          <div className="w-[1140px] grid grid-cols-2 gap-4">
-            {blogListData.map((listItem, index) => (
-              <div key={index} className="mb-[30px] flex">
-                <div
-                  style={{ backgroundImage: `url(${listItem.image})` }}
-                  className="w-[50%] bg-cover bg-no-repeat bg-center"
-                ></div>
-                <div className="w-[50%] bg-[#f5f4f0] p-[15px]">
-                  <p className="mb-[10px]">
-                    <span className="pr-[10px] text-gray">{listItem.date}</span>
-                  </p>
-                  <h3 className="text-[27px] font-medium italic mb-[10px] leading-normal text-black">
-                    {listItem.title}
-                  </h3>
-                  <p className="mb-[10px]">{listItem.description}</p>
-                  <a href="#" className="text-[#a23f25] italic font-bold">
-                    Continue
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+      <ProductsList />
+
+      <section>
+        <BlogList blogListData={homeBlogListData} />
+        <div className="flex justify-center mb-[60px]">
+          <Button>
+            <Link to="/blog">See More...</Link>
+          </Button>
         </div>
       </section>
-      <ProductsList />
     </>
   );
 };

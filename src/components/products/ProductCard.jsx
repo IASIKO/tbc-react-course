@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../UI/Button";
 
-const Product = ({ productInfo }) => {
+const ProductCard = ({ productInfo }) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <img
@@ -23,4 +23,4 @@ const Product = ({ productInfo }) => {
   );
 };
 
-export default Product;
+export default ProductCard;
