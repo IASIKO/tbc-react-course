@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "../Search";
-import Product from "./Product";
+import Product from "./ProductCard";
 import Button from "../UI/Button";
 
 const productsData = [

@@ -15,7 +15,7 @@ const BlogCard = ({ listItem }) => {
           {listItem.title}
         </h3>
         <p className="mb-[10px]">{listItem.description}</p>
-        <a href="#" className="text-[#a23f25] italic font-bold">
+        <a href="#" className="text-red italic font-bold">
           Continue
         </a>
       </div>

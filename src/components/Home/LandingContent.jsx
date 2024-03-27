@@ -37,7 +37,7 @@ const LandingContent = () => {
         <div className="max-w-[960px] px-[15px] flex justify-center items-center m-auto">
           <div className="h-[780px] w-[100%] flex flex-wrap bg-about-image bg-cover bg-no-repeat bg-center "></div>
           <div className="pl-[30px] py-[30px] max-w-[50%] flex flex-[0_0_50%] flex-col animate-[fall_2s_ease_100ms]">
-            <span className="text-[#a23f25] text-[21px] font-normal italic">
+            <span className="text-red text-[21px] font-normal italic">
               Since 1905
             </span>
             <h2 className="text-[45px] font-bold text-black leading-normal">
@@ -56,7 +56,7 @@ const LandingContent = () => {
               to its own, safe country.
             </p>
             <p className="text-[35px] text-black mb-[10px]">
-              <strong className="italic text-[#a23f25] font-semibold">
+              <strong className="italic text-red font-semibold">
                 115{" "}
               </strong>
               <span>Years of Experience In Business</span>
@@ -64,16 +64,17 @@ const LandingContent = () => {
           </div>
         </div>
       </section>
+
+      <ProductsList />
+
       <section>
         <BlogList blogListData={homeBlogListData} />
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-[60px]">
           <Button>
-            <Link to="/blog">See More</Link>
+            <Link to="/blog">See More...</Link>
           </Button>
         </div>
       </section>
-
-      <ProductsList />
     </>
   );
 };

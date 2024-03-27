@@ -7,7 +7,7 @@ const BlogList = ({ blogListData }) => {
       <div className="max-w-[1140px] px-[15px] m-auto animate-[fall_2s_ease_100ms]">
         <div className="mb-[30px]">
           <div className="text-center">
-            <span className="text-[#a23f25] text-[21px] font-normal italic">
+            <span className="text-red text-[21px] font-normal italic">
               Blog
             </span>
             <h2 className="text-[40px] font-bold text-black">Recent Blog</h2>
