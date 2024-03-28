@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "../Search";
-import Product from "./ProductCard";
+import ProductCard from "./ProductCard";
 import Button from "../UI/Button";
 
 const productsData = [
@@ -64,7 +64,7 @@ const ProductsList = () => {
           </div>
           <div className="grid grid-cols-3 gap-4">
             {productsData.map((product, index) => (
-              <Product key={index} productInfo={product} />
+              <ProductCard key={index} productInfo={product} />
             ))}
           </div>
         </div>
