@@ -9,6 +9,7 @@ const ProductsList = () => {
   const [filteredProducts, setFilteredProducts] = useState([
     ...productsListData,
   ]);
+  const [isProductsSorted, setIsProductsSorted] = useState(false);
 
   const onSearchInputChangeHandler = (e) => {
     const value = e.target.value.toLowerCase();
@@ -16,7 +17,7 @@ const ProductsList = () => {
     const filterData = filteredProducts.filter((product) =>
       product.name.toLowerCase().includes(value)
     );
-    setFilteredProducts([...filterData]);
+    setFilteredProducts(filterData);
   };
 
   const onSearchKeyUpHandler = (e) => {
@@ -28,6 +29,10 @@ const ProductsList = () => {
       );
       setFilteredProducts(filteredData);
     }
+  };
+
+  const onSortButtonClickHandler = () => {
+    setIsProductsSorted(!isProductsSorted);
   };
 
   return (
@@ -43,8 +48,10 @@ const ProductsList = () => {
             </h2>
             <Search
               onChange={onSearchInputChangeHandler}
-              onKeyUp ={onSearchKeyUpHandler}
+              onKeyUp={onSearchKeyUpHandler}
+              onClick={onSortButtonClickHandler}
               searchValue={searchValue}
+              isProductsSorted={isProductsSorted}
             />
           </div>
           <div className="grid grid-cols-3 gap-4">
@@ -53,9 +60,11 @@ const ProductsList = () => {
             ))}
           </div>
         </div>
-        <div className="flex justify-center my-[60px]">
-          <Button>View All Products</Button>
-        </div>
+        {filteredProducts.length !== 0 && (
+          <div className="flex justify-center my-[60px]">
+            <Button>View All Products</Button>
+          </div>
+        )}
       </section>
     </>
   );

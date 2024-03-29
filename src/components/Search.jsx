@@ -1,18 +1,36 @@
 import React from "react";
 import Button from "./UI/Button";
+import { GrPowerReset } from "react-icons/gr";
 
-const Search = ({ onChange, searchValue, onKeyUp }) => {
+const Search = ({
+  onChange,
+  searchValue,
+  onKeyUp,
+  onClick,
+  isProductsSorted,
+}) => {
   return (
-    <div className="pt-[60px] flex justify-center">
+    <div className="pt-[60px] w-[960px] flex justify-between">
       <input
         type="text"
         placeholder="Search product..."
         value={searchValue}
         onChange={onChange}
         onKeyUp={onKeyUp}
-        className="border px-[15px] rounded-md w-[400px] outline-none"
+        className="border border-red px-[15px] rounded-md w-[350px] outline-none"
       />
-      <Button>Search</Button>
+      <Button onClick={onClick} width="300px">
+        {isProductsSorted ? (
+          <span className="flex items-center justify-center">
+            Reset Sort
+            <i className="pl-[10px]">
+              <GrPowerReset />
+            </i>
+          </span>
+        ) : (
+          <span>Sort by Price (low to high)</span>
+        )}
+      </Button>
     </div>
   );
 };

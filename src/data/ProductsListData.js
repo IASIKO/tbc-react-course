@@ -18,7 +18,7 @@ export const productsListData = [
         "https://preview.colorlib.com/theme/liquorstore/images/prod-3.jpg.webp",
       category: "Rum",
       name: "Citadelle",
-      price: 69,
+      price: 59,
     },
     {
       image:
@@ -32,7 +32,7 @@ export const productsListData = [
         "https://preview.colorlib.com/theme/liquorstore/images/prod-5.jpg.webp",
       category: "Whiskey",
       name: "Black Label",
-      price: 69,
+      price: 89,
     },
     {
       image:
