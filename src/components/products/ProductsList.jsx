@@ -10,14 +10,24 @@ const ProductsList = () => {
     ...productsListData,
   ]);
   const [isProductsSorted, setIsProductsSorted] = useState(false);
+  const [timeoutId, setTimeoutId] = useState(null);
 
   const onSearchInputChangeHandler = (e) => {
     const value = e.target.value.toLowerCase();
     setSearchValue(value);
-    const filterData = productsListData.filter((product) =>
-      product.name.toLowerCase().includes(value)
-    );
-    setFilteredProducts(filterData);
+
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    const newTimeoutId = setTimeout(() => {
+      const filterData = productsListData.filter((product) =>
+        product.name.toLowerCase().includes(value)
+      );
+      setFilteredProducts(filterData);
+    }, 500);
+
+    setTimeoutId(newTimeoutId);
   };
 
   const onSortButtonClickHandler = () => {
