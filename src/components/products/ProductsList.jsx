@@ -33,6 +33,14 @@ const ProductsList = () => {
 
   const onSortButtonClickHandler = () => {
     setIsProductsSorted(!isProductsSorted);
+    if (isProductsSorted === false) {
+      const sortedData = [...filteredProducts].sort(
+        (a, b) => a.price - b.price
+      );
+      setFilteredProducts(sortedData);
+    } else {
+      setFilteredProducts([...productsListData]);
+    }
   };
 
   return (
