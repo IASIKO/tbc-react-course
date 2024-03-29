@@ -14,21 +14,10 @@ const ProductsList = () => {
   const onSearchInputChangeHandler = (e) => {
     const value = e.target.value.toLowerCase();
     setSearchValue(value);
-    const filterData = filteredProducts.filter((product) =>
+    const filterData = productsListData.filter((product) =>
       product.name.toLowerCase().includes(value)
     );
     setFilteredProducts(filterData);
-  };
-
-  const onSearchKeyUpHandler = (e) => {
-    if (e.key === "Backspace" || e.key === "Delete") {
-      const value = e.target.value.toLowerCase();
-      setSearchValue(value);
-      const filteredData = productsListData.filter((product) =>
-        product.name.toLowerCase().includes(value)
-      );
-      setFilteredProducts(filteredData);
-    }
   };
 
   const onSortButtonClickHandler = () => {
@@ -40,6 +29,7 @@ const ProductsList = () => {
       setFilteredProducts(sortedData);
     } else {
       setFilteredProducts([...productsListData]);
+      setSearchValue("");
     }
   };
 
@@ -56,7 +46,6 @@ const ProductsList = () => {
             </h2>
             <Search
               onChange={onSearchInputChangeHandler}
-              onKeyUp={onSearchKeyUpHandler}
               onClick={onSortButtonClickHandler}
               searchValue={searchValue}
               isProductsSorted={isProductsSorted}

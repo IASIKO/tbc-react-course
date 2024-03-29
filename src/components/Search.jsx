@@ -5,7 +5,6 @@ import { GrPowerReset } from "react-icons/gr";
 const Search = ({
   onChange,
   searchValue,
-  onKeyUp,
   onClick,
   isProductsSorted,
 }) => {
@@ -16,7 +15,6 @@ const Search = ({
         placeholder="Search product..."
         value={searchValue}
         onChange={onChange}
-        onKeyUp={onKeyUp}
         className="border border-red px-[15px] rounded-md w-[350px] outline-none"
       />
       <Button onClick={onClick} width="300px">
