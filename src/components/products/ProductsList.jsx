@@ -5,18 +5,29 @@ import Button from "../UI/Button";
 import { productsListData } from "../../data/ProductsListData";
 
 const ProductsList = () => {
-  const [searchValue, setSearchValuetate] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([
     ...productsListData,
   ]);
 
   const onSearchInputChangeHandler = (e) => {
     const value = e.target.value.toLowerCase();
-    setSearchValuetate(value);
+    setSearchValue(value);
     const filterData = filteredProducts.filter((product) =>
       product.name.toLowerCase().includes(value)
     );
     setFilteredProducts([...filterData]);
+  };
+
+  const onSearchKeyUpHandler = (e) => {
+    if (e.key === "Backspace" || e.key === "Delete") {
+      const value = e.target.value.toLowerCase();
+      setSearchValue(value);
+      const filteredData = productsListData.filter((product) =>
+        product.name.toLowerCase().includes(value)
+      );
+      setFilteredProducts(filteredData);
+    }
   };
 
   return (
@@ -32,6 +43,7 @@ const ProductsList = () => {
             </h2>
             <Search
               onChange={onSearchInputChangeHandler}
+              onKeyUp ={onSearchKeyUpHandler}
               searchValue={searchValue}
             />
           </div>
