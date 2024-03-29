@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Search from "../Search";
 import ProductCard from "./ProductCard";
 import Button from "../UI/Button";
 import { productsListData } from "../../data/ProductsListData";
 
-
-
 const ProductsList = () => {
+  const [searchValue, setSearchValuetate] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([
+    ...productsListData,
+  ]);
+
+  const onSearchInputChangeHandler = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchValuetate(value);
+    const filterData = filteredProducts.filter((product) =>
+      product.name.toLowerCase().includes(value)
+    );
+    setFilteredProducts([...filterData]);
+  };
+
   return (
     <>
       <section className="py-[60px]">
@@ -18,10 +30,13 @@ const ProductsList = () => {
             <h2 className="text-[45px] font-bold text-black leading-normal">
               Tastefully Yours
             </h2>
-            <Search />
+            <Search
+              onChange={onSearchInputChangeHandler}
+              searchValue={searchValue}
+            />
           </div>
           <div className="grid grid-cols-3 gap-4">
-            {productsListData.map((product, index) => (
+            {filteredProducts.map((product, index) => (
               <ProductCard key={index} productInfo={product} />
             ))}
           </div>

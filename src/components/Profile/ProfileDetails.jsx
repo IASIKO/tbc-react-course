@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../UI/Button";
 
 const ProfileDetails = () => {
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+
   return (
     <section className="py-[60px]">
       <div className="max-w-[1140px] m-auto">
@@ -84,6 +87,8 @@ const ProfileDetails = () => {
                   type="password"
                   className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
                   placeholder="New Password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
                 />
               </div>
               <div className="flex flex-col ml-[20px] w-[50%]">
@@ -94,6 +99,8 @@ const ProfileDetails = () => {
                   type="password"
                   className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
                   placeholder="Confirm New Password"
+                  value={confirmNewPassword}
+                  onChange={(e) => setConfirmNewPassword(e.target.value)}
                 />
               </div>
             </div>
