@@ -2,51 +2,9 @@ import React from "react";
 import Search from "../Search";
 import ProductCard from "./ProductCard";
 import Button from "../UI/Button";
+import { productsListData } from "../../data/ProductsListData";
 
-const productsData = [
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-1.jpg.webp",
-    category: "Brandy",
-    name: "Bacardi 151",
-    price: 49,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-2.jpg.webp",
-    category: "Gin",
-    name: "Jim Beam Kentucky Straight",
-    price: 69,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-3.jpg.webp",
-    category: "Rum",
-    name: "Citadelle",
-    price: 69,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-4.jpg.webp",
-    category: "Rum",
-    name: "The Glenlivet",
-    price: 69,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-5.jpg.webp",
-    category: "Whiskey",
-    name: "Black Label",
-    price: 69,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-7.jpg.webp",
-    category: "Vodka",
-    name: "Old Monk",
-    price: 69,
-  },
-];
+
 
 const ProductsList = () => {
   return (
@@ -63,7 +21,7 @@ const ProductsList = () => {
             <Search />
           </div>
           <div className="grid grid-cols-3 gap-4">
-            {productsData.map((product, index) => (
+            {productsListData.map((product, index) => (
               <ProductCard key={index} productInfo={product} />
             ))}
           </div>
