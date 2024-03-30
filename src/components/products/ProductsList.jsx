@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Search from "../Search";
 import ProductCard from "./ProductCard";
 import Button from "../UI/Button";
@@ -6,42 +6,49 @@ import { productsListData } from "../../data/ProductsListData";
 
 const ProductsList = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([
-    ...productsListData,
-  ]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [isProductsSorted, setIsProductsSorted] = useState(false);
+  const [sortedProducts, setSortedProducts] = useState([]);
   const [timeoutId, setTimeoutId] = useState(null);
 
-  const onSearchInputChangeHandler = (e) => {
-    const value = e.target.value.toLowerCase();
-    setSearchValue(value);
-
+  useEffect(() => {
     if (timeoutId) {
       clearTimeout(timeoutId);
     }
-
     const newTimeoutId = setTimeout(() => {
-      const filterData = productsListData.filter((product) =>
-        product.name.toLowerCase().includes(value)
-      );
-      setFilteredProducts(filterData);
+      if (searchValue === "") {
+        setFilteredProducts([...productsListData]);
+      } else {
+        const filterData = productsListData.filter((product) =>
+          product.name.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        setFilteredProducts(filterData);
+      }
     }, 500);
 
     setTimeoutId(newTimeoutId);
+  }, [searchValue]);
+
+  useEffect(() => {
+    if (isProductsSorted) {
+      const sortedData = [...filteredProducts].sort(
+        (a, b) => a.price - b.price
+      );
+      setSortedProducts(sortedData);
+    }
+  }, [filteredProducts, isProductsSorted]);
+
+  const onSearchInputChangeHandler = (e) => {
+    setSearchValue(e.target.value);
   };
 
   const onSortButtonClickHandler = () => {
     setIsProductsSorted(!isProductsSorted);
-    if (isProductsSorted === false) {
-      const sortedData = [...filteredProducts].sort(
-        (a, b) => a.price - b.price
-      );
-      setFilteredProducts(sortedData);
-    } else {
-      setFilteredProducts([...productsListData]);
-      setSearchValue("");
-    }
   };
+
+  const productListToShow = isProductsSorted
+    ? sortedProducts
+    : filteredProducts;
 
   return (
     <>
@@ -62,12 +69,12 @@ const ProductsList = () => {
             />
           </div>
           <div className="grid grid-cols-3 gap-4">
-            {filteredProducts.map((product, index) => (
+            {productListToShow.map((product, index) => (
               <ProductCard key={index} productInfo={product} />
             ))}
           </div>
         </div>
-        {filteredProducts.length !== 0 && (
+        {productListToShow.length !== 0 && (
           <div className="flex justify-center my-[60px]">
             <Button>View All Products</Button>
           </div>
