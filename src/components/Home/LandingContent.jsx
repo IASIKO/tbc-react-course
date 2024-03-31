@@ -56,9 +56,7 @@ const LandingContent = () => {
               to its own, safe country.
             </p>
             <p className="text-[35px] text-black mb-[10px]">
-              <strong className="italic text-red font-semibold">
-                115{" "}
-              </strong>
+              <strong className="italic text-red font-semibold">115 </strong>
               <span>Years of Experience In Business</span>
             </p>
           </div>

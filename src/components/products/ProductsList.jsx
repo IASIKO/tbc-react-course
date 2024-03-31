@@ -1,54 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Search from "../Search";
 import ProductCard from "./ProductCard";
 import Button from "../UI/Button";
-
-const productsData = [
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-1.jpg.webp",
-    category: "Brandy",
-    name: "Bacardi 151",
-    price: 49,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-2.jpg.webp",
-    category: "Gin",
-    name: "Jim Beam Kentucky Straight",
-    price: 69,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-3.jpg.webp",
-    category: "Rum",
-    name: "Citadelle",
-    price: 69,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-4.jpg.webp",
-    category: "Rum",
-    name: "The Glenlivet",
-    price: 69,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-5.jpg.webp",
-    category: "Whiskey",
-    name: "Black Label",
-    price: 69,
-  },
-  {
-    image:
-      "https://preview.colorlib.com/theme/liquorstore/images/prod-7.jpg.webp",
-    category: "Vodka",
-    name: "Old Monk",
-    price: 69,
-  },
-];
+import { productsListData } from "../../data/ProductsListData";
 
 const ProductsList = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [isProductsSorted, setIsProductsSorted] = useState(false);
+  const [sortedProducts, setSortedProducts] = useState([]);
+  const [timeoutId, setTimeoutId] = useState(null);
+
+  useEffect(() => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    const newTimeoutId = setTimeout(() => {
+      if (searchValue === "") {
+        setFilteredProducts([...productsListData]);
+      } else {
+        const filterData = productsListData.filter((product) =>
+          product.name.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        setFilteredProducts(filterData);
+      }
+    }, 500);
+
+    setTimeoutId(newTimeoutId);
+  }, [searchValue]);
+
+  useEffect(() => {
+    if (isProductsSorted) {
+      const sortedData = [...filteredProducts].sort(
+        (a, b) => a.price - b.price
+      );
+      setSortedProducts(sortedData);
+    }
+  }, [filteredProducts, isProductsSorted]);
+
+  const onSearchInputChangeHandler = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const onSortButtonClickHandler = () => {
+    setIsProductsSorted(!isProductsSorted);
+  };
+
+  const productListToShow = isProductsSorted
+    ? sortedProducts
+    : filteredProducts;
+
   return (
     <>
       <section className="py-[60px]">
@@ -60,17 +61,24 @@ const ProductsList = () => {
             <h2 className="text-[45px] font-bold text-black leading-normal">
               Tastefully Yours
             </h2>
-            <Search />
+            <Search
+              onChange={onSearchInputChangeHandler}
+              onClick={onSortButtonClickHandler}
+              searchValue={searchValue}
+              isProductsSorted={isProductsSorted}
+            />
           </div>
           <div className="grid grid-cols-3 gap-4">
-            {productsData.map((product, index) => (
+            {productListToShow.map((product, index) => (
               <ProductCard key={index} productInfo={product} />
             ))}
           </div>
         </div>
-        <div className="flex justify-center my-[60px]">
-          <Button>View All Products</Button>
-        </div>
+        {productListToShow.length !== 0 && (
+          <div className="flex justify-center my-[60px]">
+            <Button>View All Products</Button>
+          </div>
+        )}
       </section>
     </>
   );
