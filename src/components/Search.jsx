@@ -2,12 +2,7 @@ import React from "react";
 import Button from "./UI/Button";
 import { GrPowerReset } from "react-icons/gr";
 
-const Search = ({
-  onChange,
-  searchValue,
-  onClick,
-  isProductsSorted,
-}) => {
+const Search = ({ onChange, searchValue, onClick, isProductsSorted }) => {
   return (
     <div className="pt-[60px] w-[960px] flex justify-between">
       <input
