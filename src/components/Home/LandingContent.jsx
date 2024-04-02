@@ -17,13 +17,13 @@ const LandingContent = () => {
             <span className="text-white">Moments</span>.
             <p className="font-normal text-[20px] text-[#ffffff] py-[20px] leading-normal">
               <a
-                href="#"
+                href="/"
                 className="cursor-pointer mr-[10px] bg-[#b7472a] border-[#b7472a] text-white rounded-[3px] py-[5px] px-[15px]"
               >
                 Shop Now
               </a>
               <a
-                href="#"
+                href="/"
                 className="cursor-pointer mr-[10px] bg-transparent border-white border-[1px] border-solid text-white rounded-[3px] py-[5px] px-[15px]"
               >
                 Read more
