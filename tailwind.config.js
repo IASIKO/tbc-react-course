@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -59,13 +63,6 @@ module.exports = {
         lg: "992px",
         xl: "1200px",
       },
-      backgroundImage: {
-        "landing-bgImage": "url('/src/Assets/images/bg_1.jpg')",
-        "about-image": "url('/src/Assets/images/about-image.jpg')",
-      },
-      // animation: {
-      //   "spin-slow": "spin 3s linear infinite",
-      // },
       keyframes: {
         fall: {
           "0%": { transform: " translate3d(0,40px,0)" },
