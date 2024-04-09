@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import bg from "../../public/Assets/images/bg_1.jpg";
 import aboutImg from "../../public/Assets/images/about-image.jpg";
@@ -7,6 +7,7 @@ import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const LandingContent = () => {
   const [blogListData, setBlogListData] = useState([]);
@@ -14,39 +15,38 @@ const LandingContent = () => {
   useEffect(() => {
     fetch("https://dummyjson.com/recipes")
       .then((res) => res.json())
-      .then(res => setBlogListData(res.recipes));
+      .then((res) => setBlogListData(res.recipes));
   }, []);
 
   const homeBlogListData = blogListData.slice(0, 4);
 
   return (
     <>
-      <div
-        style={{ backgroundImage: `url(${bg.src})` }}
-        className=" w-[100%] h-[100vh] bg-center bg-cover bg-no-repeat relative"
-      >
-        <div className="absolute top-0 right-0 bottom-0 left-0 opacity-40 bg-black"></div>
-        <h1 className="textStroke absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] leading-tight font-bold italic">
-          <div className="py-[30px] rotate-[-4deg] text-center w-[660px] m-auto">
-            Good <span className="text-white">Drink</span> for Good{" "}
-            <span className="text-white">Moments</span>.
-            <p className="font-normal text-[20px] text-[#ffffff] py-[20px] leading-normal">
-              <a
-                href="#"
-                className="cursor-pointer mr-[10px] bg-[#b7472a] border-[#b7472a] text-white rounded-[3px] py-[5px] px-[15px]"
-              >
-                Shop Now
-              </a>
-              <a
-                href="#"
-                className="cursor-pointer mr-[10px] bg-transparent border-white border-[1px] border-solid text-white rounded-[3px] py-[5px] px-[15px]"
-              >
-                Read more
-              </a>
-            </p>
-          </div>
-        </h1>
-      </div>
+      <Image
+        src={bg}
+        alt='background image'
+      />
+      <div className="absolute  top-[38px] right-0 bottom-0 left-0 opacity-40 bg-black"></div>
+      <h1 className="textStroke absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] leading-tight font-bold italic">
+        <div className="py-[30px] rotate-[-4deg] text-center w-[660px] m-auto">
+          Good <span className="text-white">Drink</span> for Good{" "}
+          <span className="text-white">Moments</span>.
+          <p className="font-normal text-[20px] text-[#ffffff] py-[20px] leading-normal">
+            <a
+              href="#"
+              className="cursor-pointer mr-[10px] bg-[#b7472a] border-[#b7472a] text-white rounded-[3px] py-[5px] px-[15px]"
+            >
+              Shop Now
+            </a>
+            <a
+              href="#"
+              className="cursor-pointer mr-[10px] bg-transparent border-white border-[1px] border-solid text-white rounded-[3px] py-[5px] px-[15px]"
+            >
+              Read more
+            </a>
+          </p>
+        </div>
+      </h1>
 
       <section className="py-[60px] relative">
         <div className="max-w-[960px] px-[15px] flex justify-center items-center m-auto">
