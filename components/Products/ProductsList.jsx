@@ -15,9 +15,15 @@ const ProductsList = () => {
   const [timeoutId, setTimeoutId] = useState(null);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then(res => setProductsListData(res.products));
+    async function getProducts() {
+      const response = await fetch(
+        `https://dummyjson.com/products`
+      );
+      const products = await response.json();
+      setProductsListData(products.products);
+    }
+
+    getProducts()
   }, []);
 
 

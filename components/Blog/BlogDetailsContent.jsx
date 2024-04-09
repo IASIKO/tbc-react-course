@@ -6,9 +6,15 @@ const BlogDetailsContent = ({ params }) => {
   const [blogDetails, setBlogDetails] = useState({});
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/recipes/${params.slug}`)
-      .then((res) => res.json())
-      .then((res) => setBlogDetails(res));
+    async function getBlogDetails() {
+      const response = await fetch(
+        `https://dummyjson.com/recipes/${params.slug}`
+      );
+      const blogDetails = await response.json();
+      setBlogDetails(blogDetails);
+    }
+
+    getBlogDetails();
   }, [params]);
 
   console.log(blogDetails);
