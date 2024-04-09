@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { productsListData } from "@/data/ProductsListData";
@@ -7,11 +7,19 @@ import ProductCard from "./ProductCard";
 import Search from "../Search";
 
 const ProductsList = () => {
+  const [productsListData, setProductsListData] = useState([])
   const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isProductsSorted, setIsProductsSorted] = useState(false);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [timeoutId, setTimeoutId] = useState(null);
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then(res => setProductsListData(res.products));
+  }, []);
+
 
   useEffect(() => {
     if (timeoutId) {
@@ -22,14 +30,14 @@ const ProductsList = () => {
         setFilteredProducts([...productsListData]);
       } else {
         const filterData = productsListData.filter((product) =>
-          product.name.toLowerCase().includes(searchValue.toLowerCase())
+          product.title.toLowerCase().includes(searchValue.toLowerCase())
         );
         setFilteredProducts(filterData);
       }
     }, 500);
 
     setTimeoutId(newTimeoutId);
-  }, [searchValue]);
+  }, [searchValue, productsListData]);
 
   useEffect(() => {
     if (isProductsSorted) {

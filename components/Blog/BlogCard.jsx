@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { MdStarRate } from "react-icons/md";
 
@@ -17,9 +18,9 @@ const BlogCard = ({ listItem }) => {
           {listItem.name}
         </h3>
         <p className="mb-[10px]">{listItem.ingredients}</p>
-        <a href="#" className="text-red italic font-bold">
+        <Link href={`/blog/${listItem.id}`} className="text-red italic font-bold">
           Continue
-        </a>
+        </Link>
       </div>
     </div>
   );

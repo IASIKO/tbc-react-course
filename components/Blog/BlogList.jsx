@@ -2,8 +2,6 @@ import React from "react";
 import BlogCard from "./BlogCard";
 
 const BlogList = ({ blogListData }) => {
-  console.log(blogListData);
-
   return (
     <div className="py-[60px] relative">
       <div className="max-w-[1140px] px-[15px] m-auto animate-[fall_2s_ease_100ms]">
