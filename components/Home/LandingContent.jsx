@@ -1,12 +1,22 @@
-import { blogListData } from "@/data/BlogListData";
+'use client'
+
 import bg from "../../public/Assets/images/bg_1.jpg";
 import aboutImg from "../../public/Assets/images/about-image.jpg";
 import ProductsList from "../Products/ProductsList";
 import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
+import { useEffect, useState } from "react";
 
 const LandingContent = () => {
+  const [blogListData, setBlogListData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/recipes")
+      .then((res) => res.json())
+      .then(res => setBlogListData(res.recipes));
+  }, []);
+
   const homeBlogListData = blogListData.slice(0, 4);
 
   return (

@@ -2,7 +2,6 @@
 
 import BlogList from "@/components/Blog/BlogList";
 import TitleBgImage from "@/components/UI/TitleBgImage";
-import { blogListData } from "@/data/BlogListData";
 import React, { useEffect, useState } from "react";
 
 export default function Blog() {
