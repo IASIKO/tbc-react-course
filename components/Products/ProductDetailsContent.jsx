@@ -1,24 +1,7 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { MdStarRate } from "react-icons/md";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 
-const ProductDetailsContent = ({ params }) => {
-  const [productDetails, setProductDetails] = useState({});
-
-  useEffect(() => {
-    async function getProductDetails() {
-      const response = await fetch(
-        `https://dummyjson.com/products/${params.slug}`
-      );
-      const productDetails = await response.json();
-      setProductDetails(productDetails);
-    }
-
-    getProductDetails();
-  }, [params]);
-
+const ProductDetailsContent = ({ productDetails }) => {
   return (
     <section className="py-[60px]">
       <div className="w-[1140px] m-auto">
