@@ -1,5 +1,7 @@
 import ProductDetailsContent from "@/components/Products/ProductDetailsContent";
 import TitleBgImage from "@/components/UI/TitleBgImage";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 async function getProductById(productId) {
   const response = await fetch(`https://dummyjson.com/products/${productId}`);
@@ -12,7 +14,9 @@ export default async function ProductsDetails({ params }) {
   return (
     <>
       <TitleBgImage>Products Details</TitleBgImage>
-      <ProductDetailsContent productDetails={product} />
+      <Suspense fallback={<Loading />}>
+        <ProductDetailsContent productDetails={product} />
+      </Suspense>
     </>
   );
 }
