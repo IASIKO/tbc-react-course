@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { productsListData } from "@/data/ProductsListData";
 import Button from "../UI/Button";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
 
-const ProductsList = () => {
-  const [productsListData, setProductsListData] = useState([])
+const ProductsList = ({ productListData }) => {
+  const [productsListData, setProductsListData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isProductsSorted, setIsProductsSorted] = useState(false);
@@ -15,17 +14,8 @@ const ProductsList = () => {
   const [timeoutId, setTimeoutId] = useState(null);
 
   useEffect(() => {
-    async function getProducts() {
-      const response = await fetch(
-        `https://dummyjson.com/products`
-      );
-      const products = await response.json();
-      setProductsListData(products.products);
-    }
-
-    getProducts()
+    setProductsListData(productListData);
   }, []);
-
 
   useEffect(() => {
     if (timeoutId) {

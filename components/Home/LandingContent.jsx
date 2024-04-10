@@ -1,32 +1,16 @@
-"use client";
-
-import bg from "../../public/Assets/images/bg_1.jpg";
 import aboutImg from "../../public/Assets/images/about-image.jpg";
 import ProductsList from "../Products/ProductsList";
 import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
-import { useEffect, useState } from "react";
-import Image from "next/image";
 
-const LandingContent = () => {
-  const [blogListData, setBlogListData] = useState([]);
-
-  useEffect(() => {
-    fetch("https://dummyjson.com/recipes")
-      .then((res) => res.json())
-      .then((res) => setBlogListData(res.recipes));
-  }, []);
-
+const LandingContent = ({ blogListData, productListData }) => {
   const homeBlogListData = blogListData.slice(0, 4);
+  const homeProductsListData = productListData.slice(0, 9);
+
 
   return (
     <>
-      <Image
-        src={bg}
-        alt='background image'
-        priority={true}
-      />
       <div className="absolute top-[38px] right-0 bottom-0 left-0 opacity-40 bg-black"></div>
       <h1 className="textStroke absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] leading-tight font-bold italic">
         <div className="py-[30px] rotate-[-4deg] text-center w-[660px] m-auto">
@@ -82,7 +66,7 @@ const LandingContent = () => {
         </div>
       </section>
 
-      <ProductsList />
+      <ProductsList productListData={homeProductsListData}/>
 
       <section>
         <BlogList blogListData={homeBlogListData} />

@@ -1,26 +1,23 @@
-"use client";
-
 import BlogList from "@/components/Blog/BlogList";
 import TitleBgImage from "@/components/UI/TitleBgImage";
-import React, { useEffect, useState } from "react";
+import { Suspense } from "react";
+import Loading from "./loading";
 
-export default function Blog() {
-  const [blogListData, setBlogListData] = useState([]);
+async function getBlogs() {
+  const res = await fetch("https://dummyjson.com/recipes");
 
-  useEffect(() => {
-    async function getBlogs() {
-      const response = await fetch("https://dummyjson.com/recipes");
-      const blogs = await response.json();
-      setBlogListData(blogs.recipes);
-    }
+  return res.json();
+}
 
-    getBlogs();
-  }, []);
+export default async function Blog() {
+  const blogListData = await getBlogs();
 
   return (
     <>
       <TitleBgImage>Blog</TitleBgImage>
-      <BlogList blogListData={blogListData} />
+      <Suspense fallback={<Loading />}>
+        <BlogList blogListData={blogListData.recipes} />
+      </Suspense>
     </>
   );
 }
