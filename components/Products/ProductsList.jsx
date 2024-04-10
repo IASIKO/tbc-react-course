@@ -74,17 +74,12 @@ const ProductsList = ({ productListData }) => {
               isProductsSorted={isProductsSorted}
             />
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
             {productListToShow.map((product, index) => (
               <ProductCard key={index} productInfo={product} />
             ))}
           </div>
         </div>
-        {productListToShow.length !== 0 && (
-          <div className="flex justify-center my-[60px]">
-            <Button>View All Products</Button>
-          </div>
-        )}
       </section>
     </>
   );

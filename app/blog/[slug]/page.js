@@ -1,5 +1,4 @@
 import BlogDetailsContent from "@/components/Blog/BlogDetailsContent";
-import TitleBgImage from "@/components/UI/TitleBgImage";
 import { Suspense } from "react";
 import Loading from "../loading";
 
@@ -14,7 +13,6 @@ export default async function BlogDetails({ params }) {
 
   return (
     <>
-      <TitleBgImage>Blog Details</TitleBgImage>
       <Suspense fallback={<Loading />}>
         <BlogDetailsContent blogDetails={blog} />
       </Suspense>

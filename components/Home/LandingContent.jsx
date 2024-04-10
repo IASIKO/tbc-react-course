@@ -6,8 +6,7 @@ import BlogList from "../Blog/BlogList";
 
 const LandingContent = ({ blogListData, productListData }) => {
   const homeBlogListData = blogListData.slice(0, 4);
-  const homeProductsListData = productListData.slice(0, 9);
-
+  const homeProductsListData = productListData.slice(0, 8);
 
   return (
     <>
@@ -66,7 +65,14 @@ const LandingContent = ({ blogListData, productListData }) => {
         </div>
       </section>
 
-      <ProductsList productListData={homeProductsListData}/>
+      <section>
+        <ProductsList productListData={homeProductsListData} />
+        <div className="flex justify-center mb-[60px]">
+          <Link href="/products">
+            <Button>View All Products</Button>
+          </Link>
+        </div>
+      </section>
 
       <section>
         <BlogList blogListData={homeBlogListData} />

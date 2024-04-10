@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../UI/Button";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const ProductCard = ({ productInfo }) => {
   const router = useRouter();
@@ -13,10 +14,12 @@ const ProductCard = ({ productInfo }) => {
         className="flex flex-col justify-center items-center cursor-pointer"
         onClick={onProductCardClickHandler}
       >
-        <img
-          src={productInfo.thumbnail}
+        <Image
+          src={productInfo?.thumbnail}
           alt={productInfo.title}
-          className="w-[260px] h-400px]"
+          width={300}
+          height={400}
+          className="w-full h-80 object-cover"
         />
         <div className="text-center p-[20px]q flex-1">
           <span className="italic text-[#b7472a]">{productInfo.category}</span>
