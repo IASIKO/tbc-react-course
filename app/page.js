@@ -1,6 +1,4 @@
 import LandingContent from "@/components/Home/LandingContent";
-import { Suspense } from "react";
-import Loading from "./loading";
 import bg from "../public/Assets/images/bg_1.jpg";
 import Image from "next/image";
 
@@ -22,13 +20,11 @@ export default async function Home() {
 
   return (
     <>
-      <Image src={bg} alt="background image" />
-      <Suspense fallback={<Loading />}>
-        <LandingContent
-          blogListData={blogListData.recipes}
-          productListData={productListData.products}
-        />
-      </Suspense>
+      <Image src={bg} alt="background image" priority={true} />
+      <LandingContent
+        blogListData={blogListData.recipes}
+        productListData={productListData.products}
+      />
     </>
   );
 }

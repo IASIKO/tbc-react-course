@@ -1,5 +1,4 @@
 import BlogList from "@/components/Blog/BlogList";
-import TitleBgImage from "@/components/UI/TitleBgImage";
 import { Suspense } from "react";
 import Loading from "./loading";
 
@@ -14,7 +13,6 @@ export default async function Blog() {
 
   return (
     <>
-      <TitleBgImage>Blog</TitleBgImage>
       <Suspense fallback={<Loading />}>
         <BlogList blogListData={blogListData.recipes} />
       </Suspense>
