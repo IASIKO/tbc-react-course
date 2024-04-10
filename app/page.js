@@ -22,7 +22,7 @@ export default async function Home() {
 
   return (
     <>
-      <Image src={bg} alt="background image" priority={true} />
+      <Image src={bg} alt="background image"  />
       <Suspense fallback={<Loading />}>
         <LandingContent
           blogListData={blogListData.recipes}

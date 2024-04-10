@@ -19,7 +19,6 @@ const ProductDetailsContent = ({ params }) => {
     getProductDetails();
   }, [params]);
 
-  console.log(productDetails);
   return (
     <section className="py-[60px]">
       <div className="w-[1140px] m-auto">
@@ -27,9 +26,9 @@ const ProductDetailsContent = ({ params }) => {
           <img
             src={productDetails.thumbnail}
             alt={productDetails.title}
-            className="w-[600px] h-[700px]"
+            className="w-[500px] h-[600px]"
           />
-          <div className="px-[30px]">
+          <div className="px-[60px]">
             <h2 className="text-black font-normal text-[35px]">
               {productDetails.title}
             </h2>
