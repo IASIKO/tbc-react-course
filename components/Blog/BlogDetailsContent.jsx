@@ -17,8 +17,6 @@ const BlogDetailsContent = ({ params }) => {
     getBlogDetails();
   }, [params]);
 
-  console.log(blogDetails);
-
   return (
     <section className="py-[60px]">
       <div className="w-[1140px] m-auto">
