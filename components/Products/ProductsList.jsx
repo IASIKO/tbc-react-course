@@ -1,17 +1,21 @@
-'use client'
+"use client";
 
 import React, { useState, useEffect } from "react";
-import { productsListData } from "@/data/ProductsListData";
 import Button from "../UI/Button";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
 
-const ProductsList = () => {
+const ProductsList = ({ productListData }) => {
+  const [productsListData, setProductsListData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isProductsSorted, setIsProductsSorted] = useState(false);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [timeoutId, setTimeoutId] = useState(null);
+
+  useEffect(() => {
+    setProductsListData(productListData);
+  }, []);
 
   useEffect(() => {
     if (timeoutId) {
@@ -22,14 +26,14 @@ const ProductsList = () => {
         setFilteredProducts([...productsListData]);
       } else {
         const filterData = productsListData.filter((product) =>
-          product.name.toLowerCase().includes(searchValue.toLowerCase())
+          product.title.toLowerCase().includes(searchValue.toLowerCase())
         );
         setFilteredProducts(filterData);
       }
     }, 500);
 
     setTimeoutId(newTimeoutId);
-  }, [searchValue]);
+  }, [searchValue, productsListData]);
 
   useEffect(() => {
     if (isProductsSorted) {
@@ -70,17 +74,12 @@ const ProductsList = () => {
               isProductsSorted={isProductsSorted}
             />
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
             {productListToShow.map((product, index) => (
               <ProductCard key={index} productInfo={product} />
             ))}
           </div>
         </div>
-        {productListToShow.length !== 0 && (
-          <div className="flex justify-center my-[60px]">
-            <Button>View All Products</Button>
-          </div>
-        )}
       </section>
     </>
   );
