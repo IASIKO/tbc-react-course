@@ -4,9 +4,9 @@ import { Suspense } from "react";
 import Loading from "../loading";
 
 async function getProductById(productId) {
-  const response = await fetch(`https://dummyjson.com/products/${productId}`);
+  const res = await fetch(`https://dummyjson.com/products/${productId}`);
 
-  return response.json();
+  return res.json();
 }
 
 export default async function ProductsDetails({ params }) {

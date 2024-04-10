@@ -4,9 +4,9 @@ import { Suspense } from "react";
 import Loading from "../loading";
 
 async function getBlogById(blogId) {
-  const response = await fetch(`https://dummyjson.com/recipes/${blogId}`);
+  const res = await fetch(`https://dummyjson.com/recipes/${blogId}`);
 
-  return response.json();
+  return res.json();
 }
 
 export default async function BlogDetails({ params }) {
