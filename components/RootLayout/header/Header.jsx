@@ -9,6 +9,7 @@ import Navigation from "./Navigation";
 import { logout } from "@/app/actions";
 import LogoutButton from "@/components/UI/LogoutButton";
 
+
 const Header = async () => {
   const handleLogout = async () => {
     "use server";
