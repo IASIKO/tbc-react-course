@@ -5,7 +5,7 @@ import AuthorizationLayout from "@/components/UI/AuthorizationLayout";
 import { AUTH_COOKIE_KEY } from "@/constants";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { login } from "./actions";
+import { login } from "../actions";
 
 export default async function Login() {
   const cookieStore = cookies();

@@ -1,6 +1,6 @@
 "use client";
 
-import { login } from "@/app/login/actions";
+import { login } from "@/app/actions";
 import React, { useState } from "react";
 
 const LoginForm = ({ handleLogin }) => {

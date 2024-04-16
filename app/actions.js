@@ -1,7 +1,7 @@
 "use server";
 
-import { AUTH_COOKIE_KEY } from "@/constants";
 import { cookies } from "next/headers";
+import { AUTH_COOKIE_KEY } from "@/constants";
 
 export async function login(email, password) {
   const res = await fetch("https://dummyjson.com/auth/login", {
@@ -17,4 +17,9 @@ export async function login(email, password) {
 
   const cookieStore = cookies();
   cookieStore.set(AUTH_COOKIE_KEY, JSON.stringify(user));
+}
+
+export async function logout() {
+  const cookieStore = cookies();
+  cookieStore.delete(AUTH_COOKIE_KEY);
 }
