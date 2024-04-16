@@ -1,6 +1,5 @@
 "use client";
 
-import { login } from "@/app/actions";
 import React, { useState } from "react";
 
 const LoginForm = ({ handleLogin }) => {
@@ -8,7 +7,6 @@ const LoginForm = ({ handleLogin }) => {
     email: "",
     password: "",
   });
-
 
   return (
     <form className="w-full flex flex-col justify-center items-center px-[90px]">
@@ -37,7 +35,7 @@ const LoginForm = ({ handleLogin }) => {
       <button
         className="uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred"
         onClick={(e) => {
-          e.preventDefault()
+          e.preventDefault();
           handleLogin(loginInfo.email, loginInfo.password);
         }}
       >

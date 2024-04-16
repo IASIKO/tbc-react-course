@@ -2,6 +2,8 @@
 
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "@/constants";
+import { redirect } from "next/navigation";
+
 
 export async function login(email, password) {
   const res = await fetch("https://dummyjson.com/auth/login", {
@@ -22,4 +24,5 @@ export async function login(email, password) {
 export async function logout() {
   const cookieStore = cookies();
   cookieStore.delete(AUTH_COOKIE_KEY);
+  redirect("/login");
 }

@@ -7,14 +7,12 @@ import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import Navigation from "./Navigation";
 import { logout } from "@/app/actions";
-import { redirect } from "next/navigation";
 import LogoutButton from "@/components/UI/LogoutButton";
 
 const Header = async () => {
   const handleLogout = async () => {
     "use server";
     await logout();
-    redirect("/login");
   };
 
   return (
