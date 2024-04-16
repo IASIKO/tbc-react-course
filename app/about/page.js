@@ -1,4 +1,5 @@
+import TitleBgImage from "@/components/UI/TitleBgImage";
 
 export default function About() {
-  return null
+  return <TitleBgImage>About</TitleBgImage>;
 }

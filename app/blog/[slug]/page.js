@@ -1,6 +1,5 @@
 import BlogDetailsContent from "@/components/Blog/BlogDetailsContent";
-import { Suspense } from "react";
-import Loading from "../loading";
+import TitleBgImage from "@/components/UI/TitleBgImage";
 
 async function getBlogById(blogId) {
   const res = await fetch(`https://dummyjson.com/recipes/${blogId}`);
@@ -13,9 +12,8 @@ export default async function BlogDetails({ params }) {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <BlogDetailsContent blogDetails={blog} />
-      </Suspense>
+      <TitleBgImage>Blog Details</TitleBgImage>
+      <BlogDetailsContent blogDetails={blog} />
     </>
   );
 }
