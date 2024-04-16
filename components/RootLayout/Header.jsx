@@ -2,6 +2,7 @@
 
 import { FaUser } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { RiLogoutCircleLine } from "react-icons/ri";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
@@ -15,7 +16,7 @@ const Header = () => {
   return (
     <header>
       <div className="relative z-0 w-[100%] bg-red">
-        <div className="max-w-[1140px] m-auto">
+        <div className="max-w-[1140px] m-auto py-[5px]">
           <div className="flex flex-wrap px-[15px]">
             <div className="contactRow flex items-center flex-[0_0_50%] max-w-[50%]">
               <p className="font-extralight">
@@ -52,12 +53,18 @@ const Header = () => {
                 </p>
               </div>
               {isUserLogedin ? (
-                <button className="text-white text-[20px]">
-                  <Link href="/profile" className="flex items-center gap-2">
-                    <FaUser />
-                    Profile
-                  </Link>
-                </button>
+                <div className="flex gap-4">
+                  <button className="text-white text-[20px]">
+                    <Link href="/profile" className="flex items-center gap-2">
+                      <FaUser />
+                      Profile
+                    </Link>
+                  </button>
+                  <button className="text-red text-[20px] bg-white rounded-xl px-[10px] flex items-center gap-2">
+                      <RiLogoutCircleLine />
+                      Log out
+                  </button>
+                </div>
               ) : (
                 <div>
                   <p className="font-extralight ">
