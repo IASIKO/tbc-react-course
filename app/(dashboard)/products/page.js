@@ -1,5 +1,8 @@
 import ProductsList from "@/components/Products/ProductsList";
 import TitleBgImage from "@/components/UI/TitleBgImage";
+import { AUTH_COOKIE_KEY } from "@/constants";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 
 async function getProducts() {
@@ -9,6 +12,11 @@ async function getProducts() {
 }
 
 export default async function Products() {
+  const cookieStore = cookies();
+  const cookie = cookieStore.get(AUTH_COOKIE_KEY);
+
+  if (!cookie) redirect("/login");
+
   const productsListData = await getProducts();
 
   return (
