@@ -1,15 +1,22 @@
 "use client";
 
 import React, { useState } from "react";
+import { useFormStatus } from "react-dom";
 
 const LoginForm = ({ handleLogin }) => {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
   });
+  const { pending } = useFormStatus();
 
   return (
-    <form className="w-full flex flex-col justify-center items-center px-[90px]">
+    <form
+      className="w-full flex flex-col justify-center items-center px-[90px]"
+      action={() => {
+        handleLogin(loginInfo.email, loginInfo.password);
+      }}
+    >
       <h2 className="uppercase tracking-widest mb-3">acount login</h2>
       <input
         type="email"
@@ -33,11 +40,9 @@ const LoginForm = ({ handleLogin }) => {
         className="w-full outline-none py-[5px] px-[15px] border border-red mb-3"
       />
       <button
+        type="submit"
+        disabled={pending}
         className="uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred"
-        onClick={(e) => {
-          e.preventDefault();
-          handleLogin(loginInfo.email, loginInfo.password);
-        }}
       >
         sign in
       </button>
@@ -47,7 +52,10 @@ const LoginForm = ({ handleLogin }) => {
           Email / password?
         </span>
       </p>
-      <button className="uppercase text-red mt-[200px] cursor-pointer hover:text-black ease-in duration-300">
+      <button
+        type="button"
+        className="uppercase text-red mt-[200px] cursor-pointer hover:text-black ease-in duration-300"
+      >
         sign up
       </button>
     </form>
