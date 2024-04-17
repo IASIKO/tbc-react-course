@@ -18,6 +18,8 @@ export async function login(username, password) {
   if (user.token) {
     const cookieStore = cookies();
     cookieStore.set(AUTH_COOKIE_KEY, JSON.stringify(user));
+  } else {
+    throw new Error(user.message);
   }
 }
 
