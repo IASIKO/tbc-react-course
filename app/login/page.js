@@ -13,9 +13,9 @@ export default async function Login() {
 
   if (cookie) redirect("/");
 
-  const handleLogin = async (email, password) => {
+  const handleLogin = async (username, password) => {
     "use server";
-    await login(email, password);
+    await login(username, password);
   };
 
   return (

@@ -5,7 +5,7 @@ import { useFormStatus } from "react-dom";
 
 const LoginForm = ({ handleLogin }) => {
   const [loginInfo, setLoginInfo] = useState({
-    email: "",
+    username: "",
     password: "",
   });
   const { pending } = useFormStatus();
@@ -14,16 +14,16 @@ const LoginForm = ({ handleLogin }) => {
     <form
       className="w-full flex flex-col justify-center items-center px-[90px]"
       action={() => {
-        handleLogin(loginInfo.email, loginInfo.password);
+        handleLogin(loginInfo.username, loginInfo.password);
       }}
     >
       <h2 className="uppercase tracking-widest mb-3">acount login</h2>
       <input
-        type="email"
-        placeholder="Email"
-        value={loginInfo.email}
+        type="text"
+        placeholder="Username"
+        value={loginInfo.username}
         onChange={(e) =>
-          setLoginInfo((prevState) => ({ ...prevState, email: e.target.value }))
+          setLoginInfo((prevState) => ({ ...prevState, username: e.target.value }))
         }
         className="w-full outline-none py-[5px] px-[15px] border border-red mb-3"
       />
