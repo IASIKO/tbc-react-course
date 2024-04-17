@@ -23,7 +23,10 @@ const LoginForm = ({ handleLogin }) => {
         placeholder="Username"
         value={loginInfo.username}
         onChange={(e) =>
-          setLoginInfo((prevState) => ({ ...prevState, username: e.target.value }))
+          setLoginInfo((prevState) => ({
+            ...prevState,
+            username: e.target.value,
+          }))
         }
         className="w-full outline-none py-[5px] px-[15px] border border-red mb-3"
       />
