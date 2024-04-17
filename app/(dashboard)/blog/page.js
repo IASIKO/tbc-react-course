@@ -1,6 +1,5 @@
 import BlogList from "@/components/Blog/BlogList";
-import { Suspense } from "react";
-import Loading from "./loading";
+import TitleBgImage from "@/components/UI/TitleBgImage";
 
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");
@@ -13,9 +12,8 @@ export default async function Blog() {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <BlogList blogListData={blogListData.recipes} />
-      </Suspense>
+      <TitleBgImage>Blog</TitleBgImage>
+      <BlogList blogListData={blogListData.recipes} />
     </>
   );
 }

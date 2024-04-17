@@ -1,4 +1,5 @@
 import ProductsList from "@/components/Products/ProductsList";
+import TitleBgImage from "@/components/UI/TitleBgImage";
 
 async function getProducts() {
   const res = await fetch("https://dummyjson.com/products");
@@ -11,6 +12,8 @@ export default async function Products() {
 
   return (
     <>
+      <TitleBgImage>Products</TitleBgImage>
+
       <ProductsList productListData={productsListData.products} />
     </>
   );

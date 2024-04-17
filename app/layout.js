@@ -1,9 +1,4 @@
 import "./globals.css";
-import Header from "@/components/RootLayout/Header";
-import Footer from "@/components/RootLayout/footer/Footer";
-
-import { Suspense } from "react";
-import Loading from "./loading";
 
 export const metadata = {
   title: "Liquor store",
@@ -14,9 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
-        <Suspense fallback={<Loading />}>{children}</Suspense>
-        <Footer />
+        {children}
       </body>
     </html>
   );

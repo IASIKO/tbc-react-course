@@ -1,5 +1,5 @@
 import LandingContent from "@/components/Home/LandingContent";
-import bg from "../public/Assets/images/bg_1.jpg";
+import bg from "../../public/Assets/images/bg_1.jpg";
 import Image from "next/image";
 
 async function getBlogs() {
@@ -14,13 +14,18 @@ async function getProducts() {
   return res.json();
 }
 
-export default async function Home() {
+export default async function DashboardHome() {
   const blogListData = await getBlogs();
   const productListData = await getProducts();
 
   return (
     <>
-      <Image src={bg} alt="background image" priority={true} />
+      <Image
+        src={bg}
+        alt="background image"
+        priority={true}
+        placeholder="blur"
+      />
       <LandingContent
         blogListData={blogListData.recipes}
         productListData={productListData.products}
