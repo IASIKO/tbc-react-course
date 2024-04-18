@@ -21,6 +21,7 @@ const LoginForm = ({ handleLogin }) => {
       <input
         type="text"
         placeholder="Username"
+        required
         value={loginInfo.username}
         onChange={(e) =>
           setLoginInfo((prevState) => ({
@@ -33,6 +34,7 @@ const LoginForm = ({ handleLogin }) => {
       <input
         type="password"
         placeholder="Password"
+        required
         value={loginInfo.password}
         onChange={(e) =>
           setLoginInfo((prevState) => ({
