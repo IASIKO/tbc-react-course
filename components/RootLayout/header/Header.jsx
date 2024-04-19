@@ -8,7 +8,7 @@ import Link from "next/link";
 import Navigation from "./Navigation";
 import { logout } from "@/app/actions";
 import LogoutButton from "@/components/UI/LogoutButton";
-
+import Theme from "@/components/UI/Theme";
 
 const Header = async () => {
   const handleLogout = async () => {
@@ -18,7 +18,7 @@ const Header = async () => {
 
   return (
     <header>
-      <div className="relative z-0 w-[100%] bg-red">
+      <div className="relative w-[100%] bg-red">
         <div className="max-w-[1140px] m-auto py-[5px]">
           <div className="flex flex-wrap px-[15px]">
             <div className="contactRow flex items-center flex-[0_0_50%] max-w-[50%]">
@@ -64,6 +64,7 @@ const Header = async () => {
                   </Link>
                 </button>
                 <LogoutButton handleLogout={handleLogout} />
+                <Theme />
               </div>
             </div>
           </div>
