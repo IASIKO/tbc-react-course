@@ -1,25 +1,27 @@
 "use client";
 
-import { redirect } from "next/navigation";
 import React, { useState } from "react";
-import { useFormStatus } from "react-dom";
 import Theme from "../UI/Theme";
+import { handleLoginRoute } from "@/lib/helpers";
+import { useRouter } from "next/navigation";
 
-const LoginForm = ({ handleLogin }) => {
+const LoginForm = () => {
   const [loginInfo, setLoginInfo] = useState({
     username: "",
     password: "",
   });
-  const { pending } = useFormStatus();
+  const router = useRouter();
 
   return (
     <div className="w-full flex flex-col items-center py-8 gap-40">
       <Theme />
       <form
         className="w-full flex flex-col justify-center items-center px-[90px]"
-        action={(e) => {
-          handleLogin(loginInfo.username, loginInfo.password);
-          redirect('/')
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleLoginRoute(loginInfo.username, loginInfo.password).then(() =>
+            window.location.reload()
+          );
         }}
       >
         <h2 className="uppercase tracking-widest mb-3 dark:text-white">
@@ -53,7 +55,6 @@ const LoginForm = ({ handleLogin }) => {
         />
         <button
           type="submit"
-          disabled={pending}
           className="uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred dark:bg-dark dark:hover:bg-secondary"
         >
           sign in
