@@ -5,7 +5,7 @@ import { AUTH_COOKIE_KEY } from "./constants";
 export function middleware(request) {
   if (!cookies().has(AUTH_COOKIE_KEY)) {
     return NextResponse.redirect(new URL("/login", request.url));
-  }     
+  }
 }
 
 export const config = {

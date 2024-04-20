@@ -6,7 +6,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import Navigation from "./Navigation";
-import { logout } from "@/app/helpers";
+import { logout } from "@/lib/helpers";
 import LogoutButton from "@/components/UI/LogoutButton";
 import Theme from "@/components/UI/Theme";
 

@@ -2,7 +2,7 @@
 
 import LoginForm from "@/components/Login/LoginForm";
 import AuthorizationLayout from "@/components/UI/AuthorizationLayout";
-import { login } from "../helpers";
+import { login } from "../../lib/helpers";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "@/constants";
 import { redirect } from "next/navigation";
