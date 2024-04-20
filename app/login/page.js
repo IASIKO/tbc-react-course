@@ -9,9 +9,8 @@ import { redirect } from "next/navigation";
 
 export default async function Login() {
   const cookieStore = cookies();
-  const cookie = cookieStore.get(AUTH_COOKIE_KEY);
 
-  if (cookie) redirect("/");
+  if (cookieStore.has(AUTH_COOKIE_KEY)) redirect("/");
 
   const handleLogin = async (username, password) => {
     "use server";
