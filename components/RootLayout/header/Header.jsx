@@ -64,7 +64,7 @@ const Header = async () => {
                   </Link>
                 </button>
                 <LogoutButton handleLogout={handleLogout} />
-                <Theme />
+                {/* <Theme /> */}
               </div>
             </div>
           </div>

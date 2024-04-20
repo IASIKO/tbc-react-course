@@ -24,6 +24,7 @@ const Theme = () => {
   const [theme, setTheme] = useState(() =>
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "system"
   );
+
   const element = document.documentElement;
   const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -70,7 +71,7 @@ const Theme = () => {
   });
 
   return (
-    <div className="duration-100 dark:bg-slate-700 bg-gray rounded">
+    <div className="duration-100 dark:bg-dark bg-red rounded">
       {options.map((opt) => (
         <button
           className={`w-8 h-8 align-middle leading-9 text-xl rounded-full m-1 text-white ${
@@ -79,7 +80,7 @@ const Theme = () => {
           onClick={() => setTheme(opt.text)}
           key={opt.text}
         >
-          {opt.icon}
+          <span className="flex justify-center">{opt.icon}</span>
         </button>
       ))}
     </div>

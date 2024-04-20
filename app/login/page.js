@@ -8,10 +8,10 @@ import { cookies } from "next/headers";
 import { login } from "../actions";
 
 export default async function Login() {
-  const cookieStore = cookies();
-  const cookie = cookieStore.get(AUTH_COOKIE_KEY);
+  // const cookieStore = cookies();
+  // const cookie = cookieStore.get(AUTH_COOKIE_KEY);
 
-  if (cookie) redirect("/");
+  // if (cookie) redirect("/");
 
   const handleLogin = async (username, password) => {
     "use server";

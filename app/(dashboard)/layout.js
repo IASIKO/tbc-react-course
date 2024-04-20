@@ -5,10 +5,10 @@ import { AUTH_COOKIE_KEY } from "@/constants";
 import { redirect } from "next/navigation";
 
 export default function RootLayout({ children }) {
-  const cookieStore = cookies();
-  const cookie = cookieStore.get(AUTH_COOKIE_KEY);
+  // const cookieStore = cookies();
+  // const cookie = cookieStore.get(AUTH_COOKIE_KEY);
 
-  if (!cookie) redirect("/login");
+  // if (!cookie) redirect("/login");
 
   return (
     <>
