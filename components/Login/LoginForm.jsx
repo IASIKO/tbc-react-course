@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import { useFormStatus } from "react-dom";
-// import Theme from "../UI/Theme";
+import Theme from "../UI/Theme";
 
 const LoginForm = ({ handleLogin }) => {
   const [loginInfo, setLoginInfo] = useState({
@@ -14,7 +14,7 @@ const LoginForm = ({ handleLogin }) => {
 
   return (
     <div className="w-full flex flex-col items-center py-8 gap-40">
-      {/* <Theme /> */}
+      <Theme />
       <form
         className="w-full flex flex-col justify-center items-center px-[90px]"
         action={(e) => {

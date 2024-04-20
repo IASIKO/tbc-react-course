@@ -10,6 +10,8 @@ import { logout } from "@/app/helpers";
 import LogoutButton from "@/components/UI/LogoutButton";
 import Theme from "@/components/UI/Theme";
 
+
+
 const Header = async () => {
   const handleLogout = async () => {
     "use server";
@@ -64,7 +66,7 @@ const Header = async () => {
                   </Link>
                 </button>
                 <LogoutButton handleLogout={handleLogout} />
-                {/* <Theme /> */}
+                <Theme />
               </div>
             </div>
           </div>
