@@ -1,18 +1,10 @@
-import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "./constants";
+import chain from "./middlewares/chain";
+import { Authorization } from "./middlewares/Authorization";
+import { Internationalization } from "./middlewares/Internazionalization";
 
-export function middleware(request) {
-  const cookieStore = cookies().get(AUTH_COOKIE_KEY);
-  const { pathname } = request.nextUrl;
-  if (!cookieStore?.value && !pathname.startsWith("/login")) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-  if (cookieStore?.value && pathname.startsWith("/login")) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-}
+const middlewares = [Authorization, Internationalization];
+export default chain(middlewares);
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!_next).*)"],
 };

@@ -10,7 +10,7 @@ const LogoutButton = () => {
     <button
       className="text-red text-[20px] bg-white rounded-xl px-[10px] flex items-center gap-2"
       onClick={() => {
-        handleLogoutRoute().then(() => window.location.reload());
+        handleLogoutRoute().then(() => router.push("/"));
       }}
     >
       <RiLogoutCircleLine />

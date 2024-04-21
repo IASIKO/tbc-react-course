@@ -13,14 +13,14 @@ export async function POST(request) {
     }),
   });
 
-  const user = await res.json();
+  const data = await res.json();
 
 
   if (res.ok) {
     const cookieStore = cookies();
-    cookieStore.set(AUTH_COOKIE_KEY, JSON.stringify(user.token));
+    cookieStore.set(AUTH_COOKIE_KEY, JSON.stringify(data.token));
   } else {
-    throw new Error(user.message);
+    throw new Error(data.message);
   }
 
   return Response.json({ username, password });

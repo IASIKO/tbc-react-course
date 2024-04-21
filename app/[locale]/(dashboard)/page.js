@@ -1,5 +1,5 @@
 import LandingContent from "@/components/Home/LandingContent";
-import bg from "../../public/Assets/images/bg_1.jpg";
+import bg from "../../../public/Assets/images/bg_1.jpg";
 import Image from "next/image";
 
 async function getBlogs() {

@@ -10,6 +10,7 @@ const LoginForm = () => {
     username: "",
     password: "",
   });
+
   const router = useRouter();
 
   return (
@@ -20,7 +21,7 @@ const LoginForm = () => {
         onSubmit={(e) => {
           e.preventDefault();
           handleLoginRoute(loginInfo.username, loginInfo.password).then(() =>
-            window.location.reload()
+            router.push("/")
           );
         }}
       >
