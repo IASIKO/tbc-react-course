@@ -1,5 +1,15 @@
 {
-    "products": {
-      "cart": "Add to Cart"
-    }
+  "login": {
+    "title": "ACOUNT LOGIN",
+    "usernameInput": "Username",
+    "passwordInput": "Password",
+    "signin": "SIGN IN",
+    "signup": "SIGN UP",
+    "forgot": "Forgot",
+    "en": "EN",
+    "ge": "GE"
+  },
+  "products": {
+    "cart": "Add to Cart"
   }
+}

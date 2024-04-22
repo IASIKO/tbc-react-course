@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Theme from "../UI/Theme";
 import { handleLoginRoute } from "@/lib/helpers";
 import { useRouter } from "next/navigation";
+import Language from "../UI/Language";
 
-const LoginForm = () => {
+const LoginForm = ({ dict }) => {
   const [loginInfo, setLoginInfo] = useState({
     username: "",
     password: "",
@@ -14,8 +15,11 @@ const LoginForm = () => {
   const router = useRouter();
 
   return (
-    <div className="w-full flex flex-col items-center py-8 gap-40">
-      <Theme />
+    <div className="w-full flex flex-col items-center py-5 gap-40">
+      <div>
+        <Theme />
+        <Language dict={dict}/>
+      </div>
       <form
         className="w-full flex flex-col justify-center items-center px-[90px]"
         onSubmit={(e) => {
@@ -26,11 +30,11 @@ const LoginForm = () => {
         }}
       >
         <h2 className="uppercase tracking-widest mb-3 dark:text-white">
-          acount login
+          {dict.login.title}
         </h2>
         <input
           type="text"
-          placeholder="Username"
+          placeholder={dict.login.usernameInput}
           required
           value={loginInfo.username}
           onChange={(e) =>
@@ -43,7 +47,7 @@ const LoginForm = () => {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder={dict.login.passwordInput}
           required
           value={loginInfo.password}
           onChange={(e) =>
@@ -58,19 +62,19 @@ const LoginForm = () => {
           type="submit"
           className="uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred dark:bg-dark dark:hover:bg-secondary"
         >
-          sign in
+          {dict.login.signin}
         </button>
         <p className="text-[18px] dark:text-dark">
-          Forgot{" "}
+          {dict.login.forgot}{" "}
           <span className="text-red hover:text-black cursor-pointer ease-in duration-300 dark:text-white">
-            Email / password?
+          {dict.login.usernameInput} / {dict.login.passwordInput}?
           </span>
         </p>
         <button
           type="button"
           className="uppercase text-red mt-[200px] cursor-pointer hover:text-black ease-in duration-300 dark:text-white"
         >
-          sign up
+          {dict.login.signup}
         </button>
       </form>
     </div>

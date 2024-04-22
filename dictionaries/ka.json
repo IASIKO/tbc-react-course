@@ -1,5 +1,15 @@
 {
-    "products": {
-      "cart": "დამატება"
-    }
+  "login": {
+    "title": "ავტორიაზაცია",
+    "usernameInput": "მომხმარებელი",
+    "passwordInput": "პაროლი",
+    "signin": "შესვლა",
+    "signup": "რეგისტრაცია",
+    "forgot": "დაგავიწყდათ",
+    "en": "ინგ",
+    "ge": "ქარ"
+  },
+  "products": {
+    "cart": "დამატება"
   }
+}
