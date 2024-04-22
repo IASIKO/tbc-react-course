@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 
 export function Authorization(middleware) {
   return async function (request) {
-    const ka = i18n.locales[0];
-    const en = i18n.locales[1];
+    const en = i18n.locales[0];
+    const ka = i18n.locales[1];
     const pathname = request.nextUrl.pathname;
 
     if (

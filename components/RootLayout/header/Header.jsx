@@ -8,18 +8,15 @@ import Link from "next/link";
 import Navigation from "./Navigation";
 import LogoutButton from "@/components/UI/LogoutButton";
 import Theme from "@/components/UI/Theme";
+import Language from "@/components/UI/Language";
 
-
-
-
-const Header = async () => {
-
+const Header = async ({ dict }) => {
   return (
     <header>
       <div className="relative w-[100%] bg-red">
         <div className="max-w-[1140px] m-auto py-[5px]">
           <div className="flex flex-wrap px-[15px]">
-            <div className="contactRow flex items-center flex-[0_0_50%] max-w-[50%]">
+            <div className="flex items-center flex-[0_0_50%] max-w-[50%]">
               <p className="font-extralight">
                 <a href="#" className="text-[#ffffff] text-[15px] mr-[5px]">
                   <span>+00 1234 567</span>
@@ -28,6 +25,7 @@ const Header = async () => {
                   <span>youremail@email.com</span>
                 </a>
               </p>
+                <Language dict={dict} />
             </div>
 
             <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">

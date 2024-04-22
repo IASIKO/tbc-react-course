@@ -2,15 +2,12 @@
 
 import { setLanguage } from "@/lib/actions";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const Language = ({ dict }) => {
-  const pathname = usePathname();
-  console.log(pathname);
-  
   const langHandleCLick = (lang) => {
     setLanguage(lang);
   }
+
 
   return (
     <div className="flex gap-4 items-center justify-center">
