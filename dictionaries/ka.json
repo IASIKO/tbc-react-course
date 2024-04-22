@@ -9,7 +9,29 @@
     "en": "EN",
     "ge": "ქარ"
   },
+  "header": {
+    "profile": "პროფილი",
+    "logout": "გასვლა",
+    "home": "მთავარი",
+    "about": "ჩვენს შესახებ",
+    "products": "პროდუქტები",
+    "blog": "ბლოგი",
+    "contact": "კონტაქტი"
+  },
+  "aboutPage": {
+    "about": "ჩვენს შესახებ"
+  },
   "products": {
-    "cart": "დამატება"
+    "pageTitle": "პროდუქტები",
+    "listTitle1": "ჩვენი სასიამოვნო შეთავაზებეი",
+    "listTitle2": "შენი გემოვნებით",
+    "searchInput": "მოძებნე პროდუქტი...",
+    "sortByPrice": "ფასის ზრდადობით",
+    "resetSort": "გადატვირთე",
+    "addToCart": "დამატება",
+    "singlePageTitle" : "პროდუქტის დეტალები",
+    "category": "კატეგორია",
+    "brand": "ბრენდი",
+    "description": "აღწერა"
   }
 }

@@ -9,7 +9,29 @@
     "en": "EN",
     "ge": "ქარ"
   },
+  "header": {
+    "profile": "Profile",
+    "logout": "Log out",
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "aboutPage": {
+    "about": "About"
+  },
   "products": {
-    "cart": "Add to Cart"
+    "pageTitle": "Products",
+    "listTitle1": "Our Delightful offerings",
+    "listTitle2": "Tastefully Yours",
+    "searchInput": "Search product...",
+    "sortByPrice": "Sort by Price (low to high)",
+    "resetSort": "Reset Sort",
+    "addToCart": "Add to Cart",
+    "singlePageTitle" : "Product Details",
+    "category": "Category",
+    "brand": "Brand",
+    "description": "Description"
   }
 }

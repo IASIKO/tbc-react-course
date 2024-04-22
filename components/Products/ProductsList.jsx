@@ -5,7 +5,7 @@ import Button from "../UI/Button";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
 
-const ProductsList = ({ productListData }) => {
+const ProductsList = ({ productListData, dict }) => {
   const [productsListData, setProductsListData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -62,21 +62,22 @@ const ProductsList = ({ productListData }) => {
         <div className="max-w-[960px] mx-auto">
           <div className="pb-[30px] flex-col flex justify-center items-center">
             <span className="text-[#b7472a] text-[21px] font-normal italic">
-              Our Delightful offerings
+              {dict.products.listTitle1}
             </span>
             <h2 className="text-[45px] font-bold text-black leading-normal">
-              Tastefully Yours
+              {dict.products.listTitle2}
             </h2>
             <Search
               onChange={onSearchInputChangeHandler}
               onClick={onSortButtonClickHandler}
               searchValue={searchValue}
               isProductsSorted={isProductsSorted}
+              dict={dict}
             />
           </div>
           <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
             {productListToShow.map((product, index) => (
-              <ProductCard key={index} productInfo={product} />
+              <ProductCard key={index} productInfo={product} dict={dict}/>
             ))}
           </div>
         </div>

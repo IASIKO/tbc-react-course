@@ -1,3 +1,4 @@
+import { getDictionary } from "@/app/[locale]/dictionaries";
 import ProductDetailsContent from "@/components/Products/ProductDetailsContent";
 import TitleBgImage from "@/components/UI/TitleBgImage";
 
@@ -16,12 +17,15 @@ async function getProductById(productId) {
   return res.json();
 }
 
-export default async function ProductsDetails({ params }) {
-  const product = await getProductById(params.id);
+export default async function ProductsDetails({ params: {id, locale} }) {
+
+  const product = await getProductById(id);
+  const dict = await getDictionary(locale);
+
   return (
     <>
-      <TitleBgImage>Product Details</TitleBgImage>
-      <ProductDetailsContent productDetails={product} />
+      <TitleBgImage>{dict.products.singlePageTitle}</TitleBgImage>
+      <ProductDetailsContent productDetails={product} dict={dict}/>
     </>
   );
 }

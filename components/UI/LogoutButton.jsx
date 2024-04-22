@@ -4,7 +4,7 @@ import { handleLogoutRoute } from "@/lib/helpers";
 import { useRouter } from "next/navigation";
 import { RiLogoutCircleLine } from "react-icons/ri";
 
-const LogoutButton = () => {
+const LogoutButton = ({dict}) => {
   const router = useRouter();
   return (
     <button
@@ -14,7 +14,7 @@ const LogoutButton = () => {
       }}
     >
       <RiLogoutCircleLine />
-      Log out
+      {dict.header.logout}
     </button>
   );
 };

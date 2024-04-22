@@ -1,7 +1,7 @@
 import { MdStarRate } from "react-icons/md";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 
-const ProductDetailsContent = ({ productDetails }) => {
+const ProductDetailsContent = ({ productDetails, dict }) => {
   return (
     <section className="py-[60px]">
       <div className="w-[1140px] m-auto">
@@ -23,11 +23,11 @@ const ProductDetailsContent = ({ productDetails }) => {
               {productDetails.price}
               <PiCurrencyDollarBold />
             </span>
-            <span className="text-red italic">Category</span>
+            <span className="text-red italic">{dict.products.category}</span>
             <p>{productDetails.category}</p>
-            <span className="text-red italic">Brand</span>
+            <span className="text-red italic">{dict.products.brand}</span>
             <p>{productDetails.brand}</p>
-            <span className="text-red italic">Description</span>
+            <span className="text-red italic">{dict.products.description}</span>
             <p>{productDetails.description}</p>
           </div>
         </div>

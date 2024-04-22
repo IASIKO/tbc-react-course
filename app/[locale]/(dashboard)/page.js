@@ -1,6 +1,7 @@
 import LandingContent from "@/components/Home/LandingContent";
 import bg from "../../../public/Assets/images/bg_1.jpg";
 import Image from "next/image";
+import { getDictionary } from "../dictionaries";
 
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");
@@ -14,9 +15,11 @@ async function getProducts() {
   return res.json();
 }
 
-export default async function DashboardHome() {
+export default async function DashboardHome({params: { locale }}) {
   const blogListData = await getBlogs();
   const productListData = await getProducts();
+  const dict = await getDictionary(locale);
+
 
   return (
     <>
@@ -29,6 +32,7 @@ export default async function DashboardHome() {
       <LandingContent
         blogListData={blogListData.recipes}
         productListData={productListData.products}
+        dict={dict}
       />
     </>
   );

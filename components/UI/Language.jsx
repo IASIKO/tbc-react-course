@@ -14,7 +14,7 @@ const Language = ({ dict }) => {
   };
 
   return (
-    <div className="flex gap-4 items-center justify-center">
+    <div className="duration-100 flex gap-4 items-center justify-center">
       <Link
         href={`/en-US/${route}`}
         className={isEnUs ? "text-yellow" : "text-black dark:text-balck"}

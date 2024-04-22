@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
 
-const LandingContent = ({ blogListData, productListData }) => {
+const LandingContent = ({ blogListData, productListData, dict }) => {
   const homeBlogListData = blogListData.slice(0, 4);
   const homeProductsListData = productListData.slice(0, 8);
 
@@ -66,7 +66,7 @@ const LandingContent = ({ blogListData, productListData }) => {
       </section>
 
       <section>
-        <ProductsList productListData={homeProductsListData} />
+        <ProductsList productListData={homeProductsListData} dict={dict}/>
         <div className="flex justify-center mb-[60px]">
           <Link href="/products">
             <Button>View All Products</Button>

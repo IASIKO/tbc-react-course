@@ -3,7 +3,7 @@ import Button from "../UI/Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const ProductCard = ({ productInfo }) => {
+const ProductCard = ({ productInfo, dict }) => {
   const router = useRouter();
   const onProductCardClickHandler = () => {
     router.push(`/products/${productInfo.id}`);
@@ -30,7 +30,7 @@ const ProductCard = ({ productInfo }) => {
         </div>
       </div>
       <div className="mb-[30px]">
-        <Button>Add to Cart</Button>
+        <Button>{dict.products.addToCart}</Button>
       </div>
     </div>
   );

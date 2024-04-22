@@ -56,10 +56,10 @@ const Header = async ({ dict }) => {
                 <button className="text-white text-[20px]">
                   <Link href="/profile" className="flex items-center gap-2">
                     <FaUser />
-                    Profile
+                    {dict.header.profile}
                   </Link>
                 </button>
-                <LogoutButton />
+                <LogoutButton dict={dict}/>
                 <Theme />
               </div>
             </div>
@@ -67,7 +67,7 @@ const Header = async ({ dict }) => {
         </div>
       </div>
 
-      <Navigation />
+      <Navigation dict={dict}/>
     </header>
   );
 };
