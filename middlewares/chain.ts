@@ -1,11 +1,16 @@
-import { NextResponse } from "next/server"
+import { NextMiddleware, NextResponse } from "next/server";
 
-export default function chain(functions, index = 0) {
-    const current = functions[index]
-    if (current) {
-        const next = chain(functions, index + 1)
-        return current(next)
-    }
+type MiddlewareFactory = (middleware: NextMiddleware) => NextMiddleware;
 
-    return () => NextResponse.next()
+export default function chain(
+  functions: MiddlewareFactory[],
+  index = 0
+): NextMiddleware {
+  const current = functions[index];
+  if (current) {
+    const next = chain(functions, index + 1);
+    return current(next);
+  }
+
+  return () => NextResponse.next();
 }

@@ -1,10 +1,18 @@
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import {
+  NextFetchEvent,
+  NextMiddleware,
+  NextRequest,
+  NextResponse,
+} from "next/server";
 import { AUTH_COOKIE_KEY } from "../constants";
 import { i18n } from "../i18.config";
 
-export function Authorization(middleware) {
-  return async function (request) {
+export function Authorization(
+  middleware: NextMiddleware,
+  event: NextFetchEvent
+) {
+  return async function (request: NextRequest) {
     const en = i18n.locales[0];
     const ka = i18n.locales[1];
     const pathname = request.nextUrl.pathname;
@@ -26,6 +34,6 @@ export function Authorization(middleware) {
     ) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
-    return middleware(request);
+    return middleware(request, event);
   };
 }
