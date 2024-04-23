@@ -6,23 +6,18 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import Navigation from "./Navigation";
-import { logout } from "@/app/actions";
 import LogoutButton from "@/components/UI/LogoutButton";
+import Theme from "@/components/UI/Theme";
+import Language from "@/components/UI/Language";
 
-
-const Header = async () => {
-  const handleLogout = async () => {
-    "use server";
-    await logout();
-  };
-
+const Header = async ({ dict }) => {
   return (
     <header>
-      <div className="relative z-0 w-[100%] bg-red">
+      <div className="relative w-[100%] bg-red">
         <div className="max-w-[1140px] m-auto py-[5px]">
           <div className="flex flex-wrap px-[15px]">
-            <div className="contactRow flex items-center flex-[0_0_50%] max-w-[50%]">
-              <p className="font-extralight">
+            <div className="flex flex-[0_0_50%] max-w-[50%] gap-4">
+              <p className="font-extralight flex items-center">
                 <a href="#" className="text-[#ffffff] text-[15px] mr-[5px]">
                   <span>+00 1234 567</span>
                 </a>
@@ -30,6 +25,7 @@ const Header = async () => {
                   <span>youremail@email.com</span>
                 </a>
               </p>
+                <Language dict={dict} />
             </div>
 
             <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">
@@ -60,17 +56,18 @@ const Header = async () => {
                 <button className="text-white text-[20px]">
                   <Link href="/profile" className="flex items-center gap-2">
                     <FaUser />
-                    Profile
+                    {dict.header.profile}
                   </Link>
                 </button>
-                <LogoutButton handleLogout={handleLogout} />
+                <LogoutButton dict={dict}/>
+                <Theme />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <Navigation />
+      <Navigation dict={dict}/>
     </header>
   );
 };

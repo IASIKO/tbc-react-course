@@ -5,6 +5,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -57,7 +58,6 @@ module.exports = {
         spectral: ["Spectral", "serif"],
       },
       screens: {
-        xs: "0px",
         sm: "576px",
         md: "768px",
         lg: "992px",

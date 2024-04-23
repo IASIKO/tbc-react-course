@@ -1,0 +1,37 @@
+{
+  "login": {
+    "title": "ავტორიაზაცია",
+    "usernameInput": "მომხმარებელი",
+    "passwordInput": "პაროლი",
+    "signin": "შესვლა",
+    "signup": "რეგისტრაცია",
+    "forgot": "დაგავიწყდათ",
+    "en": "EN",
+    "ge": "ქარ"
+  },
+  "header": {
+    "profile": "პროფილი",
+    "logout": "გასვლა",
+    "home": "მთავარი",
+    "about": "ჩვენს შესახებ",
+    "products": "პროდუქტები",
+    "blog": "ბლოგი",
+    "contact": "კონტაქტი"
+  },
+  "aboutPage": {
+    "about": "ჩვენს შესახებ"
+  },
+  "products": {
+    "pageTitle": "პროდუქტები",
+    "listTitle1": "ჩვენი სასიამოვნო შეთავაზებები",
+    "listTitle2": "შენი გემოვნებით",
+    "searchInput": "მოძებნე პროდუქტი...",
+    "sortByPrice": "ფასის ზრდადობით",
+    "resetSort": "გადატვირთე",
+    "addToCart": "დამატება",
+    "singlePageTitle" : "პროდუქტის დეტალები",
+    "category": "კატეგორია",
+    "brand": "ბრენდი",
+    "description": "აღწერა"
+  }
+}

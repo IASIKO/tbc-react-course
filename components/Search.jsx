@@ -2,12 +2,12 @@ import React from "react";
 import Button from "./UI/Button";
 import { GrPowerReset } from "react-icons/gr";
 
-const Search = ({ onChange, searchValue, onClick, isProductsSorted }) => {
+const Search = ({ onChange, searchValue, onClick, isProductsSorted, dict }) => {
   return (
     <div className="pt-[60px] w-[960px] flex justify-between">
       <input
         type="text"
-        placeholder="Search product..."
+        placeholder={dict.products.searchInput}
         value={searchValue}
         onChange={onChange}
         className="border border-red px-[15px] rounded-md w-[350px] outline-none"
@@ -15,13 +15,13 @@ const Search = ({ onChange, searchValue, onClick, isProductsSorted }) => {
       <Button onClick={onClick} width="300px">
         {isProductsSorted ? (
           <span className="flex items-center justify-center">
-            Reset Sort
+            {dict.products.resetSort}
             <i className="pl-[10px]">
               <GrPowerReset />
             </i>
           </span>
         ) : (
-          <span>Sort by Price (low to high)</span>
+          <span> {dict.products.sortByPrice}</span>
         )}
       </Button>
     </div>
