@@ -37,4 +37,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 react-icons
 npm install next-themes
-npm install next-intl
