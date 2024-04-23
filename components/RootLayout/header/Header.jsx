@@ -16,8 +16,8 @@ const Header = async ({ dict }) => {
       <div className="relative w-[100%] bg-red">
         <div className="max-w-[1140px] m-auto py-[5px]">
           <div className="flex flex-wrap px-[15px]">
-            <div className="flex items-center flex-[0_0_50%] max-w-[50%]">
-              <p className="font-extralight">
+            <div className="flex flex-[0_0_50%] max-w-[50%] gap-4">
+              <p className="font-extralight flex items-center">
                 <a href="#" className="text-[#ffffff] text-[15px] mr-[5px]">
                   <span>+00 1234 567</span>
                 </a>
