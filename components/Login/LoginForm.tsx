@@ -8,7 +8,7 @@ import { handleLoginRoute } from "../../lib/helpers";
 
 interface Dict {
   login: Record<string, string>;
-}
+  };
 
 const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
   const [loginInfo, setLoginInfo] = useState({
