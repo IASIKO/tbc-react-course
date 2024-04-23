@@ -1,5 +1,5 @@
-import ProductsList from "@/components/Products/ProductsList";
-import TitleBgImage from "@/components/UI/TitleBgImage";
+import ProductsList from "../../../../components/Products/ProductsList";
+import TitleBgImage from "../../../../components/UI/TitleBgImage";
 import { getDictionary } from "../../dictionaries";
 
 async function getProducts() {
@@ -16,7 +16,6 @@ export default async function Products({params: { locale }}) {
   return (
     <>
       <TitleBgImage>{dict.products.pageTitle}</TitleBgImage>
-
       <ProductsList productListData={productsListData.products} dict={dict}/>
     </>
   );

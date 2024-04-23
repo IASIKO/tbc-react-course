@@ -1,7 +1,7 @@
-import LandingContent from "@/components/Home/LandingContent";
 import bg from "../../../public/Assets/images/bg_1.jpg";
 import Image from "next/image";
 import { getDictionary } from "../dictionaries";
+import LandingContent from "../../../components/Home/LandingContent";
 
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");

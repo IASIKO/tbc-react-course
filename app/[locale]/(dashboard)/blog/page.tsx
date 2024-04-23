@@ -1,5 +1,5 @@
-import BlogList from "@/components/Blog/BlogList";
-import TitleBgImage from "@/components/UI/TitleBgImage";
+import BlogList from "../../../../components/Blog/BlogList";
+import TitleBgImage from "../../../../components/UI/TitleBgImage";
 
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");

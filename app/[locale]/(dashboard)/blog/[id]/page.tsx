@@ -1,5 +1,5 @@
-import BlogDetailsContent from "@/components/Blog/BlogDetailsContent";
-import TitleBgImage from "@/components/UI/TitleBgImage";
+import BlogDetailsContent from "../../../../../components/Blog/BlogDetailsContent";
+import TitleBgImage from "../../../../../components/UI/TitleBgImage";
 
 export async function generateStaticParams() {
   const res = await fetch("https://dummyjson.com/recipes");

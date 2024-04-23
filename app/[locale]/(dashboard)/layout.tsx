@@ -1,6 +1,6 @@
-import Footer from "@/components/RootLayout/footer/Footer";
-import Header from "@/components/RootLayout/header/Header";
 import { getDictionary } from "../dictionaries";
+import Header from "../../../components/RootLayout/header/Header";
+import Footer from "../../../components/RootLayout/footer/Footer";
 
 
 export default async function RootLayout({ children, params: { locale } }) {

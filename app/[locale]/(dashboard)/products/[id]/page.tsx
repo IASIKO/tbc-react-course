@@ -1,6 +1,6 @@
-import { getDictionary } from "@/app/[locale]/dictionaries";
-import ProductDetailsContent from "@/components/Products/ProductDetailsContent";
-import TitleBgImage from "@/components/UI/TitleBgImage";
+import ProductDetailsContent from "../../../../../components/Products/ProductDetailsContent";
+import TitleBgImage from "../../../../../components/UI/TitleBgImage";
+import { getDictionary } from "../../../dictionaries";
 
 export async function generateStaticParams() {
   const res = await fetch("https://dummyjson.com/products");

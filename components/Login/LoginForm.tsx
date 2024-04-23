@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import Theme from "../UI/Theme";
-import { handleLoginRoute } from "@/lib/helpers";
 import { useRouter } from "next/navigation";
 import Language from "../UI/Language";
+import { handleLoginRoute } from "../../lib/helpers";
 
 const LoginForm = ({ dict }) => {
   const [loginInfo, setLoginInfo] = useState({

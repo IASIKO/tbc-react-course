@@ -3,8 +3,8 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { i18n } from "../i18.config";
-import { getLocale } from "@/lib/helpers";
-import { LANG_COOKIE_KEY } from "@/constants";
+import { getLocale } from "../lib/helpers";
+import { LANG_COOKIE_KEY } from "../constants";
 
 export function Internationalization(middleware) {
   return async function (request) {

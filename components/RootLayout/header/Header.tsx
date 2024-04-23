@@ -6,9 +6,9 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import Navigation from "./Navigation";
-import LogoutButton from "@/components/UI/LogoutButton";
-import Theme from "@/components/UI/Theme";
-import Language from "@/components/UI/Language";
+import Language from "../../UI/Language";
+import LogoutButton from "../../UI/LogoutButton";
+import Theme from "../../UI/Theme";
 
 const Header = async ({ dict }) => {
   return (

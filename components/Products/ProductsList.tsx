@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Button from "../UI/Button";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
 

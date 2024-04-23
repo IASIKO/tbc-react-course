@@ -1,8 +1,8 @@
 // import { cookies } from "next/headers";
 // import { AUTH_COOKIE_KEY } from "@/constants";
-import { i18n } from "@/i18.config";
 import Negotiator from "negotiator";
 import { match } from "@formatjs/intl-localematcher";
+import { i18n } from "../i18.config";
 
 // export async function login(username, password) {
 //   const res = await fetch("https://dummyjson.com/auth/login", {

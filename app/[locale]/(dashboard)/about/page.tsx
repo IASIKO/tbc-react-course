@@ -1,4 +1,4 @@
-import TitleBgImage from "@/components/UI/TitleBgImage";
+import TitleBgImage from "../../../../components/UI/TitleBgImage";
 import { getDictionary } from "../../dictionaries";
 
 export default async function About({params: { locale }}) {

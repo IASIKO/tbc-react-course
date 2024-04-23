@@ -1,8 +1,8 @@
 "use client";
 
-import { setLanguage } from "@/lib/actions";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { setLanguage } from "../../lib/actions";
 
 const Language = ({ dict }) => {
   let pathname = usePathname();

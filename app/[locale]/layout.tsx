@@ -1,4 +1,4 @@
-import { i18n } from "@/i18.config";
+import { i18n } from "../../i18.config";
 import "./globals.css";
 import { Providers } from "./providers";
 

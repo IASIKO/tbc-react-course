@@ -1,5 +1,5 @@
-import ProfileDetails from "@/components/Profile/ProfileDetails";
-import TitleBgImage from "@/components/UI/TitleBgImage";
+import ProfileDetails from "../../../../components/Profile/ProfileDetails";
+import TitleBgImage from "../../../../components/UI/TitleBgImage";
 
 export default function Profile() {
   return (

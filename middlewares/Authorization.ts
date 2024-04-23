@@ -1,7 +1,7 @@
-import { AUTH_COOKIE_KEY } from "@/constants";
-import { i18n } from "@/i18.config";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { AUTH_COOKIE_KEY } from "../constants";
+import { i18n } from "../i18.config";
 
 export function Authorization(middleware) {
   return async function (request) {
