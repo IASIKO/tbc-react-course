@@ -9,7 +9,7 @@ const Language = ({ dict }) => {
   let route = pathname.substring(6);
   const isEnUs = pathname.startsWith("/en-US");
 
-  const langHandleCLick = (lang) => {
+  const langHandleCLick = (lang: string) => {
     setLanguage(lang);
   };
 

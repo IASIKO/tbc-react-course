@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { handleLogoutRoute } from "../../lib/helpers";
 
-const LogoutButton = ({dict}) => {
+const LogoutButton = ({ dict }) => {
   const router = useRouter();
   return (
     <button
