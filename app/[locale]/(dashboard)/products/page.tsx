@@ -8,15 +8,18 @@ async function getProducts() {
   return res.json();
 }
 
-export default async function Products({params: { locale }}) {
+export default async function Products({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   const productsListData = await getProducts();
   const dict = await getDictionary(locale);
-
 
   return (
     <>
       <TitleBgImage>{dict.products.pageTitle}</TitleBgImage>
-      <ProductsList productListData={productsListData.products} dict={dict}/>
+      <ProductsList productListData={productsListData.products} dict={dict} />
     </>
   );
 }
