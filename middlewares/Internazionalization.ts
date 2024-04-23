@@ -10,10 +10,9 @@ import { getLocale } from "../lib/helpers";
 import { LANG_COOKIE_KEY } from "../constants";
 
 export function Internationalization(
-  middleware: NextMiddleware,
-  event: NextFetchEvent
+  middleware: NextMiddleware
 ) {
-  return async function (request: NextRequest) {
+  return async function (request: NextRequest, event: NextFetchEvent) {
     const { pathname } = request.nextUrl;
     const cookieStore = cookies().get(LANG_COOKIE_KEY)?.value;
     const pathHasLocale = i18n.locales.some(

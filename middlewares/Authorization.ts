@@ -10,9 +10,8 @@ import { i18n } from "../i18.config";
 
 export function Authorization(
   middleware: NextMiddleware,
-  event: NextFetchEvent
 ) {
-  return async function (request: NextRequest) {
+  return async function (request: NextRequest, event: NextFetchEvent) {
     const en = i18n.locales[0];
     const ka = i18n.locales[1];
     const pathname = request.nextUrl.pathname;
