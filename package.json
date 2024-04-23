@@ -19,6 +19,7 @@
     "sharp": "^0.33.3"
   },
   "devDependencies": {
+    "@types/negotiator": "^0.6.3",
     "@types/node": "20.12.7",
     "@types/react": "18.2.79",
     "autoprefixer": "^10.0.1",

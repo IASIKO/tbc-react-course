@@ -1,8 +1,5 @@
 // import { cookies } from "next/headers";
 // import { AUTH_COOKIE_KEY } from "@/constants";
-import Negotiator from "negotiator";
-import { match } from "@formatjs/intl-localematcher";
-import { i18n } from "../i18.config";
 
 // export async function login(username, password) {
 //   const res = await fetch("https://dummyjson.com/auth/login", {
@@ -28,8 +25,12 @@ import { i18n } from "../i18.config";
 //   const cookieStore = cookies();
 //   cookieStore.delete(AUTH_COOKIE_KEY);
 // }
-export const getLocale = (request) => {
-  const negotiationHeaders = {};
+import Negotiator from "negotiator";
+import { match } from "@formatjs/intl-localematcher";
+import { i18n } from "../i18.config";
+
+export const getLocale = (request: Request) : string => {
+  const negotiationHeaders : { [key: string]: string } = {};
 
   request.headers.forEach((value, key) => (negotiationHeaders[key] = value));
 
@@ -40,9 +41,8 @@ export const getLocale = (request) => {
   return locale;
 };
 
-export const handleLoginRoute = async (username, password) => {
-
-  const res = await fetch(`http://localhost:3000/api/login`, {
+export const handleLoginRoute = async (username: string, password: string) => {
+  await fetch(`http://localhost:3000/api/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -53,7 +53,7 @@ export const handleLoginRoute = async (username, password) => {
 };
 
 export const handleLogoutRoute = async () => {
-  const res = await fetch(`http://localhost:3000/api/logout`, {
+  await fetch(`http://localhost:3000/api/logout`, {
     method: "POST",
   });
 };
