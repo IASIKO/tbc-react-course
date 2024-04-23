@@ -17,7 +17,7 @@ export function Authorization(middleware) {
         pathname === `/${en}/contact` ||
         pathname === `/${en}/about` ||
         pathname === `/${en}/profile` ||
-        pathname === `/${ka}` ||  
+        pathname === `/${ka}` ||
         pathname.startsWith(`/${ka}/products`) ||
         pathname.startsWith(`/${ka}/blog`) ||
         pathname === `/${ka}/contact` ||
@@ -29,23 +29,3 @@ export function Authorization(middleware) {
     return middleware(request);
   };
 }
-
-// export function Authorization(middleware) {
-//   return async function (request) {
-//     const { locales } = i18n;
-//     const { pathname } = request.nextUrl;
-//     const allowedPaths = locales.flatMap(locale => [
-//       `/${locale}`,
-//       `/${locale}/products`,
-//       `/${locale}/blog`,
-//       `/${locale}/contact`,
-//       `/${locale}/about`,
-//       `/${locale}/profile`
-//     ]);
-
-//     if (!cookies().has(AUTH_COOKIE_KEY) && allowedPaths.includes(pathname)) {
-//       return NextResponse.redirect(new URL("/login", request.url));
-//     }
-//     return middleware(request);
-//   };
-// }

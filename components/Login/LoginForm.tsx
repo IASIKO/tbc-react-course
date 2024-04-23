@@ -18,7 +18,7 @@ const LoginForm = ({ dict }) => {
     <div className="w-full flex flex-col items-center py-5 gap-40">
       <div>
         <Theme />
-        <Language dict={dict}/>
+        <Language dict={dict} />
       </div>
       <form
         className="w-full flex flex-col justify-center items-center px-[90px]"
@@ -67,7 +67,7 @@ const LoginForm = ({ dict }) => {
         <p className="text-[18px] dark:text-dark">
           {dict.login.forgot}{" "}
           <span className="text-red hover:text-black cursor-pointer ease-in duration-300 dark:text-white">
-          {dict.login.usernameInput} / {dict.login.passwordInput}?
+            {dict.login.usernameInput} / {dict.login.passwordInput}?
           </span>
         </p>
         <button
