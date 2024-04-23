@@ -8,16 +8,12 @@ import {
 import { AUTH_COOKIE_KEY } from "../constants";
 import { i18n } from "../i18.config";
 
-export function Authorization(
-  middleware: NextMiddleware,
-) {
+export function Authorization(middleware: NextMiddleware) {
   return async function (request: NextRequest, event: NextFetchEvent) {
     const en = i18n.locales[0];
     const ka = i18n.locales[1];
     const pathname = request.nextUrl.pathname;
     const hasAuthCookie = cookies().has(AUTH_COOKIE_KEY);
-
-    console.log(request.url);
 
     if (
       !hasAuthCookie &&
