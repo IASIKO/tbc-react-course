@@ -1,6 +1,14 @@
+import { ReactNode } from "react";
 import { i18n } from "../../i18.config";
 import "./globals.css";
 import { Providers } from "./providers";
+
+interface RootLayoutProps {
+  children: ReactNode;
+  params: {
+    locale: string;
+  };
+}
 
 export const metadata = {
   title: "Liquor store",
@@ -11,7 +19,10 @@ export async function generateStaticParams() {
   return i18n.locales.map((lang) => ({ locale: lang }));
 }
 
-export default function RootLayout({ children, params: { locale } }) {
+export default function RootLayout({
+  children,
+  params: { locale },
+}: RootLayoutProps) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body>
