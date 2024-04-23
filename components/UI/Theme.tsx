@@ -27,8 +27,8 @@ const options: Option[] = [
 ];
 
 const Theme: React.FC = () => {
-  const [themeValue, setThemeValue] = useState<string>();
   const { setTheme, resolvedTheme } = useTheme();
+  const [themeValue, setThemeValue] = useState<string>();
 
   useEffect(() => {
     setThemeValue(resolvedTheme);

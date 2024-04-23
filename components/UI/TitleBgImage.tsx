@@ -1,7 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import bg from "../../public/Assets/images/bg_1.jpg";
 
-const TitleBgImage = ({ children }) => {
+interface TitleBgImageProps {
+  children: ReactNode;
+}
+
+const TitleBgImage: React.FC<TitleBgImageProps> = ({ children }) => {
   return (
     <div
       style={{ backgroundImage: `url(${bg.src})` }}

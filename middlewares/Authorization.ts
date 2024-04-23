@@ -16,9 +16,12 @@ export function Authorization(
     const en = i18n.locales[0];
     const ka = i18n.locales[1];
     const pathname = request.nextUrl.pathname;
+    const hasAuthCookie = cookies().has(AUTH_COOKIE_KEY);
+
+    console.log(request.url);
 
     if (
-      !cookies().has(AUTH_COOKIE_KEY) &&
+      !hasAuthCookie &&
       (pathname === `/${en}` ||
         pathname.startsWith(`/${en}/products`) ||
         pathname.startsWith(`/${en}/blog`) ||
@@ -34,6 +37,13 @@ export function Authorization(
     ) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
+    if (
+      hasAuthCookie &&
+      (pathname === `/${en}/login` || pathname === `/${ka}/login`)
+    ) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+
     return middleware(request, event);
   };
 }
