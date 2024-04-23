@@ -6,7 +6,12 @@ import { MdLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
 import { MdMonitor } from "react-icons/md";
 
-const options = [
+interface Option {
+  icon: JSX.Element;
+  text: string;
+}
+
+const options: Option[] = [
   {
     icon: <MdLightMode />,
     text: "light",
@@ -21,8 +26,8 @@ const options = [
   },
 ];
 
-const Theme = () => {
-  const [themeValue, setThemeValue] = useState();
+const Theme: React.FC = () => {
+  const [themeValue, setThemeValue] = useState<string>();
   const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
