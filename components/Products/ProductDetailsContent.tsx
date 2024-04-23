@@ -1,7 +1,29 @@
 import { MdStarRate } from "react-icons/md";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 
-const ProductDetailsContent = ({ productDetails, dict }) => {
+interface ProductDetails {
+  thumbnail: string;
+  title: string;
+  rating: number;
+  price: number;
+  category: string;
+  brand: string;
+  description: string;
+}
+
+interface Dict {
+  products: Record<string, string>;
+}
+
+interface ProductDetailsContentProps {
+  productDetails: ProductDetails;
+  dict: Dict;
+}
+
+const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
+  productDetails,
+  dict,
+}) => {
   return (
     <section className="py-[60px]">
       <div className="w-[1140px] m-auto">
