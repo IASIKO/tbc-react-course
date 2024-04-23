@@ -1,7 +1,19 @@
 import React from "react";
 import BlogCard from "./BlogCard";
 
-const BlogList = ({ blogListData }) => {
+interface ListItem {
+  image: string;
+  rating: number;
+  name: string;
+  ingredients: string;
+  id: number;
+}
+
+interface BlogListProps {
+  blogListData: ListItem[];
+}
+
+const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
   return (
     <div className="py-[60px] relative">
       <div className="max-w-[1140px] px-[15px] m-auto animate-[fall_2s_ease_100ms]">

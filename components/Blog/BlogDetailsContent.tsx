@@ -1,4 +1,16 @@
-const BlogDetailsContent = ({ blogDetails }) => {
+interface BlogDetails {
+  image: string;
+  id: number;
+  name: string;
+  ingredients: string[];
+  instructions: string[];
+}
+
+interface BlogDetailsContentPops {
+  blogDetails: BlogDetails;
+}
+
+const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({ blogDetails }) => {
   return (
     <section className="py-[60px]">
       {blogDetails !== undefined && (

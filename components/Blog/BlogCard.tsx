@@ -1,8 +1,21 @@
 import Link from "next/link";
 import React from "react";
 import { MdStarRate } from "react-icons/md";
+import { FC } from 'react';
 
-const BlogCard = ({ listItem }) => {
+interface ListItem {
+  image: string;
+  rating: number;
+  name: string;
+  ingredients: string;
+  id: number;
+}
+
+interface BlogCardProps {
+  listItem : ListItem;
+}
+
+const BlogCard: FC<BlogCardProps> = ({ listItem }) => {
   return (
     <div className="mb-[30px] flex">
       <div
