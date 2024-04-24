@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { MdStarRate } from "react-icons/md";
-import { FC } from 'react';
 
 interface ListItem {
   image: string;
@@ -15,7 +14,7 @@ interface BlogCardProps {
   listItem : ListItem;
 }
 
-const BlogCard: FC<BlogCardProps> = ({ listItem }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ listItem }) => {
   return (
     <div className="mb-[30px] flex">
       <div

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface BlogDetails {
   image: string;
   id: number;
@@ -16,10 +18,12 @@ const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({ blogDetails }) =
       {blogDetails !== undefined && (
         <div className="w-[1140px] m-auto">
           <div className="flex">
-            <img
+            <Image
               src={blogDetails.image}
               alt={`blog image ${blogDetails.id}`}
               className="w-[500px] h-auto"
+              width={500}
+              height={500}
             />
             <div className="px-[30px]">
               <h2 className="text-black font-normal text-[35px]">

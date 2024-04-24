@@ -12,9 +12,7 @@ import Theme from "../../UI/Theme";
 
 interface Dict {
   dict: {
-    header: {
-      profile: string;
-    }
+    header: Record<string, string>;
   }
 }
 

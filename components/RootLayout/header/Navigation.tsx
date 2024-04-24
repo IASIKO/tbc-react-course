@@ -4,7 +4,13 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const Navigation = ({ dict }) => {
+interface Dict {
+  dict: {
+    header: Record<string, string>;
+  }
+}
+
+const Navigation = ({ dict } : Dict) => {
   const pathname = usePathname();
 
   return (
