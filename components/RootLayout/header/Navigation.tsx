@@ -8,13 +8,11 @@ interface Dict {
   header: Record<string, string>;
 }
 
-const Navigation: React.FC<{ dict: Dict, locale: string }> = ({ dict, locale }) => {
+const Navigation: React.FC<{ dict: Dict; locale: string }> = ({
+  dict,
+  locale,
+}) => {
   const pathname = usePathname();
-  
-  console.log("🚀 ~ pathname:", pathname)
-  console.log("🚀 ~ locale:", locale)
-  
-  
 
   return (
     <nav className="absolute left-0 right-0 z-10 bg-transparent">
