@@ -11,13 +11,16 @@ interface Props {
   children: ReactNode;
   params: Params;
 }
-export default async function RootLayout({ children, params: { locale } }: Props) {
-  const dict = await getDictionary(locale);
 
+export default async function DashboardRootLayout({
+  children,
+  params: { locale },
+}: Props) {
+  const dict = await getDictionary(locale);
 
   return (
     <>
-      <Header dict={dict}/>
+      <Header dict={dict} locale={locale} />
       {children}
       <Footer />
     </>

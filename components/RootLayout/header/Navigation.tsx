@@ -1,6 +1,6 @@
 "use client";
 
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -8,7 +8,10 @@ interface Dict {
   header: Record<string, string>;
 }
 
-const Navigation: React.FC<{ dict: Dict }> = ({ dict }) => {
+const Navigation: React.FC<{ dict: Dict; locale: string }> = ({
+  dict,
+  locale,
+}) => {
   const pathname = usePathname();
 
   return (
@@ -27,7 +30,7 @@ const Navigation: React.FC<{ dict: Dict }> = ({ dict }) => {
               <Link
                 href="/"
                 className={`link ${
-                  pathname === "/"
+                  pathname === `/${locale}`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
@@ -39,7 +42,7 @@ const Navigation: React.FC<{ dict: Dict }> = ({ dict }) => {
               <Link
                 href="/about"
                 className={`link ${
-                  pathname === "/about"
+                  pathname === `/${locale}/about`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
@@ -51,7 +54,7 @@ const Navigation: React.FC<{ dict: Dict }> = ({ dict }) => {
               <Link
                 href="/products"
                 className={`link ${
-                  pathname === "/products"
+                  pathname === `/${locale}/products`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
@@ -63,7 +66,7 @@ const Navigation: React.FC<{ dict: Dict }> = ({ dict }) => {
               <Link
                 href="/blog"
                 className={`link ${
-                  pathname === "/blog"
+                  pathname === `/${locale}/blog`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
@@ -75,7 +78,7 @@ const Navigation: React.FC<{ dict: Dict }> = ({ dict }) => {
               <Link
                 href="/contact"
                 className={`link ${
-                  pathname === "/contact"
+                  pathname === `/${locale}/contact`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
