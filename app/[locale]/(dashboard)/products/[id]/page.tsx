@@ -4,7 +4,7 @@ import { getDictionary } from "../../../dictionaries";
 
 interface ProductsDetailsProps {
   params: {
-    id: string;
+    id: number;
     locale: string;
   };
 }
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
   return paths;
 }
 
-async function getProductById(productId: string) {
+async function getProductById(productId: number) {
   const res = await fetch(`https://dummyjson.com/products/${productId}`);
 
   return res.json();

@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard";
 import Search from "../Search";
 
 interface ProductList {
-  id: string;
+  id: number;
   price: number;
   title: string;
   thumbnail: string;
@@ -13,11 +13,7 @@ interface ProductList {
 }
 
 interface Dict {
-  products: {
-    listTitle1: string;
-    listTitle2: string;
-    addToCart: string;
-  };
+  products: Record<string, string>;
 }
 
 interface ProductsListProps {

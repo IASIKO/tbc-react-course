@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 interface Product {
-  id: string;
+  id: number;
   thumbnail: string;
   title: string;
   category: string;
@@ -12,9 +12,7 @@ interface Product {
 }
 
 interface Dict {
-  products: {
-    addToCart: string;
-  };
+  products: Record<string, string>;
 }
 
 interface ProductCardProps {
