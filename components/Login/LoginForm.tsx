@@ -8,7 +8,7 @@ import { handleLoginRoute } from "../../lib/helpers";
 
 interface Dict {
   login: Record<string, string>;
-  };
+}
 
 const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
   const [loginInfo, setLoginInfo] = useState({
@@ -26,13 +26,13 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
       await handleLoginRoute(loginInfo.username, loginInfo.password);
       router.push("/");
     } catch (error) {
-      setErrorMessage("Username and Password are incorrect");
+      setErrorMessage("Username / Password is incorrect");
     }
   };
 
   return (
-    <div className="w-full flex flex-col items-center py-5 gap-40">
-      <div>
+    <div className="w-full flex flex-col items-center gap-40">
+      <div className="mt-2">
         <Theme />
         <Language dict={dict} />
       </div>
@@ -40,7 +40,6 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
         className="w-full flex flex-col justify-center items-center px-[90px]"
         onSubmit={handleSubmit}
       >
-        {errorMessage && <p className="text-red font-bold">{errorMessage}</p>}
         <h2 className="uppercase tracking-widest mb-3 dark:text-white">
           {dict.login.title}
         </h2>
@@ -82,9 +81,14 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
             {dict.login.usernameInput} / {dict.login.passwordInput}?
           </span>
         </p>
+        {errorMessage && (
+          <p className="bg-red text-white font-bold dark:bg-dark p-2 mt-4 rounded-md animate-fall text-[18px]">
+            {errorMessage}
+          </p>
+        )}
         <button
           type="button"
-          className="uppercase text-red mt-[200px] cursor-pointer hover:text-black ease-in duration-300 dark:text-white"
+          className="absolute bottom-14 uppercase text-red cursor-pointer hover:text-black ease-in duration-300 dark:text-white"
         >
           {dict.login.signup}
         </button>

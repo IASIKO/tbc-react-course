@@ -22,6 +22,7 @@ interface ProductListData {
 
 interface Dict {
   products: Record<string, string>;
+  blogs: Record<string, string>;
 }
 
 interface LandingContentProps {
