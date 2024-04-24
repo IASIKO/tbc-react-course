@@ -8,7 +8,7 @@ import { handleLoginRoute } from "../../lib/helpers";
 
 interface Dict {
   login: Record<string, string>;
-}
+  };
 
 const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
   const [loginInfo, setLoginInfo] = useState({
@@ -16,7 +16,19 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
     password: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
   const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await handleLoginRoute(loginInfo.username, loginInfo.password);
+      router.push("/");
+    } catch (error) {
+      setErrorMessage("Username and Password are incorrect");
+    }
+  };
 
   return (
     <div className="w-full flex flex-col items-center py-5 gap-40">
@@ -26,13 +38,9 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
       </div>
       <form
         className="w-full flex flex-col justify-center items-center px-[90px]"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleLoginRoute(loginInfo.username, loginInfo.password).then(() =>
-            router.push("/")
-          );
-        }}
+        onSubmit={handleSubmit}
       >
+        {errorMessage && <p className="text-red font-bold">{errorMessage}</p>}
         <h2 className="uppercase tracking-widest mb-3 dark:text-white">
           {dict.login.title}
         </h2>
