@@ -1,6 +1,6 @@
 "use client";
 
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
