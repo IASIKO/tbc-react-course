@@ -4,13 +4,33 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
 
-const ProductsList = ({ productListData, dict }) => {
-  const [productsListData, setProductsListData] = useState([]);
+interface ProductList {
+  id: number;
+  price: number;
+  title: string;
+  thumbnail: string;
+  category: string;
+}
+
+interface Dict {
+  products: Record<string, string>;
+}
+
+interface ProductsListProps {
+  productListData: ProductList[];
+  dict: Dict;
+}
+
+const ProductsList: React.FC<ProductsListProps> = ({
+  productListData,
+  dict,
+}) => {
+  const [productsListData, setProductsListData] = useState<ProductList[]>([]);
   const [searchValue, setSearchValue] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState<ProductList[]>([]);
   const [isProductsSorted, setIsProductsSorted] = useState(false);
-  const [sortedProducts, setSortedProducts] = useState([]);
-  const [timeoutId, setTimeoutId] = useState(null);
+  const [sortedProducts, setSortedProducts] = useState<ProductList[]>([]);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setProductsListData(productListData);
@@ -43,7 +63,9 @@ const ProductsList = ({ productListData, dict }) => {
     }
   }, [filteredProducts, isProductsSorted]);
 
-  const onSearchInputChangeHandler = (e) => {
+  const onSearchInputChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setSearchValue(e.target.value);
   };
 
@@ -76,7 +98,7 @@ const ProductsList = ({ productListData, dict }) => {
           </div>
           <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
             {productListToShow.map((product, index) => (
-              <ProductCard key={index} productInfo={product} dict={dict}/>
+              <ProductCard key={index} productInfo={product} dict={dict} />
             ))}
           </div>
         </div>
