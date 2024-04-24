@@ -29,8 +29,8 @@ import Negotiator from "negotiator";
 import { match } from "@formatjs/intl-localematcher";
 import { i18n } from "../i18.config";
 
-export const getLocale = (request: Request) : string => {
-  const negotiationHeaders : { [key: string]: string } = {};
+export const getLocale = (request: Request): string => {
+  const negotiationHeaders: { [key: string]: string } = {};
 
   request.headers.forEach((value, key) => (negotiationHeaders[key] = value));
 
@@ -41,15 +41,35 @@ export const getLocale = (request: Request) : string => {
   return locale;
 };
 
+// export const handleLoginRoute = async (username: string, password: string) => {
+//   await fetch(`http://localhost:3000/api/login`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({
+//       username,
+//       password,
+//     }),
+//   });
+
+// };
+
 export const handleLoginRoute = async (username: string, password: string) => {
-  await fetch(`http://localhost:3000/api/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-  });
+  try {
+    const response = await fetch(`http://localhost:3000/api/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Username and Password are incorrect");
+    }
+  } catch (error) {
+    throw new Error("Username and Password are incorrect");
+  }
 };
 
 export const handleLogoutRoute = async () => {
