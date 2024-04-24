@@ -41,5 +41,18 @@
     "ingredients":"Ingredients",
     "instructions":"Instructions",
     "recentBlog":"Recent Blog"
+  },
+  "contact":{
+    "title":"Contact",
+    "contactUs": "Contact Us",
+    "fullName":"full name",
+    "email": "email address",
+    "subject":"subject",
+    "message":"message",
+    "sendButton":"Send Message",
+    "address":"Address",
+    "phone":"Phone",
+    "website":"Website"
+
   }
 }
