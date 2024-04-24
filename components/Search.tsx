@@ -2,7 +2,19 @@ import React from "react";
 import Button from "./UI/Button";
 import { GrPowerReset } from "react-icons/gr";
 
-const Search = ({ onChange, searchValue, onClick, isProductsSorted, dict }) => {
+interface Dict {
+  products: Record<string, string>;
+}
+
+interface SearchProps {
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  searchValue: string;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isProductsSorted: boolean;
+  dict: Dict;
+}
+
+const Search: React.FC<SearchProps> = ({ onChange, searchValue, onClick, isProductsSorted, dict }) => {
   return (
     <div className="pt-[60px] w-[960px] flex justify-between">
       <input

@@ -34,7 +34,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/[locale]/dictionaries.js"  ],
   "exclude": [
     "node_modules"
   ]

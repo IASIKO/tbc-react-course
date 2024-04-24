@@ -4,7 +4,12 @@ import { useRouter } from "next/navigation";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { handleLogoutRoute } from "../../lib/helpers";
 
-const LogoutButton = ({ dict }) => {
+interface Dict {
+  header: Record<string, string>;
+}
+
+
+const LogoutButton: React.FC<{ dict: Dict }> = ({ dict }) => {
   const router = useRouter();
   return (
     <button

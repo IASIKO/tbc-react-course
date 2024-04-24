@@ -4,7 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { setLanguage } from "../../lib/actions";
 
-const Language = ({ dict }) => {
+interface Dict {
+  login: Record<string, string>;
+}
+
+const Language: React.FC<{ dict: Dict }> = ({ dict }) => {
   let pathname = usePathname();
   let route = pathname.substring(6);
   const isEnUs = pathname.startsWith("/en-US");
