@@ -33,5 +33,26 @@
     "category": "Category",
     "brand": "Brand",
     "description": "Description"
+  },
+  "blogs":{
+    "title":"Blog",
+    "singlePageTitle": "Blog Details",
+    "continue":"Continue",
+    "ingredients":"Ingredients",
+    "instructions":"Instructions",
+    "recentBlog":"Recent Blog"
+  },
+  "contact":{
+    "title":"Contact",
+    "contactUs": "Contact Us",
+    "fullName":"full name",
+    "email": "email address",
+    "subject":"subject",
+    "message":"message",
+    "sendButton":"Send Message",
+    "address":"Address",
+    "phone":"Phone",
+    "website":"Website"
+
   }
 }
