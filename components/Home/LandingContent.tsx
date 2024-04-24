@@ -105,7 +105,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
       </section>
 
       <section>
-        <BlogList blogListData={homeBlogListData} />
+        <BlogList blogListData={homeBlogListData} dict={dict} />
         <div className="flex justify-center mb-[60px]">
           <Link href="/blog">
             <Button>See More...</Button>
