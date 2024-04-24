@@ -7,14 +7,7 @@ import Language from "../UI/Language";
 import { handleLoginRoute } from "../../lib/helpers";
 
 interface Dict {
-  login: {
-    title: string;
-    usernameInput: string;
-    passwordInput: string;
-    signin: string;
-    forgot: string;
-    signup: string;
-  };
+  login: Record<string, string>;
 }
 
 const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
