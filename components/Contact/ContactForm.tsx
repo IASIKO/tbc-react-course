@@ -54,7 +54,6 @@ const ContactForm = () => {
               message
             </label>
             <textarea
-              type="text"
               rows={4}
               cols={50}
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] resize-none"

@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import Language from "../UI/Language";
 import { handleLoginRoute } from "../../lib/helpers";
 
-const LoginForm = ({ dict }) => {
+interface Dict {
+  login: Record<string, string>;
+}
+
+const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
   const [loginInfo, setLoginInfo] = useState({
     username: "",
     password: "",
