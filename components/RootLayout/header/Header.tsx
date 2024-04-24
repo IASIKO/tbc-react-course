@@ -10,7 +10,13 @@ import Language from "../../UI/Language";
 import LogoutButton from "../../UI/LogoutButton";
 import Theme from "../../UI/Theme";
 
-const Header = async ({ dict }) => {
+interface Dict {
+  dict: {
+    header: Record<string, string>;
+  }
+}
+
+const Header = async ({ dict }: Dict) => {
   return (
     <header>
       <div className="relative w-[100%] bg-red">

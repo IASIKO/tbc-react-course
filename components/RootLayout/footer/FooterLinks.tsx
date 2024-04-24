@@ -1,6 +1,14 @@
 import React from "react";
 
-const FooterLinks = ({ linksInfo }) => {
+interface LinksInfo {
+  title: string;
+  list: string[];
+}
+
+interface FooterLinksProps {
+  linksInfo: LinksInfo;
+}
+const FooterLinks: React.FC<FooterLinksProps> = ({ linksInfo }) => {
   return (
     <div className="flex-1 max-w-[100%]">
       <div className="ml-[15px] mb-[15px]">
