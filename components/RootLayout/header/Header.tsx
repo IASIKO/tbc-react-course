@@ -11,12 +11,11 @@ import LogoutButton from "../../UI/LogoutButton";
 import Theme from "../../UI/Theme";
 
 interface Dict {
-  dict: {
-    header: Record<string, string>;
-  }
+  header: Record<string, string>;
+  login: Record<string, string>;
 }
 
-const Header = async ({ dict }: Dict) => {
+const Header: React.FC<{ dict: Dict }> = async ({ dict }) => {
   return (
     <header>
       <div className="relative w-[100%] bg-red">
@@ -31,7 +30,7 @@ const Header = async ({ dict }: Dict) => {
                   <span>youremail@email.com</span>
                 </a>
               </p>
-                <Language dict={dict} />
+              <Language dict={dict} />
             </div>
 
             <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">
@@ -65,7 +64,7 @@ const Header = async ({ dict }: Dict) => {
                     {dict.header.profile}
                   </Link>
                 </button>
-                <LogoutButton dict={dict}/>
+                <LogoutButton dict={dict} />
                 <Theme />
               </div>
             </div>
@@ -73,7 +72,7 @@ const Header = async ({ dict }: Dict) => {
         </div>
       </div>
 
-      <Navigation dict={dict}/>
+      <Navigation dict={dict} />
     </header>
   );
 };

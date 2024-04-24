@@ -4,7 +4,37 @@ import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
 
-const LandingContent = ({ blogListData, productListData, dict }) => {
+interface BlogListData {
+  image: string;
+  rating: number;
+  name: string;
+  ingredients: string;
+  id: number;
+}
+
+interface ProductListData {
+  id: number;
+  price: number;
+  title: string;
+  thumbnail: string;
+  category: string;
+}
+
+interface Dict {
+  products: Record<string, string>;
+}
+
+interface LandingContentProps {
+  blogListData: BlogListData[];
+  productListData: ProductListData[];
+  dict: Dict;
+}
+
+const LandingContent: React.FC<LandingContentProps> = ({
+  blogListData,
+  productListData,
+  dict,
+}) => {
   const homeBlogListData = blogListData.slice(0, 4);
   const homeProductsListData = productListData.slice(0, 8);
 
@@ -66,7 +96,7 @@ const LandingContent = ({ blogListData, productListData, dict }) => {
       </section>
 
       <section>
-        <ProductsList productListData={homeProductsListData} dict={dict}/>
+        <ProductsList productListData={homeProductsListData} dict={dict} />
         <div className="flex justify-center mb-[60px]">
           <Link href="/products">
             <Button>View All Products</Button>

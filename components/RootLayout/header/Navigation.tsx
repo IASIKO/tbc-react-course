@@ -5,12 +5,10 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 interface Dict {
-  dict: {
-    header: Record<string, string>;
-  }
+  header: Record<string, string>;
 }
 
-const Navigation = ({ dict } : Dict) => {
+const Navigation: React.FC<{ dict: Dict }> = ({ dict }) => {
   const pathname = usePathname();
 
   return (
