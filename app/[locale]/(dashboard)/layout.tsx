@@ -17,7 +17,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
 
   return (
     <>
-      <Header dict={dict}/>
+      <Header dict={dict} locale={locale}/>
       {children}
       <Footer />
     </>

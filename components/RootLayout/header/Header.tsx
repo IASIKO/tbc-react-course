@@ -15,7 +15,7 @@ interface Dict {
   login: Record<string, string>;
 }
 
-const Header: React.FC<{ dict: Dict }> = async ({ dict }) => {
+const Header: React.FC<{ dict: Dict, locale: string }> = async ({ dict, locale }) => {
   return (
     <header>
       <div className="relative w-[100%] bg-red">
@@ -72,7 +72,7 @@ const Header: React.FC<{ dict: Dict }> = async ({ dict }) => {
         </div>
       </div>
 
-      <Navigation dict={dict} />
+      <Navigation dict={dict} locale={locale}/>
     </header>
   );
 };
