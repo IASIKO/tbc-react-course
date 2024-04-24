@@ -10,11 +10,16 @@ interface ListItem {
   id: number;
 }
 
-interface BlogCardProps {
-  listItem : ListItem;
+interface Dict {
+  blogs: Record<string, string>;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ listItem }) => {
+interface BlogCardProps {
+  listItem: ListItem;
+  dict: Dict;
+}
+
+const BlogCard: React.FC<BlogCardProps> = ({ listItem, dict }) => {
   return (
     <div className="mb-[30px] flex">
       <div
@@ -30,8 +35,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ listItem }) => {
           {listItem.name}
         </h3>
         <p className="mb-[10px]">{listItem.ingredients}</p>
-        <Link href={`/blog/${listItem.id}`} className="text-red italic font-bold">
-          Continue
+        <Link
+          href={`/blog/${listItem.id}`}
+          className="text-red italic font-bold"
+        >
+          {dict.blogs.continue}
         </Link>
       </div>
     </div>

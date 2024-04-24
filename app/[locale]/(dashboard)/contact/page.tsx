@@ -1,11 +1,18 @@
 import ContactContent from "../../../../components/Contact/ContactContent";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
+import { getDictionary } from "../../dictionaries";
 
-export default function Contact() {
+export default async function Contact({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const dict = await getDictionary(locale);
+
   return (
     <>
-      <TitleBgImage>Contact</TitleBgImage>
-      <ContactContent />
+      <TitleBgImage>{dict.contact.title}</TitleBgImage>
+      <ContactContent locale={locale} />
     </>
   );
 }

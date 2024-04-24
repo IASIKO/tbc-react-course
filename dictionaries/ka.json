@@ -33,5 +33,27 @@
     "category": "კატეგორია",
     "brand": "ბრენდი",
     "description": "აღწერა"
+  },
+  "blogs":{
+    "title":"ბლოგი",
+    "singlePageTitle": "ბლოგის დეტალები",
+    "continue":"გაგრძელება",
+    "ingredients":"ინგრედიენტები",
+    "instructions":"ინსტრუქციები",
+    "recentBlog":"ბოლოს დამატებული ბლოგები"
+  }, 
+  "contact":{
+    "title":"კონტაქტი",
+
+    "contactUs": "დაგვიკავშირდით",
+    "fullName":"სახელი",
+    "email": "ელ-ფოსტა",
+    "subject":"საკითხი",
+    "message":"შეტყობინება",
+    "sendButton":"გაგზავნა",
+    "address":"მისამართი",
+    "phone":"ტელეფონი",
+    "website":"ვებსაიტი"
+
   }
 }

@@ -3,30 +3,34 @@ import { FaPhone } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
 import { GiEarthAmerica } from "react-icons/gi";
 
+interface Dict {
+  contact: Record<string, string>;
+}
+
 const contactInfoData = [
   {
     icon: <FaMapMarkerAlt />,
-    contactKey: "Address",
+    contactKey: (dict: Dict) => dict.contact.address,
     contactValue: "198 West 21th Street, Suite 721 New York NY 10016",
   },
   {
     icon: <FaPhone />,
-    contactKey: "Phone",
+    contactKey: (dict: Dict) => dict.contact.phone,
     contactValue: "+ 1235 2355 98",
   },
   {
     icon: <FaTelegramPlane />,
-    contactKey: "Email",
+    contactKey: (dict: Dict) => dict.contact.email,
     contactValue: "info@yoursite.com",
   },
   {
     icon: <GiEarthAmerica />,
-    contactKey: "Website",
+    contactKey: (dict: Dict) => dict.contact.website,
     contactValue: "yoursite.com",
   },
 ];
 
-const ContactInfo = () => {
+const ContactInfo = ({ dict }: { dict: Dict }) => {
   return (
     <div className="flex justify-around">
       {contactInfoData.map((infoItem, index) => (
@@ -37,7 +41,7 @@ const ContactInfo = () => {
           <div className="w-[200px]">
             <p className="text-center">
               <span className="text-black font-medium">
-                {infoItem.contactKey}:
+                {infoItem.contactKey(dict)}:
               </span>
               {infoItem.contactValue}
             </p>

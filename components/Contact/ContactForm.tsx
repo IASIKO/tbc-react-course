@@ -1,7 +1,11 @@
 import React from "react";
 import Button from "../UI/Button";
 
-const ContactForm = () => {
+interface Dict {
+  contact: Record<string, string>;
+}
+
+const ContactForm = ({ dict }: { dict: Dict }) => {
   return (
     <div className="w-[1140px] my-[60px] flex">
       <div className="w-[40%]">
@@ -14,53 +18,53 @@ const ContactForm = () => {
       </div>
       <div className="px-[60px] py-[60px] bg-white w-[60%]">
         <h3 className="mb-[15px] text-black font-normal text-[27px]">
-          Contact Us
+          {dict.contact.contactUs}
         </h3>
         <form>
           <div className="flex mb-[30px]">
             <div className="flex flex-col w-[50%]">
               <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-                full name
+                {dict.contact.fullName}
               </label>
               <input
                 type="text"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
-                placeholder="Name"
+                placeholder={dict.contact.fullName}
               />
             </div>
             <div className="flex flex-col ml-[20px] w-[50%]">
               <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-                email address
+                {dict.contact.email}
               </label>
               <input
                 type="email"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
-                placeholder="Email"
+                placeholder={dict.contact.email}
               />
             </div>
           </div>
           <div className="flex flex-col mb-[30px]">
             <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-              subject
+              {dict.contact.subject}
             </label>
             <input
               type="text"
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
-              placeholder="Subject"
+              placeholder={dict.contact.subject}
             />
           </div>
           <div className="flex flex-col mb-[30px]">
             <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-              message
+              {dict.contact.message}
             </label>
             <textarea
               rows={4}
               cols={50}
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] resize-none"
-              placeholder="Message"
+              placeholder={dict.contact.message}
             />
           </div>
-          <Button>Send Message</Button>
+          <Button> {dict.contact.sendButton}</Button>
         </form>
       </div>
     </div>
