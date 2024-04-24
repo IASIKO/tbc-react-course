@@ -8,11 +8,19 @@ interface BlogDetails {
   instructions: string[];
 }
 
-interface BlogDetailsContentPops {
-  blogDetails: BlogDetails;
+interface Dict {
+  blogs: Record<string, string>;
 }
 
-const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({ blogDetails }) => {
+interface BlogDetailsContentPops {
+  blogDetails: BlogDetails;
+  dict: Dict;
+}
+
+const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({
+  blogDetails,
+  dict,
+}) => {
   return (
     <section className="py-[60px]">
       {blogDetails !== undefined && (
@@ -29,14 +37,14 @@ const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({ blogDetails }) =
               <h2 className="text-black font-normal text-[35px]">
                 {blogDetails.name}
               </h2>
-              <span className="text-red italic">Ingredients</span>
+              <span className="text-red italic"> {dict.blogs.ingredients}</span>
               <p>
                 {blogDetails.ingredients &&
                   blogDetails.ingredients.map((ingredient, index) => (
                     <span key={index}>{ingredient}, </span>
                   ))}
               </p>
-              <span className="text-red italic">Instructions</span>
+              <span className="text-red italic">{dict.blogs.instructions}</span>
               <p>
                 {blogDetails.instructions &&
                   blogDetails.instructions.map((instruction, index) => (

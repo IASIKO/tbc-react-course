@@ -33,5 +33,13 @@
     "category": "Category",
     "brand": "Brand",
     "description": "Description"
+  },
+  "blogs":{
+    "title":"Blog",
+    "singlePageTitle": "Blog Details",
+    "continue":"Continue",
+    "ingredients":"Ingredients",
+    "instructions":"Instructions",
+    "recentBlog":"Recent Blog"
   }
 }

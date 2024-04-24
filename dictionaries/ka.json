@@ -33,5 +33,13 @@
     "category": "კატეგორია",
     "brand": "ბრენდი",
     "description": "აღწერა"
+  },
+  "blogs":{
+    "title":"ბლოგი",
+    "singlePageTitle": "ბლოგის დეტალები",
+    "continue":"კითხვის გაგრძელება",
+    "ingredients":"ინგრედიენტები",
+    "instructions":"ინსტრუქციები",
+    "recentBlog":"ბოლოს დამატებული ბლოგები"
   }
 }
