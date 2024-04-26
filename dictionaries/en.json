@@ -54,5 +54,23 @@
     "phone":"Phone",
     "website":"Website"
 
+  },
+  "profile": {
+    "ProfilePageTitle": "Profile",
+    "profileDetails": "Profile Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "stateAndCountry": "State / Country",
+    "streetAndAddress": "Street / Address",
+    "townOrCity": "Town / City",
+    "postCodeAndZIP": "Post Code / ZIP",
+    "phone": "Phone",
+    "emailAddress": "Email Address",
+    "changePassword": "Change Password",
+    "newPassword": "NEW PASSWORD",
+    "newPasswordPlaceholder": "New Password",
+    "confirmNewPassword": "CONFIRM NEW PASSWORD",
+    "confirmNewPasswordPlaceholder": "Confirm New Password",
+    "save": "SAVE"
   }
 }

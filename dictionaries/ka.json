@@ -44,7 +44,6 @@
   }, 
   "contact":{
     "title":"კონტაქტი",
-
     "contactUs": "დაგვიკავშირდით",
     "fullName":"სახელი",
     "email": "ელ-ფოსტა",
@@ -54,6 +53,23 @@
     "address":"მისამართი",
     "phone":"ტელეფონი",
     "website":"ვებსაიტი"
-
+  },
+  "profile": {
+    "ProfilePageTitle": "პროფილი",
+    "profileDetails": "პროფილის დეტალება",
+    "firstName": "სახელი",
+    "lastName": "გვარი",
+    "stateAndCountry": "ქვეყანა",
+    "streetAndAddress": "მისამართი",
+    "townOrCity": "ქალაქი",
+    "postCodeAndZIP": "საფოსტო კოდი / ZIP",
+    "phone": "ტელეფონი",
+    "emailAddress": "ელ-ფოსტა",
+    "changePassword": "შეცვალე პაროლი",
+    "newPassword": "ახალი პაროლი",
+    "newPasswordPlaceholder": "ახალი პაროლი",
+    "confirmNewPassword": "გაიმეორე ახალი პაროლი",
+    "confirmNewPasswordPlaceholder": "გაიმეორე ახალი პაროლი",
+    "save": "შენახვა"
   }
 }

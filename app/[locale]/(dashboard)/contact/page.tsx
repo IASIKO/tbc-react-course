@@ -12,7 +12,7 @@ export default async function Contact({
   return (
     <>
       <TitleBgImage>{dict.contact.title}</TitleBgImage>
-      <ContactContent locale={locale} />
+      <ContactContent dict={dict} />
     </>
   );
 }
