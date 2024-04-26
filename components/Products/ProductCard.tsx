@@ -27,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ productInfo, dict }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center p">
       <div
         className="flex flex-col justify-center items-center cursor-pointer"
         onClick={onProductCardClickHandler}

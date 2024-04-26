@@ -32,7 +32,8 @@
     "singlePageTitle" : "პროდუქტის დეტალები",
     "category": "კატეგორია",
     "brand": "ბრენდი",
-    "description": "აღწერა"
+    "description": "აღწერა",
+    "viewAllProducts": "იხილეთ პროდუქტები"
   },
   "blogs":{
     "title":"ბლოგი",
@@ -40,7 +41,8 @@
     "continue":"გაგრძელება",
     "ingredients":"ინგრედიენტები",
     "instructions":"ინსტრუქციები",
-    "recentBlog":"ბოლოს დამატებული ბლოგები"
+    "recentBlog":"ბოლოს დამატებული ბლოგები",
+    "seeMore": "მეტის ნახვა..."
   }, 
   "contact":{
     "title":"კონტაქტი",
@@ -71,5 +73,23 @@
     "confirmNewPassword": "გაიმეორე ახალი პაროლი",
     "confirmNewPasswordPlaceholder": "გაიმეორე ახალი პაროლი",
     "save": "შენახვა"
+  },
+  "footer": {
+    "myAccount": "ჩემი ანგარიში",
+    "register": "რეგისტრაცია",
+    "login": "შესვლა",
+    "myOrder": "ჩემი შეკვეთები",
+    "information": "ინფორმაცია",
+    "aboutUs": "ჩვენს შესახებ",
+    "catalog": "კატალოგი",
+    "contactUs": "კონტაქტი",
+    "terms": "წესები და პირობები",
+    "quickLink": "სწრაფი ბმული",
+    "newUser": "ახალი მომხმარებელი",
+    "help": "დახმარება",
+    "spam": "გასაჩივრება",
+    "faqs": "ხ.დ.კ",
+    "subscription": "სიახლეების გამოწერა",
+    "subscriptionInputPH": "ელ-ფოსტა..."
   }
 }

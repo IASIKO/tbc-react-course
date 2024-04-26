@@ -1,37 +1,41 @@
 import React from "react";
 import FooterLinks from "./FooterLinks";
 
-const footerLinksContent = [
-  {
-    title: "My Account",
-    list: ["My Account", "Register", "Log in", "My Order"],
-  },
-  {
-    title: "Information",
-    list: ["About us", "Catalog", "Contact us", "Term & Conditions"],
-  },
-  {
-    title: "Quick Link",
-    list: ["New User", "Help Center", "Report Spam", "Faq's"],
-  },
-];
+interface Dict {
+  footer: Record<string, string>;
+}
 
-const Footer = () => {
+const Footer: React.FC<{ dict: Dict }> = ({ dict }) => {
+  const footerLinksContent = [
+    {
+      title: dict.footer.myAccount,
+      list: [dict.footer.myAccount, dict.footer.register, dict.footer.login, dict.footer.myOrder],
+    },
+    {
+      title: dict.footer.information,
+      list: [dict.footer.aboutUs, dict.footer.catalog, dict.footer.contactUs, dict.footer.terms],
+    },
+    {
+      title: dict.footer.quickLink,
+      list: [dict.footer.newUser, dict.footer.help, dict.footer.spam, dict.footer.faqs],
+    },
+  ];
+
   return (
     <footer className="text-[16px] pt-[60px] bg-[#1a1a1a] text-[#ffffff]">
       <div className="max-w-[1140px] m-auto">
         <div className="flex flex-wrap mb-[30px] animate-[fall_3s_ease_100ms]">
-          {footerLinksContent.map((linksContent,index) => (
-            <FooterLinks linksInfo={linksContent} key={index}/>
+          {footerLinksContent.map((linksContent, index) => (
+            <FooterLinks linksInfo={linksContent} key={index} />
           ))}
           <div className="flex-1 max-w-[100%]">
             <div className="ml-[15px] mb-[15px]">
               <h2 className="text-[#ffffff] mb-[30px] text-[20px] font-normal">
-                Newsletter Subscription
+                {dict.footer.subscription}
               </h2>
               <input
                 type="email"
-                placeholder="Email..."
+                placeholder={dict.footer.subscriptionInputPH}
                 className="p-[10px] rounded-[5px] border-none"
               />
             </div>

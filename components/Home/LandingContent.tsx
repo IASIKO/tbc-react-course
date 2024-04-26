@@ -100,7 +100,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
         <ProductsList productListData={homeProductsListData} dict={dict} />
         <div className="flex justify-center pb-[60px]">
           <Link href="/products">
-            <Button>View All Products</Button>
+            <Button>{dict.products.viewAllProducts}</Button>
           </Link>
         </div>
       </section>
@@ -109,7 +109,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
         <BlogList blogListData={homeBlogListData} dict={dict} />
         <div className="flex justify-center">
           <Link href="/blog">
-            <Button>See More...</Button>
+            <Button>{dict.blogs.seeMore}</Button>
           </Link>
         </div>
       </section>

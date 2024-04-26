@@ -22,7 +22,7 @@ export default async function DashboardRootLayout({
     <>
       <Header dict={dict} locale={locale} />
       {children}
-      <Footer />
+      <Footer dict={dict}/>
     </>
   );
 }
