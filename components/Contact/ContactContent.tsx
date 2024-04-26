@@ -6,7 +6,7 @@ const ContactContent = async ({ locale }: { locale: string }) => {
   const dict = await getDictionary(locale);
 
   return (
-    <section className="bg-[#f5f4f0] py-[60px]">
+    <section className="bg-[#f5f4f0] py-[60px] dark:bg-gray">
       <div className="max-w-[1140px] m-auto">
         <ContactInfo dict={dict} />
         <ContactForm dict={dict} />
