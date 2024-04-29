@@ -15,11 +15,14 @@ async function getProducts() {
   return res.json();
 }
 
-export default async function DashboardHome({params: { locale }}: {params: {locale: string}}) {
+export default async function DashboardHome({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
   const blogListData = await getBlogs();
   const productListData = await getProducts();
   const dict = await getDictionary(locale);
-
 
   return (
     <>
