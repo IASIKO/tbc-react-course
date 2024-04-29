@@ -76,7 +76,9 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
         />
         <button
           type="submit"
-          className="h-11 flex justify-center uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred dark:bg-dark dark:hover:bg-secondary"
+          className={`h-11 flex justify-center uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred dark:bg-dark dark:hover:bg-secondary ${
+            isLoading ? "bg-lightred" : "bg-red"
+          } ${isLoading ? "dark:bg-secondary" : "dark:bg-dark"}`}
           disabled={isLoading ? true : false}
         >
           {isLoading ? <ThemeLoader /> : dict.login.signin}
