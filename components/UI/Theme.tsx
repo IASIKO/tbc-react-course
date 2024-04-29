@@ -38,13 +38,13 @@ const Theme: React.FC = () => {
   }, [resolvedTheme]);
 
   return (
-    <div className="duration-100 dark:bg-dark bg-red rounded">
+    <div className="duration-100 dark:bg-dark bg-red rounded py-1 px-1 flex justify-center w-[100px]">
       {isLoading ? (
         <ThemeLoader />
       ) : (
         options.map((opt) => (
           <button
-            className={`w-8 h-8 align-middle leading-9 text-xl rounded-full m-1 text-white ${
+            className={`w-8 h-8 align-middle leading-9 text-xl rounded-full text-white ${
               resolvedTheme === themeValue &&
               themeValue === opt.text &&
               "text-yellow"
