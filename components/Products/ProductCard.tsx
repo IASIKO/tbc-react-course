@@ -3,7 +3,7 @@ import Button from "../UI/Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-interface Product {
+interface ProductInfo {
   id: number;
   thumbnail: string;
   title: string;
@@ -16,7 +16,7 @@ interface Dict {
 }
 
 interface ProductCardProps {
-  productInfo: Product;
+  productInfo: ProductInfo;
   dict: Dict;
 }
 

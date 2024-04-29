@@ -33,7 +33,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData, dict }) => {
         </div>
         <div className="w-[1140px] grid grid-cols-2 gap-4">
           {blogListData.map((listItem, index) => (
-            <BlogCard listItem={listItem} key={index} dict={dict} />
+            <BlogCard blogInfo={listItem} key={index} dict={dict} />
           ))}
         </div>
       </div>

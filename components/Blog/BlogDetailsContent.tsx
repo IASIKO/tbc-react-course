@@ -28,7 +28,7 @@ const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({
           <div className="flex">
             <Image
               src={blogDetails.image}
-              alt={`blog image ${blogDetails.id}`}
+              alt={`blog image ${blogDetails.name}`}
               className="w-[500px] h-auto"
               width={500}
               height={500}
