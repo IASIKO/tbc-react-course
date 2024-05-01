@@ -29,30 +29,67 @@
     "sortByPrice": "Sort by Price (low to high)",
     "resetSort": "Reset Sort",
     "addToCart": "Add to Cart",
-    "singlePageTitle" : "Product Details",
+    "singlePageTitle": "Product Details",
     "category": "Category",
     "brand": "Brand",
-    "description": "Description"
+    "description": "Description",
+    "viewAllProducts": "View All Products"
   },
-  "blogs":{
-    "title":"Blog",
+  "blogs": {
+    "title": "Blog",
     "singlePageTitle": "Blog Details",
-    "continue":"Continue",
-    "ingredients":"Ingredients",
-    "instructions":"Instructions",
-    "recentBlog":"Recent Blog"
+    "continue": "Continue",
+    "ingredients": "Ingredients",
+    "instructions": "Instructions",
+    "recentBlog": "Recent Blog",
+    "seeMore": "See More..."
   },
-  "contact":{
-    "title":"Contact",
+  "contact": {
+    "title": "Contact",
     "contactUs": "Contact Us",
-    "fullName":"full name",
+    "fullName": "full name",
     "email": "email address",
-    "subject":"subject",
-    "message":"message",
-    "sendButton":"Send Message",
-    "address":"Address",
-    "phone":"Phone",
-    "website":"Website"
-
+    "subject": "subject",
+    "message": "message",
+    "sendButton": "Send Message",
+    "address": "Address",
+    "phone": "Phone",
+    "website": "Website"
+  },
+  "profile": {
+    "ProfilePageTitle": "Profile",
+    "profileDetails": "Profile Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "stateAndCountry": "State / Country",
+    "streetAndAddress": "Street / Address",
+    "townOrCity": "Town / City",
+    "postCodeAndZIP": "Post Code / ZIP",
+    "phone": "Phone",
+    "emailAddress": "Email Address",
+    "changePassword": "Change Password",
+    "newPassword": "NEW PASSWORD",
+    "newPasswordPlaceholder": "New Password",
+    "confirmNewPassword": "CONFIRM NEW PASSWORD",
+    "confirmNewPasswordPlaceholder": "Confirm New Password",
+    "save": "SAVE"
+  },
+  "footer": {
+    "myAccount": "My Account",
+    "register": "Register",
+    "login": "Log in",
+    "myOrder": "My Order",
+    "information": "Information",
+    "aboutUs": "About us",
+    "catalog": "Catalog",
+    "contactUs": "Contact us",
+    "terms": "Terms & Conditions",
+    "quickLink": "Quick Link",
+    "newUser": "New User",
+    "help": "Help Center",
+    "spam": "Report Spam",
+    "faqs": "Faq's",
+    "subscription": "Newsletter Subscription",
+    "subscriptionInputPH": "Email..."
   }
 }

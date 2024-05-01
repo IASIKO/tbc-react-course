@@ -3,26 +3,24 @@ import Header from "../../../components/RootLayout/header/Header";
 import Footer from "../../../components/RootLayout/footer/Footer";
 import { ReactNode } from "react";
 
-interface Params {
-  locale: string;
-}
-
-interface Props {
+interface DashboardLaoyoutProps {
   children: ReactNode;
-  params: Params;
+  params: {
+    locale: string;
+  };
 }
 
 export default async function DashboardRootLayout({
   children,
   params: { locale },
-}: Props) {
+}: DashboardLaoyoutProps) {
   const dict = await getDictionary(locale);
 
   return (
     <>
       <Header dict={dict} locale={locale} />
       {children}
-      <Footer />
+      <Footer dict={dict} />
     </>
   );
 }

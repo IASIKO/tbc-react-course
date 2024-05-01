@@ -39,9 +39,9 @@ const ContactInfo = ({ dict }: { dict: Dict }) => {
             <span className="text-[35px] text-white">{infoItem.icon}</span>
           </div>
           <div className="w-[200px]">
-            <p className="text-center">
+            <p className="text-center dark:text-white">
               <span className="text-black font-medium">
-                {infoItem.contactKey(dict)}:
+                {infoItem.contactKey(dict)}:{" "}
               </span>
               {infoItem.contactValue}
             </p>

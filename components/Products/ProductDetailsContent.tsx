@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MdStarRate } from "react-icons/md";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 
@@ -25,19 +26,21 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
   dict,
 }) => {
   return (
-    <section className="py-[60px]">
+    <section className="py-[60px] dark:bg-gray">
       <div className="w-[1140px] m-auto">
         <div className="flex">
-          <img
+          <Image
             src={productDetails.thumbnail}
             alt={productDetails.title}
-            className="w-[500px] h-[600px]"
+            className="w-[500px] h-auto"
+            width={500}
+            height={500}
           />
           <div className="px-[60px]">
             <h2 className="text-black font-normal text-[35px]">
               {productDetails.title}
             </h2>
-            <span className="text-red text-[20px] flex gap-2 items-center">
+            <span className="text-red text-[20px] flex gap-2 items-center font-bold">
               {productDetails.rating}
               <MdStarRate />
             </span>
@@ -45,12 +48,18 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               {productDetails.price}
               <PiCurrencyDollarBold />
             </span>
-            <span className="text-red italic">{dict.products.category}</span>
-            <p>{productDetails.category}</p>
-            <span className="text-red italic">{dict.products.brand}</span>
-            <p>{productDetails.brand}</p>
-            <span className="text-red italic">{dict.products.description}</span>
-            <p>{productDetails.description}</p>
+            <span className="text-red italic font-bold">
+              {dict.products.category}
+            </span>
+            <p className="dark:text-white">{productDetails.category}</p>
+            <span className="text-red italic font-bold">
+              {dict.products.brand}
+            </span>
+            <p className="dark:text-white">{productDetails.brand}</p>
+            <span className="text-red italic font-bold">
+              {dict.products.description}
+            </span>
+            <p className="dark:text-white">{productDetails.description}</p>
           </div>
         </div>
       </div>

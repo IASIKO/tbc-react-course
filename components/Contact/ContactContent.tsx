@@ -1,12 +1,14 @@
-import { getDictionary } from "../../app/[locale]/dictionaries";
 import ContactForm from "./ContactForm";
 import ContactInfo from "./ContactInfo";
 
-const ContactContent = async ({ locale }: { locale: string }) => {
-  const dict = await getDictionary(locale);
+interface Dict {
+  contact: Record<string, string>;
+}
+
+const ContactContent = async ({ dict }: { dict: Dict }) => {
 
   return (
-    <section className="bg-[#f5f4f0] py-[60px]">
+    <section className="bg-[#f5f4f0] py-[60px] dark:bg-gray">
       <div className="max-w-[1140px] m-auto">
         <ContactInfo dict={dict} />
         <ContactForm dict={dict} />

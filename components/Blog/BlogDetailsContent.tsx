@@ -22,13 +22,13 @@ const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({
   dict,
 }) => {
   return (
-    <section className="py-[60px]">
+    <section className="py-[60px] dark:bg-gray">
       {blogDetails !== undefined && (
         <div className="w-[1140px] m-auto">
           <div className="flex">
             <Image
               src={blogDetails.image}
-              alt={`blog image ${blogDetails.id}`}
+              alt={`blog image ${blogDetails.name}`}
               className="w-[500px] h-auto"
               width={500}
               height={500}
@@ -37,15 +37,15 @@ const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({
               <h2 className="text-black font-normal text-[35px]">
                 {blogDetails.name}
               </h2>
-              <span className="text-red italic"> {dict.blogs.ingredients}</span>
-              <p>
+              <span className="text-red italic font-bold"> {dict.blogs.ingredients}</span>
+              <p className="dark:text-white">
                 {blogDetails.ingredients &&
                   blogDetails.ingredients.map((ingredient, index) => (
                     <span key={index}>{ingredient}, </span>
                   ))}
               </p>
-              <span className="text-red italic">{dict.blogs.instructions}</span>
-              <p>
+              <span className="text-red italic font-bold">{dict.blogs.instructions}</span>
+              <p className="dark:text-white">
                 {blogDetails.instructions &&
                   blogDetails.instructions.map((instruction, index) => (
                     <span key={index}>{instruction} </span>

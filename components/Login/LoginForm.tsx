@@ -5,6 +5,7 @@ import Theme from "../UI/Theme";
 import { useRouter } from "next/navigation";
 import Language from "../UI/Language";
 import { handleLoginRoute } from "../../lib/helpers";
+import ThemeLoader from "../UI/ThemeLoader";
 
 interface Dict {
   login: Record<string, string>;
@@ -17,16 +18,20 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
   });
 
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     e.preventDefault();
     try {
       await handleLoginRoute(loginInfo.username, loginInfo.password);
       router.push("/");
+      setIsLoading(false);
     } catch (error) {
       setErrorMessage("Username / Password is incorrect");
+      setIsLoading(false);
     }
   };
 
@@ -71,9 +76,12 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
         />
         <button
           type="submit"
-          className="uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred dark:bg-dark dark:hover:bg-secondary"
+          className={`h-11 flex justify-center uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred dark:bg-dark dark:hover:bg-secondary ${
+            isLoading ? "bg-lightred" : "bg-red"
+          } ${isLoading ? "dark:bg-secondary" : "dark:bg-dark"}`}
+          disabled={isLoading ? true : false}
         >
-          {dict.login.signin}
+          {isLoading ? <ThemeLoader /> : dict.login.signin}
         </button>
         <p className="text-[18px] dark:text-dark">
           {dict.login.forgot}{" "}
@@ -82,7 +90,7 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
           </span>
         </p>
         {errorMessage && (
-          <p className="bg-red text-white font-bold dark:bg-dark p-2 mt-4 rounded-md animate-fall text-[18px]">
+          <p className="bg-red text-white font-normal dark:bg-dark p-2 mt-4 rounded-md animate-fall text-[18px]">
             {errorMessage}
           </p>
         )}

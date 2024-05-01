@@ -1,13 +1,11 @@
-import React from "react";
-
 const ThemeLoader = () => {
   return (
-    <div className="pl-2 text-white flex justify-center items-center duration-100 dark:bg-dark bg-red rounded h-10 w-28 ">
+    <div className="pl-2 text-white flex justify-center items-end duration-100 rounded py-1 px-1 leading-9 text-xl h-8">
       <svg
         width="25"
         height="25"
         fill="currentColor"
-        className="mr-2 animate-spin"
+        className="animate-spin"
         viewBox="0 0 1792 1792"
         xmlns="http://www.w3.org/2000/svg"
       >

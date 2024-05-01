@@ -18,7 +18,7 @@ interface Dict {
 const Header: React.FC<{ dict: Dict, locale: string }> = async ({ dict, locale }) => {
   return (
     <header>
-      <div className="relative w-[100%] bg-red">
+      <div className="relative w-[100%] bg-red dark:bg-dark">
         <div className="max-w-[1140px] m-auto py-[5px]">
           <div className="flex flex-wrap px-[15px]">
             <div className="flex flex-[0_0_50%] max-w-[50%] gap-4">

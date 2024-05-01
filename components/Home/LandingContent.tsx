@@ -63,7 +63,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
         </div>
       </h1>
 
-      <section className="py-[60px] relative">
+      <section className="py-[60px] relative dark:bg-gray">
         <div className="max-w-[960px] px-[15px] flex justify-center items-center m-auto">
           <div
             style={{ backgroundImage: `url(${aboutImg.src})` }}
@@ -76,12 +76,12 @@ const LandingContent: React.FC<LandingContentProps> = ({
             <h2 className="text-[45px] font-bold text-black leading-normal">
               Desire Meets A New Taste
             </h2>
-            <p className="mb-[10px]">
+            <p className="mb-[10px] dark:text-white">
               A small river named Duden flows by their place and supplies it
               with the necessary regelialia. It is a paradisematic country, in
               which roasted parts of sentences fly into your mouth.
             </p>
-            <p className="mb-[10px]">
+            <p className="mb-[10px] dark:text-white">
               On her way she met a copy. The copy warned the Little Blind Text,
               that where it came from it would have been rewritten a thousand
               times and everything that was left from its origin would be the
@@ -96,20 +96,20 @@ const LandingContent: React.FC<LandingContentProps> = ({
         </div>
       </section>
 
-      <section>
+      <section className="dark:bg-gray">
         <ProductsList productListData={homeProductsListData} dict={dict} />
-        <div className="flex justify-center mb-[60px]">
+        <div className="flex justify-center pb-[60px]">
           <Link href="/products">
-            <Button>View All Products</Button>
+            <Button>{dict.products.viewAllProducts}</Button>
           </Link>
         </div>
       </section>
 
-      <section>
+      <section className="dark:bg-gray pb-[60px]">
         <BlogList blogListData={homeBlogListData} dict={dict} />
-        <div className="flex justify-center mb-[60px]">
+        <div className="flex justify-center">
           <Link href="/blog">
-            <Button>See More...</Button>
+            <Button>{dict.blogs.seeMore}</Button>
           </Link>
         </div>
       </section>

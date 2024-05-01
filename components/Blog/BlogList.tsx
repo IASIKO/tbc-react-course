@@ -19,7 +19,7 @@ interface BlogListProps {
 
 const BlogList: React.FC<BlogListProps> = ({ blogListData, dict }) => {
   return (
-    <div className="py-[60px] relative">
+    <div className="py-[60px] relative dark:bg-gray">
       <div className="max-w-[1140px] px-[15px] m-auto animate-[fall_2s_ease_100ms]">
         <div className="mb-[30px]">
           <div className="text-center">
@@ -33,7 +33,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData, dict }) => {
         </div>
         <div className="w-[1140px] grid grid-cols-2 gap-4">
           {blogListData.map((listItem, index) => (
-            <BlogCard listItem={listItem} key={index} dict={dict} />
+            <BlogCard blogInfo={listItem} key={index} dict={dict} />
           ))}
         </div>
       </div>

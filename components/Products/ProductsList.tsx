@@ -79,7 +79,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
 
   return (
     <>
-      <section className="py-[60px]">
+      <section className="py-[60px] dark:bg-gray">
         <div className="max-w-[960px] mx-auto">
           <div className="pb-[30px] flex-col flex justify-center items-center">
             <span className="text-[#b7472a] text-[21px] font-normal italic">

@@ -16,7 +16,7 @@ const ContactForm = ({ dict }: { dict: Dict }) => {
           title="198 West 21th Street, Suite 721 New York NY 10016"
         ></iframe>
       </div>
-      <div className="px-[60px] py-[60px] bg-white w-[60%]">
+      <div className="px-[60px] py-[60px] bg-white w-[60%] dark:bg-slate-200">
         <h3 className="mb-[15px] text-black font-normal text-[27px]">
           {dict.contact.contactUs}
         </h3>
@@ -28,7 +28,7 @@ const ContactForm = ({ dict }: { dict: Dict }) => {
               </label>
               <input
                 type="text"
-                className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
+                className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
                 placeholder={dict.contact.fullName}
               />
             </div>
@@ -38,7 +38,7 @@ const ContactForm = ({ dict }: { dict: Dict }) => {
               </label>
               <input
                 type="email"
-                className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
+                className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
                 placeholder={dict.contact.email}
               />
             </div>
@@ -49,7 +49,7 @@ const ContactForm = ({ dict }: { dict: Dict }) => {
             </label>
             <input
               type="text"
-              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a]"
+              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
               placeholder={dict.contact.subject}
             />
           </div>
@@ -60,7 +60,7 @@ const ContactForm = ({ dict }: { dict: Dict }) => {
             <textarea
               rows={4}
               cols={50}
-              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] resize-none"
+              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] resize-none placeholder:pl-2"
               placeholder={dict.contact.message}
             />
           </div>
