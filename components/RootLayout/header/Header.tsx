@@ -1,5 +1,3 @@
-"use server";
-
 import { FaUser } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -11,7 +9,7 @@ import LogoutButton from "../../UI/LogoutButton";
 import Theme from "../../UI/Theme";
 import { useTranslations } from "next-intl";
 
-const Header = async () => {
+const Header = () => {
   const t = useTranslations("header");
   return (
     <header>

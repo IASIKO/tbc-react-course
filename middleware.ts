@@ -1,21 +1,16 @@
 import createIntlMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { AUTH_COOKIE_KEY } from "./constants";
 
 export default async function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname;
+  const { pathname } = request.nextUrl;
   // Checking authentification
-  if (
-    !cookies().has(AUTH_COOKIE_KEY) &&
-    (path === `/` ||
-      path.startsWith(`/products`) ||
-      path.startsWith(`/blog`) ||
-      path === `/contact` ||
-      path === `/about` ||
-      path === `/profile`)
-  ) {
-    request.nextUrl.pathname = "/login";
+  if (!cookies().has(AUTH_COOKIE_KEY) && pathname !== "/login") {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+  if (cookies().has(AUTH_COOKIE_KEY) && pathname === "/login") {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   // Rewriting on the supported language
