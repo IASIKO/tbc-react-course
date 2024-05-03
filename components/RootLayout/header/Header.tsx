@@ -1,5 +1,3 @@
-"use server";
-
 import { FaUser } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -9,13 +7,10 @@ import Navigation from "./Navigation";
 import Language from "../../UI/Language";
 import LogoutButton from "../../UI/LogoutButton";
 import Theme from "../../UI/Theme";
+import { useTranslations } from "next-intl";
 
-interface Dict {
-  header: Record<string, string>;
-  login: Record<string, string>;
-}
-
-const Header: React.FC<{ dict: Dict, locale: string }> = async ({ dict, locale }) => {
+const Header = () => {
+  const t = useTranslations("header");
   return (
     <header>
       <div className="relative w-[100%] bg-red dark:bg-dark">
@@ -30,7 +25,7 @@ const Header: React.FC<{ dict: Dict, locale: string }> = async ({ dict, locale }
                   <span>youremail@email.com</span>
                 </a>
               </p>
-              <Language dict={dict} />
+              <Language />
             </div>
 
             <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">
@@ -61,10 +56,10 @@ const Header: React.FC<{ dict: Dict, locale: string }> = async ({ dict, locale }
                 <button className="text-white text-[20px]">
                   <Link href="/profile" className="flex items-center gap-2">
                     <FaUser />
-                    {dict.header.profile}
+                    {t("profile")}
                   </Link>
                 </button>
-                <LogoutButton dict={dict} />
+                <LogoutButton />
                 <Theme />
               </div>
             </div>
@@ -72,7 +67,7 @@ const Header: React.FC<{ dict: Dict, locale: string }> = async ({ dict, locale }
         </div>
       </div>
 
-      <Navigation dict={dict} locale={locale}/>
+      <Navigation />
     </header>
   );
 };

@@ -6,12 +6,9 @@ import { useRouter } from "next/navigation";
 import Language from "../UI/Language";
 import { handleLoginRoute } from "../../lib/helpers";
 import ThemeLoader from "../UI/ThemeLoader";
+import { useTranslations } from "next-intl";
 
-interface Dict {
-  login: Record<string, string>;
-}
-
-const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
+const LoginForm = () => {
   const [loginInfo, setLoginInfo] = useState({
     username: "",
     password: "",
@@ -21,6 +18,7 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
+  const t = useTranslations("login");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
@@ -39,18 +37,18 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
     <div className="w-full flex flex-col items-center gap-40">
       <div className="mt-2">
         <Theme />
-        <Language dict={dict} />
+        <Language />
       </div>
       <form
         className="w-full flex flex-col justify-center items-center px-[90px]"
         onSubmit={handleSubmit}
       >
         <h2 className="uppercase tracking-widest mb-3 dark:text-white">
-          {dict.login.title}
+          {t("title")}
         </h2>
         <input
           type="text"
-          placeholder={dict.login.usernameInput}
+          placeholder={t("usernameInput")}
           required
           value={loginInfo.username}
           onChange={(e) =>
@@ -63,7 +61,7 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
         />
         <input
           type="password"
-          placeholder={dict.login.passwordInput}
+          placeholder={t("passwordInput")}
           required
           value={loginInfo.password}
           onChange={(e) =>
@@ -81,12 +79,12 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
           } ${isLoading ? "dark:bg-secondary" : "dark:bg-dark"}`}
           disabled={isLoading ? true : false}
         >
-          {isLoading ? <ThemeLoader /> : dict.login.signin}
+          {isLoading ? <ThemeLoader /> : t("signin")}
         </button>
         <p className="text-[18px] dark:text-dark">
-          {dict.login.forgot}{" "}
+          {t("forgot")}{" "}
           <span className="text-red hover:text-black cursor-pointer ease-in duration-300 dark:text-white">
-            {dict.login.usernameInput} / {dict.login.passwordInput}?
+            {t("usernameInput")} / {t("passwordInput")}
           </span>
         </p>
         {errorMessage && (
@@ -98,7 +96,7 @@ const LoginForm: React.FC<{ dict: Dict }> = ({ dict }) => {
           type="button"
           className="absolute bottom-14 uppercase text-red cursor-pointer hover:text-black ease-in duration-300 dark:text-white"
         >
-          {dict.login.signup}
+          {t("signup")}
         </button>
       </form>
     </div>

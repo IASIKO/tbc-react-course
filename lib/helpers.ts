@@ -25,21 +25,21 @@
 //   const cookieStore = cookies();
 //   cookieStore.delete(AUTH_COOKIE_KEY);
 // }
-import Negotiator from "negotiator";
-import { match } from "@formatjs/intl-localematcher";
-import { i18n } from "../i18.config";
+// import Negotiator from "negotiator";
+// import { match } from "@formatjs/intl-localematcher";
+// import { i18n } from "../i18.config";
 
-export const getLocale = (request: Request): string => {
-  const negotiationHeaders: { [key: string]: string } = {};
+// export const getLocale = (request: Request): string => {
+//   const negotiationHeaders: { [key: string]: string } = {};
 
-  request.headers.forEach((value, key) => (negotiationHeaders[key] = value));
+//   request.headers.forEach((value, key) => (negotiationHeaders[key] = value));
 
-  const languages = new Negotiator({ headers: negotiationHeaders }).languages();
-  const locales = i18n.locales;
+//   const languages = new Negotiator({ headers: negotiationHeaders }).languages();
+//   const locales = i18n.locales;
 
-  const locale = match(languages, locales, i18n.defaultLocale);
-  return locale;
-};
+//   const locale = match(languages, locales, i18n.defaultLocale);
+//   return locale;
+// };
 
 // export const handleLoginRoute = async (username: string, password: string) => {
 //   await fetch(`http://localhost:3000/api/login`, {
@@ -65,10 +65,10 @@ export const handleLoginRoute = async (username: string, password: string) => {
     });
 
     if (!response.ok) {
-      throw new Error("Username and Password are incorrect");
+      throw new Error("Username / Password is incorrect");
     }
   } catch (error) {
-    throw new Error("Username and Password are incorrect");
+    throw new Error("Username / Password is incorrect");
   }
 };
 

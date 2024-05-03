@@ -1,12 +1,8 @@
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
-import { getDictionary } from "../../dictionaries";
+import { useTranslations } from "next-intl";
 
-export default async function About({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const dict = await getDictionary(locale);
+export default function About() {
+  const t = useTranslations("aboutPage");
 
-  return <TitleBgImage>{dict.aboutPage.about}</TitleBgImage>;
+  return <TitleBgImage>{t("about")}</TitleBgImage>;
 }

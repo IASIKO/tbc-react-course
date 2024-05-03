@@ -1,6 +1,6 @@
+import { useLocale } from "next-intl";
 import ProductsList from "../../../../components/Products/ProductsList";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
-import { getDictionary } from "../../dictionaries";
 
 async function getProducts() {
   const res = await fetch("https://dummyjson.com/products");
@@ -8,18 +8,14 @@ async function getProducts() {
   return res.json();
 }
 
-export default async function Products({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export default async function Products() {
   const productsListData = await getProducts();
-  const dict = await getDictionary(locale);
+  const locale = useLocale();
 
   return (
     <>
-      <TitleBgImage>{dict.products.pageTitle}</TitleBgImage>
-      <ProductsList productListData={productsListData.products} dict={dict} />
+      <TitleBgImage>{locale === "en" ? "Products" : "პროდუქტები"}</TitleBgImage>
+      <ProductsList productListData={productsListData.products} />;
     </>
   );
 }

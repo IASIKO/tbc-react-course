@@ -11,15 +11,20 @@ interface SearchProps {
   searchValue: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isProductsSorted: boolean;
-  dict: Dict;
+  // dict: Dict;
 }
 
-const Search: React.FC<SearchProps> = ({ onChange, searchValue, onClick, isProductsSorted, dict }) => {
+const Search: React.FC<SearchProps> = ({
+  onChange,
+  searchValue,
+  onClick,
+  isProductsSorted,
+}) => {
   return (
     <div className="pt-[60px] w-[960px] flex justify-between">
       <input
         type="text"
-        placeholder={dict.products.searchInput}
+        placeholder="{dict.products.searchInput}"
         value={searchValue}
         onChange={onChange}
         className="border border-red px-[15px] rounded-md w-[350px] outline-none"
@@ -27,13 +32,15 @@ const Search: React.FC<SearchProps> = ({ onChange, searchValue, onClick, isProdu
       <Button onClick={onClick} width="300px">
         {isProductsSorted ? (
           <span className="flex items-center justify-center">
-            {dict.products.resetSort}
+            {/* {dict.products.resetSort} */}
             <i className="pl-[10px]">
               <GrPowerReset />
             </i>
           </span>
         ) : (
-          <span> {dict.products.sortByPrice}</span>
+          <span>
+             {/* {dict.products.sortByPrice} */}
+             </span>
         )}
       </Button>
     </div>

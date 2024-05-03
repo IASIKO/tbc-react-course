@@ -63,6 +63,7 @@
     "lastName": "Last Name",
     "stateAndCountry": "State / Country",
     "streetAndAddress": "Street / Address",
+    "flat": "flat",
     "townOrCity": "Town / City",
     "postCodeAndZIP": "Post Code / ZIP",
     "phone": "Phone",

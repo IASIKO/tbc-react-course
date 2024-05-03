@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React from "react";
 import { MdStarRate } from "react-icons/md";
@@ -10,16 +11,14 @@ interface BlogInfo {
   id: number;
 }
 
-interface Dict {
-  blogs: Record<string, string>;
-}
 
 interface BlogCardProps {
   blogInfo: BlogInfo;
-  dict: Dict;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, dict }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ blogInfo }) => {
+  const t = useTranslations('blogs')
+
   return (
     <div className="mb-[30px] flex">
       <div
@@ -39,7 +38,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, dict }) => {
           href={`/blog/${blogInfo.id}`}
           className="text-red italic font-bold"
         >
-          {dict.blogs.continue}
+          {t('continue')}
         </Link>
       </div>
     </div>

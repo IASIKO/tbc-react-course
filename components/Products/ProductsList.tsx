@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
+import { useTranslations } from "next-intl";
 
 interface ProductList {
   id: number;
@@ -12,25 +13,18 @@ interface ProductList {
   category: string;
 }
 
-interface Dict {
-  products: Record<string, string>;
-}
-
 interface ProductsListProps {
   productListData: ProductList[];
-  dict: Dict;
 }
 
-const ProductsList: React.FC<ProductsListProps> = ({
-  productListData,
-  dict,
-}) => {
+const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
   const [productsListData, setProductsListData] = useState<ProductList[]>([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<ProductList[]>([]);
   const [isProductsSorted, setIsProductsSorted] = useState(false);
   const [sortedProducts, setSortedProducts] = useState<ProductList[]>([]);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const t = useTranslations("products");
 
   useEffect(() => {
     setProductsListData(productListData);
@@ -78,32 +72,29 @@ const ProductsList: React.FC<ProductsListProps> = ({
     : filteredProducts;
 
   return (
-    <>
       <section className="py-[60px] dark:bg-gray">
         <div className="max-w-[960px] mx-auto">
           <div className="pb-[30px] flex-col flex justify-center items-center">
             <span className="text-[#b7472a] text-[21px] font-normal italic">
-              {dict.products.listTitle1}
+              {t("listTitle1")}
             </span>
             <h2 className="text-[45px] font-bold text-black leading-normal">
-              {dict.products.listTitle2}
+              {t("listTitle2")}
             </h2>
             <Search
               onChange={onSearchInputChangeHandler}
               onClick={onSortButtonClickHandler}
               searchValue={searchValue}
               isProductsSorted={isProductsSorted}
-              dict={dict}
             />
           </div>
           <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
             {productListToShow.map((product, index) => (
-              <ProductCard key={index} productInfo={product} dict={dict} />
+              <ProductCard key={index} productInfo={product} />
             ))}
           </div>
         </div>
       </section>
-    </>
   );
 };
 
