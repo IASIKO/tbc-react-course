@@ -3,16 +3,12 @@
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
-interface Dict {
-  header: Record<string, string>;
-}
 
-const Navigation: React.FC<{ dict: Dict; locale: string }> = ({
-  dict,
-  locale,
-}) => {
+const Navigation = () => {
   const pathname = usePathname();
+  const t = useTranslations('header')
 
   return (
     <nav className="absolute left-0 right-0 z-10 bg-transparent">
@@ -30,60 +26,60 @@ const Navigation: React.FC<{ dict: Dict; locale: string }> = ({
               <Link
                 href="/"
                 className={`link ${
-                  pathname === `/${locale}`
+                  pathname === `/`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {dict.header.home}
+                {t('home')}
               </Link>
             </li>
             <li>
               <Link
                 href="/about"
                 className={`link ${
-                  pathname === `/${locale}/about`
+                  pathname === `/about`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {dict.header.about}
+                {t('about')}
               </Link>
             </li>
             <li>
               <Link
                 href="/products"
                 className={`link ${
-                  pathname === `/${locale}/products`
+                  pathname === `/products`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {dict.header.products}
+                {t('products')}
               </Link>
             </li>
             <li>
               <Link
                 href="/blog"
                 className={`link ${
-                  pathname === `/${locale}/blog`
+                  pathname === `/blog`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {dict.header.blog}
+                {t('blog')}
               </Link>
             </li>
             <li>
               <Link
                 href="/contact"
                 className={`link ${
-                  pathname === `/${locale}/contact`
+                  pathname === `/contact`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {dict.header.contact}
+                {t('contact')}
               </Link>
             </li>
           </ul>

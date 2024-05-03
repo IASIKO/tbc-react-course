@@ -63,6 +63,7 @@
     "lastName": "გვარი",
     "stateAndCountry": "ქვეყანა",
     "streetAndAddress": "მისამართი",
+    "flat": "ბინა",
     "townOrCity": "ქალაქი",
     "postCodeAndZIP": "საფოსტო კოდი / ZIP",
     "phone": "ტელეფონი",

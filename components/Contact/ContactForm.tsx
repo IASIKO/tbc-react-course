@@ -1,11 +1,10 @@
 import React from "react";
 import Button from "../UI/Button";
+import { useTranslations } from "next-intl";
 
-interface Dict {
-  contact: Record<string, string>;
-}
+const ContactForm = () => {
+  const t = useTranslations("contact");
 
-const ContactForm = ({ dict }: { dict: Dict }) => {
   return (
     <div className="w-[1140px] my-[60px] flex">
       <div className="w-[40%]">
@@ -18,53 +17,53 @@ const ContactForm = ({ dict }: { dict: Dict }) => {
       </div>
       <div className="px-[60px] py-[60px] bg-white w-[60%] dark:bg-slate-200">
         <h3 className="mb-[15px] text-black font-normal text-[27px]">
-          {dict.contact.contactUs}
+          {t("contactUs")}
         </h3>
         <form>
           <div className="flex mb-[30px]">
             <div className="flex flex-col w-[50%]">
               <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-                {dict.contact.fullName}
+                {t("fullName")}
               </label>
               <input
                 type="text"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
-                placeholder={dict.contact.fullName}
+                placeholder={t("fullName")}
               />
             </div>
             <div className="flex flex-col ml-[20px] w-[50%]">
               <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-                {dict.contact.email}
+                {t("email")}
               </label>
               <input
                 type="email"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
-                placeholder={dict.contact.email}
+                placeholder={t("email")}
               />
             </div>
           </div>
           <div className="flex flex-col mb-[30px]">
             <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-              {dict.contact.subject}
+              {t("subject")}
             </label>
             <input
               type="text"
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
-              placeholder={dict.contact.subject}
+              placeholder={t("subject")}
             />
           </div>
           <div className="flex flex-col mb-[30px]">
             <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-              {dict.contact.message}
+              {t("message")}
             </label>
             <textarea
               rows={4}
               cols={50}
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] resize-none placeholder:pl-2"
-              placeholder={dict.contact.message}
+              placeholder={t("message")}
             />
           </div>
-          <Button> {dict.contact.sendButton}</Button>
+          <Button>{t("sendButton")}</Button>
         </form>
       </div>
     </div>

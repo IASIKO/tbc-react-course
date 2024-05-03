@@ -2,46 +2,38 @@
 
 import React, { useState } from "react";
 import Button from "../UI/Button";
+import { useTranslations } from "next-intl";
 
-interface Dict {
-  profile: Record<string, string>;
-}
-
-const ProfileDetails = ({ dict }: { dict: Dict }) => {
+const ProfileDetails = () => {
   const [changePassword, setChangePassword] = useState({
     newPassword: "",
     confirmNewPassword: "",
   });
+  const t = useTranslations("profile");
 
   return (
     <section className="py-[60px] dark:bg-gray">
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
           <h3 className="text-[25px] font-medium text-black">
-            {dict.profile.profileDetails}
+            {t("profileDetails")}
           </h3>
           <div className="flex gap-5">
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">
-                {dict.profile.firstName}
-              </h2>
+              <h2 className="text-black font-normal">{t("firstName")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">Giorgi</span>
               </div>
             </div>
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">
-                {dict.profile.lastName}
-              </h2>
+              <h2 className="text-black font-normal">{t("lastName")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">Iaseshvili</span>
               </div>
             </div>
           </div>
           <div className="flex flex-col w-[100%] my-[10px]">
-            <h2 className="text-black font-normal">
-              {dict.profile.stateAndCountry}
-            </h2>
+            <h2 className="text-black font-normal">{t("stateAndCountry")}</h2>
             <div className="border-[1px] border-solid border-red py-[5px]">
               <span className="pl-[20px] dark:text-white">Georgia</span>
             </div>
@@ -49,7 +41,7 @@ const ProfileDetails = ({ dict }: { dict: Dict }) => {
           <div className="flex gap-5">
             <div className="flex flex-col w-[50%] my-[10px]">
               <h2 className="text-black font-normal">
-                {dict.profile.streetAndAddress}
+                {t("streetAndAddress")}
               </h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">
@@ -58,7 +50,7 @@ const ProfileDetails = ({ dict }: { dict: Dict }) => {
               </div>
             </div>
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal"></h2>
+              <h2 className="text-black font-normal">{t("flat")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">Flat 3</span>
               </div>
@@ -66,17 +58,13 @@ const ProfileDetails = ({ dict }: { dict: Dict }) => {
           </div>
           <div className="flex gap-5">
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">
-                {dict.profile.townOrCity}
-              </h2>
+              <h2 className="text-black font-normal">{t("townOrCity")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">Tbilisi</span>
               </div>
             </div>
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">
-                {dict.profile.postCodeAndZIP}
-              </h2>
+              <h2 className="text-black font-normal">{t("postCodeAndZIP")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">10166</span>
               </div>
@@ -84,7 +72,7 @@ const ProfileDetails = ({ dict }: { dict: Dict }) => {
           </div>
           <div className="flex gap-5">
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">{dict.profile.phone}</h2>
+              <h2 className="text-black font-normal">{t("phone")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">
                   +995 558 150 018
@@ -92,9 +80,7 @@ const ProfileDetails = ({ dict }: { dict: Dict }) => {
               </div>
             </div>
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">
-                {dict.profile.emailAddress}
-              </h2>
+              <h2 className="text-black font-normal">{t("emailAddress")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">
                   iaseshviligi@gmail.com
@@ -104,17 +90,17 @@ const ProfileDetails = ({ dict }: { dict: Dict }) => {
           </div>
           <form>
             <h3 className="text-[25px] font-medium text-black pt-[60px]">
-              {dict.profile.changePassword}
+              {t("changePassword")}
             </h3>
             <div className="flex mb-[30px]">
               <div className="flex flex-col w-[50%]">
                 <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-                  {dict.profile.newPassword}
+                  {t("newPassword")}
                 </label>
                 <input
                   type="password"
                   className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
-                  placeholder={dict.profile.newPasswordPlaceholder}
+                  placeholder={t("newPasswordPlaceholder")}
                   value={changePassword.newPassword}
                   onChange={(e) =>
                     setChangePassword((prevState) => ({
@@ -126,12 +112,12 @@ const ProfileDetails = ({ dict }: { dict: Dict }) => {
               </div>
               <div className="flex flex-col ml-[20px] w-[50%]">
                 <label className="uppercase text-[#b7472a] text-[15px] font-medium">
-                  {dict.profile.confirmNewPassword}
+                  {t("confirmNewPassword")}
                 </label>
                 <input
                   type="password"
                   className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
-                  placeholder={dict.profile.confirmNewPasswordPlaceholder}
+                  placeholder={t("confirmNewPasswordPlaceholder")}
                   value={changePassword.confirmNewPassword}
                   onChange={(e) =>
                     setChangePassword((prevState) => ({
@@ -142,7 +128,7 @@ const ProfileDetails = ({ dict }: { dict: Dict }) => {
                 />
               </div>
             </div>
-            <Button>{dict.profile.save}</Button>
+            <Button>{t("save")}</Button>
           </form>
         </div>
       </div>

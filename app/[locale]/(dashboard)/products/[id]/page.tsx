@@ -1,11 +1,8 @@
 import ProductDetailsContent from "../../../../../components/Products/ProductDetailsContent";
-import TitleBgImage from "../../../../../components/UI/TitleBgImage";
-import { getDictionary } from "../../../dictionaries";
 
 interface ProductsDetailsProps {
   params: {
     id: number;
-    locale: string;
   };
 }
 
@@ -29,15 +26,9 @@ async function getProductById(productId: number) {
 }
 
 export default async function ProductsDetails({
-  params: { id, locale },
+  params: { id },
 }: ProductsDetailsProps) {
   const product = await getProductById(id);
-  const dict = await getDictionary(locale);
 
-  return (
-    <>
-      <TitleBgImage>{dict.products.singlePageTitle}</TitleBgImage>
-      <ProductDetailsContent productDetails={product} dict={dict} />
-    </>
-  );
+  return <ProductDetailsContent productDetails={product} />;
 }

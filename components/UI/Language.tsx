@@ -1,40 +1,34 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { setLanguage } from "../../lib/actions";
+import { useLocale } from "next-intl";
 
-interface Dict {
-  login: Record<string, string>;
-}
-
-const Language: React.FC<{ dict: Dict }> = ({ dict }) => {
-  let pathname = usePathname();
-  let route = pathname.substring(6);
-  const isEnUs = pathname.startsWith("/en-US");
+const Language = () => {
+  const router = useRouter();
+  const locale = useLocale();
 
   const langHandleCLick = (lang: string) => {
     setLanguage(lang);
+    router.refresh();
   };
 
   return (
     <div className="duration-100 flex gap-2 items-center justify-center">
-      <Link
-        href={`/en-US/${route}`}
-        className={isEnUs ? "text-yellow" : "text-black dark:text-balck"}
+      <div
+        className={
+          locale === "en" ? "text-yellow" : "text-black dark:text-balck"
+        }
       >
-        <button onClick={() => langHandleCLick("en-US")}>
-          {dict.login.en}
-        </button>
-      </Link>
-      <Link
-        href={`/ka-GE/${route}`}
-        className={!isEnUs ? "text-yellow" : "text-black dark:text-black"}
+        <button onClick={() => langHandleCLick("en")}>EN</button>
+      </div>
+      <div
+        className={
+          locale === "ka" ? "text-yellow" : "text-black dark:text-black"
+        }
       >
-        <button onClick={() => langHandleCLick("ka-GE")}>
-          {dict.login.ge}
-        </button>
-      </Link>
+        <button onClick={() => langHandleCLick("ka")}>ქა</button>
+      </div>
     </div>
   );
 };

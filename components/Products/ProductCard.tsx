@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../UI/Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 interface ProductInfo {
   id: number;
@@ -11,17 +12,14 @@ interface ProductInfo {
   price: number;
 }
 
-interface Dict {
-  products: Record<string, string>;
-}
-
 interface ProductCardProps {
   productInfo: ProductInfo;
-  dict: Dict;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ productInfo, dict }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ productInfo }) => {
   const router = useRouter();
+  const t = useTranslations("products");
+
   const onProductCardClickHandler = () => {
     router.push(`/products/${productInfo.id}`);
   };
@@ -48,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ productInfo, dict }) => {
         </div>
       </div>
       <div className="mb-[30px]">
-        <Button>{dict.products.addToCart}</Button>
+        <Button>{t("addToCart")}</Button>
       </div>
     </div>
   );

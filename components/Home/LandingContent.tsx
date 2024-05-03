@@ -3,6 +3,7 @@ import ProductsList from "../Products/ProductsList";
 import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
+import { useTranslations } from "next-intl";
 
 interface BlogListData {
   image: string;
@@ -20,22 +21,16 @@ interface ProductListData {
   category: string;
 }
 
-interface Dict {
-  products: Record<string, string>;
-  blogs: Record<string, string>;
-}
-
 interface LandingContentProps {
   blogListData: BlogListData[];
   productListData: ProductListData[];
-  dict: Dict;
 }
 
 const LandingContent: React.FC<LandingContentProps> = ({
   blogListData,
   productListData,
-  dict,
 }) => {
+  const t = useTranslations()
   const homeBlogListData = blogListData.slice(0, 4);
   const homeProductsListData = productListData.slice(0, 8);
 
@@ -97,19 +92,19 @@ const LandingContent: React.FC<LandingContentProps> = ({
       </section>
 
       <section className="dark:bg-gray">
-        <ProductsList productListData={homeProductsListData} dict={dict} />
+        <ProductsList productListData={homeProductsListData} />
         <div className="flex justify-center pb-[60px]">
           <Link href="/products">
-            <Button>{dict.products.viewAllProducts}</Button>
+            <Button>{t('products.viewAllProducts')}</Button>
           </Link>
         </div>
       </section>
 
       <section className="dark:bg-gray pb-[60px]">
-        <BlogList blogListData={homeBlogListData} dict={dict} />
+        <BlogList blogListData={homeBlogListData} />
         <div className="flex justify-center">
           <Link href="/blog">
-            <Button>{dict.blogs.seeMore}</Button>
+            <Button>{t('blogs.seeMore')}</Button>
           </Link>
         </div>
       </section>

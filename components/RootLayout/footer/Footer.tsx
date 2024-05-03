@@ -5,20 +5,21 @@ interface Dict {
   footer: Record<string, string>;
 }
 
-const Footer: React.FC<{ dict: Dict }> = ({ dict }) => {
+const Footer = () => {
   const footerLinksContent = [
-    {
-      title: dict.footer.myAccount,
-      list: [dict.footer.myAccount, dict.footer.register, dict.footer.login, dict.footer.myOrder],
-    },
-    {
-      title: dict.footer.information,
-      list: [dict.footer.aboutUs, dict.footer.catalog, dict.footer.contactUs, dict.footer.terms],
-    },
-    {
-      title: dict.footer.quickLink,
-      list: [dict.footer.newUser, dict.footer.help, dict.footer.spam, dict.footer.faqs],
-    },
+    {title: 'satauri', list: ['satauri', 'satauri']}
+    // {
+    //   title: dict.footer.myAccount,
+    //   list: [dict.footer.myAccount, dict.footer.register, dict.footer.login, dict.footer.myOrder],
+    // },
+    // {
+    //   title: dict.footer.information,
+    //   list: [dict.footer.aboutUs, dict.footer.catalog, dict.footer.contactUs, dict.footer.terms],
+    // },
+    // {
+    //   title: dict.footer.quickLink,
+    //   list: [dict.footer.newUser, dict.footer.help, dict.footer.spam, dict.footer.faqs],
+    // },
   ];
 
   return (
@@ -31,11 +32,12 @@ const Footer: React.FC<{ dict: Dict }> = ({ dict }) => {
           <div className="flex-1 max-w-[100%]">
             <div className="ml-[15px] mb-[15px]">
               <h2 className="text-[#ffffff] mb-[30px] text-[20px] font-normal">
-                {dict.footer.subscription}
+                {/* {dict.footer.subscription} */}
               </h2>
               <input
                 type="email"
-                placeholder={dict.footer.subscriptionInputPH}
+                placeholder=''
+                // {dict.footer.subscriptionInputPH}
                 className="p-[10px] rounded-[5px] border-none"
               />
             </div>
