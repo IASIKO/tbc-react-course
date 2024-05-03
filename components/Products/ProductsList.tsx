@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
-import TitleBgImage from "../UI/TitleBgImage";
 import { useTranslations } from "next-intl";
 
 interface ProductList {
@@ -73,8 +72,6 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
     : filteredProducts;
 
   return (
-    <>
-      <TitleBgImage>{t("pageTitle")}</TitleBgImage>
       <section className="py-[60px] dark:bg-gray">
         <div className="max-w-[960px] mx-auto">
           <div className="pb-[30px] flex-col flex justify-center items-center">
@@ -98,7 +95,6 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
           </div>
         </div>
       </section>
-    </>
   );
 };
 

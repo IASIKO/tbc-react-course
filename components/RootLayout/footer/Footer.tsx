@@ -1,25 +1,22 @@
 import React from "react";
 import FooterLinks from "./FooterLinks";
-
-interface Dict {
-  footer: Record<string, string>;
-}
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const t = useTranslations("footer");
   const footerLinksContent = [
-    {title: 'satauri', list: ['satauri', 'satauri']}
-    // {
-    //   title: dict.footer.myAccount,
-    //   list: [dict.footer.myAccount, dict.footer.register, dict.footer.login, dict.footer.myOrder],
-    // },
-    // {
-    //   title: dict.footer.information,
-    //   list: [dict.footer.aboutUs, dict.footer.catalog, dict.footer.contactUs, dict.footer.terms],
-    // },
-    // {
-    //   title: dict.footer.quickLink,
-    //   list: [dict.footer.newUser, dict.footer.help, dict.footer.spam, dict.footer.faqs],
-    // },
+    {
+      title: t("myAccount"),
+      list: [t("myAccount"), t("register"), t("login"), t("myOrder")],
+    },
+    {
+      title: t("information"),
+      list: [t("aboutUs"), t("catalog"), t("contactUs"), t("terms")],
+    },
+    {
+      title: t("quickLink"),
+      list: [t("newUser"), t("help"), t("spam"), t("faqs")],
+    },
   ];
 
   return (
@@ -32,12 +29,11 @@ const Footer = () => {
           <div className="flex-1 max-w-[100%]">
             <div className="ml-[15px] mb-[15px]">
               <h2 className="text-[#ffffff] mb-[30px] text-[20px] font-normal">
-                {/* {dict.footer.subscription} */}
+                {t("subscription")}
               </h2>
               <input
                 type="email"
-                placeholder=''
-                // {dict.footer.subscriptionInputPH}
+                placeholder={t("subscriptionInputPH")}
                 className="p-[10px] rounded-[5px] border-none"
               />
             </div>
