@@ -36,7 +36,9 @@ const LoginForm = () => {
   return (
     <div className="w-full flex flex-col items-center gap-40">
       <div className="mt-2">
-        <Theme />
+        <div className="duration-100 bg-red dark:bg-dark rounded py-1 px-1 flex justify-center w-[100px]">
+          <Theme />
+        </div>
         <Language />
       </div>
       <form

@@ -60,7 +60,9 @@ const Header = () => {
                   </Link>
                 </button>
                 <LogoutButton />
-                <Theme />
+                <div className="duration-100 rounded py-1 px-1 flex justify-center w-[100px]">
+                  <Theme />
+                </div>
               </div>
             </div>
           </div>
