@@ -17,7 +17,7 @@ export const metadata = {
 };
 
 export function generateStaticParams() {
-  return ['en', 'ka'].map((locale) => ({ locale }));
+  return ["en", "ka"].map((locale) => ({ locale }));
 }
 
 export default function RootLayout({

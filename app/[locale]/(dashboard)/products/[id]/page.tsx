@@ -1,8 +1,10 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import ProductDetailsContent from "../../../../../components/Products/ProductDetailsContent";
 
 interface ProductsDetailsProps {
   params: {
     id: number;
+    locale: string;
   };
 }
 
@@ -26,8 +28,9 @@ async function getProductById(productId: number) {
 }
 
 export default async function ProductsDetails({
-  params: { id },
+  params: { id, locale },
 }: ProductsDetailsProps) {
+  unstable_setRequestLocale(locale);
   const product = await getProductById(id);
 
   return <ProductDetailsContent productDetails={product} />;

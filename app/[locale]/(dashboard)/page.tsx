@@ -1,6 +1,7 @@
 import bg from "../../../public/Assets/images/bg_1.jpg";
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");
@@ -14,7 +15,13 @@ async function getProducts() {
   return res.json();
 }
 
-export default async function DashboardHome() {
+export default async function DashboardHome({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
+
   const blogListData = await getBlogs();
   const productListData = await getProducts();
 

@@ -1,8 +1,10 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import BlogDetailsContent from "../../../../../components/Blog/BlogDetailsContent";
 
 interface BlogsDetailsProps {
   params: {
     id: number;
+    locale: string;
   };
 }
 
@@ -22,8 +24,9 @@ async function getBlogById(blogId: number) {
 }
 
 export default async function BlogDetails({
-  params: { id },
+  params: { id, locale },
 }: BlogsDetailsProps) {
+  unstable_setRequestLocale(locale);
   const blog = await getBlogById(id);
 
   return <BlogDetailsContent blogDetails={blog} />;
