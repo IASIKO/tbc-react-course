@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "../../../constants";
+import { AUTH_COOKIE_KEY } from "../../../lib/constants";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {

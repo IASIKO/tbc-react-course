@@ -1,6 +1,9 @@
 // import { cookies } from "next/headers";
 // import { AUTH_COOKIE_KEY } from "@/constants";
 
+import { BASE_URL } from "./api";
+
+
 // export async function login(username, password) {
 //   const res = await fetch("https://dummyjson.com/auth/login", {
 //     method: "POST",
@@ -55,7 +58,7 @@
 
 export const handleLoginRoute = async (username: string, password: string) => {
   try {
-    const response = await fetch(`http://localhost:3000/api/login`, {
+    const response = await fetch(`${BASE_URL}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -73,7 +76,7 @@ export const handleLoginRoute = async (username: string, password: string) => {
 };
 
 export const handleLogoutRoute = async () => {
-  await fetch(`http://localhost:3000/api/logout`, {
+  await fetch(`${BASE_URL}/api/logout`, {
     method: "POST",
   });
 };
