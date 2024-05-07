@@ -1,13 +1,11 @@
 import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const name = searchParams.get("name");
-  const email = searchParams.get("email");
+export async function POST(request: Request) {
+  const { name, email } = await request.json();
 
   try {
-    if (!name || !email) throw new Error("name and email required");
+    if (!name || !email) throw new Error("name and email are required");
     await sql`INSERT INTO users (name, email) VALUES (${name}, ${email});`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
