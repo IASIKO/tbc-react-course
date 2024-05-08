@@ -2,6 +2,7 @@
 
 import { FaPlus } from "react-icons/fa";
 import Button from "../UI/Button";
+import ThemeLoader from "../UI/ThemeLoader";
 
 interface UserForm {
   modalIsOpen: boolean;
@@ -12,6 +13,7 @@ interface UserForm {
   name: string;
   email: string;
   isUpdate: boolean;
+  isSubmitLoading: boolean;
 }
 
 const AddUserForm = ({
@@ -23,6 +25,7 @@ const AddUserForm = ({
   name,
   email,
   isUpdate,
+  isSubmitLoading,
 }: UserForm) => {
   return (
     <>
@@ -70,7 +73,7 @@ const AddUserForm = ({
                 type="submit"
                 className="h-11 flex justify-center uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred dark:bg-dark dark:hover:bg-secondary"
               >
-                SAVE
+                {isSubmitLoading ? <ThemeLoader /> : "SAVE"}
               </button>
             </form>
           </div>

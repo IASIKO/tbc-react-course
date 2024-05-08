@@ -25,6 +25,7 @@ export const createUser = async (name: string, email: string) => {
 export const deleteUser = async (userId: number) => {
   await fetch(`${BASE_URL}/api/users/delete-user/${userId}`, {
     method: "DELETE",
+    cache: 'no-store'
   });
 };
 

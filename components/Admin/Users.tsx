@@ -11,6 +11,7 @@ import {
   deleteUserAction,
   editUserAction,
 } from "../../lib/actions";
+import Loader from "../UI/Loader";
 
 interface UsersProps {
   users: UserInfo[];
@@ -19,6 +20,8 @@ interface UsersProps {
 const Users = ({ users }: UsersProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
+  const [isSubmitLoading, setIsSubmitLoading] = useState(false);
+  const [isDeleteLoading, setIsDeletLoading] = useState(false);
   const [formData, setFormData] = useState({ id: 0, name: "", email: "" });
   const router = useRouter();
 
@@ -26,16 +29,19 @@ const Users = ({ users }: UsersProps) => {
     setModalIsOpen(true);
   };
 
-  const submitHandler = async () => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitLoading(true);
     if (isUpdate) {
-      editUserAction(formData.id, formData.name, formData.email);
+      await editUserAction(formData.id, formData.name, formData.email);
     } else {
-      createUserAction(formData.name, formData.email);
+      await createUserAction(formData.name, formData.email);
     }
     setFormData({ id: 0, name: "", email: "" });
-    setModalIsOpen(false);
     setIsUpdate(false);
     router.refresh();
+    setIsSubmitLoading(false);
+    setModalIsOpen(false);
   };
 
   const isClose = () => {
@@ -64,60 +70,67 @@ const Users = ({ users }: UsersProps) => {
               name={formData.name}
               email={formData.email}
               isUpdate={isUpdate}
+              isSubmitLoading={isSubmitLoading}
             />
-            <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow dark:bg-dark">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    Email
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray">
-                {users.map((user: UserInfo) => (
-                  <tr key={user.id}>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900 dark:text-white">
-                        {user.name}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900 dark:text-white">
-                        {user.email}
-                      </div>
-                    </td>
-                    <td className="flex items-center justify-end gap-4 px-6 py-4 whitespace-nowrap ">
-                      <button
-                        onClick={() => {
-                          isOpen();
-                          setIsUpdate(true);
-                          setFormData({
-                            id: user.id,
-                            name: user.name,
-                            email: user.email,
-                          });
-                        }}
-                        className="hover:text-yellow cursor-pointer duration-100 dark:text-white hover:dark:text-yellow"
-                      >
-                        <MdEdit />
-                      </button>
-                      <button
-                        onClick={() => {
-                          deleteUserAction(user.id);
-                          router.refresh();
-                        }}
-                        className="hover:text-yellow cursor-pointer duration-100 dark:text-white hover:dark:text-yellow"
-                      >
-                        <MdDelete />
-                      </button>
-                    </td>
+            {isDeleteLoading ? (
+              <Loader />
+            ) : (
+              <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow dark:bg-dark">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
+                      Name
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
+                      Email
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray">
+                  {users.map((user: UserInfo) => (
+                    <tr key={user.id}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900 dark:text-white">
+                          {user.name}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900 dark:text-white">
+                          {user.email}
+                        </div>
+                      </td>
+                      <td className="flex items-center justify-end gap-4 px-6 py-4 whitespace-nowrap ">
+                        <button
+                          onClick={() => {
+                            isOpen();
+                            setIsUpdate(true);
+                            setFormData({
+                              id: user.id,
+                              name: user.name,
+                              email: user.email,
+                            });
+                          }}
+                          className="hover:text-yellow cursor-pointer duration-100 dark:text-white hover:dark:text-yellow"
+                        >
+                          <MdEdit />
+                        </button>
+                        <button
+                          onClick={async () => {
+                            setIsDeletLoading(true);
+                            await deleteUserAction(user.id);
+                            router.refresh();
+                            setIsDeletLoading(false);
+                          }}
+                          className="hover:text-yellow cursor-pointer duration-100 dark:text-white hover:dark:text-yellow"
+                        >
+                          <MdDelete />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       </section>
