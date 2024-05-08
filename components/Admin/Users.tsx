@@ -63,26 +63,31 @@ const Users = ({ users }: UsersProps) => {
               handleChange={handleChange}
               name={formData.name}
               email={formData.email}
+              isUpdate={isUpdate}
             />
-            <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow">
+            <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow dark:bg-dark">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
                     Email
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray">
                 {users.map((user: UserInfo) => (
                   <tr key={user.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{user.name}</div>
+                      <div className="text-sm text-gray-900 dark:text-white">
+                        {user.name}
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{user.email}</div>
+                      <div className="text-sm text-gray-900 dark:text-white">
+                        {user.email}
+                      </div>
                     </td>
                     <td className="flex items-center justify-end gap-4 px-6 py-4 whitespace-nowrap ">
                       <button
@@ -95,7 +100,7 @@ const Users = ({ users }: UsersProps) => {
                             email: user.email,
                           });
                         }}
-                        className="hover:text-yellow cursor-pointer duration-100"
+                        className="hover:text-yellow cursor-pointer duration-100 dark:text-white hover:dark:text-yellow"
                       >
                         <MdEdit />
                       </button>
@@ -104,7 +109,7 @@ const Users = ({ users }: UsersProps) => {
                           deleteUserAction(user.id);
                           router.refresh();
                         }}
-                        className="hover:text-yellow cursor-pointer duration-100"
+                        className="hover:text-yellow cursor-pointer duration-100 dark:text-white hover:dark:text-yellow"
                       >
                         <MdDelete />
                       </button>

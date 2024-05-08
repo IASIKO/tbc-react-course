@@ -2,7 +2,6 @@
 
 import { cookies } from "next/headers";
 import { createUser, deleteUser, editUser } from "./api";
-import { revalidatePath } from "next/cache";
 
 export const setLanguage = (lang: string) => {
   cookies().set("NEXT_LOCALE", lang);

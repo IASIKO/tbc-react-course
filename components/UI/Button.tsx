@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, width }) => {
     <button
       onClick={onClick}
       style={{ width: width ? width : "" }}
-      className="text-[21px] font-medium cursor-pointer ml-[5px] bg-[#b7472a] border-[#b7472a] text-white rounded-md px-[15px] flex items-center justify-center gap-4"
+      className="text-[21px] font-medium cursor-pointer ml-[5px] bg-[#b7472a] border-[#b7472a] text-white rounded-md px-[15px] flex items-center justify-center gap-4 dark:bg-dark dark:border-dark"
     >
       {children}
     </button>
