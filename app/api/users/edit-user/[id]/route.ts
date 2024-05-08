@@ -2,6 +2,7 @@ import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(request: NextRequest) {
+
   const id = request.nextUrl.pathname.replace("/api/users/edit-user/", "");
   const { name, email } = await request.json();
 
