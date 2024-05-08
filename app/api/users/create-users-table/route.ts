@@ -10,3 +10,11 @@ export async function GET() {
     return NextResponse.json({ error }, { status: 500 });
   }
 }
+
+
+// try {
+//   const result = await sql`DROP TABLE IF EXISTS users;`;
+//   return NextResponse.json({ result }, { status: 200 });
+// } catch (error) {
+//   return NextResponse.json({ error }, { status: 500 });
+// }

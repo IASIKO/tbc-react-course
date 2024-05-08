@@ -68,9 +68,14 @@ module.exports = {
           "0%": { transform: " translate3d(0,40px,0)" },
           "50%": { transform: "translate3d(0,0,0)" },
         },
+        down: {
+          "0%": { transform: " translate3d(0,0,0)" },
+          "50%": { transform: "translate3d(0,40px,0)" },
+        },
       },
       animation: {
         fall: "fall 2s ease",
+        down: "down 2s ease",
       },
     },
   },

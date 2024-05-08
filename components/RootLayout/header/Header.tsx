@@ -2,6 +2,7 @@ import { FaUser } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
+import { MdAdminPanelSettings } from "react-icons/md";
 import Link from "next/link";
 import Navigation from "./Navigation";
 import Language from "../../UI/Language";
@@ -26,6 +27,10 @@ const Header = () => {
                 </a>
               </p>
               <Language />
+              <Link href='/admin' className="flex items-center text-white">
+                <MdAdminPanelSettings />
+                Admin
+              </Link>
             </div>
 
             <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">

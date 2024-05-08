@@ -14,11 +14,3 @@ export async function POST(request: Request) {
   const users = await sql`SELECT * FROM users;`;
   return NextResponse.json({ users }, { status: 200 });
 }
-
-
-// try {
-//   const result = await sql`DROP TABLE IF EXISTS users;`;
-//   return NextResponse.json({ result }, { status: 200 });
-// } catch (error) {
-//   return NextResponse.json({ error }, { status: 500 });
-// }
