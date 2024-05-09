@@ -1,7 +1,7 @@
 import createIntlMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "./constants";
+import { AUTH_COOKIE_KEY } from "./lib/constants";
 
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
