@@ -11,7 +11,7 @@ import {
   deleteUserAction,
   editUserAction,
 } from "../../lib/actions";
-import Loader from "../UI/Loader";
+import ThemeLoader from "../UI/ThemeLoader";
 
 interface UsersProps {
   users: UserInfo[];
@@ -46,6 +46,7 @@ const Users = ({ users }: UsersProps) => {
 
   const isClose = () => {
     setModalIsOpen(false);
+    setFormData({ id: 0, name: "", email: "" });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +55,8 @@ const Users = ({ users }: UsersProps) => {
       [e.target.name]: e.target.value,
     }));
   };
+
+  const sortedUsers = users.slice().sort((a, b) => a.id - b.id);
 
   return (
     <>
@@ -73,7 +76,7 @@ const Users = ({ users }: UsersProps) => {
               isSubmitLoading={isSubmitLoading}
             />
             {isDeleteLoading ? (
-              <Loader />
+              <ThemeLoader />
             ) : (
               <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow dark:bg-dark">
                 <thead className="bg-gray-50">
@@ -87,15 +90,15 @@ const Users = ({ users }: UsersProps) => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray">
-                  {users.map((user: UserInfo) => (
+                  {sortedUsers.map((user: UserInfo) => (
                     <tr key={user.id}>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900 dark:text-white">
+                        <div className="text-[16px] text-gray-900 dark:text-white">
                           {user.name}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900 dark:text-white">
+                        <div className="text-[16px] text-gray-900 dark:text-white">
                           {user.email}
                         </div>
                       </td>

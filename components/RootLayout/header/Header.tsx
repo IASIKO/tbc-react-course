@@ -27,8 +27,11 @@ const Header = () => {
                 </a>
               </p>
               <Language />
-              <Link href='/admin' className="flex items-center text-white">
-                <MdAdminPanelSettings />
+              <Link
+                href="/admin"
+                className="flex items-center text-white"
+              >
+                  <MdAdminPanelSettings />
                 Admin
               </Link>
             </div>
