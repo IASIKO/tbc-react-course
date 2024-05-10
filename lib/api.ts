@@ -1,7 +1,7 @@
 export const BASE_URL =
   process.env.VERCEL_ENV === "development"
     ? "http://localhost:3000"
-    : "https://tbc-react-course-o4qvbr91f-iasikos-projects.vercel.app";
+    : "https://tbc-react-course-etrft0x84-iasikos-projects.vercel.app";
 
 // USERS
 
