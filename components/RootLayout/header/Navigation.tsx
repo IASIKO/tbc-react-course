@@ -4,7 +4,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useLocalStorage } from "../../../hooks/useLocaleStorage";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
 
 interface selectedProduct {
@@ -14,15 +14,14 @@ interface selectedProduct {
 }
 
 const Navigation = () => {
-  const [isClient, setIsClient] = useState(false)
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
   const t = useTranslations("header");
-  const [products] = useLocalStorage("selectedProducts");
+  const [products, setProducts] = useLocalStorage("selectedProducts");
 
   useEffect(() => {
-    setIsClient(true)
-  }, [])
-
+    setIsClient(true);
+  }, []);
 
   const selectedNumber =
     typeof window !== "undefined" && products
@@ -30,7 +29,6 @@ const Navigation = () => {
           return acc + curr.count;
         }, 0)
       : 0;
-
 
   return (
     <nav className="absolute left-0 right-0 z-10 bg-transparent">
@@ -112,7 +110,9 @@ const Navigation = () => {
         >
           <HiOutlineShoppingBag />
           <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#4e4d4dbf] opacity-90 flex items-center justify-center">
-            <div className="text-white text-xs">{isClient && selectedNumber}</div>
+            <div className="text-white text-xs">
+              {isClient && selectedNumber}
+            </div>
           </div>
         </Link>
       </div>

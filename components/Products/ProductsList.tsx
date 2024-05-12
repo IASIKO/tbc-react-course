@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
 import { useTranslations } from "next-intl";
-import { useLocalStorage } from "../../hooks/useLocaleStorage";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useReducerHook } from "../../hooks/useReducerHook";
 
 interface Product {
   id: number;
@@ -24,80 +25,6 @@ interface ProductsListProps {
   productListData: Product[];
 }
 
-interface selectedProduct {
-  id: number;
-  // product: Product;
-  count: number;
-}
-
-const initialState: selectedProduct[] = [];
-
-type Action =
-  | { type: "INCREMENT"; payload: number }
-  | { type: "DECREMENT"; payload: number }
-  | { type: "RESET"; payload: number }
-  | { type: "CLEAR" };
-
-const reducer = (state: selectedProduct[], action: Action) => {
-  switch (action.type) {
-    case "INCREMENT": {
-      const selectedProductsIndex = state.findIndex(
-        (p) => p.id === action.payload
-      );
-
-      if (selectedProductsIndex === -1)
-        return [...state, { id: action.payload, count: 1 }];
-
-      const clone = [...state];
-      const selectedProduct = clone[selectedProductsIndex];
-      const updatedSelectedProduct = {
-        ...selectedProduct,
-        count: selectedProduct.count + 1,
-      };
-      clone[selectedProductsIndex] = updatedSelectedProduct;
-
-      return clone;
-    }
-
-    case "DECREMENT": {
-      const selectedProductsIndex = state.findIndex(
-        (p) => p.id === action.payload
-      );
-
-      if (selectedProductsIndex === -1)
-        return [...state, { id: action.payload, count: 1 }];
-
-      const clone = [...state];
-      const selectedProduct = clone[selectedProductsIndex];
-      const updatedSelectedProduct = {
-        ...selectedProduct,
-        count: selectedProduct.count - 1,
-      };
-      if (updatedSelectedProduct.count === 0) {
-        clone.splice(selectedProductsIndex, 1);
-      } else {
-        clone[selectedProductsIndex] = updatedSelectedProduct;
-      }
-
-      return clone;
-    }
-
-    case "RESET": {
-      const productId = action.payload;
-      const selectedProductsIndex = state.findIndex((p) => p.id === productId);
-      if (selectedProductsIndex !== -1) {
-        const newState = [...state];
-        newState.splice(selectedProductsIndex, 1);
-        return newState;
-      }
-      return state;
-    }
-
-    case "CLEAR":
-      return initialState;
-  }
-};
-
 const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
   const [productsListData, setProductsListData] = useState<Product[]>([]);
   const [searchValue, setSearchValue] = useState("");
@@ -106,13 +33,8 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const t = useTranslations("products");
-  const [selectedProducts, dispatch] = useReducer(reducer, [], () => {
-    if (typeof window !== "undefined") {
-      const storedValue = window.localStorage.getItem("selectedProducts");
-      return storedValue ? JSON.parse(storedValue) : initialState;
-    }
-  });
-  const [, setCachedValue] = useLocalStorage("selectedProducts");
+  const [selectedProducts, dispatch] = useReducerHook()
+  const [, setCachedValue] = useLocalStorage('selectedProducts')
 
   useEffect(() => {
     setProductsListData(productListData);
@@ -168,12 +90,15 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
   };
 
   const resetHandler = (product: Product) => {
-    dispatch({ type: "RESET", payload: product.id });
+    dispatch({ type: "RESET", payload: product.id  });
   };
 
   const productListToShow = isProductsSorted
     ? sortedProducts
     : filteredProducts;
+
+    console.log(selectedProducts);
+    
 
   return (
     <section className="py-[60px] dark:bg-gray">
