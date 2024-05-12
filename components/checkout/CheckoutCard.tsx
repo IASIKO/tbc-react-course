@@ -36,7 +36,6 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
   resetHandler,
   selectedProduct,
 }) => {
-  console.log(product);
 
   return (
     <tr key={product.id}>

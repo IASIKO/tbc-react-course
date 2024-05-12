@@ -7,9 +7,22 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useReducerHook } from "../../../hooks/useReducerHook";
 
-interface selectedProduct {
+interface Product {
   id: number;
-  // product: Product;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
+}
+
+interface selectedProduct {
+  product: Product;
   count: number;
 }
 

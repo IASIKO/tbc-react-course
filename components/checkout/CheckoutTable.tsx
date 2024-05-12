@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useReducerHook } from "../../hooks/useReducerHook";
 import CheckoutCard from "./CheckoutCard";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 interface Product {
   id: number;
@@ -23,7 +25,14 @@ interface selectedProduct {
 }
 
 const CheckoutTable = () => {
+  const [isClient, setIsClient] = useState(false);
   const [selectedProducts, dispatch] = useReducerHook();
+  const [, setCachedValue] = useLocalStorage("selectedProducts");
+
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const incrementHandler = (product: Product) => {
     dispatch({ type: "INCREMENT", payload: product });
@@ -36,6 +45,10 @@ const CheckoutTable = () => {
   const resetHandler = (product: Product) => {
     dispatch({ type: "RESET", payload: product });
   };
+
+  useEffect(() => {
+    setCachedValue(selectedProducts);
+  }, [selectedProducts, setCachedValue]);
 
 
   return (
@@ -55,7 +68,7 @@ const CheckoutTable = () => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray">
-          {selectedProducts?.map((product: selectedProduct) => (
+          {isClient && selectedProducts?.map((product: selectedProduct) => (
             <CheckoutCard
               key={product.product.id}
               product={product.product}
