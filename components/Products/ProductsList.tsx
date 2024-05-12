@@ -33,8 +33,8 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const t = useTranslations("products");
-  const [selectedProducts, dispatch] = useReducerHook()
-  const [, setCachedValue] = useLocalStorage('selectedProducts')
+  const [selectedProducts, dispatch] = useReducerHook();
+  const [, setCachedValue] = useLocalStorage("selectedProducts");
 
   useEffect(() => {
     setProductsListData(productListData);
@@ -82,23 +82,20 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
   };
 
   const incrementHandler = (product: Product) => {
-    dispatch({ type: "INCREMENT", payload: product.id });
+    dispatch({ type: "INCREMENT", payload: product });
   };
 
   const decrementHandler = (product: Product) => {
-    dispatch({ type: "DECREMENT", payload: product.id });
+    dispatch({ type: "DECREMENT", payload: product });
   };
 
   const resetHandler = (product: Product) => {
-    dispatch({ type: "RESET", payload: product.id  });
+    dispatch({ type: "RESET", payload: product });
   };
 
   const productListToShow = isProductsSorted
     ? sortedProducts
     : filteredProducts;
-
-    console.log(selectedProducts);
-    
 
   return (
     <section className="py-[60px] dark:bg-gray">

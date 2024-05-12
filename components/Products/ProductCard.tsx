@@ -22,8 +22,7 @@ interface Product {
 }
 
 interface selectedProduct {
-  id: number;
-  // product: Product;
+  product: Product;
   count: number;
 }
 
@@ -44,7 +43,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const router = useRouter();
   const t = useTranslations("products");
-  const isSelected = selectedProducts.some((p) => p.id === product.id);
+  const isSelected =
+    selectedProducts.some((p) => p.product?.id === product.id);
 
   const onProductCardClickHandler = () => {
     router.push(`/products/${product.id}`);

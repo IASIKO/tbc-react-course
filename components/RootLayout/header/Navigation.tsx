@@ -4,8 +4,8 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
+import { useReducerHook } from "../../../hooks/useReducerHook";
 
 interface selectedProduct {
   id: number;
@@ -17,15 +17,15 @@ const Navigation = () => {
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
   const t = useTranslations("header");
-  const [products, setProducts] = useLocalStorage("selectedProducts");
+  const [selectedProducts] = useReducerHook();
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   const selectedNumber =
-    typeof window !== "undefined" && products
-      ? products.reduce((acc: number, curr: selectedProduct) => {
+    typeof window !== "undefined" && selectedProducts
+      ? selectedProducts.reduce((acc: number, curr: selectedProduct) => {
           return acc + curr.count;
         }, 0)
       : 0;
