@@ -2,7 +2,7 @@ import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { Product, selectedProduct } from "../../types/products-types";
-
+import Image from "next/image";
 
 interface ProductCardProps {
   product: Product;
@@ -19,20 +19,40 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
   resetHandler,
   selectedProduct,
 }) => {
-
   return (
     <tr key={product.id}>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-[16px] text-gray-900 dark:text-white">
-          {product.id}
+        <div className="w-16 h-16">
+          <Image
+            src={product.thumbnail}
+            alt={product.title}
+            width={60}
+            height={60}
+            className="max-h-full max-w-full text-[16px] text-gray-900 dark:text-white object-cover"
+          />
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-[16px] text-gray-900 dark:text-white">
+        <div className="text-[20px] text-black font-medium leading-6 dark:text-white">
+          {product.title}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-[18px] text-gray-900 dark:text-white italic">
+          ${product.price}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-[20px] text-red font-semibold dark:text-white text-center">
           {selectedProduct.count}
         </div>
       </td>
-      <td className="flex items-center justify-end gap-4 px-6 py-4 whitespace-nowrap ">
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-[18px] text-gray-900 dark:text-white italic">
+          $ {product.price * selectedProduct.count}
+        </div>
+      </td>
+      <td className="flex items-center justify-start gap-4 px-6 py-4 whitespace-nowrap ">
         <button
           onClick={() => {
             decrementHandler(product);
