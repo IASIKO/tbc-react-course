@@ -4,11 +4,27 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import { useReducerHook } from "../../../hooks/useReducerHook";
+import { selectedProduct } from "../../../types/products-types";
 
 
 const Navigation = () => {
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
-  const t = useTranslations('header')
+  const t = useTranslations("header");
+  const [selectedProducts] = useReducerHook();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const selectedNumber =
+    typeof window !== "undefined" && selectedProducts
+      ? selectedProducts.reduce((acc: number, curr: selectedProduct) => {
+          return acc + curr.count;
+        }, 0)
+      : 0;
 
   return (
     <nav className="absolute left-0 right-0 z-10 bg-transparent">
@@ -31,7 +47,7 @@ const Navigation = () => {
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {t('home')}
+                {t("home")}
               </Link>
             </li>
             <li>
@@ -43,7 +59,7 @@ const Navigation = () => {
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {t('about')}
+                {t("about")}
               </Link>
             </li>
             <li>
@@ -55,7 +71,7 @@ const Navigation = () => {
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {t('products')}
+                {t("products")}
               </Link>
             </li>
             <li>
@@ -67,7 +83,7 @@ const Navigation = () => {
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {t('blog')}
+                {t("blog")}
               </Link>
             </li>
             <li>
@@ -79,14 +95,22 @@ const Navigation = () => {
                     : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                 }`}
               >
-                {t('contact')}
+                {t("contact")}
               </Link>
             </li>
           </ul>
         </div>
-        <div className="text-red text-[25px] cursor-pointer">
+        <Link
+          href="/checkout"
+          className="text-red text-[30px] cursor-pointer relative"
+        >
           <HiOutlineShoppingBag />
-        </div>
+          <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#4e4d4dbf] opacity-90 flex items-center justify-center">
+            <div className="text-white text-xs">
+              {isClient && selectedNumber}
+            </div>
+          </div>
+        </Link>
       </div>
     </nav>
   );
