@@ -6,25 +6,8 @@ import { useTranslations } from "next-intl";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import { RiDeleteBin2Fill } from "react-icons/ri";
+import { Product, selectedProduct } from "../../types/products-types";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-
-interface selectedProduct {
-  product: Product;
-  count: number;
-}
 
 interface ProductCardProps {
   product: Product;

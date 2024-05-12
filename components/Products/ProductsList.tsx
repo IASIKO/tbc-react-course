@@ -6,20 +6,9 @@ import Search from "../Search";
 import { useTranslations } from "next-intl";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useReducerHook } from "../../hooks/useReducerHook";
+import { Product } from "../../types/products-types";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
+
 
 interface ProductsListProps {
   productListData: Product[];

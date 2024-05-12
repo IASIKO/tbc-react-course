@@ -15,7 +15,6 @@ interface Product {
 }
 
 interface selectedProduct {
-  // id: number;
   product: Product;
   count: number;
 }

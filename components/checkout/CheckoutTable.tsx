@@ -4,25 +4,8 @@ import { useEffect, useState } from "react";
 import { useReducerHook } from "../../hooks/useReducerHook";
 import CheckoutCard from "./CheckoutCard";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { Product, selectedProduct } from "../../types/products-types";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-
-interface selectedProduct {
-  product: Product;
-  count: number;
-}
 
 const CheckoutTable = () => {
   const [isClient, setIsClient] = useState(false);
