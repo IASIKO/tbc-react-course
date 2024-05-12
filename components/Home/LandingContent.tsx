@@ -4,6 +4,7 @@ import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
 import { useTranslations } from "next-intl";
+import { Product } from "../../types/products-types";
 
 interface BlogListData {
   image: string;
@@ -13,24 +14,16 @@ interface BlogListData {
   id: number;
 }
 
-interface ProductListData {
-  id: number;
-  price: number;
-  title: string;
-  thumbnail: string;
-  category: string;
-}
-
 interface LandingContentProps {
   blogListData: BlogListData[];
-  productListData: ProductListData[];
+  productListData: Product[];
 }
 
 const LandingContent: React.FC<LandingContentProps> = ({
   blogListData,
   productListData,
 }) => {
-  const t = useTranslations()
+  const t = useTranslations();
   const homeBlogListData = blogListData.slice(0, 4);
   const homeProductsListData = productListData.slice(0, 8);
 
@@ -95,7 +88,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
         <ProductsList productListData={homeProductsListData} />
         <div className="flex justify-center pb-[60px]">
           <Link href="/products">
-            <Button>{t('products.viewAllProducts')}</Button>
+            <Button>{t("products.viewAllProducts")}</Button>
           </Link>
         </div>
       </section>
@@ -104,7 +97,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
         <BlogList blogListData={homeBlogListData} />
         <div className="flex justify-center">
           <Link href="/blog">
-            <Button>{t('blogs.seeMore')}</Button>
+            <Button>{t("blogs.seeMore")}</Button>
           </Link>
         </div>
       </section>
