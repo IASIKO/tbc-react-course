@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000"
+export const BASE_URL = process.env.VERCEL_URL || "http://localhost:3000";
   // process.env.VERCEL_ENV === "development"
   //   ? "http://localhost:3000"
   //   : "https://tbc-react-course-etrft0x84-iasikos-projects.vercel.app";
