@@ -8,7 +8,6 @@ import { FaMinus } from "react-icons/fa";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { Product, selectedProduct } from "../../types/products-types";
 
-
 interface ProductCardProps {
   product: Product;
   incrementHandler: (product: Product) => void;
@@ -26,8 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const router = useRouter();
   const t = useTranslations("products");
-  const isSelected =
-    selectedProducts.some((p) => p.product?.id === product.id);
+  const isSelected = selectedProducts.some((p) => p.product?.id === product.id);
 
   const onProductCardClickHandler = () => {
     router.push(`/products/${product.id}`);
@@ -58,19 +56,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className="flex gap-2">
           <button
             onClick={() => decrementHandler(product)}
-            className="bg-red p-2 rounded-md dark:bg-dark"
+            className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           >
             <FaMinus className="text-white" />
           </button>
           <button
             onClick={() => resetHandler(product)}
-            className="bg-red p-2 rounded-md dark:bg-dark"
+            className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           >
             <RiDeleteBin2Fill className="text-white" />
           </button>
           <button
             onClick={() => incrementHandler(product)}
-            className="bg-red p-2 rounded-md dark:bg-dark"
+            className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           >
             <FaPlus className="text-white" />
           </button>
