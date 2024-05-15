@@ -11,7 +11,7 @@ export default function Checkout({
 
   return (
     <>
-      <TitleBgImage>Checkout</TitleBgImage>
+      <TitleBgImage>My Cart</TitleBgImage>
       <section className="py-[60px] dark:bg-gray">
         <div className="max-w-[1140px] m-auto">
           <CheckoutTable />

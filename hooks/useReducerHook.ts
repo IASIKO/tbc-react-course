@@ -1,23 +1,5 @@
 import { useReducer } from "react";
-
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-
-interface selectedProduct {
-  product: Product;
-  count: number;
-}
+import { Product, selectedProduct } from "../types/products-types";
 
 const initialState: selectedProduct[] = [];
 

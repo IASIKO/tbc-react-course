@@ -45,25 +45,25 @@ const CheckoutTable = () => {
           <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow dark:bg-dark">
             <thead className="bg-red dark:bg-dark">
               <tr>
-                <th className="px-6 py-6 text-left text-xl font-large text-white uppercase tracking-wider dark:text-white"></th>
-                <th className="px-6 py-6 text-left text-xl font-large text-white uppercase tracking-wider dark:text-white">
+                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white"></th>
+                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
                   Product
                 </th>
-                <th className="px-6 py-6 text-left text-xl font-large text-white uppercase tracking-wider dark:text-white">
+                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
                   Price
                 </th>
-                <th className="px-6 py-6 text-left text-xl font-large text-white uppercase tracking-wider dark:text-white">
+                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
                   Quantity
                 </th>
-                <th className="px-6 py-6 text-left text-xl font-large text-white uppercase tracking-wider dark:text-white">
+                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
                   Total
                 </th>
-                <th className="px-6 py-6 text-left text-xl font-large text-white uppercase tracking-wider dark:text-white">
+                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray">
+            <tbody className="bg-white dark:bg-gray">
               {isClient &&
                 selectedProducts?.map((product: selectedProduct) => (
                   <CheckoutCard

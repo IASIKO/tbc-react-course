@@ -68,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </button>
           <button
             onClick={() => incrementHandler(product)}
-            className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle font-bold text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           >
             <FaPlus className="text-white" />
           </button>
