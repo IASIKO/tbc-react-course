@@ -1,7 +1,7 @@
 import { BASE_URL } from "./api";
 
-
 export const handleLoginRoute = async (username: string, password: string) => {
+  console.log("🚀 ~ handleLoginRoute ~ BASE_URL:", BASE_URL);
   try {
     const response = await fetch(`${BASE_URL}/api/login`, {
       method: "POST",
@@ -25,6 +25,3 @@ export const handleLogoutRoute = async () => {
     method: "POST",
   });
 };
-
-
-
