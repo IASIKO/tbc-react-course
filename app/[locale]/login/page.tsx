@@ -10,8 +10,6 @@ export default async function Login({
 }) {
   unstable_setRequestLocale(locale);
 
-  console.log("🚀 ~ BASE_URL:", BASE_URL);
-
   return (
     <AuthorizationLayout>
       <LoginForm />
