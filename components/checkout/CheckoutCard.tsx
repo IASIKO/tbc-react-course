@@ -57,19 +57,19 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
           onClick={() => {
             decrementHandler(product);
           }}
-          className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle  shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="bg-red dark:bg-dark ml-2 p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         >
           <FaMinus className="text-white" />
         </button>
         <button
           onClick={() => resetHandler(product)}
-          className="bg-red p-2 ml-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle  shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="bg-red dark:bg-dark ml-2 p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         >
           <RiDeleteBin2Fill className="text-white" />
         </button>
         <button
           onClick={() => incrementHandler(product)}
-          className="bg-red p-2 ml-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle  shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="bg-red dark:bg-dark ml-2 p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         >
           <FaPlus className="text-white" />
         </button>

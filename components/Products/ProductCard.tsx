@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-between items-center w-full p-4 bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105">
       <div
         className="flex flex-col justify-center items-center cursor-pointer"
         onClick={onProductCardClickHandler}
@@ -42,33 +42,35 @@ const ProductCard: React.FC<ProductCardProps> = ({
           alt={product.title}
           width={300}
           height={400}
-          className="w-full h-80 object-cover"
+          className="w-full h-80 object-cover rounded-t-lg"
         />
-        <div className="text-center p-[20px] flex-1">
-          <span className="italic text-[#b7472a]">{product.category}</span>
-          <h2 className="text-[27px] capitalize font-light text-black leading-normal">
+        <div className="text-center p-4 flex-1">
+          <span className="italic text-[#b7472a] block mb-2">
+            {product.category}
+          </span>
+          <h2 className="text-2xl capitalize font-light text-black leading-normal mb-2">
             {product.title}
           </h2>
-          <p className="italic text-black">${product.price}</p>
+          <p className="italic text-black text-xl">${product.price}</p>
         </div>
       </div>
       {isSelected ? (
-        <div className="flex gap-2">
+        <div className="flex gap-2 mb-2">
           <button
             onClick={() => decrementHandler(product)}
-            className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="bg-red dark:bg-dark p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           >
             <FaMinus className="text-white" />
           </button>
           <button
             onClick={() => resetHandler(product)}
-            className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="bg-red dark:bg-dark  p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           >
             <RiDeleteBin2Fill className="text-white" />
           </button>
           <button
             onClick={() => incrementHandler(product)}
-            className="bg-red p-2 rounded-md dark:bg-dark select-none bg-gradient-to-tr from-gray-900 to-gray-800 text-center align-middle font-bold text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="bg-red dark:bg-dark  p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           >
             <FaPlus className="text-white" />
           </button>
