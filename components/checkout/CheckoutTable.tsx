@@ -37,7 +37,7 @@ const CheckoutTable = () => {
   }, [selectedProducts, setCachedValue]);
 
   return (
-    <div className="py-4 m-auto w-[1000px]">
+    <div className="py-4 m-auto w-[1000px] animate-fade-in-up">
       {!selectedProducts?.length && isClient ? (
         <p className="text-center dark:text-white">Cart is Empty</p>
       ) : (

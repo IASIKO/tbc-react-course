@@ -17,8 +17,8 @@ interface BlogListProps {
 const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
   const t = useTranslations("blogs");
   return (
-    <div className="py-[60px] relative dark:bg-gray">
-      <div className="max-w-[1140px] px-[15px] m-auto animate-[fall_2s_ease_100ms]">
+    <section className="py-[60px] relative dark:bg-gray animate-fade-in-up">
+      <div className="max-w-[1140px] px-[15px] m-auto">
         <div className="mb-[30px]">
           <div className="text-center">
             <span className="text-red text-[21px] font-normal italic">
@@ -35,7 +35,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

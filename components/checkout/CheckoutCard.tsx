@@ -22,15 +22,13 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
   return (
     <tr key={product.id}>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="w-22 h-28">
           <Image
             src={product.thumbnail}
             alt={product.title}
             width={90}
             height={110}
-            className="max-w-full max-h-full object-cover"
+            className="w-full h-20 object-cover"
           />
-        </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-[20px] text-black font-medium leading-6 dark:text-white">

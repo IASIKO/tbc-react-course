@@ -3,7 +3,7 @@ import ContactInfo from "./ContactInfo";
 
 const ContactContent = async () => {
   return (
-    <section className="bg-[#f5f4f0] py-[60px] dark:bg-gray">
+    <section className="bg-[#f5f4f0] py-[60px] dark:bg-gray animate-fade-in-up">
       <div className="max-w-[1140px] m-auto">
         <ContactInfo />
         <ContactForm />

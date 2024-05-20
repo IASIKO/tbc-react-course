@@ -21,8 +21,8 @@ const Footer = () => {
 
   return (
     <footer className="text-[16px] pt-[60px] bg-[#1a1a1a] text-[#ffffff]">
-      <div className="max-w-[1140px] m-auto">
-        <div className="flex flex-wrap mb-[30px] animate-[fall_3s_ease_100ms]">
+      <div className="max-w-[1140px] m-auto animate-fade-in-up">
+        <div className="flex flex-wrap mb-[30px]">
           {footerLinksContent.map((linksContent, index) => (
             <FooterLinks linksInfo={linksContent} key={index} />
           ))}

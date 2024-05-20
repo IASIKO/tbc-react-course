@@ -87,8 +87,8 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
     : filteredProducts;
 
   return (
-    <section className="py-[60px] dark:bg-gray">
-      <div className="max-w-[960px] mx-auto">
+    <section className="py-[60px] dark:bg-gray animate-fade-in-up">
+      <div className="max-w-[1140px] mx-auto">
         <div className="pb-[30px] flex-col flex justify-center items-center">
           <span className="text-[#b7472a] text-[21px] font-normal italic">
             {t("listTitle1")}
@@ -103,7 +103,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
             isProductsSorted={isProductsSorted}
           />
         </div>
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
           {productListToShow.map((product, index) => (
             <ProductCard
               key={index}

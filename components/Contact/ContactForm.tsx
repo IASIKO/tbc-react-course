@@ -8,12 +8,12 @@ const ContactForm = () => {
   return (
     <div className="w-[1140px] my-[60px] flex">
       <div className="w-[40%]">
-        {/* <iframe
+        <iframe
           width={500}
           height={600}
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.8795338635723!2d-73.9964625!3d40.742676200000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bb665a5b95%3A0x37d23ed9e6c9479e!2zMTk4IFcgMjFzdCBTdCAjNzIxLCBOZXcgWW9yaywgTlkgMTAwMTEsIOGDkOGDm-GDlOGDoOGDmOGDmeGDmOGDoSDhg6jhg5Thg5Thg6Dhg5fhg5Thg5Hhg6Phg5rhg5gg4YOo4YOi4YOQ4YOi4YOU4YOR4YOY!5e0!3m2!1ska!2sge!4v1710852153875!5m2!1ska!2sge"
           title="198 West 21th Street, Suite 721 New York NY 10016"
-        ></iframe> */}
+        ></iframe>
       </div>
       <div className="px-[60px] py-[60px] bg-white w-[60%] dark:bg-slate-200">
         <h3 className="mb-[15px] text-black font-normal text-[27px]">

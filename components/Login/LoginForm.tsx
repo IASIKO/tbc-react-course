@@ -90,7 +90,7 @@ const LoginForm = () => {
           </span>
         </p>
         {errorMessage && (
-          <p className="bg-red text-white font-normal dark:bg-dark p-2 mt-4 rounded-md animate-fall text-[18px]">
+          <p className="bg-red text-white font-normal dark:bg-dark p-2 mt-4 rounded-md animate-fade-in-up text-[18px]">
             {errorMessage}
           </p>
         )}
