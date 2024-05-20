@@ -1,7 +1,6 @@
-import { useLocale } from "next-intl";
 import BlogList from "../../../../components/Blog/BlogList";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");
@@ -17,7 +16,8 @@ export default async function Blog({
   unstable_setRequestLocale(locale);
 
   const blogListData = await getBlogs();
-  const loc = useLocale();
+  const loc = await getLocale();
+
 
   return (
     <>

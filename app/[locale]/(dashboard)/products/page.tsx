@@ -1,7 +1,6 @@
-import { useLocale } from "next-intl";
 import ProductsList from "../../../../components/Products/ProductsList";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 
 async function getProducts() {
   const res = await fetch("https://dummyjson.com/products");
@@ -17,7 +16,7 @@ export default async function Products({
   unstable_setRequestLocale(locale);
 
   const productsListData = await getProducts();
-  const loc = useLocale();
+  const loc = await getLocale();
 
   return (
     <>
