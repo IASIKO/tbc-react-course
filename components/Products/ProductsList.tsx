@@ -7,8 +7,7 @@ import { useTranslations } from "next-intl";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useReducerHook } from "../../hooks/useReducerHook";
 import { Product } from "../../types/products-types";
-
-
+import { usePathname } from "next/navigation";
 
 interface ProductsListProps {
   productListData: Product[];
@@ -24,6 +23,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
   const t = useTranslations("products");
   const [selectedProducts, dispatch] = useReducerHook();
   const [, setCachedValue] = useLocalStorage("selectedProducts");
+  const path = usePathname();
 
   useEffect(() => {
     setProductsListData(productListData);
@@ -96,12 +96,14 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
           <h2 className="text-[45px] font-bold text-black leading-normal">
             {t("listTitle2")}
           </h2>
-          <Search
-            onChange={onSearchInputChangeHandler}
-            onClick={onSortButtonClickHandler}
-            searchValue={searchValue}
-            isProductsSorted={isProductsSorted}
-          />
+          {path === "/products" && (
+            <Search
+              onChange={onSearchInputChangeHandler}
+              onClick={onSortButtonClickHandler}
+              searchValue={searchValue}
+              isProductsSorted={isProductsSorted}
+            />
+          )}
         </div>
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
           {productListToShow.map((product, index) => (

@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <>
       <Loader />
-      <h1 className="text-center text-[60px]">BLOG</h1>
+      <h1 className="text-center text-[60px]">ADMIN</h1>
     </>
   );
 }
