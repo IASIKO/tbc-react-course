@@ -1,6 +1,9 @@
 import { BASE_URL } from "./api";
 
-export const handleLoginRoute = async (username: string, password: string) => {
+export const handleLoginRoute = async (
+  username: string,
+  password: string,
+) => {
   try {
     const response = await fetch(`${BASE_URL}/api/login`, {
       method: "POST",

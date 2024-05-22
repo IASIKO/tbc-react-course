@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
 import { useTranslations } from "next-intl";
-import { Product } from "../../types/products-types";
+import { Product, ProductObject } from "../../types/products-types";
 
 interface BlogListData {
   image: string;
@@ -17,11 +17,13 @@ interface BlogListData {
 interface LandingContentProps {
   blogListData: BlogListData[];
   productListData: Product[];
+  selectedProducts: ProductObject[];
 }
 
 const LandingContent: React.FC<LandingContentProps> = ({
   blogListData,
   productListData,
+  selectedProducts,
 }) => {
   const t = useTranslations();
   const homeBlogListData = blogListData.slice(0, 4);
@@ -85,7 +87,10 @@ const LandingContent: React.FC<LandingContentProps> = ({
       </section>
 
       <section className="dark:bg-gray">
-        <ProductsList productListData={homeProductsListData} />
+        <ProductsList
+          productListData={homeProductsListData}
+          selectedProducts={selectedProducts}
+        />
         <div className="flex justify-center pb-[60px]">
           <Link href="/products">
             <Button>{t("products.viewAllProducts")}</Button>

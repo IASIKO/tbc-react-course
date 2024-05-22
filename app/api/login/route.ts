@@ -1,9 +1,9 @@
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "../../../lib/constants";
+import { AUTH_COOKIE_KEY, USER_ID } from "../../../lib/constants";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const { username, password } = await request.json();
+  const { username, password, id } = await request.json();
 
   const res = await fetch("https://dummyjson.com/auth/login", {
     method: "POST",
@@ -16,14 +16,13 @@ export async function POST(request: NextRequest) {
 
   const data = await res.json();
 
-
   if (res.ok) {
     const cookieStore = cookies();
     cookieStore.set(AUTH_COOKIE_KEY, JSON.stringify(data.token));
-    
+    cookieStore.set(USER_ID, JSON.stringify(data.id));
   } else {
     throw new Error(data.message);
   }
 
-  return Response.json({ username, password });
+  return Response.json({ username, password, id });
 }

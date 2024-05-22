@@ -42,3 +42,12 @@ export const editUser = async (userId: number, name: string, email: string) => {
     cache: "no-store",
   });
 };
+
+// CARTS
+
+export async function createUserCart(user_id: number, prod_id: number) {
+  await fetch(`${BASE_URL}/api/carts/create-cart`, {
+    method: "POST",
+    body: JSON.stringify({ user_id, prod_id }),
+  });
+}

@@ -2,6 +2,7 @@ import Header from "../../../components/RootLayout/header/Header";
 import Footer from "../../../components/RootLayout/footer/Footer";
 import { ReactNode } from "react";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { getUserCartAction } from "../../../lib/actions";
 
 interface DashboardLaoyoutProps {
   children: ReactNode;
@@ -16,9 +17,11 @@ export default async function DashboardRootLayout({
 }: DashboardLaoyoutProps) {
   unstable_setRequestLocale(locale);
 
+  const selectedProducts = await getUserCartAction();
+
   return (
     <>
-      <Header />
+      <Header selectedProducts={selectedProducts[0]?.products}/>
       {children}
       <Footer />
     </>

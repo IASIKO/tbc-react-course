@@ -5,15 +5,13 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { useReducerHook } from "../../../hooks/useReducerHook";
-import { selectedProduct } from "../../../types/products-types";
+import { ProductObject } from "../../../types/products-types";
 
 
-const Navigation = () => {
+const Navigation = ({selectedProducts} : {selectedProducts: ProductObject[]}) => {
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
   const t = useTranslations("header");
-  const [selectedProducts] = useReducerHook();
 
   useEffect(() => {
     setIsClient(true);
@@ -21,8 +19,8 @@ const Navigation = () => {
 
   const selectedNumber =
     typeof window !== "undefined" && selectedProducts
-      ? selectedProducts.reduce((acc: number, curr: selectedProduct) => {
-          return acc + curr.count;
+      ? selectedProducts.reduce((acc: number, curr: ProductObject) => {
+          return acc + curr.quantity;
         }, 0)
       : 0;
 

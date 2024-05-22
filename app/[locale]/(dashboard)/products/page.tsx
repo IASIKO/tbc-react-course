@@ -1,11 +1,13 @@
 import ProductsList from "../../../../components/Products/ProductsList";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
 import { getLocale, unstable_setRequestLocale } from "next-intl/server";
+import { getUserCartAction } from "../../../../lib/actions";
 
 async function getProducts() {
   const res = await fetch("https://dummyjson.com/products");
+  const products = res.json();
 
-  return res.json();
+  return products;
 }
 
 export default async function Products({
@@ -16,12 +18,19 @@ export default async function Products({
   unstable_setRequestLocale(locale);
 
   const productsListData = await getProducts();
+
+  const selectedProducts = await getUserCartAction();
+
   const loc = await getLocale();
 
   return (
     <>
       <TitleBgImage>{loc === "en" ? "Products" : "პროდუქტები"}</TitleBgImage>
-      <ProductsList productListData={productsListData.products} />;
+      <ProductsList
+        productListData={productsListData.products}
+        selectedProducts={selectedProducts[0]?.products}
+      />
+      ;
     </>
   );
 }
