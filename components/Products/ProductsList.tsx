@@ -7,10 +7,8 @@ import { useTranslations } from "next-intl";
 import {
   Product,
   ProductObject,
-  selectedProduct,
 } from "../../types/products-types";
 import { usePathname } from "next/navigation";
-import { deleteProductAction, updateCartCountAction } from "../../lib/actions";
 
 interface ProductsListProps {
   productListData: Product[];
@@ -98,7 +96,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 p-[60px] border border-red rounded-xl bg-white dark:bg-gray dark:border-black">
           <div className="flex items-center flex-col justify-center">
             <h2 className="text-red uppercase tracking-widest mb-6 dark:text-white">
-              Warning
+              Warning!
             </h2>
             <p>Product is already in the cart</p>
           </div>
