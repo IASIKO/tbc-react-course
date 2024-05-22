@@ -13,6 +13,7 @@ import { addProductAction } from "../../lib/actions";
 interface ProductCardProps {
   product: Product;
   selectedProducts: ProductObject[];
+  isOpen: () => void
 }
 
 const initialStatus = (id: number, products: ProductObject[]) => {
@@ -23,6 +24,7 @@ const initialStatus = (id: number, products: ProductObject[]) => {
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
   selectedProducts,
+  isOpen
 }) => {
   const [isInCart, setIsInCart] = useState(() =>
     initialStatus(product.id, selectedProducts)
@@ -65,16 +67,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
       {isInCart ? (
-        <div className="flex gap-2 mb-4">
-          <button className="bg-red dark:bg-dark p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-            <FaMinus className="text-white" />
-          </button>
-          <button className="bg-red dark:bg-dark  p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-            <RiDeleteBin2Fill className="text-white" />
-          </button>
-          <button className="bg-red dark:bg-dark  p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-            <FaPlus className="text-white" />
-          </button>
+        <div className="mb-4">
+          <Button onClick={isOpen}>
+            In Cart
+          </Button>
         </div>
       ) : (
         <div className="mb-4">
