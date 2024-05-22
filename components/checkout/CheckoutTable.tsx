@@ -1,40 +1,74 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useReducerHook } from "../../hooks/useReducerHook";
 import CheckoutCard from "./CheckoutCard";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { Product, selectedProduct } from "../../types/products-types";
+import { selectedProduct } from "../../types/products-types";
 import Button from "../UI/Button";
+import { resetCartAction } from "../../lib/actions";
 
-const CheckoutTable = () => {
+const CheckoutTable = ({
+  selectedProducts,
+}: {
+  selectedProducts: selectedProduct[];
+}) => {
   const [isClient, setIsClient] = useState(false);
-  const [selectedProducts, dispatch] = useReducerHook();
-  const [, setCachedValue] = useLocalStorage("selectedProducts");
+  const [cartProducts, setCartProducts] = useState<selectedProduct[] | []>([]);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const incrementHandler = (product: Product) => {
-    dispatch({ type: "INCREMENT", payload: product });
-  };
-
-  const decrementHandler = (product: Product) => {
-    dispatch({ type: "DECREMENT", payload: product });
-  };
-
-  const resetHandler = (product: Product) => {
-    dispatch({ type: "RESET", payload: product });
-  };
-
-  const clearHandler = () => {
-    dispatch({ type: "CLEAR" });
-  };
-
   useEffect(() => {
-    setCachedValue(selectedProducts);
-  }, [selectedProducts, setCachedValue]);
+    setCartProducts(selectedProducts);
+  }, []);
+
+  const handleIncrement = (id: number) => {
+    const updatedProduct = cartProducts.map((product: selectedProduct) => {
+      if (product.id === id) {
+        return { ...product, quantity: product.quantity + 1 };
+      } else {
+        return product;
+      }
+    });
+    setCartProducts(updatedProduct);
+  };
+
+  const handleDecrement = (id: number) => {
+    const cartProductIndex = cartProducts.findIndex(
+      (product) => product.id === id
+    );
+
+    if (cartProducts[cartProductIndex].quantity === 1) {
+      const updatedProduct = cartProducts.filter((product) => {
+        return product.id !== id;
+      });
+      setCartProducts(updatedProduct);
+      // deleteCartItemAction(id);
+    } else {
+      const updatedProduct = cartProducts.map((product: selectedProduct) => {
+        if (product.id === id) {
+          return { ...product, quantity: product.quantity - 1 };
+        } else {
+          return product;
+        }
+      });
+
+      setCartProducts(updatedProduct);
+    }
+  };
+
+  // const handleDelete = (id: number) => {
+  //   const updatedProduct = cartProducts.filter((product) => {
+  //     return product.id !== id;
+  //   });
+  //   setCartProducts(updatedProduct);
+  //   deleteCartItemAction(id);
+  // };
+
+  const handleReset = () => {
+    setCartProducts([]);
+    resetCartAction();
+  };
 
   return (
     <div className="py-4 m-auto w-[1000px] animate-fade-in-up">
@@ -65,20 +99,18 @@ const CheckoutTable = () => {
             </thead>
             <tbody className="bg-white dark:bg-gray">
               {isClient &&
-                selectedProducts?.map((product: selectedProduct) => (
+                cartProducts?.map((product) => (
                   <CheckoutCard
-                    key={product.product.id}
-                    product={product.product}
-                    incrementHandler={incrementHandler}
-                    decrementHandler={decrementHandler}
-                    resetHandler={resetHandler}
+                    key={product.id}
                     selectedProduct={product}
+                    handleIncrement={handleIncrement}
+                    handleDecrement={handleDecrement}
                   />
                 ))}
             </tbody>
           </table>
           <div className="mt-2">
-            <Button onClick={() => clearHandler()}>CLEAR CART</Button>
+            <Button onClick={handleReset}>CLEAR CART</Button>
           </div>
         </>
       )}

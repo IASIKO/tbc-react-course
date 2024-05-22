@@ -12,8 +12,19 @@ export interface Product {
     images: string[];
   }
 
-  export interface selectedProduct {
-    product: Product;
-    count: number;
+  export interface selectedProduct extends Product{
+    quantity: number;
   }
+
+  export interface ProductObject {
+    id: number;
+    quantity: number;
+  }
+
+  export interface CartTable {
+    id: number,
+    user_id: number,
+    products: ProductObject[],
+    added_on: string,
+}
   

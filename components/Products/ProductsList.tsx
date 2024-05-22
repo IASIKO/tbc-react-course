@@ -4,16 +4,15 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Search from "../Search";
 import { useTranslations } from "next-intl";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { useReducerHook } from "../../hooks/useReducerHook";
-import { Product } from "../../types/products-types";
+import { Product, ProductObject } from "../../types/products-types";
 import { usePathname } from "next/navigation";
 
 interface ProductsListProps {
   productListData: Product[];
+  selectedProducts: ProductObject[]
 }
 
-const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
+const ProductsList: React.FC<ProductsListProps> = ({ productListData, selectedProducts }) => {
   const [productsListData, setProductsListData] = useState<Product[]>([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -21,8 +20,6 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const t = useTranslations("products");
-  const [selectedProducts, dispatch] = useReducerHook();
-  const [, setCachedValue] = useLocalStorage("selectedProducts");
   const path = usePathname();
 
   useEffect(() => {
@@ -56,10 +53,6 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
     }
   }, [filteredProducts, isProductsSorted]);
 
-  useEffect(() => {
-    setCachedValue(selectedProducts);
-  }, [selectedProducts, setCachedValue]);
-
   const onSearchInputChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -70,17 +63,6 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
     setIsProductsSorted(!isProductsSorted);
   };
 
-  const incrementHandler = (product: Product) => {
-    dispatch({ type: "INCREMENT", payload: product });
-  };
-
-  const decrementHandler = (product: Product) => {
-    dispatch({ type: "DECREMENT", payload: product });
-  };
-
-  const resetHandler = (product: Product) => {
-    dispatch({ type: "RESET", payload: product });
-  };
 
   const productListToShow = isProductsSorted
     ? sortedProducts
@@ -110,9 +92,6 @@ const ProductsList: React.FC<ProductsListProps> = ({ productListData }) => {
             <ProductCard
               key={index}
               product={product}
-              incrementHandler={incrementHandler}
-              decrementHandler={decrementHandler}
-              resetHandler={resetHandler}
               selectedProducts={selectedProducts}
             />
           ))}
