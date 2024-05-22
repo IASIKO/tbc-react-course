@@ -45,11 +45,9 @@ export const editUser = async (userId: number, name: string, email: string) => {
 
 // CARTS
 
-
-
 export async function createUserCart(user_id: number, prod_id: number) {
-  return await fetch(`${BASE_URL}/api/carts/create-cart`, {
+  await fetch(`${BASE_URL}/api/carts/create-cart`, {
     method: "POST",
-    body: JSON.stringify({ user_id: user_id, prod_id: prod_id }),
+    body: JSON.stringify({ user_id, prod_id }),
   });
 }

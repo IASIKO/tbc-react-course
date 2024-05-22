@@ -3,6 +3,8 @@ import { sql } from "@vercel/postgres";
 import { ProductObject } from "../../../../types/products-types";
 import { USER_ID } from "../../../../lib/constants";
 
+export const revalidate = 0;
+
 export async function PUT(request: NextRequest) {
   const user_id = request.cookies.get(USER_ID)?.value;
 

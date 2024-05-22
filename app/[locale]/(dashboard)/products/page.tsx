@@ -20,8 +20,7 @@ export default async function Products({
   const productsListData = await getProducts();
 
   const selectedProducts = await getUserCartAction();
-  
-  console.log("🚀 ~ selectedProducts:", selectedProducts)
+
   const loc = await getLocale();
 
   return (
@@ -29,7 +28,7 @@ export default async function Products({
       <TitleBgImage>{loc === "en" ? "Products" : "პროდუქტები"}</TitleBgImage>
       <ProductsList
         productListData={productsListData.products}
-        selectedProducts={selectedProducts[0].products}
+        selectedProducts={selectedProducts[0]?.products}
       />
       ;
     </>

@@ -38,7 +38,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     if (isInCart) return;
 
     addProductAction(product.id);
-    router.refresh();
     setIsInCart(true);
   };
 
@@ -79,7 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       ) : (
         <div className="mb-4">
-          <Button onClick={() => handleClick()}>
+          <Button onClick={handleClick}>
             <HiOutlineShoppingBag />
             {t("addToCart")}
           </Button>

@@ -1,6 +1,8 @@
 import { sql } from "@vercel/postgres";
 import { NextResponse, NextRequest } from "next/server";
 
+export const revalidate = 0;
+
 export async function POST(request: NextRequest) {
   try {
     const { prod_id, user_id } = await request.json();
@@ -9,9 +11,12 @@ export async function POST(request: NextRequest) {
     if (!user_id || !prod_id)
       throw new Error("user_id and products fields required");
 
-    if (!user_id || !prod_id)
-      await sql`INSERT INTO carts (user_id, products) VALUES (${Number(user_id)}, ${item});`;
+    await sql`INSERT INTO carts (user_id, products) VALUES (${Number(
+      user_id
+    )}, ${item});`;
   } catch (error) {
+    console.log(error);
+
     return NextResponse.json({ error }, { status: 500 });
   }
 

@@ -4,6 +4,8 @@ import { CartTable, ProductObject } from "../../../../types/products-types";
 import { createUserCart } from "../../../../lib/api";
 import { USER_ID } from "../../../../lib/constants";
 
+export const revalidate = 0;
+
 export async function PUT(request: NextRequest) {
   const user_id = request.cookies.get(USER_ID)?.value;
   const { id } = await request.json();
@@ -15,11 +17,12 @@ export async function PUT(request: NextRequest) {
       await sql<CartTable>`SELECT * FROM carts WHERE user_id = ${Number(
         user_id
       )};`;
+    console.log("🚀 ~ PUT ~ cart.rows:", cart);
 
     if (cart.rows.length) {
       let newProduct: ProductObject;
       const products = cart.rows[0].products;
-      console.log("🚀 ~ PUT ~ products --------------------------------------------:", products)
+
       const index = products.findIndex((item) => item.id === id);
 
       if (index === -1) {

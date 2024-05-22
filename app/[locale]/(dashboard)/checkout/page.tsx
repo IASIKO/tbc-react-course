@@ -10,10 +10,8 @@ export default async function Checkout({
 }) {
   unstable_setRequestLocale(locale);
 
-
   const userCart = await getUserCartAction();
-  const cart = userCart[0].products
-  console.log("🚀 ~ cart:", cart)
+  const cart = userCart[0]?.products;
 
   const fetchProducts = async () => {
     const fetchProduct = async (id: number) => {
