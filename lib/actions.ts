@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { BASE_URL, createUser, deleteUser, editUser } from "./api";
 import { USER_ID } from "./constants";
+import { revalidatePath } from "next/cache";
 
 export const setLanguage = (lang: string) => {
   cookies().set("NEXT_LOCALE", lang);
@@ -29,6 +30,7 @@ export const editUserAction = async (
 // CART
 
 export async function addProductAction(id: number) {
+  revalidatePath('/', 'layout')
   await fetch(BASE_URL + "/api/carts/add-product", {
     method: "PUT",
     headers: {
@@ -40,6 +42,7 @@ export async function addProductAction(id: number) {
 }
 
 export async function updateCartCountAction(id: number, quantity: number) {
+  revalidatePath('/', 'layout')
   await fetch(BASE_URL + "/api/carts/update-cart", {
     method: "PUT",
     headers: {
@@ -52,6 +55,7 @@ export async function updateCartCountAction(id: number, quantity: number) {
 }
 
 export async function resetCartAction() {
+  revalidatePath('/', 'layout')
   await fetch(`${BASE_URL}/api/carts/reset-cart`, {
     method: "PUT",
     headers: {
@@ -70,11 +74,11 @@ export const getUserCartAction = async () => {
     },
   });
   const carts = await response.json();
-
   return carts.cart.rows;
 };
 
 export const deleteProductAction = async (prod_id: number) => {
+  revalidatePath('/', 'layout')
   await fetch(`${BASE_URL}/api/carts/delete-product`, {
     method: "PUT",
     headers: {

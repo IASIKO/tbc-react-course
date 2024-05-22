@@ -43,7 +43,7 @@ const CheckoutTable = ({
         return product.id !== id;
       });
       setCartProducts(updatedProduct);
-      // deleteCartItemAction(id);
+      deleteProductAction(id);
     } else {
       const updatedProduct = cartProducts.map((product: selectedProduct) => {
         if (product.id === id) {

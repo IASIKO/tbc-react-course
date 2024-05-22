@@ -9,8 +9,9 @@ import Language from "../../UI/Language";
 import LogoutButton from "../../UI/LogoutButton";
 import Theme from "../../UI/Theme";
 import { useTranslations } from "next-intl";
+import { ProductObject } from "../../../types/products-types";
 
-const Header = () => {
+const Header = ({selectedProducts} : {selectedProducts: ProductObject[]}) => {
   const t = useTranslations("header");
   return (
     <header>
@@ -77,7 +78,7 @@ const Header = () => {
         </div>
       </div>
 
-      <Navigation />
+      <Navigation selectedProducts={selectedProducts}/>
     </header>
   );
 };

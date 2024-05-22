@@ -5,11 +5,10 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { useReducerHook } from "../../../hooks/useReducerHook";
-import { selectedProduct } from "../../../types/products-types";
+import { ProductObject } from "../../../types/products-types";
 
 
-const Navigation = () => {
+const Navigation = ({selectedProducts} : {selectedProducts: ProductObject[]}) => {
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
   const t = useTranslations("header");
@@ -18,12 +17,12 @@ const Navigation = () => {
     setIsClient(true);
   }, []);
 
-  // const selectedNumber =
-  //   typeof window !== "undefined" && selectedProducts
-  //     ? selectedProducts.reduce((acc: number, curr: selectedProduct) => {
-  //         return acc + curr.count;
-  //       }, 0)
-  //     : 0;
+  const selectedNumber =
+    typeof window !== "undefined" && selectedProducts
+      ? selectedProducts.reduce((acc: number, curr: ProductObject) => {
+          return acc + curr.quantity;
+        }, 0)
+      : 0;
 
   return (
     <nav className="absolute left-0 right-0 z-10 bg-transparent">
@@ -106,7 +105,7 @@ const Navigation = () => {
           <HiOutlineShoppingBag />
           <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#4e4d4dbf] opacity-90 flex items-center justify-center">
             <div className="text-white text-xs">
-              {/* {isClient && selectedNumber} */}0
+              {isClient && selectedNumber}
             </div>
           </div>
         </Link>
