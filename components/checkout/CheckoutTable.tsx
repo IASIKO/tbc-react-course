@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import CheckoutCard from "./CheckoutCard";
 import { selectedProduct } from "../../types/products-types";
 import Button from "../UI/Button";
-import { resetCartAction } from "../../lib/actions";
+import { deleteProductAction, resetCartAction } from "../../lib/actions";
 
 const CheckoutTable = ({
   selectedProducts,
@@ -57,13 +57,13 @@ const CheckoutTable = ({
     }
   };
 
-  // const handleDelete = (id: number) => {
-  //   const updatedProduct = cartProducts.filter((product) => {
-  //     return product.id !== id;
-  //   });
-  //   setCartProducts(updatedProduct);
-  //   deleteCartItemAction(id);
-  // };
+  const handleDelete = (id: number) => {
+    const updatedProduct = cartProducts.filter((product) => {
+      return product.id !== id;
+    });
+    setCartProducts(updatedProduct);
+    deleteProductAction(id);
+  };
 
   const handleReset = () => {
     setCartProducts([]);
@@ -105,6 +105,7 @@ const CheckoutTable = ({
                     selectedProduct={product}
                     handleIncrement={handleIncrement}
                     handleDecrement={handleDecrement}
+                    handleDelete={handleDelete}
                   />
                 ))}
             </tbody>

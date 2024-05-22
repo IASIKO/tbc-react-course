@@ -9,12 +9,14 @@ interface ProductCardProps {
   selectedProduct: selectedProduct;
   handleIncrement: (id: number) => void;
   handleDecrement: (id: number) => void;
+  handleDelete: (id: number) => void;
 }
 
 const CheckoutCard: React.FC<ProductCardProps> = ({
   selectedProduct,
   handleIncrement,
   handleDecrement,
+  handleDelete,
 }) => {
   return (
     <tr key={selectedProduct.id}>
@@ -60,7 +62,10 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
         >
           <FaMinus className="text-white" />
         </button>
-        <button className="bg-red dark:bg-dark ml-2 p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+        <button
+          onClick={() => handleDelete(selectedProduct.id)}
+          className="bg-red dark:bg-dark ml-2 p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        >
           <RiDeleteBin2Fill className="text-white" />
         </button>
         <button

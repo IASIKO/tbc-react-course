@@ -73,3 +73,14 @@ export const getUserCartAction = async () => {
 
   return carts.cart.rows;
 };
+
+export const deleteProductAction = async (prod_id: number) => {
+  await fetch(`${BASE_URL}/api/carts/delete-product`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: `userId=${JSON.parse(cookies().get(USER_ID)?.value!)}`,
+    },
+    body: JSON.stringify({ prod_id }),
+  });
+};

@@ -17,7 +17,6 @@ export async function PUT(request: NextRequest) {
       await sql<CartTable>`SELECT * FROM carts WHERE user_id = ${Number(
         user_id
       )};`;
-    console.log("🚀 ~ PUT ~ cart.rows:", cart);
 
     if (cart.rows.length) {
       let newProduct: ProductObject;
