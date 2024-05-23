@@ -11,12 +11,7 @@ const CheckoutTable = ({
 }: {
   selectedProducts: selectedProduct[];
 }) => {
-  const [isClient, setIsClient] = useState(false);
   const [cartProducts, setCartProducts] = useState<selectedProduct[] | []>([]);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   useEffect(() => {
     setCartProducts(selectedProducts);
@@ -72,7 +67,7 @@ const CheckoutTable = ({
 
   return (
     <div className="py-4 m-auto w-[1000px] animate-fade-in-up">
-      {!selectedProducts?.length && isClient ? (
+      {!cartProducts?.length ? (
         <p className="text-center dark:text-white">Cart is Empty</p>
       ) : (
         <>
@@ -98,16 +93,15 @@ const CheckoutTable = ({
               </tr>
             </thead>
             <tbody className="bg-white dark:bg-gray">
-              {isClient &&
-                cartProducts?.map((product) => (
-                  <CheckoutCard
-                    key={product.id}
-                    selectedProduct={product}
-                    handleIncrement={handleIncrement}
-                    handleDecrement={handleDecrement}
-                    handleDelete={handleDelete}
-                  />
-                ))}
+              {cartProducts?.map((product) => (
+                <CheckoutCard
+                  key={product.id}
+                  selectedProduct={product}
+                  handleIncrement={handleIncrement}
+                  handleDecrement={handleDecrement}
+                  handleDelete={handleDelete}
+                />
+              ))}
             </tbody>
           </table>
           <div className="mt-2">
