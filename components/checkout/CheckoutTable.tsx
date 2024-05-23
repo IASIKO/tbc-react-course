@@ -5,6 +5,7 @@ import CheckoutCard from "./CheckoutCard";
 import { selectedProduct } from "../../types/products-types";
 import Button from "../UI/Button";
 import { deleteProductAction, resetCartAction } from "../../lib/actions";
+import Loader from "../UI/Loader";
 
 const CheckoutTable = ({
   selectedProducts,
@@ -12,9 +13,12 @@ const CheckoutTable = ({
   selectedProducts: selectedProduct[];
 }) => {
   const [cartProducts, setCartProducts] = useState<selectedProduct[] | []>([]);
+  const [loading, setLoading] = useState(true);
+  console.log("🚀 ~ cartProducts:", cartProducts);
 
   useEffect(() => {
     setCartProducts(selectedProducts);
+    setLoading(false);
   }, []);
 
   const handleIncrement = (id: number) => {
@@ -67,7 +71,9 @@ const CheckoutTable = ({
 
   return (
     <div className="py-4 m-auto w-[1000px] animate-fade-in-up">
-      {!cartProducts?.length ? (
+      {loading ? (
+        <Loader />
+      ) : !cartProducts?.length ? (
         <p className="text-center dark:text-white">Cart is Empty</p>
       ) : (
         <>
