@@ -6,6 +6,7 @@ import { selectedProduct } from "../../types/products-types";
 import Button from "../UI/Button";
 import { deleteProductAction, resetCartAction } from "../../lib/actions";
 import Loader from "../UI/Loader";
+import { HiOutlineShoppingBag } from "react-icons/hi";
 
 const CheckoutTable = ({
   selectedProducts,
@@ -14,7 +15,6 @@ const CheckoutTable = ({
 }) => {
   const [cartProducts, setCartProducts] = useState<selectedProduct[] | []>([]);
   const [loading, setLoading] = useState(true);
-  console.log("🚀 ~ cartProducts:", cartProducts);
 
   useEffect(() => {
     setCartProducts(selectedProducts);
@@ -74,7 +74,17 @@ const CheckoutTable = ({
       {loading ? (
         <Loader />
       ) : !cartProducts?.length ? (
-        <p className="text-center dark:text-white">Cart is Empty</p>
+        <div>
+          <span className="relative text-red text-[200px] flex justify-center">
+            <HiOutlineShoppingBag />
+            <div className="absolute -top-1 right-[410px] w-[80px] h-[80px] rounded-full bg-[#4e4d4dbf] opacity-90 flex items-center justify-center">
+              <div className="text-white text-[50px]">0</div>
+            </div>
+          </span>
+          <p className="text-center text-[40px] dark:text-white">
+            Cart Is Empty
+          </p>
+        </div>
       ) : (
         <>
           <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow dark:bg-dark">

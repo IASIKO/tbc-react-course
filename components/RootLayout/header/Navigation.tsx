@@ -4,18 +4,15 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 import { ProductObject } from "../../../types/products-types";
 
-
-const Navigation = ({selectedProducts} : {selectedProducts: ProductObject[]}) => {
-  const [isClient, setIsClient] = useState(false);
+const Navigation = ({
+  selectedProducts,
+}: {
+  selectedProducts: ProductObject[];
+}) => {
   const pathname = usePathname();
   const t = useTranslations("header");
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const selectedNumber =
     typeof window !== "undefined" && selectedProducts
@@ -104,9 +101,7 @@ const Navigation = ({selectedProducts} : {selectedProducts: ProductObject[]}) =>
         >
           <HiOutlineShoppingBag />
           <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#4e4d4dbf] opacity-90 flex items-center justify-center">
-            <div className="text-white text-xs">
-              {isClient && selectedNumber}
-            </div>
+            <div className="text-white text-xs">{selectedNumber}</div>
           </div>
         </Link>
       </div>
