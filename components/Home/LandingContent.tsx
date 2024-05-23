@@ -54,10 +54,10 @@ const LandingContent: React.FC<LandingContentProps> = ({
       </h1>
 
       <section className="py-[60px] relative dark:bg-gray">
-        <div className="max-w-[960px] px-[15px] flex justify-center items-center m-auto">
+        <div className="max-w-[1140px] px-[15px] flex justify-center items-center m-auto">
           <div
             style={{ backgroundImage: `url(${aboutImg.src})` }}
-            className="h-[780px] w-[100%] flex flex-wrap  bg-cover bg-no-repeat bg-center "
+            className="h-[580px] w-[100%] flex flex-wrap  bg-cover bg-no-repeat bg-center "
           ></div>
           <div className="pl-[30px] py-[30px] max-w-[50%] flex flex-[0_0_50%] flex-col animate-[fall_2s_ease_100ms]">
             <span className="text-red text-[21px] font-normal italic">
