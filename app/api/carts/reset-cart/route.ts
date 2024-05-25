@@ -14,7 +14,6 @@ export async function PUT(request: NextRequest) {
     const cart = await sql`SELECT * FROM carts WHERE user_id = ${Number(
       user_id
     )};`;
-    console.log("🚀 ~ PUT ~ cart reset:", cart.rows[0])
 
     if (cart.rows.length) {
       const products: ProductObject[] = [];
