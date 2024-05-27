@@ -53,10 +53,14 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
         <button
           onClick={() => {
             handleDecrement(selectedProduct.id);
-            updateCartCountAction(
-              selectedProduct.id,
-              selectedProduct.quantity - 1
-            );
+            if (selectedProduct.quantity === 1) {
+              handleDelete(selectedProduct.id);
+            } else {
+              updateCartCountAction(
+                selectedProduct.id,
+                selectedProduct.quantity - 1
+              );
+            }
           }}
           className="bg-red dark:bg-dark ml-2 p-2 rounded-md select-none text-center font-bold uppercase text-white shadow-md transition-transform transform hover:scale-110  bg-gradient-to-tr from-gray-900 to-gray-800  align-middle   shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         >

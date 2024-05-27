@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../UI/Button";
 import { useTranslations } from "next-intl";
 
@@ -22,41 +21,60 @@ const ContactForm = () => {
         <form>
           <div className="flex mb-[30px]">
             <div className="flex flex-col w-[50%]">
-              <label className="uppercase text-[#b7472a] text-[15px] font-medium">
+              <label
+                htmlFor="fullName"
+                className="uppercase text-[#b7472a] text-[15px] font-medium"
+              >
                 {t("fullName")}
               </label>
               <input
                 type="text"
+                id="fullName"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
                 placeholder={t("fullName")}
+                autoComplete="off"
               />
             </div>
             <div className="flex flex-col ml-[20px] w-[50%]">
-              <label className="uppercase text-[#b7472a] text-[15px] font-medium">
+              <label
+                htmlFor="email"
+                className="uppercase text-[#b7472a] text-[15px] font-medium"
+              >
                 {t("email")}
               </label>
               <input
                 type="email"
+                id="email"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
                 placeholder={t("email")}
+                autoComplete="off"
               />
             </div>
           </div>
           <div className="flex flex-col mb-[30px]">
-            <label className="uppercase text-[#b7472a] text-[15px] font-medium">
+            <label
+              htmlFor="subject"
+              className="uppercase text-[#b7472a] text-[15px] font-medium"
+            >
               {t("subject")}
             </label>
             <input
               type="text"
+              id="subject"
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
               placeholder={t("subject")}
+              autoComplete="off"
             />
           </div>
           <div className="flex flex-col mb-[30px]">
-            <label className="uppercase text-[#b7472a] text-[15px] font-medium">
+            <label
+              htmlFor="textarea"
+              className="uppercase text-[#b7472a] text-[15px] font-medium"
+            >
               {t("message")}
             </label>
             <textarea
+              id="textarea"
               rows={4}
               cols={50}
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] resize-none placeholder:pl-2"

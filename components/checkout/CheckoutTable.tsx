@@ -37,15 +37,11 @@ const CheckoutTable = ({
       (product) => product.id === id
     );
 
-    console.log("cart product id",cartProducts[cartProductIndex]);
-    
-
     if (cartProducts[cartProductIndex].quantity === 1) {
       const updatedProduct = cartProducts.filter((product) => {
         return product.id !== id;
       });
       setCartProducts(updatedProduct);
-      deleteProductAction(id);
     } else {
       const updatedProduct = cartProducts.map((product: selectedProduct) => {
         if (product.id === id) {
