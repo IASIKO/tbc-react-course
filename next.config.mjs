@@ -10,6 +10,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.dummyjson.com",
       },
+      {
+        protocol: "https",
+        hostname: "preview.colorlib.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.caskers.com",
+      },
     ],
   },
 };

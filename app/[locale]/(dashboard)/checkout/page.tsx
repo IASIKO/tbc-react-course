@@ -2,6 +2,8 @@ import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
 import CheckoutTable from "../../../../components/checkout/CheckoutTable";
 import { getUserCartAction } from "../../../../lib/actions";
+import { getProducts } from "../../../../lib/api";
+import { Product } from "../../../../types/products-types";
 
 export default async function Checkout({
   params: { locale },
@@ -13,13 +15,13 @@ export default async function Checkout({
   const loc = await getLocale();
   const userCart = await getUserCartAction();
   const cart = userCart[0]?.products;
+  const productsListData = await getProducts();
 
   const fetchProducts = async () => {
     const fetchProduct = async (id: number) => {
-      const response = await fetch(`https://dummyjson.com/products/${id}`, {
-        cache: "no-store",
-      });
-      const data = await response.json();
+      const data = productsListData.find(
+        (product: Product) => product.id === id
+      );
 
       return data;
     };

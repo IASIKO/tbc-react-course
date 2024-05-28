@@ -51,3 +51,15 @@ export async function createUserCart(user_id: number, prod_id: number) {
     body: JSON.stringify({ user_id, prod_id }),
   });
 }
+
+
+// PRODUCTS
+
+export const getProducts = async () => {
+  const res = await fetch(`${BASE_URL}/api/products/get-products`, {
+    cache: "no-store",
+  });
+  const { products } = await res.json();
+
+  return products.rows;
+};

@@ -10,7 +10,7 @@ import { addProductAction } from "../../lib/actions";
 interface ProductCardProps {
   product: Product;
   selectedProducts: ProductObject[];
-  isOpen: () => void
+  isOpen: () => void;
 }
 
 const initialStatus = (id: number, products: ProductObject[]) => {
@@ -21,7 +21,7 @@ const initialStatus = (id: number, products: ProductObject[]) => {
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
   selectedProducts,
-  isOpen
+  isOpen,
 }) => {
   const [isInCart, setIsInCart] = useState(() =>
     initialStatus(product.id, selectedProducts)
@@ -41,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className="flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-shadow-bottom rounded-lg transition-transform transform">
+    <div className="p-4 flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-transform transform hover:scale-105">
       <div
         className="flex flex-col justify-center items-center cursor-pointer"
         onClick={onProductCardClickHandler}
@@ -49,15 +49,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <Image
           src={product?.thumbnail}
           alt={product.title}
-          width={300}
-          height={400}
-          className="w-full h-[350px] object-cover rounded-t-lg"
+          width={200}
+          height={250}
+          className="w-full h-[250px] object-cover rounded-t-lg"
         />
-        <div className="text-center p-4 flex-1">
-          <span className="italic text-[#b7472a] block mb-2">
-            {product.category}
-          </span>
-          <h2 className="text-2xl capitalize font-light text-black leading-normal mb-2">
+        <div className="text-center flex-1">
+          <span className="italic text-[#b7472a] block">{product.brand}</span>
+          <h2 className="text-2xl capitalize font-light text-black leading-normal">
             {product.title}
           </h2>
           <p className="italic text-black text-xl">${product.price}</p>
@@ -65,16 +63,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       {isInCart ? (
         <div className="mb-4">
-          <Button onClick={isOpen}>
-          {t("inCart")}
-          </Button>
+          <button onClick={isOpen}>{t("inCart")}</button>
         </div>
       ) : (
         <div className="mb-4">
-          <Button onClick={handleClick}>
+          <button
+            onClick={handleClick}
+            className="p-[7px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
+          >
             <HiOutlineShoppingBag />
             {t("addToCart")}
-          </Button>
+          </button>
         </div>
       )}
     </div>
