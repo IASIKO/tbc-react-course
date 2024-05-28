@@ -3,6 +3,7 @@
 import { FaPlus } from "react-icons/fa";
 import Button from "../UI/Button";
 import ThemeLoader from "../UI/ThemeLoader";
+import { useTranslations } from "next-intl";
 
 interface UserForm {
   modalIsOpen: boolean;
@@ -27,6 +28,9 @@ const AddUserForm = ({
   isUpdate,
   isSubmitLoading,
 }: UserForm) => {
+
+  const t = useTranslations('admin')
+
   return (
     <>
       {modalIsOpen && (
@@ -37,7 +41,7 @@ const AddUserForm = ({
       )}
       <div className="mb-[30px]">
         <Button onClick={isOpen}>
-          Add User
+           {t("addUser")}
           <FaPlus />
         </Button>
       </div>
@@ -45,7 +49,7 @@ const AddUserForm = ({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 p-[60px] border border-red rounded-xl bg-white dark:bg-gray dark:border-black">
           <div className="flex items-center flex-col justify-center">
             <h2 className="uppercase tracking-widest mb-6 dark:text-white">
-              {isUpdate ? "Update User" : "Create User"}
+              {isUpdate ? t('updateUser') : t('createUser')}
             </h2>
             <form
               onSubmit={submitHandler}
@@ -73,7 +77,7 @@ const AddUserForm = ({
                 type="submit"
                 className="h-11 flex justify-center uppercase bg-red w-full py-[5px] text-white mb-3 ease-in duration-300 hover:bg-lightred dark:bg-dark dark:hover:bg-secondary"
               >
-                {isSubmitLoading ? <ThemeLoader /> : "SAVE"}
+                {isSubmitLoading ? <ThemeLoader /> :  t("save")}
               </button>
             </form>
           </div>

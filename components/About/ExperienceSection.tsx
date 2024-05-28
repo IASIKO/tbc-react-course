@@ -1,13 +1,36 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import aboutImg from "../../public/Assets/images/about-image.jpg";
 
-
 const ExperienceSection = () => {
+  const [value, setValue] = useState(0);
+  const objRef = useRef<HTMLDivElement>(null);
+  const start = 0;
+  const end = 115;
+  const duration = 3000;
+
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setValue(Math.floor(progress * (end - start) + start));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  }, [start, end, duration]);
+
   return (
     <section className="py-[60px] relative dark:bg-gray">
       <div className="max-w-[1140px] px-[15px] flex justify-center items-center m-auto">
         <div
           style={{ backgroundImage: `url(${aboutImg.src})` }}
-          className="h-[580px] w-[100%] flex flex-wrap  bg-cover bg-no-repeat bg-center "
+          className="h-[620px] w-[100%] flex flex-wrap  bg-cover bg-no-repeat bg-center "
         ></div>
         <div className="pl-[30px] py-[30px] max-w-[50%] flex flex-[0_0_50%] flex-col animate-[fall_2s_ease_100ms]">
           <span className="text-red text-[21px] font-normal italic">
@@ -28,8 +51,13 @@ const ExperienceSection = () => {
             and and the Little Blind Text should turn around and return to its
             own, safe country.
           </p>
-          <p className="text-[35px] text-black mb-[10px]">
-            <strong className="italic text-red font-semibold">115 </strong>
+          <p className="text-[28px] text-black mb-[10px]">
+            <strong
+              className="italic text-red font-semibold tracking-widest"
+              ref={objRef}
+            >
+              {value}{" "}
+            </strong>
             <span>Years of Experience In Business</span>
           </p>
         </div>

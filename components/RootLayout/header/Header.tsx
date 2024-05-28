@@ -1,4 +1,5 @@
-import { FaUser } from "react-icons/fa";
+"use client";
+
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
@@ -6,13 +7,17 @@ import { MdAdminPanelSettings } from "react-icons/md";
 import Link from "next/link";
 import Navigation from "./Navigation";
 import Language from "../../UI/Language";
-import LogoutButton from "../../UI/LogoutButton";
 import Theme from "../../UI/Theme";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
 
-const Header = ({selectedProducts} : {selectedProducts: ProductObject[]}) => {
-  const t = useTranslations("header");
+const Header = ({
+  selectedProducts,
+}: {
+  selectedProducts: ProductObject[];
+}) => {
+  const tAdmin = useTranslations("admin");
+
   return (
     <header>
       <div className="relative w-[100%] bg-red dark:bg-dark">
@@ -28,12 +33,9 @@ const Header = ({selectedProducts} : {selectedProducts: ProductObject[]}) => {
                 </a>
               </p>
               <Language />
-              <Link
-                href="/admin"
-                className="flex items-center text-white"
-              >
-                  <MdAdminPanelSettings />
-                Admin
+              <Link href="/admin" className="flex items-center text-white">
+                <MdAdminPanelSettings />
+                {tAdmin("admin")}
               </Link>
             </div>
 
@@ -61,24 +63,16 @@ const Header = ({selectedProducts} : {selectedProducts: ProductObject[]}) => {
                 </p>
               </div>
 
-              <div className="flex gap-4">
-                <button className="text-white text-[20px]">
-                  <Link href="/profile" className="flex items-center gap-2">
-                    <FaUser />
-                    {t("profile")}
-                  </Link>
-                </button>
-                <LogoutButton />
-                <div className="duration-100 rounded py-1 px-1 flex justify-center w-[100px]">
-                  <Theme />
-                </div>
+              <div className="duration-100 rounded py-1 px-1 flex justify-center w-[100px]">
+                <Theme />
               </div>
+             
             </div>
           </div>
         </div>
       </div>
 
-      <Navigation selectedProducts={selectedProducts}/>
+      <Navigation selectedProducts={selectedProducts} />
     </header>
   );
 };

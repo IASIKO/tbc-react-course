@@ -41,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className="flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-shadow-bottom rounded-lg transition-transform transform hover:scale-105">
+    <div className="flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-shadow-bottom rounded-lg transition-transform transform">
       <div
         className="flex flex-col justify-center items-center cursor-pointer"
         onClick={onProductCardClickHandler}
@@ -66,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {isInCart ? (
         <div className="mb-4">
           <Button onClick={isOpen}>
-            In Cart
+          {t("inCart")}
           </Button>
         </div>
       ) : (

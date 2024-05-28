@@ -29,11 +29,24 @@
     "sortByPrice": "Sort by Price (low to high)",
     "resetSort": "Reset Sort",
     "addToCart": "Add",
+    "inCart": "In Cart",
     "singlePageTitle": "Product Details",
     "category": "Category",
     "brand": "Brand",
     "description": "Description",
-    "viewAllProducts": "View All Products"
+    "viewAllProducts": "View All Products",
+    "warning": "Warning!",
+    "isInCart": "Product is already in the cart"
+  },
+  "checkout": {
+    "myCart": "My Cart",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
+    "actions": "Actions",
+    "clearCart": "CLEAR CART",
+    "empty": "Cart Is Empty"
   },
   "blogs": {
     "title": "Blog",
@@ -92,5 +105,14 @@
     "faqs": "Faq's",
     "subscription": "Newsletter Subscription",
     "subscriptionInputPH": "Email..."
+  },
+  "admin": {
+    "admin": "Admin",
+    "name": "NAME",
+    "email": "Email",
+    "addUser": "Add User",
+    "updateUser": "UPDATE USER",
+    "createUser": "CREATE USER",
+    "save": "SAVE"
   }
 }

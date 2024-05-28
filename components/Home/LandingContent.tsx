@@ -5,6 +5,7 @@ import BlogList from "../Blog/BlogList";
 import { useTranslations } from "next-intl";
 import { Product, ProductObject } from "../../types/products-types";
 import ExperienceSection from "../About/ExperienceSection";
+import CategoriesSection from "../About/CategoriesSection";
 
 interface BlogListData {
   image: string;
@@ -31,9 +32,9 @@ const LandingContent: React.FC<LandingContentProps> = ({
 
   return (
     <>
-      <div className="absolute top-[48px] right-0 bottom-0 left-0 opacity-40 bg-black"></div>
+      <div className="absolute top-[48px] right-0 -bottom-[50px] left-0 opacity-40 bg-black"></div>
       <h1 className="textStroke absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] leading-tight font-bold italic">
-        <div className="py-[30px] rotate-[-4deg] text-center w-[660px] m-auto">
+        <div className="py-[30px] rotate-[-4deg] text-center w-[760px] m-auto">
           Good <span className="text-white">Drink</span> for Good{" "}
           <span className="text-white">Moments</span>.
           <p className="font-normal text-[20px] text-[#ffffff] py-[20px] leading-normal">
@@ -54,6 +55,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
       </h1>
 
       <ExperienceSection />
+      <CategoriesSection productListData={productListData}/>
 
       <section className="dark:bg-gray">
         <ProductsList

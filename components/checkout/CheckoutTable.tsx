@@ -7,6 +7,7 @@ import Button from "../UI/Button";
 import { deleteProductAction, resetCartAction } from "../../lib/actions";
 import Loader from "../UI/Loader";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { useTranslations } from "next-intl";
 
 const CheckoutTable = ({
   selectedProducts,
@@ -15,6 +16,7 @@ const CheckoutTable = ({
 }) => {
   const [cartProducts, setCartProducts] = useState<selectedProduct[] | []>([]);
   const [loading, setLoading] = useState(true);
+  const t = useTranslations("checkout");
 
   useEffect(() => {
     setCartProducts(selectedProducts);
@@ -81,7 +83,7 @@ const CheckoutTable = ({
             </div>
           </span>
           <p className="text-center text-[40px] dark:text-white">
-            Cart Is Empty
+            {t("empty")}
           </p>
         </div>
       ) : (
@@ -91,19 +93,19 @@ const CheckoutTable = ({
               <tr>
                 <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white"></th>
                 <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  Product
+                  {t("product")}
                 </th>
                 <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  Price
+                  {t("price")}
                 </th>
                 <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  Quantity
+                  {t("quantity")}
                 </th>
                 <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  Total
+                  {t("total")}
                 </th>
                 <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  Actions
+                  {t("actions")}
                 </th>
               </tr>
             </thead>
@@ -120,7 +122,7 @@ const CheckoutTable = ({
             </tbody>
           </table>
           <div className="mt-2">
-            <Button onClick={handleReset}>CLEAR CART</Button>
+            <Button onClick={handleReset}>{t("clearCart")}</Button>
           </div>
         </>
       )}

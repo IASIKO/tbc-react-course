@@ -12,6 +12,7 @@ import {
   editUserAction,
 } from "../../lib/actions";
 import ThemeLoader from "../UI/ThemeLoader";
+import { useTranslations } from "next-intl";
 
 interface UsersProps {
   users: UserInfo[];
@@ -23,6 +24,7 @@ const Users = ({ users }: UsersProps) => {
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [isDeleteLoading, setIsDeletLoading] = useState(false);
   const [formData, setFormData] = useState({ id: 0, name: "", email: "" });
+  const t = useTranslations('admin')
   const router = useRouter();
 
   const isOpen = () => {
@@ -82,10 +84,10 @@ const Users = ({ users }: UsersProps) => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                      Name
+                    {t("name")}
                     </th>
                     <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                      Email
+                    {t("email")}
                     </th>
                   </tr>
                 </thead>

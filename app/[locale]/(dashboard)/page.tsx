@@ -34,6 +34,7 @@ export default async function DashboardHome({
         alt="background image"
         priority={true}
         placeholder="blur"
+        className="h-[100vh] object-none object-top"
       />
       <LandingContent
         blogListData={blogListData.recipes}

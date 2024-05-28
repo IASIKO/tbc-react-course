@@ -29,11 +29,24 @@
     "sortByPrice": "ფასის ზრდადობით",
     "resetSort": "გადატვირთე",
     "addToCart": "დამატება",
+    "inCart": "კალათაშია",
     "singlePageTitle" : "პროდუქტის დეტალები",
     "category": "კატეგორია",
     "brand": "ბრენდი",
     "description": "აღწერა",
-    "viewAllProducts": "იხილეთ პროდუქტები"
+    "viewAllProducts": "იხილეთ პროდუქტები",
+    "warning": "გაფრთხილება!",
+    "isInCart": "პროდუქტი უკვე კალათაშია"
+  },
+  "checkout": {
+    "myCart": "კალათა",
+    "product": "პროდუქტი",
+    "price": "ფასი",
+    "quantity": "რაოდენობა",
+    "total": "ჯამი",
+    "actions": "",
+    "clearCart": "კალათის გასუფთავება",
+    "empty": "კალათა ცარიელია"
   },
   "blogs":{
     "title":"ბლოგი",
@@ -92,5 +105,14 @@
     "faqs": "ხ.დ.კ",
     "subscription": "სიახლეების გამოწერა",
     "subscriptionInputPH": "ელ-ფოსტა..."
+  },
+  "admin": {
+    "admin": "ადმინი",
+    "name": "სახელი",
+    "email": "ელ-ფოსტა",
+    "addUser": "დამატება",
+    "updateUser": "მომხმარებლის განახლება",
+    "createUser": "მომხმარებლის შექმნა",
+    "save": "შენახვა"
   }
 }

@@ -1,10 +1,13 @@
 "use client";
 
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { PiUserCircleLight } from "react-icons/pi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
+import { useState } from "react";
+import LogoutButton from "../../UI/LogoutButton";
 
 const Navigation = ({
   selectedProducts,
@@ -13,6 +16,7 @@ const Navigation = ({
 }) => {
   const pathname = usePathname();
   const t = useTranslations("header");
+  const [userModalisOpen, setUserModalIsClose] = useState(false);
 
   const selectedNumber = selectedProducts
     ? selectedProducts.reduce((acc: number, curr: ProductObject) => {
@@ -103,6 +107,25 @@ const Navigation = ({
             <div className="text-white text-xs">{selectedNumber}</div>
           </div>
         </Link>
+        <button
+          onClick={() => setUserModalIsClose(!userModalisOpen)}
+          className="text-white text-[32px] ml-4"
+        >
+          <PiUserCircleLight />
+        </button>
+
+        {userModalisOpen && (
+          <div className="absolute top-[50px] right-8 bg-black rounded-md p-5">
+            <div className="flex flex-col gap-4">
+              <button className="text-white text-[20px]">
+                <Link href="/profile" className="flex items-center gap-2">
+                  {t("profile")}
+                </Link>
+              </button>
+              <LogoutButton />
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
