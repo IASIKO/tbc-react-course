@@ -10,6 +10,7 @@ export interface Product {
     category: string;
     thumbnail: string;
     images: string[];
+    weight: number
   }
 
   export interface selectedProduct extends Product{

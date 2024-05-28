@@ -3,15 +3,10 @@ import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { getUserCartAction } from "../../../lib/actions";
+import { getProducts } from "../../../lib/api";
 
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");
-
-  return res.json();
-}
-
-async function getProducts() {
-  const res = await fetch("https://dummyjson.com/products");
 
   return res.json();
 }
@@ -38,7 +33,7 @@ export default async function DashboardHome({
       />
       <LandingContent
         blogListData={blogListData.recipes}
-        productListData={productListData.products}
+        productListData={productListData}
         selectedProducts={selectedProducts[0]?.products}
       />
     </>

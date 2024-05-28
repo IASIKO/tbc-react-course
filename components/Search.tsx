@@ -25,7 +25,7 @@ const Search: React.FC<SearchProps> = ({
         placeholder={t("searchInput")}
         value={searchValue}
         onChange={onChange}
-        className="border border-red px-[15px] rounded-md w-[350px] outline-none"
+        className="border border-red dark:border-none px-[15px] rounded-md w-[350px] outline-none"
       />
       <Button onClick={onClick} width="300px">
         {isProductsSorted ? (

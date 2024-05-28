@@ -4,13 +4,6 @@ import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 import { getUserCartAction } from "../../../../lib/actions";
 import { getProducts } from "../../../../lib/api";
 
-// async function getProducts() {
-//   const res = await fetch("https://dummyjson.com/products");
-//   const products = res.json();
-
-//   return products;
-// }
-
 export default async function Products({
   params: { locale },
 }: {

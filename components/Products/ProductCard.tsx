@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Button from "../UI/Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { LiaStarSolid } from "react-icons/lia";
 import { Product, ProductObject } from "../../types/products-types";
 import { addProductAction } from "../../lib/actions";
 
@@ -43,7 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div className="p-4 flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-transform transform hover:scale-105">
       <div
-        className="flex flex-col justify-center items-center cursor-pointer"
+        className="flex flex-col justify-center items-start cursor-pointer"
         onClick={onProductCardClickHandler}
       >
         <Image
@@ -53,23 +53,38 @@ const ProductCard: React.FC<ProductCardProps> = ({
           height={250}
           className="w-full h-[250px] object-cover rounded-t-lg"
         />
-        <div className="text-center flex-1">
-          <span className="italic text-[#b7472a] block">{product.brand}</span>
-          <h2 className="text-2xl capitalize font-light text-black leading-normal">
+        <div className="text-left w-full mt-2 flex flex-col justify-between h-[150px]">
+          <span className="flex items-center text-sm">
+            <LiaStarSolid className="text-yellow" />
+            <LiaStarSolid className="text-yellow" />
+            <LiaStarSolid className="text-yellow" />
+            <LiaStarSolid className="text-yellow" />
+            <LiaStarSolid className="text-yellow" />
+             {product.rating}
+          </span>
+          <h2 className="text-[20px] capitalize font-bold text-black leading-normal line-clamp-2">
             {product.title}
           </h2>
-          <p className="italic text-black text-xl">${product.price}</p>
+          <span className="text-sm">{product.weight}mL</span>
+          <div className="w-full flex justify-between items-center mt-2 mb-2">
+            <p className="text-red text-xl font-extrabold">${product.price}</p>
+          </div>
         </div>
       </div>
       {isInCart ? (
-        <div className="mb-4">
-          <button onClick={isOpen}>{t("inCart")}</button>
+        <div className="my-4">
+          <button
+            onClick={isOpen}
+            className="p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
+          >
+            {t("inCart")}
+          </button>
         </div>
       ) : (
-        <div className="mb-4">
+        <div className="w-full my-4">
           <button
             onClick={handleClick}
-            className="p-[7px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
+            className="p-[7px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white w-full"
           >
             <HiOutlineShoppingBag />
             {t("addToCart")}
