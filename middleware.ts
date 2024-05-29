@@ -1,5 +1,5 @@
 import createIntlMiddleware from "next-intl/middleware";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 // import { cookies } from "next/headers";
 // import { AUTH_COOKIE_KEY } from "./lib/constants";
 
