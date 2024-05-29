@@ -7,7 +7,8 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
 import { useState } from "react";
-import LogoutButton from "../../UI/LogoutButton";
+// import LogoutButton from "../../UI/LogoutButton";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Navigation = ({
   selectedProducts,
@@ -16,6 +17,9 @@ const Navigation = ({
 }) => {
   const pathname = usePathname();
   const t = useTranslations("header");
+  const { user } = useUser();
+
+  console.log(user);
   const [userModalisOpen, setUserModalIsClose] = useState(false);
 
   const selectedNumber = selectedProducts
@@ -122,7 +126,11 @@ const Navigation = ({
                   {t("profile")}
                 </Link>
               </button>
-              <LogoutButton />
+              {user ? (
+                <Link href="/api/auth/logout">Log Out</Link>
+              ) : (
+                <Link href="/api/auth/login">Log In</Link>
+              )}
             </div>
           </div>
         )}

@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { Providers } from "./providers";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -32,13 +33,15 @@ export default function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="dark:bg-gray">
-        <main className={myFont.className}>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <Providers>{children}</Providers>
-          </NextIntlClientProvider>
-        </main>
-      </body>
+      <UserProvider>
+        <body className="dark:bg-gray">
+          <main className={myFont.className}>
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              <Providers>{children}</Providers>
+            </NextIntlClientProvider>
+          </main>
+        </body>
+      </UserProvider>
     </html>
   );
 }
