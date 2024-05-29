@@ -19,6 +19,7 @@ const Navigation = ({
   const t = useTranslations("header");
   const { user } = useUser();
 
+
   console.log(user);
   const [userModalisOpen, setUserModalIsClose] = useState(false);
 
@@ -127,7 +128,7 @@ const Navigation = ({
                 </Link>
               </button>
               {user ? (
-                <Link href="/api/auth/logout">Log Out</Link>
+                <a href="/api/auth/logout">Log Out</a>
               ) : (
                 <Link href="/api/auth/login">Log In</Link>
               )}

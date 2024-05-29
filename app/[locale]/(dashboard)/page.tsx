@@ -1,5 +1,5 @@
-// import bg from "../../../public/Assets/images/bg_1.jpg";
-import test from '../../../public/Assets/images/test.png'
+import bg from "../../../public/Assets/images/bg_1.jpg";
+// import test from '../../../public/Assets/images/test.png'
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -26,7 +26,7 @@ export default async function DashboardHome({
   return (
     <>
       <Image
-        src={test}
+        src={bg}
         alt="background image"
         priority={true}
         placeholder="blur"
