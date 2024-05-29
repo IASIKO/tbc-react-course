@@ -32,9 +32,9 @@ const LandingContent: React.FC<LandingContentProps> = ({
 
   return (
     <>
-      <div className="absolute top-[48px] right-0 -bottom-[50px] left-0 opacity-40 bg-black"></div>
-      <h1 className="textStroke absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] leading-tight font-bold italic">
-        <div className="py-[30px] rotate-[-4deg] text-center w-[760px] m-auto">
+      {/* <div className="absolute top-[48px] right-0 -bottom-[50px] left-0 opacity-20 bg-black"></div> */}
+      <h1 className="textStroke absolute top-1/2 left-[20px]  -translate-y-1/2 text-[90px] leading-tight font-bold italic">
+        <div className="py-[30px] rotate-[-4deg] text-center w-[560px] m-auto">
           Good <span className="text-white">Drink</span> for Good{" "}
           <span className="text-white">Moments</span>.
           <p className="font-normal text-[20px] text-[#ffffff] py-[20px] leading-normal">

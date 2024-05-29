@@ -17,7 +17,7 @@ const Language = () => {
     <div className="duration-100 flex gap-2 items-center justify-center">
       <div
         className={
-          locale === "en" ? "text-yellow" : "text-black dark:text-balck"
+          locale === "en" ? "text-yellow" : "text-black dark:text-black"
         }
       >
         <button onClick={() => langHandleCLick("en")}>EN</button>

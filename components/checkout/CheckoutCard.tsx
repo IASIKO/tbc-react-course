@@ -20,13 +20,13 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <tr key={selectedProduct.id}>
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="py-4 whitespace-nowrap">
         <Image
           src={selectedProduct.thumbnail}
           alt={selectedProduct.title}
-          width={90}
+          width={110}
           height={110}
-          className="w-full h-20 object-cover"
+          className="w-24 h-24"
         />
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
@@ -45,8 +45,10 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-[18px] text-gray-900 dark:text-white italic">
-          $ {selectedProduct.price * selectedProduct.quantity}
+        <div className="text-[18px] text-gray-900 dark:text-white italic w-24">
+          ${" "}
+          {Math.round(selectedProduct.price * selectedProduct.quantity * 100) /
+            100}
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">

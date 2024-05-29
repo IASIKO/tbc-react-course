@@ -25,13 +25,13 @@ const Navigation = ({
     : 0;
 
   return (
-    <nav className="absolute left-0 right-0 z-10 bg-transparent">
+    <nav className="absolute left-0 right-0 z-10 bg-dark">
       <div className="max-w-[1140px] flex items-center justify-between m-auto">
         <Link
           href="/"
           className="font-bold text-[28px] relative uppercase text-white py-[3px] mr-[10px] leading-loose whitespace-nowrap"
         >
-          Liquor <span className="text-gray">store</span>
+          Liquor <span className="text-red">store</span>
         </Link>
 
         <div className="flex basis-auto grow items-center">
@@ -42,7 +42,7 @@ const Navigation = ({
                 className={`link ${
                   pathname === `/`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
+                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
                 }`}
               >
                 {t("home")}
@@ -54,7 +54,7 @@ const Navigation = ({
                 className={`link ${
                   pathname === `/about`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
+                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
                 }`}
               >
                 {t("about")}
@@ -66,7 +66,7 @@ const Navigation = ({
                 className={`link ${
                   pathname === `/products`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
+                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
                 }`}
               >
                 {t("products")}
@@ -78,7 +78,7 @@ const Navigation = ({
                 className={`link ${
                   pathname === `/blog`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
+                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
                 }`}
               >
                 {t("blog")}
@@ -90,7 +90,7 @@ const Navigation = ({
                 className={`link ${
                   pathname === `/contact`
                     ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-gray text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
+                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
                 }`}
               >
                 {t("contact")}

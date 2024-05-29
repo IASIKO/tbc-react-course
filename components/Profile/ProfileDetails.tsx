@@ -15,32 +15,32 @@ const ProfileDetails = () => {
     <section className="py-[60px] dark:bg-gray">
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
-          <h3 className="text-[25px] font-medium text-black">
+          <h3 className="text-[25px] font-medium text-black dark:text-white">
             {t("profileDetails")}
           </h3>
           <div className="flex gap-5">
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">{t("firstName")}</h2>
+              <h2 className="text-black font-normal dark:text-white">{t("firstName")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">Giorgi</span>
               </div>
             </div>
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">{t("lastName")}</h2>
+              <h2 className="text-black font-normal dark:text-white">{t("lastName")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">Iaseshvili</span>
               </div>
             </div>
           </div>
           <div className="flex flex-col w-[100%] my-[10px]">
-            <h2 className="text-black font-normal">{t("stateAndCountry")}</h2>
+            <h2 className="text-black font-normal dark:text-white">{t("stateAndCountry")}</h2>
             <div className="border-[1px] border-solid border-red py-[5px]">
               <span className="pl-[20px] dark:text-white">Georgia</span>
             </div>
           </div>
           <div className="flex gap-5">
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">
+              <h2 className="text-black font-normal dark:text-white">
                 {t("streetAndAddress")}
               </h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
@@ -50,7 +50,7 @@ const ProfileDetails = () => {
               </div>
             </div>
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">{t("flat")}</h2>
+              <h2 className="text-black font-normal dark:text-white">{t("flat")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">Flat 3</span>
               </div>
@@ -58,13 +58,13 @@ const ProfileDetails = () => {
           </div>
           <div className="flex gap-5">
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">{t("townOrCity")}</h2>
+              <h2 className="text-black font-normal dark:text-white">{t("townOrCity")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">Tbilisi</span>
               </div>
             </div>
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">{t("postCodeAndZIP")}</h2>
+              <h2 className="text-black font-normal dark:text-white">{t("postCodeAndZIP")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">10166</span>
               </div>
@@ -72,7 +72,7 @@ const ProfileDetails = () => {
           </div>
           <div className="flex gap-5">
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">{t("phone")}</h2>
+              <h2 className="text-black font-normal dark:text-white">{t("phone")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">
                   +995 558 150 018
@@ -80,7 +80,7 @@ const ProfileDetails = () => {
               </div>
             </div>
             <div className="flex flex-col w-[50%] my-[10px]">
-              <h2 className="text-black font-normal">{t("emailAddress")}</h2>
+              <h2 className="text-black font-normal dark:text-white">{t("emailAddress")}</h2>
               <div className="border-[1px] border-solid border-red py-[5px]">
                 <span className="pl-[20px] dark:text-white">
                   iaseshviligi@gmail.com
@@ -89,7 +89,7 @@ const ProfileDetails = () => {
             </div>
           </div>
           <form>
-            <h3 className="text-[25px] font-medium text-black pt-[60px]">
+            <h3 className="text-[25px] font-medium text-black pt-[60px] dark:text-white">
               {t("changePassword")}
             </h3>
             <div className="flex mb-[30px]">

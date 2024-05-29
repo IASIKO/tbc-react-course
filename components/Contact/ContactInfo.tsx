@@ -38,7 +38,7 @@ const ContactInfo = () => {
           </div>
           <div className="w-[200px]">
             <p className="text-center dark:text-white">
-              <span className="text-black font-medium">
+              <span className="text-black font-medium dark:text-white">
                 {infoItem.contactKey}:{" "}
               </span>
               {infoItem.contactValue}

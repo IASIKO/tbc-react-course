@@ -37,14 +37,14 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               height={500}
             />
             <div className="px-[60px]">
-              <h2 className="text-black font-normal text-[35px]">
+              <h2 className="text-black font-normal text-[35px] dark:text-white">
                 {productDetails.title}
               </h2>
               <span className="text-red text-[20px] flex gap-2 items-center font-bold">
                 {productDetails.rating}
                 <MdStarRate />
               </span>
-              <span className="text-black text-[35px] flex gap-2 items-center">
+              <span className="text-black text-[35px] flex gap-2 items-center dark:text-white">
                 {productDetails.price}
                 <PiCurrencyDollarBold />
               </span>

@@ -24,7 +24,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
             <span className="text-red text-[21px] font-normal italic">
               {t("title")}
             </span>
-            <h2 className="text-[40px] font-bold text-black">
+            <h2 className="text-[40px] font-bold text-black dark:text-white">
               {t("recentBlog")}
             </h2>
           </div>

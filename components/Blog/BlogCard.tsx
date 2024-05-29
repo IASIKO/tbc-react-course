@@ -30,7 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo }) => {
           <MdStarRate />
           <span className="pl-[10px] text-gray">{blogInfo.rating}</span>
         </p>
-        <h3 className="text-[27px] font-medium italic mb-[10px] leading-normal text-black">
+        <h3 className="text-[27px] font-medium italic mb-[10px] leading-normal text-black dark:text-white">
           {blogInfo.name}
         </h3>
         <p className="mb-[10px]">{blogInfo.ingredients}</p>

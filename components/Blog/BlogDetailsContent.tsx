@@ -34,7 +34,7 @@ const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({
                 height={500}
               />
               <div className="px-[30px]">
-                <h2 className="text-black font-normal text-[35px]">
+                <h2 className="text-black font-normal text-[35px] dark:text-white">
                   {blogDetails.name}
                 </h2>
                 <span className="text-red italic font-bold">

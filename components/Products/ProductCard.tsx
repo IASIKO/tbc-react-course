@@ -51,7 +51,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           alt={product.title}
           width={200}
           height={250}
-          className="w-full h-[250px] object-cover rounded-t-lg"
+          className="w-[200px] h-[250px] object-cover rounded-t-lg"
         />
         <div className="text-left w-full mt-2 flex flex-col justify-between h-[150px]">
           <span className="flex items-center text-sm">
@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <LiaStarSolid className="text-yellow" />
              {product.rating}
           </span>
-          <h2 className="text-[20px] capitalize font-bold text-black leading-normal line-clamp-2">
+          <h2 className="text-[20px] capitalize font-bold text-black leading-normal line-clamp-2 dark:text-white">
             {product.title}
           </h2>
           <span className="text-sm">{product.weight}mL</span>

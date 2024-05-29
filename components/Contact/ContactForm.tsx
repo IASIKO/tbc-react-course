@@ -15,7 +15,7 @@ const ContactForm = () => {
         ></iframe>
       </div>
       <div className="px-[60px] py-[60px] bg-white w-[60%] dark:bg-slate-200">
-        <h3 className="mb-[15px] text-black font-normal text-[27px]">
+        <h3 className="mb-[15px] text-black font-normal text-[27px] dark:text-white">
           {t("contactUs")}
         </h3>
         <form>

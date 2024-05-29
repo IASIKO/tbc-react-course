@@ -105,7 +105,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
             <span className="text-[#b7472a] text-[21px] font-normal italic">
               {t("listTitle1")}
             </span>
-            <h2 className="text-[45px] font-bold text-black leading-normal">
+            <h2 className="text-[45px] font-bold text-black leading-normal dark:text-white">
               {t("listTitle2")}
             </h2>
             {path === "/products" && (

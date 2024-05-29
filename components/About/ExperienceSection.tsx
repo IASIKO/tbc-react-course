@@ -36,7 +36,7 @@ const ExperienceSection = () => {
           <span className="text-red text-[21px] font-normal italic">
             Since 1905
           </span>
-          <h2 className="text-[45px] font-bold text-black leading-normal">
+          <h2 className="text-[45px] font-bold text-black leading-normal dark:text-white">
             Desire Meets A New Taste
           </h2>
           <p className="mb-[10px] dark:text-white">
@@ -51,14 +51,14 @@ const ExperienceSection = () => {
             and and the Little Blind Text should turn around and return to its
             own, safe country.
           </p>
-          <p className="text-[28px] text-black mb-[10px]">
+          <p className="text-[28px] text-white mb-[10px]">
             <strong
               className="italic text-red font-semibold tracking-widest"
               ref={objRef}
             >
               {value}{" "}
             </strong>
-            <span>Years of Experience In Business</span>
+            <span className="text-black dark:text-white">Years of Experience In Business</span>
           </p>
         </div>
       </div>

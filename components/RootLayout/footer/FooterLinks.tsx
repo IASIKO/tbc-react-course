@@ -19,7 +19,7 @@ const FooterLinks: React.FC<FooterLinksProps> = ({ linksInfo }) => {
           {linksInfo.list.map((listItem, index) => (
             <li
               key={index}
-              className="text-gray cursor-pointer text-[18px] font-medium mb-[10px]"
+              className="text-white cursor-pointer text-[18px] font-medium mb-[10px]"
             >
               {listItem}
             </li>
