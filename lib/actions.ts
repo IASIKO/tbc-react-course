@@ -2,8 +2,8 @@
 
 import { cookies } from "next/headers";
 import { BASE_URL, createUser, deleteUser, editUser } from "./api";
-import { USER_ID } from "./constants";
 import { revalidatePath } from "next/cache";
+import { getSession } from "@auth0/nextjs-auth0";
 
 export const setLanguage = (lang: string) => {
   cookies().set("NEXT_LOCALE", lang);
@@ -29,25 +29,37 @@ export const editUserAction = async (
 
 // CART
 
-export async function addProductAction(id: number) {
-  revalidatePath('/', 'layout')
+export async function createUserCart(prod_id: number, user_id: string) {
+  await fetch(`${BASE_URL}/api/carts/create-cart`, {
+    method: "POST",
+    body: JSON.stringify({ prod_id, user_id }),
+  });
+}
+
+export async function addProductAction(prod_id: number) {
+  const session = await getSession();
+  const user = session?.user;
+
+  revalidatePath("/", "layout");
   await fetch(BASE_URL + "/api/carts/add-product", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Cookie: `userId=${JSON.parse(cookies().get(USER_ID)?.value!)}`,
+      Cookie: `userId=${user?.sub}`,
     },
-    body: JSON.stringify({ id }),
+    body: JSON.stringify({ prod_id }),
   });
 }
 
 export async function updateCartCountAction(id: number, quantity: number) {
-  revalidatePath('/', 'layout')
+  const session = await getSession();
+  const user = session?.user;
+  revalidatePath("/", "layout");
   await fetch(BASE_URL + "/api/carts/update-cart", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Cookie: `userId=${JSON.parse(cookies().get(USER_ID)?.value!)}`,
+      Cookie: `userId=${user?.sub}`,
     },
     body: JSON.stringify({ id, quantity }),
     cache: "no-store",
@@ -55,35 +67,43 @@ export async function updateCartCountAction(id: number, quantity: number) {
 }
 
 export async function resetCartAction() {
-  revalidatePath('/', 'layout')
+  const session = await getSession();
+  const user = session?.user;
+  revalidatePath("/", "layout");
   await fetch(`${BASE_URL}/api/carts/reset-cart`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Cookie: `userId=${JSON.parse(cookies().get(USER_ID)?.value!)}`,
+      Cookie: `userId=${user?.sub}`,
     },
   });
 }
 
 export const getUserCartAction = async () => {
+  const session = await getSession();
+  const user = session?.user;
   const response = await fetch(BASE_URL + `/api/carts/get-cart`, {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
-      Cookie: `userId=${JSON.parse(cookies().get(USER_ID)?.value!)}`,
+      Cookie: `userId=${user?.sub}`,
     },
   });
+
   const carts = await response.json();
+
   return carts.cart.rows;
 };
 
 export const deleteProductAction = async (prod_id: number) => {
-  revalidatePath('/', 'layout')
+  const session = await getSession();
+  const user = session?.user;
+
+  revalidatePath("/", "layout");
   await fetch(`${BASE_URL}/api/carts/delete-product`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Cookie: `userId=${JSON.parse(cookies().get(USER_ID)?.value!)}`,
+      Cookie: `userId=${user?.sub}`,
     },
     body: JSON.stringify({ prod_id }),
   });

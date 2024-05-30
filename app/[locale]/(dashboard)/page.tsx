@@ -21,6 +21,7 @@ export default async function DashboardHome({
 
   const blogListData = await getBlogs();
   const productListData = await getProducts();
+
   const selectedProducts = await getUserCartAction();
 
   return (

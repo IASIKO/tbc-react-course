@@ -6,6 +6,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { LiaStarSolid } from "react-icons/lia";
 import { Product, ProductObject } from "../../types/products-types";
 import { addProductAction } from "../../lib/actions";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface ProductCardProps {
   product: Product;
@@ -28,16 +29,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
   );
   const router = useRouter();
   const t = useTranslations("products");
+  const { user } = useUser();
 
   const onProductCardClickHandler = () => {
     router.push(`/products/${product.id}`);
   };
 
-  const handleClick = () => {
+  const addToCartHandler = () => {
     if (isInCart) return;
 
-    addProductAction(product.id);
-    setIsInCart(true);
+    if (!user) {
+      router.push("/api/auth/login");
+    } else {
+      addProductAction(product.id);
+      setIsInCart(true);
+    }
   };
 
   return (
@@ -60,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <LiaStarSolid className="text-yellow" />
             <LiaStarSolid className="text-yellow" />
             <LiaStarSolid className="text-yellow" />
-             {product.rating}
+            {product.rating}
           </span>
           <h2 className="text-[20px] capitalize font-bold text-black leading-normal line-clamp-2 dark:text-white">
             {product.title}
@@ -83,7 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       ) : (
         <div className="w-full my-4">
           <button
-            onClick={handleClick}
+            onClick={addToCartHandler}
             className="p-[7px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white w-full"
           >
             <HiOutlineShoppingBag />

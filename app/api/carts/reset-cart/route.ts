@@ -11,16 +11,14 @@ export async function PUT(request: NextRequest) {
   try {
     if (!user_id) throw new Error("user not found");
 
-    const cart = await sql`SELECT * FROM carts WHERE user_id = ${Number(
-      user_id
-    )};`;
+    const cart = await sql`SELECT * FROM carts WHERE user_id = ${user_id};`;
 
     if (cart.rows.length) {
       const products: ProductObject[] = [];
 
       await sql`UPDATE carts SET products = ${JSON.stringify(
         products
-      )}, added_on = NOW() WHERE user_id = ${Number(user_id)};`;
+      )}, added_on = NOW() WHERE user_id = ${user_id};`;
     }
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });

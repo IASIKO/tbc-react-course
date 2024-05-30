@@ -5,6 +5,8 @@ import { getUserCartAction } from "../../../../lib/actions";
 import { getProducts } from "../../../../lib/api";
 import { Product } from "../../../../types/products-types";
 
+export const revalidate = 0;
+
 export default async function Checkout({
   params: { locale },
 }: {

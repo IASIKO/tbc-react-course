@@ -15,9 +15,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const cart =
-      await sql<CartTable>`SELECT * FROM carts WHERE user_id = ${Number(
-        user_id
-      )};`;
+      await sql<CartTable>`SELECT * FROM carts WHERE user_id = ${user_id};`;
 
     const products = cart.rows[0].products;
     const index = products.findIndex((item) => item.id === id);
@@ -30,7 +28,7 @@ export async function PUT(request: NextRequest) {
 
     await sql`UPDATE carts SET products = jsonb_set(products,${path},${JSON.stringify(
       newProduct
-    )}),added_on = NOW() WHERE user_id = ${Number(user_id)};`;
+    )}),added_on = NOW() WHERE user_id = ${user_id};`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

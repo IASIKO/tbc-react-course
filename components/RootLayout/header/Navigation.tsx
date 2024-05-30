@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
 import { useState } from "react";
-// import LogoutButton from "../../UI/LogoutButton";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Navigation = ({
@@ -19,8 +18,6 @@ const Navigation = ({
   const t = useTranslations("header");
   const { user } = useUser();
 
-
-  console.log(user);
   const [userModalisOpen, setUserModalIsClose] = useState(false);
 
   const selectedNumber = selectedProducts
@@ -128,9 +125,11 @@ const Navigation = ({
                 </Link>
               </button>
               {user ? (
-                <a href="/api/auth/logout">Log Out</a>
+                <a href="/api/auth/logout">
+                  Log Out
+                </a>
               ) : (
-                <Link href="/api/auth/login">Log In</Link>
+                <a href="/api/auth/login">Log In</a>
               )}
             </div>
           </div>
