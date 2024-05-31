@@ -1,19 +1,27 @@
-import { useTranslations } from "next-intl";
 import ProfileDetails from "../../../../components/Profile/ProfileDetails";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getLocale, unstable_setRequestLocale } from "next-intl/server";
+import { getAuthUserAction } from "../../../../lib/actions";
+import { getSession } from "@auth0/nextjs-auth0";
 
-export default function Profile({
+export default async function Profile({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-  const t = useTranslations("profile");
+
+  const loc = await getLocale();
+
+  const session = await getSession();
+  const sub = session?.user?.sub;
+
+  const auth_user = await getAuthUserAction(sub);
+
   return (
     <>
-      <TitleBgImage>{t("ProfilePageTitle")}</TitleBgImage>
-      <ProfileDetails />
+      <TitleBgImage>{loc === "en" ? "Profile" : "პროფილი"}</TitleBgImage>
+      <ProfileDetails authUser={auth_user?.auth_user.rows[0]}/>
     </>
   );
 }

@@ -2,11 +2,16 @@
 
 import type { PutBlobResult } from "@vercel/blob";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
-const ProfileAvatar = ({ picture }: { picture: string }) => {
+interface ProfileAvatarProps {
+    picture: string;
+    blob: PutBlobResult | null;
+    setBlob: (blob: PutBlobResult | null) => void;
+  }
+
+const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ picture, blob, setBlob }) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const MAX_FILE_SIZE_MB = 4.5;
   const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
@@ -41,13 +46,17 @@ const ProfileAvatar = ({ picture }: { picture: string }) => {
     }
   };
 
-  useEffect(() => {
-    if (blob !== null) {
-    }
-  }, [blob]);
+  
 
   return (
     <div className="flex items-center">
+      <Image
+        src={blob ? blob.url : picture}
+        alt="Profile avatar"
+        width={100}
+        height={100}
+        className="w-[100px] h-[100px] rounded-full"
+      />
       <form onSubmit={handleSubmit}>
         <input name="file" ref={inputFileRef} type="file" required />
         <button
@@ -58,13 +67,6 @@ const ProfileAvatar = ({ picture }: { picture: string }) => {
         </button>
       </form>
       {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
-      <Image
-        src={blob ? blob.url : picture}
-        alt="Profile avatar"
-        width={100}
-        height={100}
-        className="w-[100px] h-[100px] rounded-full"
-      />
     </div>
   );
 };

@@ -1,19 +1,23 @@
 "use client";
 
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import ProfileAvatar from "./ProfileAvatar";
-import { Profile } from "../../types/profile-types";
+import { AuthUser, Profile } from "../../types/profile-types";
+import { PutBlobResult } from "@vercel/blob";
+import { createAuthUserAction } from "../../lib/actions";
 
+interface ProfileDetailsProps {
+  authUser: AuthUser;
+}
 
-
-const ProfileDetails: React.FC = () => {
+const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
   const { user } = useUser();
   const [profile, setProfile] = useState<Profile>({
     given_name: (user?.given_name as string) || "",
     family_name: (user?.family_name as string) || "",
-    stateAndCountry: "",
+    country: "",
     city: "",
     address: "",
     phone: "",
@@ -21,11 +25,26 @@ const ProfileDetails: React.FC = () => {
     sub: user?.sub || "",
     picture: user?.picture || "",
   });
-
-  console.log("🚀 ~ ProfileDetails ~ user:", user);
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
 
   const t = useTranslations("profile");
-
+  
+  useEffect(() => {
+    if (authUser) {
+      setProfile({
+        given_name: authUser.given_name || "",
+        family_name: authUser.family_name || "",
+        country: authUser.country || "",
+        city: authUser.city || "",
+        address: authUser.address || "",
+        phone: authUser.phone || "",
+        email: authUser.email || "",
+        sub: authUser.sub || "",
+        picture: authUser.picture || "",
+      });
+    }
+  }, [authUser]);
+  
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProfile({ ...profile, [name]: value });
@@ -33,9 +52,15 @@ const ProfileDetails: React.FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission, such as updating the profile information
-    console.log("Profile updated:", profile);
+    createAuthUserAction({ ...profile }, blob ? blob.url : profile.picture);
   };
+
+
+  useEffect(() => {
+    if (blob !== null) {
+      createAuthUserAction(profile, blob.url);
+    }
+  }, [blob]);
 
   return (
     <section className="py-[60px] dark:bg-gray">
@@ -44,7 +69,11 @@ const ProfileDetails: React.FC = () => {
           <h3 className="text-[25px] font-medium text-black dark:text-white">
             {t("profileDetails")}
           </h3>
-          <ProfileAvatar picture={profile.picture} />
+          <ProfileAvatar
+            picture={profile.picture}
+            blob={blob}
+            setBlob={setBlob}
+          />
           <form onSubmit={handleSubmit}>
             <div className="flex gap-5">
               <div className="flex flex-col w-[50%] my-[10px]">
@@ -78,8 +107,8 @@ const ProfileDetails: React.FC = () => {
               </h2>
               <input
                 type="text"
-                name="stateAndCountry"
-                value={profile.stateAndCountry}
+                name="country"
+                value={profile.country}
                 onChange={handleChange}
                 className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
               />
@@ -129,7 +158,7 @@ const ProfileDetails: React.FC = () => {
                 </h2>
                 <input
                   type="text"
-                  name="email"
+                  name="phone"
                   value={profile.email}
                   onChange={handleChange}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
