@@ -1,8 +1,64 @@
+'use client'
+
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import Button from "../UI/Button";
 import { useTranslations } from "next-intl";
 
+interface ContactForm {
+  fullName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface ContactErrors {
+  fullName?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
 const ContactForm = () => {
   const t = useTranslations("contact");
+
+  const [form, setForm] = useState<ContactForm>({
+    fullName: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  const [errors, setErrors] = useState<ContactErrors>({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setForm((prevForm) => ({ ...prevForm, [id]: value }));
+  };
+
+  useEffect(() => {
+    const newErrors: ContactErrors = {};
+    if (form.fullName.trim().length <= 5) newErrors.fullName = t("fullNameError");
+    if (!form.email.trim()) {
+      newErrors.email = t("emailError");
+    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
+      newErrors.email = t("invalidEmailError");
+    }
+    if (form.subject.trim().length <= 5) newErrors.subject = t("subjectError");
+    if (!form.message) newErrors.message = t("messageError");
+    setErrors(newErrors);
+    setIsFormValid(Object.keys(newErrors).length === 0);
+  }, [form, t]);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isFormValid) {
+      const mailtoLink = `mailto:iaseshviligi@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(
+        `Name: ${form.fullName}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+      )}`;
+      window.location.href = mailtoLink;
+    }
+  };
 
   return (
     <div className="w-[1140px] my-[60px] flex">
@@ -14,11 +70,11 @@ const ContactForm = () => {
           title="198 West 21th Street, Suite 721 New York NY 10016"
         ></iframe>
       </div>
-      <div className="px-[60px] py-[60px] bg-white w-[60%] dark:bg-slate-200">
+      <div className="px-[60px] py-[60px] bg-white w-[60%] dark:bg-gray">
         <h3 className="mb-[15px] text-black font-normal text-[27px] dark:text-white">
           {t("contactUs")}
         </h3>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="flex mb-[30px]">
             <div className="flex flex-col w-[50%]">
               <label
@@ -32,8 +88,16 @@ const ContactForm = () => {
                 id="fullName"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
                 placeholder={t("fullName")}
+                value={form.fullName}
+                onChange={handleChange}
+                required
                 autoComplete="off"
               />
+              {errors.fullName && (
+                <span className="text-red-500 text-[13px] mt-[5px] dark:text-white">
+                  {errors.fullName}
+                </span>
+              )}
             </div>
             <div className="flex flex-col ml-[20px] w-[50%]">
               <label
@@ -47,8 +111,16 @@ const ContactForm = () => {
                 id="email"
                 className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
                 placeholder={t("email")}
+                value={form.email}
+                onChange={handleChange}
+                required
                 autoComplete="off"
               />
+              {errors.email && (
+                <span className="text-red-500 text-[13px] mt-[5px] dark:text-white">
+                  {errors.email}
+                </span>
+              )}
             </div>
           </div>
           <div className="flex flex-col mb-[30px]">
@@ -63,25 +135,41 @@ const ContactForm = () => {
               id="subject"
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
               placeholder={t("subject")}
+              value={form.subject}
+              onChange={handleChange}
+              required
               autoComplete="off"
             />
+            {errors.subject && (
+              <span className="text-red-500 text-[13px] mt-[5px] dark:text-white">
+                {errors.subject}
+              </span>
+            )}
           </div>
           <div className="flex flex-col mb-[30px]">
             <label
-              htmlFor="textarea"
+              htmlFor="message"
               className="uppercase text-[#b7472a] text-[15px] font-medium"
             >
               {t("message")}
             </label>
             <textarea
-              id="textarea"
+              id="message"
               rows={4}
               cols={50}
+              required
               className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] resize-none placeholder:pl-2"
               placeholder={t("message")}
+              value={form.message}
+              onChange={handleChange}
             />
+            {errors.message && (
+              <span className="text-red-500 text-[13px] mt-[5px] dark:text-white">
+                {errors.message}
+              </span>
+            )}
           </div>
-          <Button>{t("sendButton")}</Button>
+          <Button isDisabled={!isFormValid}>{t("sendButton")}</Button>
         </form>
       </div>
     </div>

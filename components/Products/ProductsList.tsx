@@ -20,6 +20,9 @@ const ProductsList: React.FC<ProductsListProps> = ({
   const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [isProductsSorted, setIsProductsSorted] = useState(false);
+  const [sortDirection, setSortDirection] = useState<
+    "default" | "asc" | "desc"
+  >("default");
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -28,6 +31,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
 
   useEffect(() => {
     setProductsListData(productListData);
+    setFilteredProducts(productListData);
   }, []);
 
   useEffect(() => {
@@ -49,13 +53,19 @@ const ProductsList: React.FC<ProductsListProps> = ({
   }, [searchValue, productsListData]);
 
   useEffect(() => {
-    if (isProductsSorted) {
-      const sortedData = [...filteredProducts].sort(
-        (a, b) => a.price - b.price
-      );
+    if (sortDirection === "default") {
+      setSortedProducts(filteredProducts);
+    } else {
+      const sortedData = [...filteredProducts].sort((a, b) => {
+        if (sortDirection === "asc") {
+          return a.price - b.price;
+        } else {
+          return b.price - a.price;
+        }
+      });
       setSortedProducts(sortedData);
     }
-  }, [filteredProducts, isProductsSorted]);
+  }, [filteredProducts, sortDirection]);
 
   const onSearchInputChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -63,13 +73,11 @@ const ProductsList: React.FC<ProductsListProps> = ({
     setSearchValue(e.target.value);
   };
 
-  const onSortButtonClickHandler = () => {
-    setIsProductsSorted(!isProductsSorted);
+  const sortChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const direction = e.target.value as "default" | "asc" | "desc";
+    setSortDirection(direction);
+    setIsProductsSorted(direction !== "default");
   };
-
-  const productListToShow = isProductsSorted
-    ? sortedProducts
-    : filteredProducts;
 
   const isClose = () => {
     document.body.style.overflow = "unset";
@@ -80,6 +88,10 @@ const ProductsList: React.FC<ProductsListProps> = ({
     document.body.style.overflow = "hidden";
     setModalIsOpen(true);
   };
+
+  const productListToShow = isProductsSorted
+    ? sortedProducts
+    : filteredProducts;
 
   return (
     <>
@@ -111,7 +123,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
             {path === "/products" && (
               <Search
                 onChange={onSearchInputChangeHandler}
-                onClick={onSortButtonClickHandler}
+                sortChangeHandler={sortChangeHandler}
                 searchValue={searchValue}
                 isProductsSorted={isProductsSorted}
               />

@@ -1,44 +1,38 @@
 import React from "react";
-import Button from "./UI/Button";
-import { GrPowerReset } from "react-icons/gr";
 import { useTranslations } from "next-intl";
 
 interface SearchProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   searchValue: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  sortChangeHandler: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   isProductsSorted: boolean;
 }
 
 const Search: React.FC<SearchProps> = ({
   onChange,
   searchValue,
-  onClick,
-  isProductsSorted,
+  sortChangeHandler,
 }) => {
   const t = useTranslations("products");
 
   return (
-    <div className="pt-[60px] w-[960px] flex justify-between">
+    <div className="pt-[60px] w-[1140px] flex justify-between">
       <input
         type="text"
         placeholder={t("searchInput")}
         value={searchValue}
         onChange={onChange}
-        className="border border-red dark:border-none px-[15px] rounded-md w-[350px] outline-none"
+        className="border border-red dark:border-none px-[15px] w-[350px] outline-none"
       />
-      <Button onClick={onClick} width="300px">
-        {isProductsSorted ? (
-          <span className="flex items-center justify-center">
-            {t("resetSort")}
-            <i className="pl-[10px]">
-              <GrPowerReset />
-            </i>
-          </span>
-        ) : (
-          <span> {t("sortByPrice")}</span>
-        )}
-      </Button>
+      <select
+        id="products"
+        className="p-4 border border-red"
+        onChange={sortChangeHandler}
+      >
+        <option value="default">Default</option>
+        <option value="asc">Sort by Price (low to high)</option>
+        <option value="desc">Sort by Price (high to low)</option>
+      </select>
     </div>
   );
 };

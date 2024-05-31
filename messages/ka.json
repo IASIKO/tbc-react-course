@@ -67,7 +67,12 @@
     "sendButton":"გაგზავნა",
     "address":"მისამართი",
     "phone":"ტელეფონი",
-    "website":"ვებსაიტი"
+    "website":"ვებსაიტი",
+    "fullNameError": "სახელი არავალიდურია",
+    "emailError" : "ელ-ფოსტის ველი ცარიელია",
+    "invalidEmailError": "ელ-ფოსტა არავალიდურია",
+    "subjectError": "საკითხი არავალიდურია",
+    "messageError": "შეტყობინების ველი ცარიელია"
   },
   "profile": {
     "ProfilePageTitle": "პროფილი",

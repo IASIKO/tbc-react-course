@@ -67,7 +67,12 @@
     "sendButton": "Send Message",
     "address": "Address",
     "phone": "Phone",
-    "website": "Website"
+    "website": "Website",
+    "fullNameError": "FullName length is invalid",
+    "emailError" : "Email field is empty",
+    "invalidEmailError": "Email is not valid",
+    "subjectError": "Subject length is invalid",
+    "messageError": "Message field is empty"
   },
   "profile": {
     "ProfilePageTitle": "Profile",
