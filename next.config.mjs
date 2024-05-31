@@ -18,6 +18,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.caskers.com",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "aw1bmn1msrcj7r5d.public.blob.vercel-storage.com",
+      },
     ],
   },
 };
