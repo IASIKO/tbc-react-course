@@ -131,6 +131,7 @@ const AddProductPage = () => {
                 <input
                   type="number"
                   name="stock"
+                  value={product.stock}
                   onChange={handleChange}
                   min={0}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
@@ -165,6 +166,7 @@ const AddProductPage = () => {
                 <input
                   type="number"
                   name="weight"
+                  value={product.weight}
                   onChange={handleChange}
                   min={0}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
@@ -199,6 +201,7 @@ const AddProductPage = () => {
                 <input
                   type="number"
                   name="discount"
+                  value={product.discount}
                   onChange={handleChange}
                   min={0}
                   required
@@ -215,6 +218,7 @@ const AddProductPage = () => {
                 <input
                   type="number"
                   name="rating"
+                  value={product.rating}
                   onChange={handleChange}
                   min={0}
                   max={5}
@@ -234,6 +238,7 @@ const AddProductPage = () => {
                 <input
                   type="number"
                   name="price"
+                  value={product.price}
                   onChange={handleChange}
                   min={0}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"

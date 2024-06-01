@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const { product } = await request.json();
-  console.log("🚀 ~ POST ~ product:", product)
+  console.log("🚀 ~ POST ~ product:", product);
 
   const {
     title,
@@ -23,17 +23,18 @@ export async function POST(request: Request) {
       !title ||
       !category ||
       !description ||
-      !price ||
-      !discount ||
+      typeof price !== "number" ||
+      typeof discount !== "number" ||
       !rating ||
-      !stock ||
+      typeof stock !== "number" ||
       !brand ||
-      !weight ||
+      typeof weight !== "number" ||
       !thumbnail
     )
       throw new Error(
         "title, category, description, price, discount, rating, stock, brand, weight and thumbnail are required"
       );
+
     await sql`INSERT INTO products (title, category, description, price, discount, rating, stock, brand, weight, thumbnail) VALUES (${title}, ${category}, ${description}, ${price}, ${discount}, ${rating}, ${stock}, ${brand}, ${weight}, ${thumbnail});`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
