@@ -101,7 +101,7 @@ const Navigation = ({
           </ul>
         </div>
         <Link
-          href="/checkout"
+          href="/cart"
           className="text-red text-[30px] cursor-pointer relative"
         >
           <HiOutlineShoppingBag />

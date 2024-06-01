@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { BASE_URL, createUser, deleteUser, editUser } from "./api";
+import { BASE_URL, createUser, deleteProduct, deleteUser, editUser } from "./api";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@auth0/nextjs-auth0";
 import { Profile } from "../types/profile-types";
@@ -138,3 +138,9 @@ export async function getAuthUserAction(sub: string) {
 
   return await res.json();
 }
+
+// PRODUCTS
+
+export const removeProductAction = async (id: number) => {
+  await deleteProduct(id);
+};

@@ -12,7 +12,7 @@ interface ProductCardProps {
   handleDelete: (id: number) => void;
 }
 
-const CheckoutCard: React.FC<ProductCardProps> = ({
+const CartCard: React.FC<ProductCardProps> = ({
   selectedProduct,
   handleIncrement,
   handleDecrement,
@@ -91,4 +91,4 @@ const CheckoutCard: React.FC<ProductCardProps> = ({
   );
 };
 
-export default CheckoutCard;
+export default CartCard;

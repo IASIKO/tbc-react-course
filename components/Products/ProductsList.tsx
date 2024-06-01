@@ -6,6 +6,7 @@ import Search from "../Search";
 import { useTranslations } from "next-intl";
 import { Product, ProductObject } from "../../types/products-types";
 import { usePathname } from "next/navigation";
+import { removeProductAction } from "../../lib/actions";
 
 interface ProductsListProps {
   productListData: Product[];
@@ -89,6 +90,12 @@ const ProductsList: React.FC<ProductsListProps> = ({
     setModalIsOpen(true);
   };
 
+  const removeProductHandler = (id: number) => {
+    const filterData = productsListData.filter((product) => product.id !== id);
+    setProductsListData(filterData);
+    removeProductAction(id);
+  };
+
   const productListToShow = isProductsSorted
     ? sortedProducts
     : filteredProducts;
@@ -136,6 +143,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
                 product={product}
                 selectedProducts={selectedProducts}
                 isOpen={isOpen}
+                removeProductHandler={removeProductHandler}
               />
             ))}
           </div>

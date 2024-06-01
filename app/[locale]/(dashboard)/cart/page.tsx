@@ -1,13 +1,13 @@
 import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
-import CheckoutTable from "../../../../components/checkout/CheckoutTable";
 import { getUserCartAction } from "../../../../lib/actions";
 import { getProducts } from "../../../../lib/api";
 import { Product } from "../../../../types/products-types";
+import CartTable from "../../../../components/Cart/CartTable";
 
 export const revalidate = 0;
 
-export default async function Checkout({
+export default async function Cart({
   params: { locale },
 }: {
   params: { locale: string };
@@ -45,7 +45,7 @@ export default async function Checkout({
       <TitleBgImage>{loc === "en" ? "My Cart" : "კალათა"}</TitleBgImage>
       <section className="py-[60px] dark:bg-gray">
         <div className="max-w-[1140px] m-auto">
-          <CheckoutTable selectedProducts={selectedProducts} />
+          <CartTable selectedProducts={selectedProducts} />
         </div>
       </section>
     </>

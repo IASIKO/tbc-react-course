@@ -7,11 +7,13 @@ import { LiaStarSolid } from "react-icons/lia";
 import { Product, ProductObject } from "../../types/products-types";
 import { addProductAction } from "../../lib/actions";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 interface ProductCardProps {
   product: Product;
   selectedProducts: ProductObject[];
   isOpen: () => void;
+  removeProductHandler: (id:number) => void;
 }
 
 const initialStatus = (id: number, products: ProductObject[]) => {
@@ -23,6 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   product,
   selectedProducts,
   isOpen,
+  removeProductHandler
 }) => {
   const [isInCart, setIsInCart] = useState(() =>
     initialStatus(product.id, selectedProducts)
@@ -48,6 +51,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div className="p-4 flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-transform transform hover:scale-105">
+      <div className="w-full flex gap-2 p-2">
+        <button
+          className="text-black hover:text-red dark:text-white"
+          onClick={() => removeProductHandler(product.id)}
+        >
+          <MdDelete />
+        </button>
+        <button className="text-black hover:text-red dark:text-white">
+          <MdEdit />
+        </button>
+      </div>
       <div
         className="flex flex-col justify-center items-start cursor-pointer"
         onClick={onProductCardClickHandler}

@@ -54,3 +54,10 @@ export const getProducts = async () => {
 
   return products.rows;
 };
+
+export const deleteProduct = async (productId: number) => {
+  await fetch(`${BASE_URL}/api/products/delete-product/${productId}`, {
+    method: "DELETE",
+    cache: "no-store",
+  });
+};
