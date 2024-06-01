@@ -13,6 +13,19 @@ export interface Product {
     weight: number
   }
 
+  export interface ProductForm {
+    title: string,
+    category: string,
+    description: string,
+    price: number,
+    discount: number,
+    rating: number,
+    stock: number,
+    brand: string,
+    weight: number,
+    thumbnail: string,
+  }
+
   export interface selectedProduct extends Product{
     quantity: number;
   }

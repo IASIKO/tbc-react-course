@@ -1,3 +1,5 @@
+import { ProductForm } from "../types/products-types";
+
 export const BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
@@ -58,6 +60,14 @@ export const getProducts = async () => {
 export const deleteProduct = async (productId: number) => {
   await fetch(`${BASE_URL}/api/products/delete-product/${productId}`, {
     method: "DELETE",
+    cache: "no-store",
+  });
+};
+
+export const createProduct = async (product: ProductForm) => {
+  await fetch(`${BASE_URL}/api/products/create-product`, {
+    method: "POST",
+    body: JSON.stringify({ product }),
     cache: "no-store",
   });
 };

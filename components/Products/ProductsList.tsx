@@ -7,6 +7,8 @@ import { useTranslations } from "next-intl";
 import { Product, ProductObject } from "../../types/products-types";
 import { usePathname } from "next/navigation";
 import { removeProductAction } from "../../lib/actions";
+import Button from "../UI/Button";
+import Link from "next/link";
 
 interface ProductsListProps {
   productListData: Product[];
@@ -118,6 +120,12 @@ const ProductsList: React.FC<ProductsListProps> = ({
           </div>
         </div>
       )}
+        <Link
+          href="/products/add-product"
+          className="fixed top-80 left-0 transform -translate-x-[40%] rotate-90 z-50"
+        >
+          <Button>Add Product</Button>
+        </Link>
       <section className="py-[60px] dark:bg-gray animate-fade-in-up">
         <div className="max-w-[1140px] mx-auto">
           <div className="pb-[30px] flex-col flex justify-center items-center">

@@ -158,7 +158,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
                 </h2>
                 <input
                   type="text"
-                  name="phone"
+                  name="email"
                   value={profile.email}
                   onChange={handleChange}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"

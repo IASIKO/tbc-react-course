@@ -1,10 +1,18 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { BASE_URL, createUser, deleteProduct, deleteUser, editUser } from "./api";
+import {
+  BASE_URL,
+  createProduct,
+  createUser,
+  deleteProduct,
+  deleteUser,
+  editUser,
+} from "./api";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@auth0/nextjs-auth0";
 import { Profile } from "../types/profile-types";
+import { ProductForm } from "../types/products-types";
 
 export const setLanguage = (lang: string) => {
   cookies().set("NEXT_LOCALE", lang);
@@ -113,18 +121,16 @@ export const deleteProductAction = async (prod_id: number) => {
 // AUTH_USERS
 
 export async function createAuthUserAction(profile: Profile, picture: string) {
-   await fetch(`${BASE_URL}/api/auth-users/create-auth-user`, {
+  await fetch(`${BASE_URL}/api/auth-users/create-auth-user`, {
     method: "POST",
     body: JSON.stringify({ profile, picture }),
   });
 }
 
-
-
 export async function updateAuthUserAction(profile: Profile, picture: string) {
   await fetch(BASE_URL + "/api/auth-users/update-auth-user", {
     method: "PUT",
-    body: JSON.stringify({ profile, picture })
+    body: JSON.stringify({ profile, picture }),
   });
 }
 
@@ -141,6 +147,11 @@ export async function getAuthUserAction(sub: string) {
 
 // PRODUCTS
 
+export const createProductAction = async (product: ProductForm) => {
+  return createProduct(product);
+};
+
 export const removeProductAction = async (id: number) => {
+  revalidatePath("/", "layout");
   await deleteProduct(id);
 };
