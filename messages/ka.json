@@ -38,7 +38,20 @@
     "warning": "გაფრთხილება!",
     "isInCart": "პროდუქტი უკვე კალათაშია"
   },
-  "checkout": {
+  "addProduct": {
+    "addProduct": "პროდუქტის დამატება",
+    "title": "სათაური",
+    "category": "კატეგორია",
+    "description": "აღწერა",
+    "stock": "მარაგი",
+    "brand": "ბრენდი",
+    "weight": "წონა (მლ)",
+    "thumbnail": "მთავარი ფოტო",
+    "discount": "ფასდაკლება",
+    "rating": "რეიტინგი",
+    "price": "ფასი"
+  },
+  "cart": {
     "myCart": "კალათა",
     "product": "პროდუქტი",
     "price": "ფასი",
@@ -46,7 +59,13 @@
     "total": "ჯამი",
     "actions": "",
     "clearCart": "კალათის გასუფთავება",
-    "empty": "კალათა ცარიელია"
+    "empty": "კალათა ცარიელია",
+    "cartTotals": "სულ კალათაში",
+    "subtotal": "ჯამური ფასი",
+    "delivery": "მიტანის საფასური",
+    "discount": "ფასდაკლება",
+    "total2": "ჯამი",
+    "procTocCheckout": "გააგრძელეთ ანგარიშსწორებისთვის"
   },
   "blogs":{
     "title":"ბლოგი",

@@ -1,9 +1,10 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { createProductAction } from "../../lib/actions";
 import { ProductForm } from "../../types/products-types";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const AddProductPage = () => {
   const [product, setProduct] = useState<ProductForm>({
@@ -20,10 +21,18 @@ const AddProductPage = () => {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const router = useRouter()
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const router = useRouter();
+  const t = useTranslations("addProduct");
 
-  console.log("🚀 ~ AddProductPage ~ product:", product)
-  
+  useEffect(() => {
+    const hasErrors = Object.keys(errors).length > 0;
+    const hasEmptyFields = Object.values(product).some(
+      (value) => value.toString().trim() === ""
+    );
+    setIsFormValid(!hasErrors && !hasEmptyFields);
+  }, [errors, product]);
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -60,7 +69,7 @@ const AddProductPage = () => {
       return;
     }
     await createProductAction(product);
-    router.push('/products')
+    router.push("/products");
   };
 
   return (
@@ -68,13 +77,14 @@ const AddProductPage = () => {
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
           <h3 className="text-[25px] font-medium text-black dark:text-white">
-            Add Product
+            {t("addProduct")}
           </h3>
           <form onSubmit={handleSubmit}>
             <div className="flex gap-5">
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Title<span className="text-red">*</span>
+                  {t("title")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="text"
@@ -90,7 +100,8 @@ const AddProductPage = () => {
               </div>
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Category<span className="text-red">*</span>
+                  {t("category")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="text"
@@ -107,7 +118,8 @@ const AddProductPage = () => {
             </div>
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-                Description<span className="text-red">*</span>
+                {t("description")}
+                <span className="text-red">*</span>
               </h2>
               <textarea
                 name="description"
@@ -126,7 +138,8 @@ const AddProductPage = () => {
             <div className="flex gap-5">
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Stock<span className="text-red">*</span>
+                  {t("stock")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="number"
@@ -143,7 +156,8 @@ const AddProductPage = () => {
               </div>
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Brand<span className="text-red">*</span>
+                  {t("brand")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="text"
@@ -161,7 +175,8 @@ const AddProductPage = () => {
             <div className="flex gap-5">
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Weight(mL)<span className="text-red">*</span>
+                  {t("weight")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="number"
@@ -178,7 +193,8 @@ const AddProductPage = () => {
               </div>
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Thumbnail<span className="text-red">*</span>
+                  {t("thumbnail")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="text"
@@ -196,7 +212,8 @@ const AddProductPage = () => {
             <div className="flex gap-5">
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Discount<span className="text-red">*</span>
+                  {t("discount")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="number"
@@ -213,7 +230,8 @@ const AddProductPage = () => {
               </div>
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Rating<span className="text-red">*</span>
+                  {t("rating")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="number"
@@ -233,7 +251,8 @@ const AddProductPage = () => {
             <div className="flex gap-5">
               <div className="flex flex-col w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  Price<span className="text-red">*</span>
+                  {t("price")}
+                  <span className="text-red">*</span>
                 </h2>
                 <input
                   type="number"
@@ -252,9 +271,14 @@ const AddProductPage = () => {
             </div>
             <button
               type="submit"
-              className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white"
+              disabled={!isFormValid}
+              className={`p-[7px] px-[25px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 ${
+                isFormValid
+                  ? "hover:bg-red hover:text-white"
+                  : "opacity-50 cursor-not-allowed"
+              }`}
             >
-              Add Product
+              {t("addProduct")}
             </button>
           </form>
         </div>

@@ -15,7 +15,7 @@ const CartTable = ({
 }) => {
   const [cartProducts, setCartProducts] = useState<selectedProduct[] | []>([]);
   const [loading, setLoading] = useState(true);
-  const t = useTranslations("checkout");
+  const t = useTranslations("cart");
 
   useEffect(() => {
     setCartProducts(selectedProducts);
@@ -140,30 +140,30 @@ const CartTable = ({
           <div className="w-[500px] border border-red m-auto p-4 mt-4">
             <div>
               <h3 className="text-[24px] mb-4 font-normal text-black dark:text-white">
-                Cart Totals
+                {t("cartTotals")}
               </h3>
               <p className="flex justify-between">
-                <span className="text-[16px]">Subtotal</span>
+                <span className="text-[16px]">{t("subtotal")}</span>
                 <span className="text-[16px] w-[50%]">${subtotal}</span>
               </p>
               <p className="flex justify-between">
-                <span className="text-[16px]">Delivery</span>
+                <span className="text-[16px]"> {t("delivery")}</span>
                 <span className="text-[16px] w-[50%]">$0.00</span>
               </p>
               <p className="flex justify-between mb-4">
-                <span className="text-[16px]">Discount</span>
+                <span className="text-[16px]">{t("discount")}</span>
                 <span className="text-[16px] w-[50%]">$0.00</span>
               </p>
               <hr className="text-red" />
               <p className="flex justify-between p-4">
-                <span className="text-[16px]">TOTAL</span>
+                <span className="text-[16px]">{t("total2")}</span>
                 <span className="text-[16px] w-[50%] text-black font-bold dark:text-white">
                   ${subtotal - 0 - 0}
                 </span>
               </p>
             </div>
             <button className="p-[7px] bg-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred w-full">
-              Proceed to Checkout
+              {t("procTocCheckout")}
             </button>
           </div>
         </>

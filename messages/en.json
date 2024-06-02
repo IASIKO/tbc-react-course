@@ -38,7 +38,20 @@
     "warning": "Warning!",
     "isInCart": "Product is already in the cart"
   },
-  "checkout": {
+  "addProduct": {
+    "addProduct": "Add Product",
+    "title": "Title",
+    "category": "Category",
+    "description": "Description",
+    "stock": "Stock",
+    "brand": "Brand",
+    "weight": "Weight(mL)",
+    "thumbnail": "Thumbnail",
+    "discount": "Discount",
+    "rating": "Rating",
+    "price": "Price"
+  },
+  "cart": {
     "myCart": "My Cart",
     "product": "Product",
     "price": "Price",
@@ -46,7 +59,13 @@
     "total": "Total",
     "actions": "Actions",
     "clearCart": "CLEAR CART",
-    "empty": "Cart Is Empty"
+    "empty": "Cart Is Empty",
+    "cartTotals": "Cart Totals",
+    "subtotal": "Subtotal",
+    "delivery": "Delivery",
+    "discount": "Discount",
+    "total2": "TOTAL",
+    "procTocCheckout": "PROCEED TO CHECKOUT"
   },
   "blogs": {
     "title": "Blog",

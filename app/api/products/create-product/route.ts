@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const { product } = await request.json();
-  console.log("🚀 ~ POST ~ product:", product);
 
   const {
     title,
@@ -23,12 +22,12 @@ export async function POST(request: Request) {
       !title ||
       !category ||
       !description ||
-      typeof price !== "number" ||
-      typeof discount !== "number" ||
+      isNaN(price) ||
+      isNaN(discount) ||
       !rating ||
-      typeof stock !== "number" ||
+      isNaN(stock) ||
       !brand ||
-      typeof weight !== "number" ||
+      isNaN(weight) ||
       !thumbnail
     )
       throw new Error(

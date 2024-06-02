@@ -1,5 +1,5 @@
 import bg from "../../../public/Assets/images/bg_1.jpg";
-// import test from '../../../public/Assets/images/test.png'
+// import test from '../../../public/Assets/images/test.png'  
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";

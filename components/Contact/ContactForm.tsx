@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import Button from "../UI/Button";
@@ -25,20 +25,23 @@ const ContactForm = () => {
     fullName: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
 
   const [errors, setErrors] = useState<ContactErrors>({});
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { id, value } = e.target;
     setForm((prevForm) => ({ ...prevForm, [id]: value }));
   };
 
   useEffect(() => {
     const newErrors: ContactErrors = {};
-    if (form.fullName.trim().length <= 5) newErrors.fullName = t("fullNameError");
+    if (form.fullName.trim().length <= 5)
+      newErrors.fullName = t("fullNameError");
     if (!form.email.trim()) {
       newErrors.email = t("emailError");
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
@@ -53,7 +56,9 @@ const ContactForm = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isFormValid) {
-      const mailtoLink = `mailto:iaseshviligi@gmail.com?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(
+      const mailtoLink = `mailto:iaseshviligi@gmail.com?subject=${encodeURIComponent(
+        form.subject
+      )}&body=${encodeURIComponent(
         `Name: ${form.fullName}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
       )}`;
       window.location.href = mailtoLink;
@@ -79,14 +84,14 @@ const ContactForm = () => {
             <div className="flex flex-col w-[50%]">
               <label
                 htmlFor="fullName"
-                className="uppercase text-[#b7472a] text-[15px] font-medium"
+                className="uppercase text-red text-[15px] font-medium"
               >
-                {t("fullName")}
+                {t("fullName")}<span className="text-red">*</span>
               </label>
               <input
                 type="text"
                 id="fullName"
-                className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
+                className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-red placeholder:pl-2"
                 placeholder={t("fullName")}
                 value={form.fullName}
                 onChange={handleChange}
@@ -102,14 +107,14 @@ const ContactForm = () => {
             <div className="flex flex-col ml-[20px] w-[50%]">
               <label
                 htmlFor="email"
-                className="uppercase text-[#b7472a] text-[15px] font-medium"
+                className="uppercase text-red text-[15px] font-medium"
               >
-                {t("email")}
+                {t("email")}<span className="text-red">*</span>
               </label>
               <input
                 type="email"
                 id="email"
-                className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
+                className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-red placeholder:pl-2"
                 placeholder={t("email")}
                 value={form.email}
                 onChange={handleChange}
@@ -126,14 +131,14 @@ const ContactForm = () => {
           <div className="flex flex-col mb-[30px]">
             <label
               htmlFor="subject"
-              className="uppercase text-[#b7472a] text-[15px] font-medium"
+              className="uppercase text-red text-[15px] font-medium"
             >
-              {t("subject")}
+              {t("subject")}<span className="text-red">*</span>
             </label>
             <input
               type="text"
               id="subject"
-              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] placeholder:pl-2"
+              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-red placeholder:pl-2"
               placeholder={t("subject")}
               value={form.subject}
               onChange={handleChange}
@@ -149,16 +154,16 @@ const ContactForm = () => {
           <div className="flex flex-col mb-[30px]">
             <label
               htmlFor="message"
-              className="uppercase text-[#b7472a] text-[15px] font-medium"
+              className="uppercase text-red text-[15px] font-medium"
             >
-              {t("message")}
+              {t("message")}<span className="text-red">*</span>
             </label>
             <textarea
               id="message"
               rows={4}
               cols={50}
               required
-              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-[#b7472a] resize-none placeholder:pl-2"
+              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-red resize-none placeholder:pl-2"
               placeholder={t("message")}
               value={form.message}
               onChange={handleChange}
@@ -169,7 +174,17 @@ const ContactForm = () => {
               </span>
             )}
           </div>
-          <Button isDisabled={!isFormValid}>{t("sendButton")}</Button>
+          <button
+            type="submit"
+            disabled={!isFormValid}
+            className={`p-[7px] px-[25px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 ${
+              isFormValid
+                ? "hover:bg-red hover:text-white"
+                : "opacity-50 cursor-not-allowed"
+            }`}
+          >
+            {t("sendButton")}
+          </button>
         </form>
       </div>
     </div>
