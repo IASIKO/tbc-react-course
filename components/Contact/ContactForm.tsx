@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import Button from "../UI/Button";
 import { useTranslations } from "next-intl";
 
 interface ContactForm {
