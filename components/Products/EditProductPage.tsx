@@ -1,23 +1,23 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { createProductAction } from "../../lib/actions";
-import { ProductForm } from "../../types/products-types";
+import { editProductAction } from "../../lib/actions";
+import { Product, ProductForm } from "../../types/products-types";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-const AddProductPage = () => {
+const EditProductPage = ({productInfo} : {productInfo: Product}) => {
   const [product, setProduct] = useState<ProductForm>({
-    title: "",
-    category: "",
-    description: "",
-    price: 0,
-    discount: 0,
-    rating: 5,
-    stock: 0,
-    brand: "",
-    weight: 0,
-    thumbnail: "",
+    title: productInfo.title,
+    category: productInfo.category,
+    description: productInfo.description,
+    price: productInfo.price,
+    discount: productInfo.discount,
+    rating: productInfo.rating,
+    stock: productInfo.stock,
+    brand: productInfo.brand,
+    weight: productInfo.weight,
+    thumbnail: productInfo.thumbnail
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -68,7 +68,7 @@ const AddProductPage = () => {
       setErrors(newErrors);
       return;
     }
-    await createProductAction(product);
+    await editProductAction(product, productInfo.id);
     router.push("/products");
   };
 
@@ -77,7 +77,7 @@ const AddProductPage = () => {
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
           <h3 className="text-[25px] font-medium text-black dark:text-white">
-            {t("addProduct")}
+            Edit Product
           </h3>
           <form onSubmit={handleSubmit}>
             <div className="flex gap-5">
@@ -261,6 +261,7 @@ const AddProductPage = () => {
                   value={product.price}
                   onChange={handleChange}
                   min={0}
+                  step={0.01}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
                   required
                 />
@@ -279,7 +280,7 @@ const AddProductPage = () => {
                   : "opacity-50 cursor-not-allowed"
               }`}
             >
-              {t("addProduct")}
+              Edit Product
             </button>
           </form>
         </div>
@@ -288,4 +289,4 @@ const AddProductPage = () => {
   );
 };
 
-export default AddProductPage;
+export default EditProductPage;

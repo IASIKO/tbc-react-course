@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { MdStarRate } from "react-icons/md";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 import TitleBgImage from "../UI/TitleBgImage";
 import { useTranslations } from "next-intl";
+import RateStars from "../RateStars";
 
 interface ProductDetails {
   thumbnail: string;
@@ -42,8 +42,8 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               </h2>
               <span className="text-red text-[18px] flex gap-2 items-center font-bold">
                 {productDetails.rating}
-                <MdStarRate />
               </span>
+              <RateStars defaultRating={Math.round(productDetails.rating*2)/2} />
               <span className="text-black text-[32px] flex gap-2 items-center dark:text-white">
                 {productDetails.price}
                 <PiCurrencyDollarBold />

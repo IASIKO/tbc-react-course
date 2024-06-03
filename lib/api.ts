@@ -45,7 +45,6 @@ export const editUser = async (userId: number, name: string, email: string) => {
   });
 };
 
-
 // PRODUCTS
 
 export const getProducts = async () => {
@@ -57,6 +56,14 @@ export const getProducts = async () => {
   return products.rows;
 };
 
+export const createProduct = async (product: ProductForm) => {
+  await fetch(`${BASE_URL}/api/products/create-product`, {
+    method: "POST",
+    body: JSON.stringify({ product }),
+    cache: "no-store",
+  });
+};
+
 export const deleteProduct = async (productId: number) => {
   await fetch(`${BASE_URL}/api/products/delete-product/${productId}`, {
     method: "DELETE",
@@ -64,10 +71,10 @@ export const deleteProduct = async (productId: number) => {
   });
 };
 
-export const createProduct = async (product: ProductForm) => {
-  await fetch(`${BASE_URL}/api/products/create-product`, {
-    method: "POST",
-    body: JSON.stringify({ product }),
+export const editProduct = async (product: ProductForm, id: number) => {
+  await fetch(`${BASE_URL}/api/products/edit-product`, {
+    method: "PUT",
+    body: JSON.stringify({ product, id }),
     cache: "no-store",
   });
 };

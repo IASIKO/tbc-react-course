@@ -21,8 +21,8 @@ export default async function DashboardRootLayout({
 
   return (
     <>
-      <Header selectedProducts={selectedProducts[0]?.products}/>
-      {children}
+      <Header selectedProducts={selectedProducts[0]?.products} />
+      <main className="h-full">{children}</main>
       <Footer />
     </>
   );

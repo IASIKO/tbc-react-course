@@ -1,16 +1,16 @@
 export interface Product {
     id: number;
     title: string;
+    category: string;
     description: string;
     price: number;
-    discountPercentage: number;
+    discount: number;
     rating: number;
     stock: number;
     brand: string;
-    category: string;
+    weight: number
     thumbnail: string;
     images: string[];
-    weight: number
   }
 
   export interface ProductForm {

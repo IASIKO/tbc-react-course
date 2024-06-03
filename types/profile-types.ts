@@ -8,6 +8,7 @@ export interface Profile {
   email: string;
   sub: string;
   picture: string;
+  role?: string
 }
 
 export interface AuthUser extends Profile {

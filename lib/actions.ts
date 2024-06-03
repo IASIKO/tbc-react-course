@@ -7,6 +7,7 @@ import {
   createUser,
   deleteProduct,
   deleteUser,
+  editProduct,
   editUser,
 } from "./api";
 import { revalidatePath } from "next/cache";
@@ -154,4 +155,9 @@ export const createProductAction = async (product: ProductForm) => {
 export const removeProductAction = async (id: number) => {
   revalidatePath("/", "layout");
   await deleteProduct(id);
+};
+
+export const editProductAction = async (product: ProductForm, id: number) => {
+  revalidatePath("/", "layout");
+  await editProduct(product, id);
 };

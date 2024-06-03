@@ -5,8 +5,17 @@ export const revalidate = 0;
 
 export async function PUT(request: NextRequest) {
   const { profile, picture } = await request.json();
-  const { given_name, family_name, country, city, address, phone, email, sub } =
-    profile;
+  const {
+    given_name,
+    family_name,
+    country,
+    city,
+    address,
+    phone,
+    email,
+    sub,
+    role,
+  } = profile;
 
   try {
     if (!sub) {
@@ -16,7 +25,9 @@ export async function PUT(request: NextRequest) {
     const authUser = await sql`SELECT * FROM auth_users WHERE sub = ${sub};`;
 
     if (authUser.rows.length) {
-      await sql`UPDATE auth_users SET given_name = ${given_name}, family_name = ${family_name}, country = ${country}, city = ${city},address = ${address}, phone = ${phone}, email = ${email}, picture = ${picture}  WHERE sub = ${sub};`;
+      await sql`UPDATE auth_users SET given_name = ${given_name}, family_name = ${family_name}, country = ${country}, city = ${city},address = ${address}, phone = ${phone}, email = ${email}, picture = ${picture}, role = ${
+        role === 'admin' ? 'admin' : 'default'
+      }  WHERE sub = ${sub};`;
     }
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });

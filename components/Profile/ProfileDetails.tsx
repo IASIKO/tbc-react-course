@@ -7,6 +7,7 @@ import ProfileAvatar from "./ProfileAvatar";
 import { AuthUser, Profile } from "../../types/profile-types";
 import { PutBlobResult } from "@vercel/blob";
 import { createAuthUserAction } from "../../lib/actions";
+import ThemeLoader from "../UI/ThemeLoader";
 
 interface ProfileDetailsProps {
   authUser: AuthUser;
@@ -24,9 +25,11 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
     email: user?.email || "",
     sub: user?.sub || "",
     picture: user?.picture || "",
+    role: authUser.role && authUser.role === 'admin' ? 'admin' : 'default'
   });
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
-
+  const [loading, setLoading] = useState(false);
+  
   const t = useTranslations("profile");
   
   useEffect(() => {
@@ -41,20 +44,25 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
         email: authUser.email || "",
         sub: authUser.sub || "",
         picture: authUser.picture || "",
+        role: authUser.role
       });
     }
   }, [authUser]);
-  
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProfile({ ...profile, [name]: value });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
-    createAuthUserAction({ ...profile }, blob ? blob.url : profile.picture);
+      await createAuthUserAction(
+        { ...profile },
+        blob ? blob.url : profile.picture
+      );
+    setLoading(false);
   };
-
 
   useEffect(() => {
     if (blob !== null) {
@@ -170,7 +178,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
               type="submit"
               className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white"
             >
-              {t("save")}
+              {loading ? <ThemeLoader /> : t("save")}
             </button>
           </form>
         </div>
