@@ -2,6 +2,11 @@ import EditProductPage from "../../../../../../components/Products/EditProductPa
 import { getProducts } from "../../../../../../lib/api";
 import { Product } from "../../../../../../types/products-types";
 
+export const metadata = {
+  title: "Liquor store - Edit Product",
+  description: "Edit Product page",
+};
+
 interface EditProductProps {
   params: {
     id: number;

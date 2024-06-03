@@ -3,6 +3,11 @@ import ContactContent from "../../../../components/Contact/ContactContent";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
 import { unstable_setRequestLocale } from "next-intl/server";
 
+export const metadata = {
+  title: "Liquor store - Contact",
+  description: "Contact page",
+};
+
 export default function Contact({
   params: { locale },
 }: {

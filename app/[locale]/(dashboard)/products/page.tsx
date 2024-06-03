@@ -5,6 +5,11 @@ import { getAuthUserAction, getUserCartAction } from "../../../../lib/actions";
 import { getProducts } from "../../../../lib/api";
 import { getSession } from "@auth0/nextjs-auth0";
 
+export const metadata = {
+  title: "Liquor store - Products",
+  description: "Products page",
+};
+
 export default async function Products({
   params: { locale },
 }: {

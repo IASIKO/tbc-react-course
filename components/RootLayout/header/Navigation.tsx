@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
 import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { motion } from "framer-motion";
 
 const Navigation = ({
   selectedProducts,
@@ -116,28 +117,32 @@ const Navigation = ({
           >
             <PiUserCircleLight />
           </button>
-          <div
-            className={`absolute top-[50px] right-8 bg-white rounded-md p-5 transition-opacity duration-300 ${
-              userModalIsOpen
-                ? "modal-enter modal-enter-active"
-                : "modal-exit modal-exit-active"
-            }`}
-          >
-            <div className="flex flex-col gap-4">
-              {user?.sub && (
-                <button className="text-white text-[20px] bg-red rounded px-4">
-                  <Link href="/profile" className="flex items-center gap-2">
-                    {t("profile")}
-                  </Link>
-                </button>
-              )}
-              {user ? (
-                <a href="/api/auth/logout">Log Out</a>
-              ) : (
-                <a href="/api/auth/login">Log In</a>
-              )}
-            </div>
-          </div>
+          {userModalIsOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="w-[200px] absolute top-[50px] right-8 bg-white rounded-md p-5"
+            >
+              <div className="flex flex-col gap-4">
+                {user?.sub && (
+                  <button className="text-white text-[20px] bg-red rounded px-4">
+                    <Link href="/profile" className="text-center">
+                      {t("profile")}
+                    </Link>
+                  </button>
+                )}
+                {user ? (
+                  <a href="/api/auth/logout">Log Out</a>
+                ) : (
+                  <button className="text-white text-[20px] bg-red rounded px-4">
+                    <a href="/api/auth/login">Log In</a>
+                  </button>
+                )}
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </nav>

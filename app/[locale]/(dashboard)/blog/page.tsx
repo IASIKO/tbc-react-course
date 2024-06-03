@@ -2,6 +2,11 @@ import BlogList from "../../../../components/Blog/BlogList";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
 import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 
+export const metadata = {
+  title: "Liquor store - Blog",
+  description: "Blog Posts page",
+};
+
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");
 

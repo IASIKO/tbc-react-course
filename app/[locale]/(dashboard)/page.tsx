@@ -13,6 +13,11 @@ async function getBlogs() {
   return res.json();
 }
 
+export const metadata = {
+  title: "Liquor store - Home",
+  description: "Landing page",
+};
+
 export default async function DashboardHome({
   params: { locale },
 }: {

@@ -7,6 +7,11 @@ import CartTable from "../../../../components/Cart/CartTable";
 
 export const revalidate = 0;
 
+export const metadata = {
+  title: "Liquor store - Cart",
+  description: "Cart page",
+};
+
 export default async function Cart({
   params: { locale },
 }: {

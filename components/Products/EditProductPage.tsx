@@ -260,7 +260,7 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
                   name="price"
                   value={product.price}
                   onChange={handleChange}
-                  min={0}
+                  min={0.01}
                   step={0.01}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
                   required

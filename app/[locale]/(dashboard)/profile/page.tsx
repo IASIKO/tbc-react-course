@@ -4,6 +4,11 @@ import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 import { getAuthUserAction } from "../../../../lib/actions";
 import { getSession } from "@auth0/nextjs-auth0";
 
+export const metadata = {
+  title: "Liquor store - Profile",
+  description: "Profile page",
+};
+
 export default async function Profile({
   params: { locale },
 }: {
