@@ -17,7 +17,6 @@ export async function POST(request: NextRequest) {
     sub,
     role,
   } = profile;
-    console.log("🚀 ~ POST ~ role:", role)
 
   try {
     if (!profile || !picture) throw new Error("name and email are required");
