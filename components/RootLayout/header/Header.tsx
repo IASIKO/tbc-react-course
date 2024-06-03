@@ -10,11 +10,14 @@ import Language from "../../UI/Language";
 import Theme from "../../UI/Theme";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
+import { AuthUser } from "../../../types/profile-types";
 
 const Header = ({
   selectedProducts,
+  authUser
 }: {
   selectedProducts: ProductObject[];
+  authUser: AuthUser
 }) => {
   const tAdmin = useTranslations("admin");
 
@@ -33,10 +36,10 @@ const Header = ({
                 </a>
               </p>
               <Language />
-              <Link href="/admin" className="flex items-center text-white">
+              {authUser?.role && authUser.role === 'admin' && <Link href="/admin" className="flex items-center text-white">
                 <MdAdminPanelSettings />
                 {tAdmin("admin")}
-              </Link>
+              </Link>}
             </div>
 
             <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">
@@ -72,7 +75,7 @@ const Header = ({
         </div>
       </div>
 
-      <Navigation selectedProducts={selectedProducts} />
+      <Navigation selectedProducts={selectedProducts} authUser={authUser}/>
     </header>
   );
 };

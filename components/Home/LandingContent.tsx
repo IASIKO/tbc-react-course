@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Product, ProductObject } from "../../types/products-types";
 import ExperienceSection from "../About/ExperienceSection";
 import CategoriesSection from "../About/CategoriesSection";
+import { AuthUser } from "../../types/profile-types";
 
 interface BlogListData {
   image: string;
@@ -19,12 +20,14 @@ interface LandingContentProps {
   blogListData: BlogListData[];
   productListData: Product[];
   selectedProducts: ProductObject[];
+  authUser: AuthUser
 }
 
 const LandingContent: React.FC<LandingContentProps> = ({
   blogListData,
   productListData,
   selectedProducts,
+  authUser
 }) => {
   const t = useTranslations();
   const homeBlogListData = blogListData.slice(0, 4);
@@ -61,6 +64,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
         <ProductsList
           productListData={homeProductsListData}
           selectedProducts={selectedProducts}
+          authUser={authUser}
         />
         <div className="flex justify-center pb-[60px]">
           <Link href="/products">

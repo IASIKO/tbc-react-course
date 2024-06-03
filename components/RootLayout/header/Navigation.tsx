@@ -8,11 +8,14 @@ import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
 import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { AuthUser } from "../../../types/profile-types";
 
 const Navigation = ({
   selectedProducts,
+  authUser
 }: {
   selectedProducts: ProductObject[];
+  authUser: AuthUser
 }) => {
   const pathname = usePathname();
   const t = useTranslations("header");
@@ -119,11 +122,11 @@ const Navigation = ({
         {userModalisOpen && (
           <div className="absolute top-[50px] right-8 bg-black rounded-md p-5">
             <div className="flex flex-col gap-4">
-              <button className="text-white text-[20px]">
+             {authUser?.sub && <button className="text-white text-[20px]">
                 <Link href="/profile" className="flex items-center gap-2">
                   {t("profile")}
                 </Link>
-              </button>
+              </button>}
               {user ? (
                 <a href="/api/auth/logout">
                   Log Out

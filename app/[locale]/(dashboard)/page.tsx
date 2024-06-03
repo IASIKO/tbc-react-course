@@ -3,8 +3,9 @@ import bg from "../../../public/Assets/images/bg_1.jpg";
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";
-import { getUserCartAction } from "../../../lib/actions";
+import { getAuthUserAction, getUserCartAction } from "../../../lib/actions";
 import { getProducts } from "../../../lib/api";
+import { getSession } from "@auth0/nextjs-auth0";
 
 async function getBlogs() {
   const res = await fetch("https://dummyjson.com/recipes");
@@ -18,6 +19,11 @@ export default async function DashboardHome({
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
+
+  const session = await getSession();
+  const sub = session?.user?.sub;
+
+  const auth_user = await getAuthUserAction(sub);
 
   const blogListData = await getBlogs();
   const productListData = await getProducts();
@@ -37,6 +43,7 @@ export default async function DashboardHome({
         blogListData={blogListData.recipes}
         productListData={productListData}
         selectedProducts={selectedProducts[0]?.products}
+        authUser={auth_user?.auth_user.rows[0]}
       />
     </>
   );

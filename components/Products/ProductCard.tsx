@@ -8,12 +8,14 @@ import { addProductAction } from "../../lib/actions";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { MdDelete, MdEdit } from "react-icons/md";
 import RateStars from "../RateStars";
+import { AuthUser } from "../../types/profile-types";
 
 interface ProductCardProps {
   product: Product;
   selectedProducts: ProductObject[];
   isOpen: () => void;
   removeProductHandler: (id: number) => void;
+  authUser: AuthUser
 }
 
 const initialStatus = (id: number, products: ProductObject[]) => {
@@ -26,6 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   selectedProducts,
   isOpen,
   removeProductHandler,
+  authUser
 }) => {
   const [isInCart, setIsInCart] = useState(() =>
     initialStatus(product.id, selectedProducts)
@@ -55,7 +58,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div className="p-4 flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-transform transform hover:scale-105">
-      <div className="w-full flex gap-2 p-2">
+      {authUser?.role && authUser.role === 'admin' && <div className="w-full flex gap-2 p-2">
         <button
           className="text-black hover:text-red dark:text-white"
           onClick={() => removeProductHandler(product.id)}
@@ -68,7 +71,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         >
           <MdEdit />
         </button>
-      </div>
+      </div>}
       <div
         className="flex flex-col justify-center items-start cursor-pointer"
         onClick={onProductCardClickHandler}
