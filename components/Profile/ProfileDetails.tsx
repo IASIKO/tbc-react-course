@@ -44,7 +44,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
         email: authUser.email || "",
         sub: authUser.sub || "",
         picture: authUser.picture || "",
-        role: authUser.role
+        role: authUser.role && authUser.role === 'admin' ? 'admin' : 'default'
       });
     }
   }, [authUser]);
