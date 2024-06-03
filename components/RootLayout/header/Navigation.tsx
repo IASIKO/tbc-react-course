@@ -8,20 +8,17 @@ import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
 import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { AuthUser } from "../../../types/profile-types";
 
 const Navigation = ({
   selectedProducts,
-  authUser
 }: {
   selectedProducts: ProductObject[];
-  authUser: AuthUser
 }) => {
   const pathname = usePathname();
   const t = useTranslations("header");
   const { user } = useUser();
 
-  const [userModalisOpen, setUserModalIsClose] = useState(false);
+  const [userModalIsOpen, setUserModalIsOpen] = useState(false);
 
   const selectedNumber = selectedProducts
     ? selectedProducts.reduce((acc: number, curr: ProductObject) => {
@@ -112,31 +109,36 @@ const Navigation = ({
             <div className="text-white text-xs">{selectedNumber}</div>
           </div>
         </Link>
-        <button
-          onClick={() => setUserModalIsClose(!userModalisOpen)}
-          className="text-white text-[32px] ml-4"
-        >
-          <PiUserCircleLight />
-        </button>
-
-        {userModalisOpen && (
-          <div className="absolute top-[50px] right-8 bg-black rounded-md p-5">
+        <div className="relative">
+          <button
+            onClick={() => setUserModalIsOpen(!userModalIsOpen)}
+            className="text-white text-[32px] ml-4"
+          >
+            <PiUserCircleLight />
+          </button>
+          <div
+            className={`absolute top-[50px] right-8 bg-white rounded-md p-5 transition-opacity duration-300 ${
+              userModalIsOpen
+                ? "modal-enter modal-enter-active"
+                : "modal-exit modal-exit-active"
+            }`}
+          >
             <div className="flex flex-col gap-4">
-             {authUser?.sub && <button className="text-white text-[20px]">
-                <Link href="/profile" className="flex items-center gap-2">
-                  {t("profile")}
-                </Link>
-              </button>}
+              {user?.sub && (
+                <button className="text-white text-[20px] bg-red rounded px-4">
+                  <Link href="/profile" className="flex items-center gap-2">
+                    {t("profile")}
+                  </Link>
+                </button>
+              )}
               {user ? (
-                <a href="/api/auth/logout">
-                  Log Out
-                </a>
+                <a href="/api/auth/logout">Log Out</a>
               ) : (
                 <a href="/api/auth/login">Log In</a>
               )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

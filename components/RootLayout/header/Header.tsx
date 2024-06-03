@@ -75,7 +75,7 @@ const Header = ({
         </div>
       </div>
 
-      <Navigation selectedProducts={selectedProducts} authUser={authUser}/>
+      <Navigation selectedProducts={selectedProducts}/>
     </header>
   );
 };
