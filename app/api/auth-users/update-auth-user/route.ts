@@ -26,7 +26,7 @@ export async function PUT(request: NextRequest) {
 
     if (authUser.rows.length) {
       await sql`UPDATE auth_users SET given_name = ${given_name}, family_name = ${family_name}, country = ${country}, city = ${city},address = ${address}, phone = ${phone}, email = ${email}, picture = ${picture}, role = ${
-        role === 'admin' ? 'admin' : 'default'
+        role && role === "admin" ? "admin" : "default"
       }  WHERE sub = ${sub};`;
     }
   } catch (error) {

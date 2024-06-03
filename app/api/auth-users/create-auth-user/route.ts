@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const authUser = await sql`SELECT * FROM auth_users where sub = ${sub}`;
     if (!authUser.rows.length) {
       await sql`INSERT INTO auth_users (given_name, family_name, country, city, address, phone, email, sub, picture, role) VALUES (${given_name}, ${family_name}, ${country}, ${city}, ${address}, ${phone}, ${email}, ${sub}, ${picture}, ${
-        role === 'admin' ? 'admin' : 'default'
+       role && role === 'admin' ? 'admin' : 'default'
       });`;
     } else {
       updateAuthUserAction(profile, picture);
