@@ -25,8 +25,10 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
     email: user?.email || "",
     sub: user?.sub || "",
     picture: user?.picture || "",
-    role: authUser.role && authUser.role === 'admin' ? 'admin' : 'default'
+    role: authUser?.role && authUser.role === 'admin' ? 'admin' : 'default'
   });
+  console.log("🚀 ~ authUser:", profile.role)
+
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [loading, setLoading] = useState(false);
   

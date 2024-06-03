@@ -16,6 +16,7 @@ export async function PUT(request: NextRequest) {
     sub,
     role,
   } = profile;
+    console.log("🚀 ~ PUT ~ role:", role)
 
   try {
     if (!sub) {
