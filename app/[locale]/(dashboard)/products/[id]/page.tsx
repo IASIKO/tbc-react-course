@@ -1,7 +1,8 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 import ProductDetailsContent from "../../../../../components/Products/ProductDetailsContent";
 import { getProducts } from "../../../../../lib/api";
-import { Product } from "../../../../../types/products-types";
+import { Product, selectedProduct } from "../../../../../types/products-types";
+import { getUserCartAction } from "../../../../../lib/actions";
 
 interface ProductsDetailsProps {
   params: {
@@ -25,8 +26,12 @@ export default async function ProductsDetails({
   unstable_setRequestLocale(locale);
 
   const productsData = await getProducts();
-
+  const selectedProducts = await getUserCartAction()
+  const selectedProduct = selectedProducts[0]?.products.find((item: selectedProduct) => {
+    return item.id == id
+  })
   const product = productsData.find((product: Product) => product.id == id);
 
-  return <ProductDetailsContent productDetails={product} />;
+
+  return <ProductDetailsContent productDetails={product} selectedProduct={selectedProduct}/>;
 }

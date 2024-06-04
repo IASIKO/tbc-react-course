@@ -25,7 +25,7 @@ export default async function Cart({
   const productsListData = await getProducts();
 
   const fetchProducts = async () => {
-    const fetchProduct = async (id: number) => {
+    const fetchProduct = (id: number) => {
       const data = productsListData.find(
         (product: Product) => product.id === id
       );

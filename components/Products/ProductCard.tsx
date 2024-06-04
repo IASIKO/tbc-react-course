@@ -41,13 +41,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
     router.push(`/products/${product.id}`);
   };
 
-  const addToCartHandler = () => {
+  const addToCartHandler = async () => {
     if (isInCart) return;
 
     if (!user) {
       router.push("/api/auth/login");
     } else {
-      addProductAction(product.id);
+      await addProductAction(product.id);
       setIsInCart(true);
     }
   };
