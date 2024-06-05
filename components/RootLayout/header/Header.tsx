@@ -40,7 +40,7 @@ const Header = ({
   console.log("🚀 ~ useEffect ~ user?.picture:", user?.picture)
 
   useEffect(() => {
-    if (user && !authUser) {
+    if (user?.picture && !authUser) {
       console.log('shesvla');
       createAuthUserAction(profile, user?.picture)
     }
