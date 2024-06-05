@@ -1,5 +1,5 @@
 import { unstable_setRequestLocale } from "next-intl/server";
-import ProductDetailsContent from "../../../../../components/Products/ProductDetailsContent";
+import ProductDetailsContent from "../../../../../components/Products/ProductDetails/ProductDetailsContent";
 import { getProducts } from "../../../../../lib/api";
 import { Product, selectedProduct } from "../../../../../types/products-types";
 import {

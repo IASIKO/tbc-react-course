@@ -67,13 +67,13 @@ const Reviews: React.FC<ReviewsProps> = ({
     setFormIsOpen(false);
     setIsUpdate(false);
     setEditReviewId(null);
-    setRatingValue(0)
+    setRatingValue(0);
     setReview({
       prod_id: productDetails.id,
       user_id: authUser && authUser.id,
       rating: ratingValue,
       comment: "",
-    })
+    });
   };
 
   const reviewEditHandler = (id: number) => {
@@ -99,36 +99,36 @@ const Reviews: React.FC<ReviewsProps> = ({
         </span>
         <span className="flex-grow block border-t border-red"></span>
       </h2>
-      <div className="mt-9 px-24 py-8">
+      <div className="mt-9 px-4 lg:px-24 py-8">
         {reviews.map((rev) => (
           <React.Fragment key={rev.id}>
             {(authUser?.role && authUser.role === "admin") ||
-              (authUser.sub === rev.sub && (
-                <div className="w-full flex justify-end gap-2 p-2">
-                  <button
-                    className="text-black hover:text-red dark:text-white"
-                    onClick={() => deleteReviewAction(rev.id)}
-                  >
-                    <MdDelete />
-                  </button>
-                  <button
-                    onClick={() => reviewEditHandler(rev.id)}
-                    className="text-black hover:text-red dark:text-white"
-                  >
-                    <MdEdit />
-                  </button>
-                </div>
-              ))}
-            <div className="mb-4 flex">
+            (authUser.sub === rev.sub && (
+              <div className="w-full flex justify-end gap-2 p-2">
+                <button
+                  className="text-black hover:text-red dark:text-white"
+                  onClick={() => deleteReviewAction(rev.id)}
+                >
+                  <MdDelete />
+                </button>
+                <button
+                  onClick={() => reviewEditHandler(rev.id)}
+                  className="text-black hover:text-red dark:text-white"
+                >
+                  <MdEdit />
+                </button>
+              </div>
+            ))}
+            <div className="mb-4 flex flex-col lg:flex-row">
               <Image
                 src={rev.picture}
                 alt="image"
                 width={80}
                 height={80}
-                className="rounded-full w-20 h-20"
+                className="rounded-full w-20 h-20 mb-4 lg:mb-0"
               />
-              <div className="px-8 flex flex-col gap-3 mb-3">
-                <h4 className="text-black dark:text-white text-[24px] font-bold">
+              <div className="lg:px-8 flex flex-col gap-3 mb-3">
+                <h4 className="text-black dark:text-white text-lg lg:text-xl font-bold">
                   {rev.given_name}
                 </h4>
                 <div>
@@ -138,7 +138,7 @@ const Reviews: React.FC<ReviewsProps> = ({
                     color="red"
                   />
                 </div>
-                <p className="text-[20px]">{rev.comment}</p>
+                <p className="text-md lg:text-lg">{rev.comment}</p>
               </div>
             </div>
           </React.Fragment>
@@ -157,9 +157,8 @@ const Reviews: React.FC<ReviewsProps> = ({
         Write a review
       </button>
       {formIsOpen && (
-        <form onSubmit={submitHandler}>
-          <div className="flex mb-[30px]"></div>
-          <div className="flex items-center gap-4 mb-[30px]">
+        <form onSubmit={submitHandler} className="mt-4">
+          <div className="flex mb-6">
             <span className="text-red">Your Rating</span>
             <RateStars
               defaultRating={ratingValue}
@@ -168,10 +167,10 @@ const Reviews: React.FC<ReviewsProps> = ({
               color="red"
             />
           </div>
-          <div className="flex flex-col mb-[30px]">
+          <div className="flex flex-col mb-6">
             <label
               htmlFor="message"
-              className="uppercase text-red text-[15px] font-medium"
+              className="uppercase text-red text-sm font-medium"
             >
               Review
               <span className="text-red">*</span>
@@ -184,13 +183,13 @@ const Reviews: React.FC<ReviewsProps> = ({
               rows={4}
               cols={50}
               required
-              className="w-[100%] text-[17px] rounded-[2px] shadow-none border-b-[1px] border-solid border-gray focus:outline-none focus:border-b-[1px] focus:border-red resize-none placeholder:pl-2"
+              className="w-full text-md rounded shadow-none border-b border-gray focus:outline-none focus:border-red resize-none placeholder-pl-2"
               placeholder="Review"
             />
           </div>
           <button
             type="submit"
-            className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2"
+            className="p-2 px-5 border border-solid border-red text-lg text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2"
           >
             Write a review
           </button>

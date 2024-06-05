@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { PiCurrencyDollarBold } from "react-icons/pi";
-import TitleBgImage from "../UI/TitleBgImage";
+import TitleBgImage from "../../UI/TitleBgImage";
 import { useTranslations } from "next-intl";
-import RateStars from "../RateStars";
-import { Product, selectedProduct } from "../../types/products-types";
+import RateStars from "../../RateStars";
+import { Product, selectedProduct } from "../../../types/products-types";
+import Reviews from "../Reviews";
+import { AuthUser, ReviewsType } from "../../../types/profile-types";
 import ProductDetailsActions from "./ProductDetailsActions";
-import Reviews from "./Reviews";
-import { AuthUser, ReviewsType } from "../../types/profile-types";
 
 interface ProductDetailsContentProps {
   productDetails: Product;
@@ -30,22 +30,22 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
   return (
     <>
       <TitleBgImage>{t("singlePageTitle")}</TitleBgImage>
-      <section className="py-[60px] dark:bg-gray">
-        <div className="w-[1140px] m-auto">
-          <div className="flex">
+      <section className="py-12 dark:bg-gray">
+        <div className="container mx-auto px-4 lg:px-0">
+          <div className="lg:flex">
             <Image
               src={productDetails.thumbnail}
               alt={productDetails.title}
-              className="w-[400px] h-[600px]"
+              className="w-full lg:w-[400px] h-auto lg:h-[600px] object-cover mb-8 lg:mb-0"
               width={400}
               height={600}
             />
-            <div className="px-[60px] flex flex-col justify-between">
-              <h2 className="text-black font-normal text-[32px] dark:text-white">
+            <div className="lg:px-16 flex flex-col justify-between">
+              <h2 className="text-black font-normal text-2xl lg:text-4xl dark:text-white mb-4">
                 {productDetails.title}
               </h2>
-              <div className="flex gap-2 items-center">
-                <span className="text-red text-[18px] flex gap-2 items-center font-bold">
+              <div className="flex gap-2 items-center mb-4">
+                <span className="text-red text-lg lg:text-xl flex gap-2 items-center font-bold">
                   {Math.round(starRating * 10) / 10}
                 </span>
                 <RateStars
@@ -54,18 +54,22 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
                   color="red"
                 />
               </div>
-              <span className="text-black text-[32px] flex gap-2 items-center dark:text-white">
+              <span className="text-black text-2xl lg:text-3xl flex gap-2 items-center dark:text-white mb-4">
                 {productDetails.price}
                 <PiCurrencyDollarBold />
               </span>
-              <span className="text-red italic font-bold">{t("category")}</span>
-              <p className="dark:text-white">{productDetails.category}</p>
-              <span className="text-red italic font-bold">{t("brand")}</span>
-              <p className="dark:text-white">{productDetails.brand}</p>
-              <span className="text-red italic font-bold">
-                {t("description")}
-              </span>
-              <p className="dark:text-white">{productDetails.description}</p>
+              <div className="mb-4">
+                <span className="text-red italic font-bold">{t("category")}</span>
+                <p className="dark:text-white">{productDetails.category}</p>
+              </div>
+              <div className="mb-4">
+                <span className="text-red italic font-bold">{t("brand")}</span>
+                <p className="dark:text-white">{productDetails.brand}</p>
+              </div>
+              <div className="mb-4">
+                <span className="text-red italic font-bold">{t("description")}</span>
+                <p className="dark:text-white">{productDetails.description}</p>
+              </div>
               <ProductDetailsActions
                 selectedProduct={selectedProduct}
                 productDetails={productDetails}
