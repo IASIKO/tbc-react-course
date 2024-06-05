@@ -13,7 +13,6 @@ export async function PUT(request: NextRequest) {
 
   try {
     if (!prod_id || !user_id) throw new Error("product or user not found");
-
     const cart =
       await sql<CartTable>`SELECT * FROM carts WHERE user_id = ${user_id};`;
 
@@ -38,3 +37,5 @@ export async function PUT(request: NextRequest) {
   const carts = await sql`SELECT * FROM carts;`;
   return NextResponse.json({ carts }, { status: 200 });
 }
+
+

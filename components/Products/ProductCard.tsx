@@ -85,7 +85,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
         <div className="text-left w-full mt-2 flex flex-col justify-between h-[150px]">
           <span className="flex items-center text-sm">
-            <RateStars defaultRating={Math.round(product.rating * 2) / 2} />
+            <RateStars defaultRating={Math.round(product.rating * 2) / 2} enable={false}/>
             {product.rating}
           </span>
           <h2 className="text-[20px] capitalize font-bold text-black leading-normal line-clamp-2 dark:text-white">

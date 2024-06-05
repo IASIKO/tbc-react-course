@@ -12,7 +12,7 @@ import {
 } from "./api";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@auth0/nextjs-auth0";
-import { Profile } from "../types/profile-types";
+import { Profile, ReviewType } from "../types/profile-types";
 import { ProductForm } from "../types/products-types";
 
 export const setLanguage = (lang: string) => {
@@ -161,3 +161,25 @@ export const editProductAction = async (product: ProductForm, id: number) => {
   revalidatePath("/", "layout");
   await editProduct(product, id);
 };
+
+// REVIEWS
+
+export async function getReviewsAction(prod_id: number) {
+  revalidatePath("/", "layout");
+  const res = await fetch(`${BASE_URL}/api/reviews/get-reviews/${prod_id}`, {
+    method: "GET",
+  });
+
+  return await res.json();
+}
+
+export async function addReviewAction(review: ReviewType) {
+  revalidatePath("/", "layout");
+  await fetch(BASE_URL + "/api/reviews/add-review", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ review }),
+  });
+}

@@ -8,7 +8,22 @@ export interface Profile {
   email: string;
   sub: string;
   picture: string;
-  role?: string
+  role?: string;
+}
+
+export interface ReviewsType extends Profile {
+  id: number;
+  prod_id: number;
+  user_id: number;
+  rating: number;
+  comment: string;
+}
+
+export interface ReviewType {
+  prod_id: number;
+  user_id: number;
+  rating: number;
+  comment: string;
 }
 
 export interface AuthUser extends Profile {

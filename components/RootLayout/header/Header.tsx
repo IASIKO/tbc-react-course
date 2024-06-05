@@ -10,7 +10,10 @@ import Language from "../../UI/Language";
 import Theme from "../../UI/Theme";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
-import { AuthUser } from "../../../types/profile-types";
+import { AuthUser, Profile } from "../../../types/profile-types";
+import { useEffect, useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { createAuthUserAction } from "../../../lib/actions";
 
 const Header = ({
   selectedProducts,
@@ -20,6 +23,28 @@ const Header = ({
   authUser: AuthUser
 }) => {
   const tAdmin = useTranslations("admin");
+  const {user} = useUser()
+  const [profile] = useState<Profile>({
+    given_name: (user?.given_name as string) || "",
+    family_name: (user?.family_name as string) || "",
+    country: "",
+    city: "",
+    address: "",
+    phone: "",
+    email: user?.email || "",
+    sub: user?.sub || "",
+    picture: user?.picture || "",
+    role: authUser?.role && authUser.role === 'admin' ? 'admin' : 'default'
+  });
+
+  console.log("🚀 ~ useEffect ~ user?.picture:", user?.picture)
+
+  useEffect(() => {
+    if (user && !authUser) {
+      console.log('shesvla');
+      createAuthUserAction(profile, user?.picture)
+    }
+  }, [])
 
   return (
     <header>

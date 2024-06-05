@@ -29,6 +29,7 @@
     "sortByPrice": "Sort by Price (low to high)",
     "resetSort": "Reset Sort",
     "addToCart": "Add to cart",
+    "removeFromCart": "Remove from cart",
     "inCart": "In Cart",
     "singlePageTitle": "Product Details",
     "category": "Category",
