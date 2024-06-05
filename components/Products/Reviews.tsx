@@ -7,20 +7,21 @@ import { Product } from "../../types/products-types";
 import { addReviewAction } from "../../lib/actions";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { ReviewsType } from "../../types/profile-types";
+import { AuthUser, ReviewsType } from "../../types/profile-types";
 
 interface ReviewsProps {
   productDetails: Product;
   reviews: ReviewsType[];
+  authUser: AuthUser
 }
 
-const Reviews: React.FC<ReviewsProps> = ({ productDetails, reviews }) => {
+const Reviews: React.FC<ReviewsProps> = ({ productDetails, reviews, authUser }) => {
   const [formIsOpen, setFormIsOpen] = useState(false);
   const [ratingValue, setRatingValue] = useState(0);
   const { user } = useUser();
   const [review, setReview] = useState({
     prod_id: productDetails.id,
-    user_id: 1,
+    user_id: authUser.id,
     rating: ratingValue,
     comment: "",
   });

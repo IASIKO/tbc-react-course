@@ -17,13 +17,13 @@ import { createAuthUserAction } from "../../../lib/actions";
 
 const Header = ({
   selectedProducts,
-  authUser
+  authUser,
 }: {
   selectedProducts: ProductObject[];
-  authUser: AuthUser
+  authUser: AuthUser;
 }) => {
   const tAdmin = useTranslations("admin");
-  const {user} = useUser()
+  const { user } = useUser();
   const [profile] = useState<Profile>({
     given_name: (user?.given_name as string) || "",
     family_name: (user?.family_name as string) || "",
@@ -34,17 +34,19 @@ const Header = ({
     email: user?.email || "",
     sub: user?.sub || "",
     picture: user?.picture || "",
-    role: authUser?.role && authUser.role === 'admin' ? 'admin' : 'default'
+    role: authUser?.role && authUser.role === "admin" ? "admin" : "default",
   });
 
-  console.log("🚀 ~ useEffect ~ user?.picture:", user?.picture)
+  console.log("🚀 ~ useEffect ~ user?.picture:", user?.picture);
 
   useEffect(() => {
-    if (user?.picture && !authUser) {
-      console.log('shesvla');
-      createAuthUserAction(profile, user?.picture)
+    if (user) {
+      if (user?.picture && !authUser) {
+        console.log("shesvla");
+        createAuthUserAction(profile, user?.picture);
+      }
     }
-  }, [])
+  }, [user]);
 
   return (
     <header>
@@ -61,10 +63,12 @@ const Header = ({
                 </a>
               </p>
               <Language />
-              {authUser?.role && authUser.role === 'admin' && <Link href="/admin" className="flex items-center text-white">
-                <MdAdminPanelSettings />
-                {tAdmin("admin")}
-              </Link>}
+              {authUser?.role && authUser.role === "admin" && (
+                <Link href="/admin" className="flex items-center text-white">
+                  <MdAdminPanelSettings />
+                  {tAdmin("admin")}
+                </Link>
+              )}
             </div>
 
             <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">
@@ -94,13 +98,12 @@ const Header = ({
               <div className="duration-100 rounded py-1 px-1 flex justify-center w-[100px]">
                 <Theme />
               </div>
-             
             </div>
           </div>
         </div>
       </div>
 
-      <Navigation selectedProducts={selectedProducts}/>
+      <Navigation selectedProducts={selectedProducts} />
     </header>
   );
 };

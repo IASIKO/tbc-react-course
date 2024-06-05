@@ -6,18 +6,20 @@ import RateStars from "../RateStars";
 import { Product, selectedProduct } from "../../types/products-types";
 import ProductDetailsActions from "./ProductDetailsActions";
 import Reviews from "./Reviews";
-import { ReviewsType } from "../../types/profile-types";
+import { AuthUser, ReviewsType } from "../../types/profile-types";
 
 interface ProductDetailsContentProps {
   productDetails: Product;
   selectedProduct: selectedProduct;
   reviews: ReviewsType[]
+  authUser: AuthUser
 }
 
 const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
   productDetails,
   selectedProduct,
-  reviews
+  reviews,
+  authUser
 }) => {
   const t = useTranslations("products");
 
@@ -65,7 +67,7 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               />
             </div>
           </div>
-          <Reviews productDetails={productDetails} reviews={reviews}/>
+          <Reviews productDetails={productDetails} reviews={reviews} authUser={authUser}/>
         </div>
       </section>
     </>

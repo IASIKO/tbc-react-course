@@ -3,9 +3,11 @@ import ProductDetailsContent from "../../../../../components/Products/ProductDet
 import { getProducts } from "../../../../../lib/api";
 import { Product, selectedProduct } from "../../../../../types/products-types";
 import {
+  getAuthUserAction,
   getReviewsAction,
   getUserCartAction,
 } from "../../../../../lib/actions";
+import { getSession } from "@auth0/nextjs-auth0";
 
 interface ProductsDetailsProps {
   params: {
@@ -28,8 +30,12 @@ export default async function ProductsDetails({
 }: ProductsDetailsProps) {
   unstable_setRequestLocale(locale);
 
-  const reviews = await getReviewsAction(id);
+  const session = await getSession();
+  const sub = session?.user?.sub;
 
+  const auth_user = await getAuthUserAction(sub);
+
+  const reviews = await getReviewsAction(id);
   const productsData = await getProducts();
   const selectedProducts = await getUserCartAction();
   const selectedProduct = selectedProducts[0]?.products.find(
@@ -44,6 +50,7 @@ export default async function ProductsDetails({
       productDetails={product}
       selectedProduct={selectedProduct}
       reviews={reviews.rows}
+      authUser={auth_user?.auth_user.rows[0]}
     />
   );
 }
