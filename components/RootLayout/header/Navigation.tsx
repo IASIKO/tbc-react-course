@@ -110,7 +110,7 @@ const Navigation = ({
             <div className="text-white text-xs">{selectedNumber}</div>
           </div>
         </Link>
-        <div className="relative">
+        <div className="relative flex items-center">
           <button
             onClick={() => setUserModalIsOpen(!userModalIsOpen)}
             className="text-white text-[32px] ml-4"

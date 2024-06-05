@@ -4,24 +4,36 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import RateStars from "../RateStars";
 import Image from "next/image";
 import { Product } from "../../types/products-types";
-import { addReviewAction } from "../../lib/actions";
+import {
+  addReviewAction,
+  deleteReviewAction,
+  editReviewAction,
+} from "../../lib/actions";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { AuthUser, ReviewsType } from "../../types/profile-types";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 interface ReviewsProps {
   productDetails: Product;
   reviews: ReviewsType[];
-  authUser: AuthUser
+  authUser: AuthUser;
 }
 
-const Reviews: React.FC<ReviewsProps> = ({ productDetails, reviews, authUser }) => {
+const Reviews: React.FC<ReviewsProps> = ({
+  productDetails,
+  reviews,
+  authUser,
+}) => {
+  console.log("🚀 ~ reviews:", reviews)
   const [formIsOpen, setFormIsOpen] = useState(false);
   const [ratingValue, setRatingValue] = useState(0);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [editReviewId, setEditReviewId] = useState<number | null>(null);
   const { user } = useUser();
   const [review, setReview] = useState({
     prod_id: productDetails.id,
-    user_id: authUser.id,
+    user_id: authUser && authUser.id,
     rating: ratingValue,
     comment: "",
   });
@@ -41,8 +53,28 @@ const Reviews: React.FC<ReviewsProps> = ({ productDetails, reviews, authUser }) 
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addReviewAction(review);
+    if (isUpdate) {
+      editReviewAction(review, editReviewId);
+    } else {
+      addReviewAction(review);
+    }
     setFormIsOpen(false);
+    setIsUpdate(false);
+    setEditReviewId(null);
+  };
+
+  const reviewEditHandler = (id: number) => {
+    const index = reviews.findIndex((item) => item.id == id);
+    setReview({
+      prod_id: productDetails.id,
+      user_id: reviews[index].user_id,
+      rating: reviews[index].rating,
+      comment: reviews[index].comment,
+    });
+    setRatingValue(reviews[index].rating);
+    setFormIsOpen(true);
+    setIsUpdate(true);
+    setEditReviewId(id);
   };
 
   return (
@@ -56,28 +88,47 @@ const Reviews: React.FC<ReviewsProps> = ({ productDetails, reviews, authUser }) 
       </h2>
       <div className="mt-9 px-24 py-8">
         {reviews.map((rev) => (
-          <div className="mb-4 flex" key={rev.id}>
-            <Image
-              src={rev.picture}
-              alt="image"
-              width={80}
-              height={80}
-              className="rounded-full w-20 h-20"
-            />
-            <div className="px-8 flex flex-col gap-3 mb-3">
-              <h4 className="text-black dark:text-white text-[24px] font-bold">
-                {rev.given_name}
-              </h4>
-              <div>
-                <RateStars
-                  defaultRating={Math.round(rev.rating * 2) / 2}
-                  enable={false}
-                  color="red"
-                />
+          <React.Fragment key={rev.id}>
+            {(authUser?.role && authUser.role === "admin") ||
+              (authUser.sub === rev.sub && (
+                <div className="w-full flex justify-end gap-2 p-2">
+                  <button
+                    className="text-black hover:text-red dark:text-white"
+                    onClick={() => deleteReviewAction(rev.id)}
+                  >
+                    <MdDelete />
+                  </button>
+                  <button
+                    onClick={() => reviewEditHandler(rev.id)}
+                    className="text-black hover:text-red dark:text-white"
+                  >
+                    <MdEdit />
+                  </button>
+                </div>
+              ))}
+            <div className="mb-4 flex">
+              <Image
+                src={rev.picture}
+                alt="image"
+                width={80}
+                height={80}
+                className="rounded-full w-20 h-20"
+              />
+              <div className="px-8 flex flex-col gap-3 mb-3">
+                <h4 className="text-black dark:text-white text-[24px] font-bold">
+                  {rev.given_name}
+                </h4>
+                <div>
+                  <RateStars
+                    defaultRating={Math.round(rev.rating * 2) / 2}
+                    enable={false}
+                    color="red"
+                  />
+                </div>
+                <p className="text-[20px]">{rev.comment}</p>
               </div>
-              <p className="text-[20px]">{rev.comment}</p>
             </div>
-          </div>
+          </React.Fragment>
         ))}
       </div>
       <button

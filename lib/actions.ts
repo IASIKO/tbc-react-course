@@ -183,3 +183,20 @@ export async function addReviewAction(review: ReviewType) {
     body: JSON.stringify({ review }),
   });
 }
+
+export const deleteReviewAction = async (id: number) => {
+  revalidatePath("/", "layout");
+  await fetch(`${BASE_URL}/api/reviews/delete-review`, {
+    method: "DELETE",
+    cache: "no-store",
+    body: JSON.stringify({ id }),
+  });
+};
+
+export async function editReviewAction(review: ReviewType, id: number | null) {
+  revalidatePath("/", "layout");
+  await fetch(BASE_URL + "/api/reviews/edit-review", {
+    method: "PUT",
+    body: JSON.stringify({ review, id }),
+  });
+}

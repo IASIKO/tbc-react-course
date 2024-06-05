@@ -37,12 +37,10 @@ const Header = ({
     role: authUser?.role && authUser.role === "admin" ? "admin" : "default",
   });
 
-  console.log("🚀 ~ useEffect ~ user?.picture:", user?.picture);
 
   useEffect(() => {
-    if (user) {
+    if (user !== undefined) {
       if (user?.picture && !authUser) {
-        console.log("shesvla");
         createAuthUserAction(profile, user?.picture);
       }
     }

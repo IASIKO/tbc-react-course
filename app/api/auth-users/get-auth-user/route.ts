@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const auth_user =
-      await sql`SELECT * FROM auth_users WHERE sub = ${sub}`;
+      await sql`SELECT * FROM auth_users WHERE sub = ${sub} ORDER BY id DESC`;
 
     return NextResponse.json({ auth_user }, { status: 200 });
   } catch (error) {
