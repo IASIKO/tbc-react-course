@@ -8,6 +8,7 @@ import {
   addReviewAction,
   deleteReviewAction,
   editReviewAction,
+  updateRatingAction,
 } from "../../lib/actions";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -18,14 +19,15 @@ interface ReviewsProps {
   productDetails: Product;
   reviews: ReviewsType[];
   authUser: AuthUser;
+  starRating: number;
 }
 
 const Reviews: React.FC<ReviewsProps> = ({
   productDetails,
   reviews,
   authUser,
+  starRating,
 }) => {
-  console.log("🚀 ~ reviews:", reviews)
   const [formIsOpen, setFormIsOpen] = useState(false);
   const [ratingValue, setRatingValue] = useState(0);
   const [isUpdate, setIsUpdate] = useState(false);
@@ -44,6 +46,10 @@ const Reviews: React.FC<ReviewsProps> = ({
     setReview({ ...review, rating: ratingValue });
   }, [ratingValue]);
 
+  useEffect(() => {
+    updateRatingAction(starRating, productDetails.id);
+  }, [starRating]);
+
   const onChangeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -51,16 +57,23 @@ const Reviews: React.FC<ReviewsProps> = ({
     setReview({ ...review, [name]: value });
   };
 
-  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isUpdate) {
-      editReviewAction(review, editReviewId);
+      await editReviewAction(review, editReviewId);
     } else {
-      addReviewAction(review);
+      await addReviewAction(review);
     }
     setFormIsOpen(false);
     setIsUpdate(false);
     setEditReviewId(null);
+    setRatingValue(0)
+    setReview({
+      prod_id: productDetails.id,
+      user_id: authUser && authUser.id,
+      rating: ratingValue,
+      comment: "",
+    })
   };
 
   const reviewEditHandler = (id: number) => {
@@ -149,9 +162,10 @@ const Reviews: React.FC<ReviewsProps> = ({
           <div className="flex items-center gap-4 mb-[30px]">
             <span className="text-red">Your Rating</span>
             <RateStars
-              defaultRating={0}
+              defaultRating={ratingValue}
               enable={true}
               setRatingValue={setRatingValue}
+              color="red"
             />
           </div>
           <div className="flex flex-col mb-[30px]">

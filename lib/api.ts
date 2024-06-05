@@ -78,3 +78,12 @@ export const editProduct = async (product: ProductForm, id: number) => {
     cache: "no-store",
   });
 };
+
+export const updateRating = async (rating: number, id: number) => {
+  await fetch(`${BASE_URL}/api/products/update-rating`, {
+    method: "PUT",
+    body: JSON.stringify({ rating, id }),
+    cache: "no-store",
+  });
+};
+

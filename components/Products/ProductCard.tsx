@@ -15,7 +15,7 @@ interface ProductCardProps {
   selectedProducts: ProductObject[];
   isOpen: () => void;
   removeProductHandler: (id: number) => void;
-  authUser: AuthUser
+  authUser: AuthUser;
 }
 
 const initialStatus = (id: number, products: ProductObject[]) => {
@@ -28,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   selectedProducts,
   isOpen,
   removeProductHandler,
-  authUser
+  authUser,
 }) => {
   const [isInCart, setIsInCart] = useState(() =>
     initialStatus(product.id, selectedProducts)
@@ -58,20 +58,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div className="p-4 flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-transform transform hover:scale-105">
-      {authUser?.role && authUser.role === 'admin' && <div className="w-full flex gap-2 p-2">
-        <button
-          className="text-black hover:text-red dark:text-white"
-          onClick={() => removeProductHandler(product.id)}
-        >
-          <MdDelete />
-        </button>
-        <button
-          onClick={() => onEditProductClickHandler(product.id)}
-          className="text-black hover:text-red dark:text-white"
-        >
-          <MdEdit />
-        </button>
-      </div>}
+      {authUser?.role && authUser.role === "admin" && (
+        <div className="w-full flex gap-2 p-2">
+          <button
+            className="text-black hover:text-red dark:text-white"
+            onClick={() => removeProductHandler(product.id)}
+          >
+            <MdDelete />
+          </button>
+          <button
+            onClick={() => onEditProductClickHandler(product.id)}
+            className="text-black hover:text-red dark:text-white"
+          >
+            <MdEdit />
+          </button>
+        </div>
+      )}
       <div
         className="flex flex-col justify-center items-start cursor-pointer"
         onClick={onProductCardClickHandler}
@@ -85,8 +87,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
         <div className="text-left w-full mt-2 flex flex-col justify-between h-[150px]">
           <span className="flex items-center text-sm">
-            <RateStars defaultRating={Math.round(product.rating * 2) / 2} enable={false}/>
-            {product.rating}
+            <RateStars
+              defaultRating={Math.round(product.rating)}
+              enable={false}
+              color="red"
+            />
+            {Math.round(product.rating * 10) / 10}
           </span>
           <h2 className="text-[20px] capitalize font-bold text-black leading-normal line-clamp-2 dark:text-white">
             {product.title}

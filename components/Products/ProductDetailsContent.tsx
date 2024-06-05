@@ -11,17 +11,21 @@ import { AuthUser, ReviewsType } from "../../types/profile-types";
 interface ProductDetailsContentProps {
   productDetails: Product;
   selectedProduct: selectedProduct;
-  reviews: ReviewsType[]
-  authUser: AuthUser
+  reviews: ReviewsType[];
+  authUser: AuthUser;
 }
 
 const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
   productDetails,
   selectedProduct,
   reviews,
-  authUser
+  authUser,
 }) => {
   const t = useTranslations("products");
+
+  const starReviewsSum = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+  const starRating =
+    (Number(productDetails.rating) + starReviewsSum) / (reviews.length + 1);
 
   return (
     <>
@@ -42,11 +46,12 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               </h2>
               <div className="flex gap-2 items-center">
                 <span className="text-red text-[18px] flex gap-2 items-center font-bold">
-                  {productDetails.rating}
+                  {Math.round(starRating * 10) / 10}
                 </span>
                 <RateStars
-                  defaultRating={Math.round(productDetails.rating * 2) / 2}
+                  defaultRating={Math.round(starRating)}
                   enable={false}
+                  color="red"
                 />
               </div>
               <span className="text-black text-[32px] flex gap-2 items-center dark:text-white">
@@ -67,7 +72,12 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               />
             </div>
           </div>
-          <Reviews productDetails={productDetails} reviews={reviews} authUser={authUser}/>
+          <Reviews
+            productDetails={productDetails}
+            reviews={reviews}
+            authUser={authUser}
+            starRating={starRating}
+          />
         </div>
       </section>
     </>

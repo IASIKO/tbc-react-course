@@ -9,6 +9,7 @@ import {
   deleteUser,
   editProduct,
   editUser,
+  updateRating,
 } from "./api";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@auth0/nextjs-auth0";
@@ -162,12 +163,18 @@ export const editProductAction = async (product: ProductForm, id: number) => {
   await editProduct(product, id);
 };
 
+export const updateRatingAction = async (rating: number, id: number) => {
+  revalidatePath("/", "layout");
+  await updateRating(rating, id);
+};
+
 // REVIEWS
 
 export async function getReviewsAction(prod_id: number) {
   revalidatePath("/", "layout");
   const res = await fetch(`${BASE_URL}/api/reviews/get-reviews/${prod_id}`, {
     method: "GET",
+    cache: 'no-store'
   });
 
   return await res.json();
