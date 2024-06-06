@@ -1,5 +1,4 @@
 export interface Profile {
-  id: number;
   given_name: string;
   family_name: string;
   country: string;
@@ -10,6 +9,10 @@ export interface Profile {
   sub: string;
   picture: string;
   role?: string;
+}
+
+export interface UsersType extends Profile {
+  id: number;
 }
 
 export interface ReviewsType extends Profile {

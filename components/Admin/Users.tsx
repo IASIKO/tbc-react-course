@@ -3,12 +3,12 @@
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { useTranslations } from "next-intl";
-import { Profile } from "../../types/profile-types";
+import { UsersType } from "../../types/profile-types";
 import { useState } from "react";
 import { deleteAuthUserAction } from "../../lib/actions";
 
 interface UsersProps {
-  users: Profile[];
+  users: UsersType[];
 }
 
 const Users = ({ users }: UsersProps) => {
