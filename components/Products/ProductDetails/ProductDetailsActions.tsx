@@ -11,6 +11,9 @@ import {
   deleteProductAction,
   updateCartCountAction,
 } from "../../../lib/actions";
+import { FacebookIcon, FacebookShareButton } from "next-share";
+import { usePathname } from "next/navigation";
+import { BASE_URL } from "../../../lib/api";
 
 interface ProductDetailsActionsProps {
   productDetails: Product;
@@ -33,6 +36,8 @@ const ProductDetailsActions: React.FC<ProductDetailsActionsProps> = ({
   const router = useRouter();
   const { user } = useUser();
   const t = useTranslations("products");
+  const path = usePathname();
+  console.log("🚀 ~ path:", path);
 
   useEffect(() => {
     setCartProducts([selectedProduct]);
@@ -137,6 +142,9 @@ const ProductDetailsActions: React.FC<ProductDetailsActionsProps> = ({
           </button>
         </div>
       )}
+      <FacebookShareButton url={`${BASE_URL}${path}`}>
+        <FacebookIcon />
+      </FacebookShareButton>
     </div>
   );
 };

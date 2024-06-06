@@ -8,6 +8,7 @@ import {
   getUserCartAction,
 } from "../../../../../lib/actions";
 import { getSession } from "@auth0/nextjs-auth0";
+import { ResolvingMetadata } from "next";
 
 interface ProductsDetailsProps {
   params: {
@@ -15,6 +16,23 @@ interface ProductsDetailsProps {
     locale: string;
   };
 }
+
+export async function generateMetadata({ params }: ProductsDetailsProps, parent: ResolvingMetadata) {
+  const productsData = await getProducts();
+  const product = productsData.find((product: Product) => product.id == params.id);
+  
+  const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `${product.title}`,
+    description: `${product.description}`,
+    openGraph: {
+      images: [...previousImages, product.thumbnail],
+    },
+  }
+}
+
+
 
 // export async function generateStaticParams() {
 //   const res = await fetch("https://dummyjson.com/products");

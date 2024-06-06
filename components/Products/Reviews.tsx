@@ -102,8 +102,8 @@ const Reviews: React.FC<ReviewsProps> = ({
       <div className="mt-9 px-4 lg:px-24 py-8">
         {reviews.map((rev) => (
           <React.Fragment key={rev.id}>
-            {(authUser?.role && authUser.role === "admin") ||
-            (authUser.sub === rev.sub && (
+            {((authUser?.role && authUser.role === "admin") ||
+              authUser.sub === rev.sub) && (
               <div className="w-full flex justify-end gap-2 p-2">
                 <button
                   className="text-black hover:text-red dark:text-white"
@@ -118,7 +118,7 @@ const Reviews: React.FC<ReviewsProps> = ({
                   <MdEdit />
                 </button>
               </div>
-            ))}
+            )}
             <div className="mb-4 flex flex-col lg:flex-row">
               <Image
                 src={rev.picture}

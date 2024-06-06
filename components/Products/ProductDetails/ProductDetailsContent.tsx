@@ -8,6 +8,7 @@ import Reviews from "../Reviews";
 import { AuthUser, ReviewsType } from "../../../types/profile-types";
 import ProductDetailsActions from "./ProductDetailsActions";
 
+
 interface ProductDetailsContentProps {
   productDetails: Product;
   selectedProduct: selectedProduct;
@@ -59,7 +60,9 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
                 <PiCurrencyDollarBold />
               </span>
               <div className="mb-4">
-                <span className="text-red italic font-bold">{t("category")}</span>
+                <span className="text-red italic font-bold">
+                  {t("category")}
+                </span>
                 <p className="dark:text-white">{productDetails.category}</p>
               </div>
               <div className="mb-4">
@@ -67,7 +70,9 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
                 <p className="dark:text-white">{productDetails.brand}</p>
               </div>
               <div className="mb-4">
-                <span className="text-red italic font-bold">{t("description")}</span>
+                <span className="text-red italic font-bold">
+                  {t("description")}
+                </span>
                 <p className="dark:text-white">{productDetails.description}</p>
               </div>
               <ProductDetailsActions
