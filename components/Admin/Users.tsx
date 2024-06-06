@@ -6,15 +6,16 @@ import { useTranslations } from "next-intl";
 import { UsersType } from "../../types/profile-types";
 import { useState } from "react";
 import { deleteAuthUserAction } from "../../lib/actions";
+import { useRouter } from "next/navigation";
 
 interface UsersProps {
   users: UsersType[];
 }
 
 const Users = ({ users }: UsersProps) => {
-  const t = useTranslations("admin");
   const [usersData, setUsersData] = useState([...users]);
-  console.log("🚀 ~ Users ~ usersData:", usersData);
+  const t = useTranslations("admin");
+  const router = useRouter()
 
   const userDeleteHandler = async (id: number) => {
     const filteredUsers = usersData.filter((user) => user.id !== id);
@@ -22,9 +23,12 @@ const Users = ({ users }: UsersProps) => {
     await deleteAuthUserAction(id);
   };
 
+  const userEditHandler = (id: number) => {
+    router.push(`/admin/users/edit-user/${id}`);
+  };
+
   return (
     <>
-      <div className="bg-[#1a1a1a] h-16 w-full"></div>
       <section className="py-[60px] dark:bg-gray">
         <div className="max-w-[1140px] m-auto">
           <div className="py-4 m-auto w-[600px] overflow-x-auto">
@@ -54,7 +58,7 @@ const Users = ({ users }: UsersProps) => {
                     </td>
                     <td className="flex items-center justify-end gap-4 px-6 py-4 whitespace-nowrap ">
                       <button
-                        onClick={() => {}}
+                        onClick={() => userEditHandler(user.id)}
                         className="text-red hover:text-yellow cursor-pointer duration-100 hover:dark:text-yellow"
                       >
                         <MdEdit />
