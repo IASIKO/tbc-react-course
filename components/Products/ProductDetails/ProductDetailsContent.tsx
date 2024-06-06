@@ -40,6 +40,7 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               className="w-full lg:w-[400px] h-auto lg:h-[600px] object-cover mb-8 lg:mb-0"
               width={400}
               height={600}
+              priority={true}
             />
             <div className="lg:px-16 flex flex-col justify-between">
               <h2 className="text-black font-normal text-2xl lg:text-4xl dark:text-white mb-4">

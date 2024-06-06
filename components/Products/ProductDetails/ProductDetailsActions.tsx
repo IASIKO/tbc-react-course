@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { FaFacebook, FaMinus, FaPlus } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { Product, selectedProduct } from "../../../types/products-types";
 import {
@@ -11,9 +11,9 @@ import {
   deleteProductAction,
   updateCartCountAction,
 } from "../../../lib/actions";
-import { FacebookIcon, FacebookShareButton } from "next-share";
+import { FacebookShareButton, TwitterShareButton } from "next-share";
 import { usePathname } from "next/navigation";
-import { BASE_URL } from "../../../lib/api";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface ProductDetailsActionsProps {
   productDetails: Product;
@@ -37,7 +37,6 @@ const ProductDetailsActions: React.FC<ProductDetailsActionsProps> = ({
   const { user } = useUser();
   const t = useTranslations("products");
   const path = usePathname();
-  console.log("🚀 ~ path:", path);
 
   useEffect(() => {
     setCartProducts([selectedProduct]);
@@ -142,9 +141,21 @@ const ProductDetailsActions: React.FC<ProductDetailsActionsProps> = ({
           </button>
         </div>
       )}
-      <FacebookShareButton url={`${BASE_URL}${path}`}>
-        <FacebookIcon />
-      </FacebookShareButton>
+      <div className="my-4 flex gap-2 items-center">
+        <span className="text-black dark:text:white text-[20px] font-bold">
+          SHARE
+        </span>
+        <FacebookShareButton
+          url={`https://tbc-react-course-mu.vercel.app${path}`}
+        >
+          <FaFacebook className="text-red text-[30px]" />
+        </FacebookShareButton>
+        <TwitterShareButton
+          url={`https://tbc-react-course-mu.vercel.app${path}`}
+        >
+          <FaXTwitter className="text-red text-[30px]" />
+        </TwitterShareButton>
+      </div>
     </div>
   );
 };

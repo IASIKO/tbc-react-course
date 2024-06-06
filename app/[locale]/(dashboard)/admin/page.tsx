@@ -1,6 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
-import { getUsers } from "../../../../lib/api";
 import Users from "../../../../components/Admin/Users";
+import { getUsers } from "../../../../lib/actions";
 
 export const metadata = {
   title: "Liquor store - Admin",

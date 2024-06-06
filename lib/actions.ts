@@ -4,9 +4,7 @@ import { cookies } from "next/headers";
 import {
   BASE_URL,
   createProduct,
-  createUser,
   deleteProduct,
-  deleteUser,
   editProduct,
   editUser,
   updateRating,
@@ -22,13 +20,7 @@ export const setLanguage = (lang: string) => {
 
 // USERS
 
-export const createUserAction = async (name: string, email: string) => {
-  return createUser(name as string, email as string);
-};
 
-export const deleteUserAction = async (id: number) => {
-  await deleteUser(id);
-};
 
 export const editUserAction = async (
   id: number,
@@ -121,6 +113,21 @@ export const deleteProductAction = async (prod_id: number) => {
 };
 
 // AUTH_USERS
+export const getUsers = async () => {
+  const res = await fetch(`${BASE_URL}/api/auth-users/get-users`, {
+    cache: "no-store",
+  });
+  const { auth_users } = await res.json();
+
+  return auth_users.rows;
+};
+
+export const deleteAuthUserAction = async (userId: number) => {
+  await fetch(`${BASE_URL}/api/auth-users/delete-user/${userId}`, {
+    method: "DELETE",
+    cache: "no-store",
+  });
+};
 
 export async function createAuthUserAction(profile: Profile, picture: string) {
   await fetch(`${BASE_URL}/api/auth-users/create-auth-user`, {
