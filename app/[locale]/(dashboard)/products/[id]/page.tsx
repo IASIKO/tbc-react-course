@@ -17,11 +17,16 @@ interface ProductsDetailsProps {
   };
 }
 
-export async function generateMetadata({ params }: ProductsDetailsProps, parent: ResolvingMetadata) {
+export async function generateMetadata(
+  { params }: ProductsDetailsProps,
+  parent: ResolvingMetadata
+) {
   const productsData = await getProducts();
-  const product = productsData.find((product: Product) => product.id == params.id);
-  
-  const previousImages = (await parent).openGraph?.images || []
+  const product = productsData.find(
+    (product: Product) => product.id == params.id
+  );
+
+  const previousImages = (await parent).openGraph?.images || [];
 
   return {
     title: `${product.title}`,
@@ -29,10 +34,8 @@ export async function generateMetadata({ params }: ProductsDetailsProps, parent:
     openGraph: {
       images: [...previousImages, product.thumbnail],
     },
-  }
+  };
 }
-
-
 
 // export async function generateStaticParams() {
 //   const res = await fetch("https://dummyjson.com/products");
@@ -50,6 +53,7 @@ export default async function ProductsDetails({
 
   const session = await getSession();
   const sub = session?.user?.sub;
+  console.log("🚀 ~ sub:", sub)
 
   const auth_user = await getAuthUserAction(sub);
 

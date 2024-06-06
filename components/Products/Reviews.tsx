@@ -103,7 +103,7 @@ const Reviews: React.FC<ReviewsProps> = ({
         {reviews.map((rev) => (
           <React.Fragment key={rev.id}>
             {((authUser?.role && authUser.role === "admin") ||
-              authUser.sub === rev.sub) && (
+              (authUser?.sub === rev.sub)) && (
               <div className="w-full flex justify-end gap-2 p-2">
                 <button
                   className="text-black hover:text-red dark:text-white"
