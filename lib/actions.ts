@@ -6,7 +6,6 @@ import {
   createProduct,
   deleteProduct,
   editProduct,
-  editUser,
   updateRating,
 } from "./api";
 import { revalidatePath } from "next/cache";
@@ -16,18 +15,6 @@ import { ProductForm } from "../types/products-types";
 
 export const setLanguage = (lang: string) => {
   cookies().set("NEXT_LOCALE", lang);
-};
-
-// USERS
-
-
-
-export const editUserAction = async (
-  id: number,
-  name: string,
-  email: string
-) => {
-  await editUser(id, name as string, email as string);
 };
 
 // CART
@@ -181,7 +168,7 @@ export async function getReviewsAction(prod_id: number) {
   revalidatePath("/", "layout");
   const res = await fetch(`${BASE_URL}/api/reviews/get-reviews/${prod_id}`, {
     method: "GET",
-    cache: 'no-store'
+    cache: "no-store",
   });
 
   return await res.json();

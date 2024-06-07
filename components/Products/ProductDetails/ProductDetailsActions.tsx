@@ -142,7 +142,7 @@ const ProductDetailsActions: React.FC<ProductDetailsActionsProps> = ({
         </div>
       )}
       <div className="my-4 flex gap-2 items-center">
-        <span className="text-black dark:text:white text-[20px] font-bold">
+        <span className="text-black dark:text-white text-[20px] font-bold">
           SHARE
         </span>
         <FacebookShareButton

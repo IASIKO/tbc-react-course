@@ -8,7 +8,6 @@ import Reviews from "../Reviews";
 import { AuthUser, ReviewsType } from "../../../types/profile-types";
 import ProductDetailsActions from "./ProductDetailsActions";
 
-
 interface ProductDetailsContentProps {
   productDetails: Product;
   selectedProduct: selectedProduct;
@@ -32,7 +31,7 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
     <>
       <TitleBgImage>{t("singlePageTitle")}</TitleBgImage>
       <section className="py-12 dark:bg-gray">
-        <div className="container mx-auto px-4 lg:px-0">
+        <div className="max-w-[1140px] container mx-auto px-4 lg:px-0">
           <div className="lg:flex">
             <Image
               src={productDetails.thumbnail}

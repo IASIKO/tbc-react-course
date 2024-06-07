@@ -5,16 +5,6 @@ export const BASE_URL =
     ? "http://localhost:3000"
     : "https://tbc-react-course-mu.vercel.app";
 
-// USERS
-
-export const editUser = async (userId: number, name: string, email: string) => {
-  await fetch(`${BASE_URL}/api/users/edit-user/${userId}`, {
-    method: "PUT",
-    body: JSON.stringify({ name, email }),
-    cache: "no-store",
-  });
-};
-
 // PRODUCTS
 
 export const getProducts = async () => {

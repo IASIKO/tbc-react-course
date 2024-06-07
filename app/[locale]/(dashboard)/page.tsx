@@ -1,5 +1,5 @@
 import bg from "../../../public/Assets/images/bg_1.jpg";
-// import test from '../../../public/Assets/images/test.png'  
+// import test from '../../../public/Assets/images/test.png'
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -37,13 +37,22 @@ export default async function DashboardHome({
 
   return (
     <>
-      <Image
-        src={bg}
-        alt="background image"
-        priority={true}
-        placeholder="blur"
-        className="h-[100vh] object-none object-top"
-      />
+      <div
+        className="relative h-screen w-ful"
+        style={{
+          clipPath: "inset(0 0 0 0)",
+        }}
+      >
+        <div className="fixed h-full w-full left-0 top-0">
+          <Image
+            src={bg}
+            alt="background image"
+            priority={true}
+            placeholder="blur"
+            className="h-[100vh] object-none object-top"
+          />
+        </div>
+      </div>
       <LandingContent
         blogListData={blogListData.recipes}
         productListData={productListData}

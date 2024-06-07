@@ -23,7 +23,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
     email: authUser.email || "",
     sub: authUser.sub || "",
     picture: authUser.picture || "",
-    role: authUser.role || "",
+    role: authUser.role || "default",
   });
 
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
@@ -31,7 +31,9 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
 
   const t = useTranslations("profile");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setProfile({ ...profile, [name]: value });
   };
@@ -156,9 +158,22 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
                 />
               </div>
             </div>
+            <div className="mb-4">
+              <h2 className="text-black font-normal dark:text-white">Role</h2>
+              <select
+                id="role"
+                name="role"
+                value={profile.role}
+                onChange={handleChange}
+                className="p-2 px-8 border border-red"
+              >
+                <option value="default">Default</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
             <button
               type="submit"
-              className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white"
+              className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred"
             >
               {loading ? <ThemeLoader /> : t("save")}
             </button>
