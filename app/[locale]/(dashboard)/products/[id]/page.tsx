@@ -53,7 +53,6 @@ export default async function ProductsDetails({
 
   const session = await getSession();
   const sub = session?.user?.sub;
-  console.log("🚀 ~ sub:", sub)
 
   const auth_user = await getAuthUserAction(sub);
 

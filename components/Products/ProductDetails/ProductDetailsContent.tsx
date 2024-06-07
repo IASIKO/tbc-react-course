@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { PiCurrencyDollarBold } from "react-icons/pi";
 import TitleBgImage from "../../UI/TitleBgImage";
 import { useTranslations } from "next-intl";
@@ -7,6 +6,7 @@ import { Product, selectedProduct } from "../../../types/products-types";
 import Reviews from "../Reviews";
 import { AuthUser, ReviewsType } from "../../../types/profile-types";
 import ProductDetailsActions from "./ProductDetailsActions";
+import ProductDetailsImage from "./ProductDetailsImage";
 
 interface ProductDetailsContentProps {
   productDetails: Product;
@@ -33,13 +33,9 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
       <section className="py-12 dark:bg-gray">
         <div className="max-w-[1140px] container mx-auto px-4 lg:px-0">
           <div className="lg:flex">
-            <Image
-              src={productDetails.thumbnail}
-              alt={productDetails.title}
-              className="w-full lg:w-[400px] h-auto lg:h-[600px] object-cover mb-8 lg:mb-0"
-              width={400}
-              height={600}
-              priority={true}
+            <ProductDetailsImage
+              thumbnail={productDetails.thumbnail}
+              title={productDetails.title}
             />
             <div className="lg:px-16 flex flex-col justify-between">
               <h2 className="text-black font-normal text-2xl lg:text-4xl dark:text-white mb-4">

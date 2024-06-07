@@ -18,7 +18,6 @@ const Users = ({ users }: UsersProps) => {
   const t = useTranslations("admin");
   const router = useRouter();
 
-  console.log("🚀 ~ Users ~ usersData:", usersData);
   const userDeleteHandler = async (id: number) => {
     const filteredUsers = usersData.filter((user) => user.id !== id);
     setUsersData(filteredUsers);
