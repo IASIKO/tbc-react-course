@@ -1,3 +1,4 @@
+import { Blog } from "../types/blogs.type";
 import { ProductForm } from "../types/products-types";
 
 export const BASE_URL =
@@ -57,4 +58,19 @@ export const getBlogs = async () => {
   const { blogs } = await res.json();
 
   return blogs.rows;
+};
+
+export const createBlog = async (blog: Blog) => {
+  await fetch(`${BASE_URL}/api/blogs/create-blog`, {
+    method: "POST",
+    body: JSON.stringify({ blog }),
+    cache: "no-store",
+  });
+};
+
+export const deleteBlog = async (id: number) => {
+  await fetch(`${BASE_URL}/api/blogs/delete-blog/${id}`, {
+    method: "DELETE",
+    cache: "no-store",
+  });
 };

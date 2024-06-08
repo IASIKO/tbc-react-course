@@ -28,7 +28,7 @@ const ProductDetailsImage: React.FC<ProductDetailsImageProps> = ({
     <>
       <div
         onClick={() => openZoomedImage(thumbnail)}
-        className="w-full h-auto lg:h-[600px] mb-8 lg:mb-0 cursor-zoom-in"
+        className="h-auto lg:h-[600px] mb-8 lg:mb-0 cursor-zoom-in"
       >
         <Image
           src={thumbnail}

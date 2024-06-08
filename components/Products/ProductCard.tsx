@@ -61,14 +61,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {authUser?.role && authUser.role === "admin" && (
         <div className="w-full flex gap-2 p-2">
           <button
-            className="text-black hover:text-red dark:text-white"
+            className="text-black hover:text-red dark:text-white duration-300"
             onClick={() => removeProductHandler(product.id)}
           >
             <MdDelete />
           </button>
           <button
             onClick={() => onEditProductClickHandler(product.id)}
-            className="text-black hover:text-red dark:text-white"
+            className="text-black hover:text-red dark:text-white duration-300"
           >
             <MdEdit />
           </button>

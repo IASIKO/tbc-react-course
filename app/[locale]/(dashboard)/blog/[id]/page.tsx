@@ -1,5 +1,8 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 import BlogDetailsContent from "../../../../../components/Blog/BlogDetailsContent";
+import { getBlogs } from "../../../../../lib/api";
+import { BlogInfo } from "../../../../../types/blogs.type";
+import { ResolvingMetadata } from "next";
 
 interface BlogsDetailsProps {
   params: {
@@ -8,26 +11,38 @@ interface BlogsDetailsProps {
   };
 }
 
+export async function generateMetadata(
+  { params }: BlogsDetailsProps,
+  parent: ResolvingMetadata
+) {
+  const blogs = await getBlogs();
+  const blog = blogs.find((blog: BlogInfo) => blog.id == params.id);
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `${blog.title}`,
+    description: `${blog.description}`,
+    openGraph: {
+      images: [...previousImages, blog.thumbnail],
+    },
+  };
+}
+
 export async function generateStaticParams() {
-  const res = await fetch("https://dummyjson.com/recipes");
-  const blogs = await res.json();
-  const paths = blogs.recipes.map((blog: { id: number }) => ({
+  const blogs = await getBlogs();
+  const paths = blogs.map((blog: { id: number }) => ({
     id: `/blog/${blog.id}`,
   }));
   return paths;
-}
-
-async function getBlogById(blogId: number) {
-  const res = await fetch(`https://dummyjson.com/recipes/${blogId}`);
-
-  return res.json();
 }
 
 export default async function BlogDetails({
   params: { id, locale },
 }: BlogsDetailsProps) {
   unstable_setRequestLocale(locale);
-  const blog = await getBlogById(id);
+  const blogs = await getBlogs();
+  const blog = blogs.find((blog: BlogInfo) => blog.id == id);
 
   return <BlogDetailsContent blogDetails={blog} />;
 }

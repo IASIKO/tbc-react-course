@@ -2,23 +2,38 @@
 import Link from "next/link";
 import React from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import { Blog } from "../../types/blogs.type";
+import { BlogInfo } from "../../types/blogs.type";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 interface BlogCardProps {
-  blogInfo: Blog;
+  blogInfo: BlogInfo;
+  removeBlogHandler: (id: number) => void;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ blogInfo }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
   // const t = useTranslations("blogs");
 
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden">
-      <div>
+      <div className="relative">
         <img
           src={blogInfo.thumbnail}
           alt={blogInfo.title}
           className="w-full h-80 object-cover"
         />
+        <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded">
+          <div className="flex items-center">
+            <button
+              onClick={() => removeBlogHandler(blogInfo.id)}
+              className="text-white hover:text-red duration-300"
+            >
+              <MdDelete />
+            </button>
+            <button className="text-white hover:text-red duration-300">
+              <MdEdit />
+            </button>
+          </div>
+        </div>
       </div>
       <div className="p-6 flex flex-col justify-between h-[300px]">
         <div>
@@ -36,15 +51,15 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <img
-              src={blogInfo.thumbnail}
-              alt={blogInfo.title}
+              src={blogInfo.user_avatar}
+              alt={blogInfo.user_name}
               className="w-10 h-10 rounded-full mr-3"
             />
             <div>
               <p className="text-sm font-medium text-gray-900">
-                {blogInfo.title.length > 10
-                  ? `${blogInfo.title.slice(0, 10)}...`
-                  : blogInfo.title}
+                {blogInfo.user_name.length > 10
+                  ? `${blogInfo.user_name.slice(0, 10)}...`
+                  : blogInfo.user_name}
               </p>
               <div className="flex items-center text-sm text-gray-500">
                 <AiOutlineClockCircle />

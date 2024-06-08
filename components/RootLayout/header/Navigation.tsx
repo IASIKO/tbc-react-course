@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { motion } from "framer-motion";
 
+
 const Navigation = ({
   selectedProducts,
 }: {
@@ -18,7 +19,6 @@ const Navigation = ({
   const pathname = usePathname();
   const t = useTranslations("header");
   const { user } = useUser();
-
   const [userModalIsOpen, setUserModalIsOpen] = useState(false);
 
   const selectedNumber = selectedProducts

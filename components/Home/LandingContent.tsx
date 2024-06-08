@@ -7,12 +7,12 @@ import { Product, ProductObject } from "../../types/products-types";
 import ExperienceSection from "../About/ExperienceSection";
 import CategoriesSection from "../About/CategoriesSection";
 import { AuthUser } from "../../types/profile-types";
-import { Blog } from "../../types/blogs.type";
+import { BlogInfo } from "../../types/blogs.type";
 
 
 
 interface LandingContentProps {
-  blogListData: Blog[];
+  blogListData: BlogInfo[];
   productListData: Product[];
   selectedProducts: ProductObject[];
   authUser: AuthUser

@@ -37,14 +37,13 @@ export async function generateMetadata(
   };
 }
 
-// export async function generateStaticParams() {
-//   const res = await fetch("https://dummyjson.com/products");
-//   const products: { products: Product[] } = await res.json();
-//   const paths = products.products.map((product) => ({
-//     id: `/products/${product.id}`,
-//   }));
-//   return paths;
-// }
+export async function generateStaticParams() {
+  const products = await getProducts();
+  const paths = products.map((product: Product) => ({
+    id: `/products/${product.id}`,
+  }));
+  return paths;
+}
 
 export default async function ProductsDetails({
   params: { id, locale },

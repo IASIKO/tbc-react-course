@@ -3,7 +3,9 @@
 import { cookies } from "next/headers";
 import {
   BASE_URL,
+  createBlog,
   createProduct,
+  deleteBlog,
   deleteProduct,
   editProduct,
   updateRating,
@@ -13,6 +15,7 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { Profile, ReviewType } from "../types/profile-types";
 import { ProductForm, selectedProduct } from "../types/products-types";
 import { redirect } from "next/navigation";
+import { Blog } from "../types/blogs.type";
 
 export const setLanguage = (lang: string) => {
   cookies().set("NEXT_LOCALE", lang);
@@ -164,7 +167,14 @@ export const updateRatingAction = async (rating: number, id: number) => {
 };
 
 // BLOGS
+export const createBlogAction = async (blog: Blog) => {
+  return createBlog(blog);
+};
 
+export const removeBlogAction = async (id: number) => {
+  revalidatePath("/", "layout");
+  await deleteBlog(id);
+};
 
 
 // REVIEWS

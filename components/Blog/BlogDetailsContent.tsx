@@ -1,20 +1,13 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import TitleBgImage from "../UI/TitleBgImage";
+import { BlogInfo } from "../../types/blogs.type";
 
-interface BlogDetails {
-  image: string;
-  id: number;
-  name: string;
-  ingredients: string[];
-  instructions: string[];
+interface BlogDetailsContentProps {
+  blogDetails: BlogInfo;
 }
 
-interface BlogDetailsContentPops {
-  blogDetails: BlogDetails;
-}
-
-const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({
+const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({
   blogDetails,
 }) => {
   const t = useTranslations("blogs");
@@ -22,40 +15,57 @@ const BlogDetailsContent: React.FC<BlogDetailsContentPops> = ({
   return (
     <>
       <TitleBgImage>{t("singlePageTitle")}</TitleBgImage>
-      <section className="py-[60px] dark:bg-gray">
-        {blogDetails !== undefined && (
-          <div className="w-[1140px] m-auto">
-            <div className="flex">
-              <Image
-                src={blogDetails.image}
-                alt={`blog image ${blogDetails.name}`}
-                className="w-[500px] h-auto"
-                width={500}
-                height={500}
-              />
-              <div className="px-[30px]">
-                <h2 className="text-black font-normal text-[35px] dark:text-white">
-                  {blogDetails.name}
+      <section className="py-16 dark:bg-gray-900">
+        {blogDetails && (
+          <div className="container mx-auto px-4 lg:px-0">
+            <div className="flex flex-col lg:flex-row lg:space-x-8">
+              <div className="lg:w-2/5">
+                <img
+                  src={blogDetails.thumbnail}
+                  alt={`Thumbnail for ${blogDetails.title}`}
+                  className="rounded-lg shadow-lg"
+                  width={600}
+                  height={400}
+                />
+              </div>
+              <div className="lg:w-3/5 mt-8 lg:mt-0">
+                <h2 className="text-3xl font-semibold text-gray-800 dark:text-white mb-4">
+                  {blogDetails.title}
                 </h2>
-                <span className="text-red italic font-bold">
-                  {" "}
-                  {t("ingredients")}
-                </span>
-                <p className="dark:text-white">
-                  {blogDetails.ingredients &&
-                    blogDetails.ingredients.map((ingredient, index) => (
-                      <span key={index}>{ingredient}, </span>
-                    ))}
+                <div className="flex items-center space-x-4 mb-6">
+                  <Image
+                    src={blogDetails.user_avatar}
+                    alt={`Avatar of ${blogDetails.user_name}`}
+                    className="w-10 h-10 rounded-full"
+                    width={40}
+                    height={40}
+                  />
+                  <div className="text-gray-600 dark:text-gray-400">
+                    <p className="font-medium">{blogDetails.user_name}</p>
+                    <p className="text-sm">
+                      {t("prepTime", { minutes: blogDetails.prep_min })}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                  {blogDetails.description}
                 </p>
-                <span className="text-red italic font-bold">
-                  {t("instructions")}
-                </span>
-                <p className="dark:text-white">
-                  {blogDetails.instructions &&
-                    blogDetails.instructions.map((instruction, index) => (
-                      <span key={index}>{instruction} </span>
-                    ))}
-                </p>
+                <div>
+                  <h3 className="text-xl font-bold text-red-500 mb-2">
+                    {t("ingredients")}
+                  </h3>
+                  <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6">
+                    {blogDetails.ingredients}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-red-500 mb-2">
+                    {t("instructions")}
+                  </h3>
+                  <ol className="list-decimal list-inside text-gray-700 dark:text-gray-300">
+                    {blogDetails.instructions}
+                  </ol>
+                </div>
               </div>
             </div>
           </div>
