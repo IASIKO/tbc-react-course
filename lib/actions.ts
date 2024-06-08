@@ -163,6 +163,10 @@ export const updateRatingAction = async (rating: number, id: number) => {
   await updateRating(rating, id);
 };
 
+// BLOGS
+
+
+
 // REVIEWS
 
 export async function getReviewsAction(prod_id: number) {
@@ -222,9 +226,3 @@ export async function checkoutAction(cartProducts: selectedProduct[]) {
       }
     });
 }
-
-// export async function getOrdersAction() {
-//   await fetch(BASE_URL + "/api/orders", {
-//     cache: "no-store",
-//   });
-// }

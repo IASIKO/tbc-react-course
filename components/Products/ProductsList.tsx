@@ -11,6 +11,7 @@ import Button from "../UI/Button";
 import Link from "next/link";
 import { AuthUser } from "../../types/profile-types";
 import { AnimatePresence, motion } from "framer-motion";
+import Sort from "../Sort";
 
 interface ProductsListProps {
   productListData: Product[];
@@ -160,12 +161,13 @@ const ProductsList: React.FC<ProductsListProps> = ({
               {t("listTitle2")}
             </h2>
             {path === "/products" && (
-              <Search
-                onChange={onSearchInputChangeHandler}
-                sortChangeHandler={sortChangeHandler}
-                searchValue={searchValue}
-                isProductsSorted={isProductsSorted}
-              />
+              <div className="pt-[60px]  w-[1140px] flex justify-between">
+                <Search
+                  onChange={onSearchInputChangeHandler}
+                  searchValue={searchValue}
+                />
+                <Sort sortChangeHandler={sortChangeHandler} />
+              </div>
             )}
           </div>
           <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">

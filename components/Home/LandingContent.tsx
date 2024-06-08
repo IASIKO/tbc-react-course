@@ -7,17 +7,12 @@ import { Product, ProductObject } from "../../types/products-types";
 import ExperienceSection from "../About/ExperienceSection";
 import CategoriesSection from "../About/CategoriesSection";
 import { AuthUser } from "../../types/profile-types";
+import { Blog } from "../../types/blogs.type";
 
-interface BlogListData {
-  image: string;
-  rating: number;
-  name: string;
-  ingredients: string;
-  id: number;
-}
+
 
 interface LandingContentProps {
-  blogListData: BlogListData[];
+  blogListData: Blog[];
   productListData: Product[];
   selectedProducts: ProductObject[];
   authUser: AuthUser
@@ -30,8 +25,8 @@ const LandingContent: React.FC<LandingContentProps> = ({
   authUser
 }) => {
   const t = useTranslations();
-  const homeBlogListData = blogListData.slice(0, 4);
-  const homeProductsListData = productListData.slice(0, 8);
+  const homeBlogListData = blogListData.slice(0, 3);
+  const homeProductsListData = productListData.slice(0, 4);
 
   return (
     <>

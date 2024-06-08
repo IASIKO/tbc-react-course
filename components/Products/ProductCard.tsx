@@ -47,8 +47,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
     if (!user) {
       router.push("/api/auth/login");
     } else {
-      await addProductAction(product.id);
       setIsInCart(true);
+      await addProductAction(product.id);
     }
   };
 

@@ -1,17 +1,12 @@
 import BlogList from "../../../../components/Blog/BlogList";
 import TitleBgImage from "../../../../components/UI/TitleBgImage";
 import { getLocale, unstable_setRequestLocale } from "next-intl/server";
+import { getBlogs } from "../../../../lib/api";
 
 export const metadata = {
   title: "Liquor store - Blog",
   description: "Blog Posts page",
 };
-
-async function getBlogs() {
-  const res = await fetch("https://dummyjson.com/recipes");
-
-  return res.json();
-}
 
 export default async function Blog({
   params: { locale },
@@ -20,14 +15,13 @@ export default async function Blog({
 }) {
   unstable_setRequestLocale(locale);
 
-  const blogListData = await getBlogs();
   const loc = await getLocale();
-
+  const blogListData = await getBlogs();
 
   return (
     <>
       <TitleBgImage>{loc === "en" ? "Blog" : "ბლოგი"}</TitleBgImage>
-      <BlogList blogListData={blogListData.recipes} />;
+      <BlogList blogListData={blogListData} />;
     </>
   );
 }

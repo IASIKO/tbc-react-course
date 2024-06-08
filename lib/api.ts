@@ -46,3 +46,15 @@ export const updateRating = async (rating: number, id: number) => {
     cache: "no-store",
   });
 };
+
+
+// BLOGS
+
+export const getBlogs = async () => {
+  const res = await fetch(`${BASE_URL}/api/blogs/get-blogs`, {
+    cache: "no-store",
+  });
+  const { blogs } = await res.json();
+
+  return blogs.rows;
+};
