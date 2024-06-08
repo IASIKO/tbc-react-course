@@ -223,8 +223,8 @@ export async function checkoutAction(cartProducts: selectedProduct[]) {
     });
 }
 
-export async function getOrdersAction() {
-  await fetch(BASE_URL + "/api/orders", {
-    cache: "no-store",
-  });
-}
+// export async function getOrdersAction() {
+//   await fetch(BASE_URL + "/api/orders", {
+//     cache: "no-store",
+//   });
+// }
