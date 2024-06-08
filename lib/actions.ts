@@ -11,7 +11,8 @@ import {
 import { revalidatePath } from "next/cache";
 import { getSession } from "@auth0/nextjs-auth0";
 import { Profile, ReviewType } from "../types/profile-types";
-import { ProductForm } from "../types/products-types";
+import { ProductForm, selectedProduct } from "../types/products-types";
+import { redirect } from "next/navigation";
 
 export const setLanguage = (lang: string) => {
   cookies().set("NEXT_LOCALE", lang);
@@ -199,5 +200,31 @@ export async function editReviewAction(review: ReviewType, id: number | null) {
   await fetch(BASE_URL + "/api/reviews/edit-review", {
     method: "PUT",
     body: JSON.stringify({ review, id }),
+  });
+}
+
+// CHECKOUT
+
+export async function checkoutAction(cartProducts: selectedProduct[]) {
+  await fetch(BASE_URL + "/api/checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ products: cartProducts }),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      if (response.url) {
+        redirect(response.url);
+      }
+    });
+}
+
+export async function getOrdersAction() {
+  await fetch(BASE_URL + "/api/orders", {
+    cache: "no-store",
   });
 }

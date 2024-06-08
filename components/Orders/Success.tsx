@@ -1,10 +1,9 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
+import Link from "next/link";
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
-  console.log(error);
-
+const SuccessPage = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,18 +16,19 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="mb-6 text-2xl font-bold"
+        className="mb-6 text-2xl font-bold text-success uppercase"
       >
-        Something went wrong!
+        Your order was Succeed!
       </motion.h2>
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => reset()}
         className="bg-[#f04d2e] text-white border-none py-2 px-4 text-lg cursor-pointer rounded-md"
       >
-        Try again
+        <Link href="/orders">See your orders</Link>
       </motion.button>
     </motion.div>
   );
-}
+};
+
+export default SuccessPage;
