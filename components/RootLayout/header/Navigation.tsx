@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { motion } from "framer-motion";
-
+import { motion, AnimatePresence } from "framer-motion";
+import { FiMenu } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
 
 const Navigation = ({
   selectedProducts,
@@ -20,6 +21,31 @@ const Navigation = ({
   const t = useTranslations("header");
   const { user } = useUser();
   const [userModalIsOpen, setUserModalIsOpen] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+  const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setIsFixed(true);
+    } else {
+      setIsFixed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (mobileMenuIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [mobileMenuIsOpen]);
 
   const selectedNumber = selectedProducts
     ? selectedProducts.reduce((acc: number, curr: ProductObject) => {
@@ -28,124 +54,159 @@ const Navigation = ({
     : 0;
 
   return (
-    <nav className="absolute left-0 right-0 z-10 bg-dark">
-      <div className="max-w-[1140px] flex items-center justify-between m-auto">
+    <motion.nav
+      className={`${
+        isFixed
+          ? "fixed top-0 left-0 right-0 z-10 bg-dark animate-fade-in-up duration-300"
+          : "absolute top-[48px] left-0 right-0 z-10 bg-dark"
+      }`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+      <motion.div
+        className="max-w-[1140px] flex items-center justify-between m-auto px-4 sm:px-6 lg:px-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
         <Link
           href="/"
-          className="font-bold text-[28px] relative uppercase text-white py-[3px] mr-[10px] leading-loose whitespace-nowrap"
+          className="font-bold text-[20px] sm:text-[28px] relative uppercase text-white py-[3px] mr-[10px] leading-loose whitespace-nowrap"
         >
           Liquor <span className="text-red">store</span>
         </Link>
 
-        <div className="flex basis-auto grow items-center">
-          <ul className="flex flex-row ml-auto">
-            <li>
-              <Link
-                href="/"
-                className={`link ${
-                  pathname === `/`
-                    ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
-                }`}
-              >
-                {t("home")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                className={`link ${
-                  pathname === `/about`
-                    ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
-                }`}
-              >
-                {t("about")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/products"
-                className={`link ${
-                  pathname === `/products`
-                    ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
-                }`}
-              >
-                {t("products")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blog"
-                className={`link ${
-                  pathname === `/blog`
-                    ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
-                }`}
-              >
-                {t("blog")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className={`link ${
-                  pathname === `/contact`
-                    ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                    : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
-                }`}
-              >
-                {t("contact")}
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <Link
-          href="/cart"
-          className="text-red text-[30px] cursor-pointer relative"
+        <motion.div
+          className="flex basis-auto grow items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <HiOutlineShoppingBag />
-          <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#4e4d4dbf] opacity-90 flex items-center justify-center">
-            <div className="text-white text-xs">{selectedNumber}</div>
-          </div>
-        </Link>
-        <div className="relative flex items-center">
+          <ul className="hidden lg:flex flex-row ml-auto">
+            {["/", "/about", "/products", "/blog", "/contact"].map((path, index) => (
+              <motion.li
+                key={path}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+              >
+                <Link
+                  href={path}
+                  className={`link ${
+                    pathname === path
+                      ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
+                      : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
+                  }`}
+                >
+                  {t(path.substring(1) || "home")}
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+
+          <button
+            className="lg:hidden text-white text-[30px] ml-auto mr-4"
+            onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
+          >
+            {mobileMenuIsOpen ? <IoMdClose /> : <FiMenu />}
+          </button>
+        </motion.div>
+
+        <motion.div
+          className="relative flex items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <Link
+            href="/cart"
+            className="text-red text-[30px] cursor-pointer relative"
+          >
+            <HiOutlineShoppingBag />
+            <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#4e4d4dbf] opacity-90 flex items-center justify-center">
+              <div className="text-white text-xs">{selectedNumber}</div>
+            </div>
+          </Link>
           <button
             onClick={() => setUserModalIsOpen(!userModalIsOpen)}
             className="text-white text-[32px] ml-4"
           >
             <PiUserCircleLight />
           </button>
-          {userModalIsOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="w-[200px] absolute top-[50px] right-8 bg-white rounded-md p-5"
+          <AnimatePresence>
+            {userModalIsOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="w-[200px] absolute top-[50px] right-8 bg-white rounded-md p-5"
+              >
+                <div className="flex flex-col gap-4">
+                  {user?.sub && (
+                    <button className="text-white text-[20px] bg-red rounded px-4">
+                      <Link href="/profile" className="text-center">
+                        {t("profile")}
+                      </Link>
+                    </button>
+                  )}
+                  {user ? (
+                    <a href="/api/auth/logout">Log Out</a>
+                  ) : (
+                    <button className="text-white text-[20px] bg-red rounded px-4">
+                      <a href="/api/auth/login">Log In</a>
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </motion.div>
+
+      <AnimatePresence>
+        {mobileMenuIsOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5 }}
+            className="lg:hidden bg-dark fixed inset-0 z-20 pt-[72px]"
+          >
+            <button
+              className="absolute top-4 right-4 text-white text-[30px]"
+              onClick={() => setMobileMenuIsOpen(false)}
             >
-              <div className="flex flex-col gap-4">
-                {user?.sub && (
-                  <button className="text-white text-[20px] bg-red rounded px-4">
-                    <Link href="/profile" className="text-center">
-                      {t("profile")}
-                    </Link>
-                  </button>
-                )}
-                {user ? (
-                  <a href="/api/auth/logout">Log Out</a>
-                ) : (
-                  <button className="text-white text-[20px] bg-red rounded px-4">
-                    <a href="/api/auth/login">Log In</a>
-                  </button>
-                )}
-              </div>
-            </motion.div>
-          )}
-        </div>
-      </div>
-    </nav>
+              <IoMdClose />
+            </button>
+            <ul className="flex flex-col items-center mt-8">
+              {["/", "/about", "/products", "/blog", "/contact"].map((path, index) => (
+                <motion.li
+                  key={path}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 * index }}
+                  className="w-full text-center"
+                >
+                  <Link
+                    href={path}
+                    className={`block text-[24px] py-4 font-medium uppercase ${
+                      pathname === path
+                        ? "text-red"
+                        : "text-white hover:text-red"
+                    }`}
+                    onClick={() => setMobileMenuIsOpen(false)}
+                  >
+                    {t(path.substring(1) || "home")}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 

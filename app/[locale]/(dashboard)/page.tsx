@@ -1,5 +1,5 @@
-import bg from "../../../public/Assets/images/bg_1.jpg";
-// import test from '../../../public/Assets/images/test.png'
+// import bg from "../../../public/Assets/images/bg_1.jpg";
+import test from '../../../public/Assets/images/test.jpg'
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -41,11 +41,12 @@ export default async function DashboardHome({
       >
         <div className="fixed h-full w-full left-0 top-0">
           <Image
-            src={bg}
+            src={test}
             alt="background image"
+            fill={true}
             priority={true}
             placeholder="blur"
-            className="h-[100vh] object-none object-top"
+            className="w-full h-full object-cover object-left-bottom -scale-x-100"
           />
         </div>
       </div>

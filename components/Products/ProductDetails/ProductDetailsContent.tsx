@@ -37,7 +37,7 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               thumbnail={productDetails.thumbnail}
               title={productDetails.title}
             />
-            <div className="lg:px-16 flex flex-col justify-between">
+            <div className="lg:px-16 flex flex-col justify-between w-1/2">
               <h2 className="text-black font-normal text-2xl lg:text-4xl dark:text-white mb-4">
                 {productDetails.title}
               </h2>
