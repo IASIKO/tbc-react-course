@@ -87,7 +87,7 @@ const CartTable = ({
   const subtotal = Math.round(countSubtotal * 100) / 100;
 
   return (
-    <div className="py-4 m-auto w-[1000px] animate-fade-in-up">
+    <div className="py-4 m-auto w-full max-w-5xl animate-fade-in-up">
       {loading ? (
         <Loader />
       ) : !cartProducts?.length ? (
@@ -103,41 +103,17 @@ const CartTable = ({
           </p>
         </div>
       ) : (
-        <>
-          <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow dark:bg-dark">
-            <thead className="bg-red dark:bg-dark">
-              <tr>
-                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white"></th>
-                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  {t("product")}
-                </th>
-                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  {t("price")}
-                </th>
-                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  {t("quantity")}
-                </th>
-                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  {t("total")}
-                </th>
-                <th className="px-6 py-6 text-left text-[22px] font-normal text-white tracking-wider dark:text-white">
-                  {t("actions")}
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white dark:bg-gray">
-              {cartProducts?.map((product) => (
-                <CartCard
-                  key={product.id}
-                  selectedProduct={product}
-                  handleIncrement={handleIncrement}
-                  handleDecrement={handleDecrement}
-                  handleDelete={handleDelete}
-                />
-              ))}
-            </tbody>
-          </table>
-          <div className="mt-2">
+        <div className="p-4 flex gap-8 flex-col lg:flex-row lg:items-start items-center">
+          <div className="grid grid-cols-1 gap-6">
+            {cartProducts?.map((product) => (
+              <CartCard
+                key={product.id}
+                selectedProduct={product}
+                handleIncrement={handleIncrement}
+                handleDecrement={handleDecrement}
+                handleDelete={handleDelete}
+              />
+            ))}
             <button
               className="p-[7px] px-[25px] bg-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred"
               onClick={handleReset}
@@ -145,39 +121,41 @@ const CartTable = ({
               {t("clearCart")}
             </button>
           </div>
-          <div className="w-[500px] border border-red m-auto p-4 mt-4">
-            <div>
-              <h3 className="text-[24px] mb-4 font-normal text-black dark:text-white">
-                {t("cartTotals")}
-              </h3>
-              <p className="flex justify-between">
-                <span className="text-[16px]">{t("subtotal")}</span>
-                <span className="text-[16px] w-[50%]">${subtotal}</span>
-              </p>
-              <p className="flex justify-between">
-                <span className="text-[16px]"> {t("delivery")}</span>
-                <span className="text-[16px] w-[50%]">$0.00</span>
-              </p>
-              <p className="flex justify-between mb-4">
-                <span className="text-[16px]">{t("discount")}</span>
-                <span className="text-[16px] w-[50%]">$0.00</span>
-              </p>
-              <hr className="text-red" />
-              <p className="flex justify-between p-4">
-                <span className="text-[16px]">{t("total2")}</span>
-                <span className="text-[16px] w-[50%] text-black font-bold dark:text-white">
-                  ${subtotal - 0 - 0}
-                </span>
-              </p>
+          <div>
+            <div className="w-[300px] border border-red p-4">
+              <div>
+                <h3 className="text-[24px] mb-4 font-normal text-black dark:text-white">
+                  {t("cartTotals")}
+                </h3>
+                <p className="flex justify-between">
+                  <span className="text-[16px]">{t("subtotal")}</span>
+                  <span className="text-[16px]">${subtotal}</span>
+                </p>
+                <p className="flex justify-between">
+                  <span className="text-[16px]"> {t("delivery")}</span>
+                  <span className="text-[16px]">$0.00</span>
+                </p>
+                <p className="flex justify-between mb-4">
+                  <span className="text-[16px]">{t("discount")}</span>
+                  <span className="text-[16px]">$0.00</span>
+                </p>
+                <hr className="text-red" />
+                <p className="flex justify-between p-4">
+                  <span className="text-[16px]">{t("total2")}</span>
+                  <span className="text-[16px] text-black font-bold dark:text-white">
+                    ${subtotal - 0 - 0}
+                  </span>
+                </p>
+              </div>
+              <button
+                onClick={checkoutHandler}
+                className="p-[7px] bg-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred w-full"
+              >
+                {t("procTocCheckout")}
+              </button>
             </div>
-            <button
-              onClick={checkoutHandler}
-              className="p-[7px] bg-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred w-full"
-            >
-              {t("procTocCheckout")}
-            </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
