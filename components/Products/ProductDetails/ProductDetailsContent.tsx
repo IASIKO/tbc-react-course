@@ -1,5 +1,4 @@
 import { PiCurrencyDollarBold } from "react-icons/pi";
-import TitleBgImage from "../../UI/TitleBgImage";
 import { useTranslations } from "next-intl";
 import RateStars from "../../RateStars";
 import { Product, selectedProduct } from "../../../types/products-types";
@@ -29,7 +28,6 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
 
   return (
     <>
-      {/* <TitleBgImage>{t("singlePageTitle")}</TitleBgImage> */}
       <section className="py-12 dark:bg-gray">
         <div className="max-w-[1140px] container mx-auto px-4 lg:px-0">
           <div className="lg:flex">
