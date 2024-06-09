@@ -29,7 +29,7 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
 
   return (
     <>
-      <TitleBgImage>{t("singlePageTitle")}</TitleBgImage>
+      {/* <TitleBgImage>{t("singlePageTitle")}</TitleBgImage> */}
       <section className="py-12 dark:bg-gray">
         <div className="max-w-[1140px] container mx-auto px-4 lg:px-0">
           <div className="lg:flex">

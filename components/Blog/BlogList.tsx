@@ -68,7 +68,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
               {t("recentBlog")}
             </h2>
             {path === "/blog" && (
-              <div className="pt-[60px] px-[15px] w-[1140px] flex justify-between">
+              <div className="pt-[60px] max-w-[1140px] flex flex-col items-center gap-4 lg:justify-between">
                 <Search
                   onChange={onSearchInputChangeHandler}
                   searchValue={searchValue}
@@ -76,14 +76,20 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
                 <Link
                   href="/blog/add-blog"
                   className="p-[7px] px-6 w-[350px] text-center border border-solid border-red text-[18px] text-red font-medium duration-300 uppercase hover:bg-red hover:text-white"
-                >Add Your Blog</Link>
+                >
+                  Add Your Blog
+                </Link>
               </div>
             )}
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((listItem, index) => (
-            <BlogCard blogInfo={listItem} key={index} removeBlogHandler={removeBlogHandler}/>
+            <BlogCard
+              blogInfo={listItem}
+              key={index}
+              removeBlogHandler={removeBlogHandler}
+            />
           ))}
         </div>
       </div>

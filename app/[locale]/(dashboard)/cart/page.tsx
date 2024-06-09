@@ -1,5 +1,4 @@
-import { getLocale, unstable_setRequestLocale } from "next-intl/server";
-import TitleBgImage from "../../../../components/UI/TitleBgImage";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { getUserCartAction } from "../../../../lib/actions";
 import { getProducts } from "../../../../lib/api";
 import { Product } from "../../../../types/products-types";
@@ -19,7 +18,6 @@ export default async function Cart({
 }) {
   unstable_setRequestLocale(locale);
 
-  const loc = await getLocale();
   const userCart = await getUserCartAction();
   const cart = userCart[0]?.products;
   const productsListData = await getProducts();
@@ -47,7 +45,6 @@ export default async function Cart({
 
   return (
     <>
-      <TitleBgImage>{loc === "en" ? "My Cart" : "კალათა"}</TitleBgImage>
       <section className="py-[60px] dark:bg-gray">
         <div className="max-w-[1140px] m-auto">
           <CartTable selectedProducts={selectedProducts} />

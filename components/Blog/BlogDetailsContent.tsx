@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import TitleBgImage from "../UI/TitleBgImage";
 import { BlogInfo } from "../../types/blogs.type";
 
 interface BlogDetailsContentProps {
@@ -14,7 +13,6 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({
 
   return (
     <>
-      <TitleBgImage>{t("singlePageTitle")}</TitleBgImage>
       <section className="py-16 dark:bg-gray-900">
         {blogDetails && (
           <div className="container mx-auto px-4 lg:px-0">

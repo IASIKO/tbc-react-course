@@ -10,9 +10,9 @@ interface FooterLinksProps {
 }
 const FooterLinks: React.FC<FooterLinksProps> = ({ linksInfo }) => {
   return (
-    <div className="flex-1 max-w-[100%]">
+    <div className="flex flex-col sm:flex-1 sm:max-w-[100%]">
       <div className="ml-[15px] mb-[15px]">
-        <h2 className="text-[#ffffff] mb-[30px] text-[20px] font-normal">
+        <h2 className="text-red mb-[30px] text-[20px] font-normal">
           {linksInfo.title}
         </h2>
         <ul>

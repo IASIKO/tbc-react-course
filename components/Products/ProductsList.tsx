@@ -146,7 +146,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
       {authUser?.role && authUser.role === "admin" && (
         <Link
           href="/products/add-product"
-          className="fixed top-80 left-0 transform -translate-x-[40%] rotate-90 z-50"
+          className="fixed top-80 left-0 transform -translate-x-[50%] hover:-translate-x-[40%] rotate-90 z-50 duration-300"
         >
           <Button>Add Product</Button>
         </Link>
@@ -161,7 +161,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
               {t("listTitle2")}
             </h2>
             {path === "/products" && (
-              <div className="pt-[60px]  w-[1140px] flex justify-between">
+              <div className="pt-[60px] max-w-[1140px] flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
                 <Search
                   onChange={onSearchInputChangeHandler}
                   searchValue={searchValue}

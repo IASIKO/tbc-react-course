@@ -4,15 +4,12 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import {
-  MdAdminPanelSettings,
   MdArrowDropDown,
   MdArrowDropUp,
 } from "react-icons/md";
-import Link from "next/link";
 import Navigation from "./Navigation";
 import Language from "../../UI/Language";
 import Theme from "../../UI/Theme";
-import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
 import { AuthUser, Profile } from "../../../types/profile-types";
 import { useEffect, useState } from "react";
@@ -27,7 +24,6 @@ const Header = ({
   selectedProducts: ProductObject[];
   authUser: AuthUser;
 }) => {
-  const tAdmin = useTranslations("admin");
   const { user } = useUser();
   const [profile] = useState<Profile>({
     given_name: (user?.given_name as string) || "",
@@ -57,7 +53,7 @@ const Header = ({
 
   return (
     <header>
-      <div className="relative w-[100%] bg-red dark:bg-dark">
+      <div className="relative w-[100%] bg-red">
         <div className="max-w-[1140px] m-auto py-[5px]">
           <div className="hidden lg:flex flex-wrap px-[15px]">
             <div className="flex flex-[0_0_50%] max-w-[50%] gap-4">
@@ -70,12 +66,6 @@ const Header = ({
                 </a>
               </p>
               <Language />
-              {authUser?.role && authUser.role === "admin" && (
-                <Link href="/admin" className="flex items-center text-white">
-                  <MdAdminPanelSettings />
-                  {tAdmin("admin")}
-                </Link>
-              )}
             </div>
 
             <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">
@@ -132,12 +122,6 @@ const Header = ({
                 </a>
               </p>
               <Language />
-              {authUser?.role && authUser.role === "admin" && (
-                <Link href="/admin" className="flex items-center text-white">
-                  <MdAdminPanelSettings />
-                  {tAdmin("admin")}
-                </Link>
-              )}
 
               <div className="flex justify-end flex-[0_0_50%] max-w-[50%]">
                 <div className="flex items-center">
@@ -171,7 +155,7 @@ const Header = ({
         </div>
       </div>
 
-      <Navigation selectedProducts={selectedProducts} />
+      <Navigation selectedProducts={selectedProducts} authUser={authUser} />
     </header>
   );
 };

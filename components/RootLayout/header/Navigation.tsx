@@ -11,14 +11,18 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
+import { AuthUser } from "../../../types/profile-types";
 
 const Navigation = ({
   selectedProducts,
+  authUser,
 }: {
   selectedProducts: ProductObject[];
+  authUser: AuthUser;
 }) => {
   const pathname = usePathname();
   const t = useTranslations("header");
+  const tAdmin = useTranslations("admin");
   const { user } = useUser();
   const [userModalIsOpen, setUserModalIsOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
@@ -143,20 +147,29 @@ const Navigation = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="w-[200px] absolute top-[50px] right-8 bg-white rounded-md p-5"
+                className="w-[200px] absolute top-[50px] right-8 z-50 bg-gray-dark rounded-md p-5"
               >
                 <div className="flex flex-col gap-4">
                   {user?.sub && (
-                    <button className="text-white text-[20px] bg-red rounded px-4">
-                      <Link href="/profile" className="text-center">
-                        {t("profile")}
-                      </Link>
-                    </button>
+                    <Link
+                      href="/profile"
+                      className="text-white text-[20px] bg-red rounded px-4 text-center"
+                    >
+                      {t("profile")}
+                    </Link>
+                  )}
+                  {authUser?.role && authUser.role === "admin" && (
+                    <Link
+                      href="/admin"
+                      className="text-white text-[20px] bg-red rounded px-4 text-center"
+                    >
+                      {tAdmin("admin")}
+                    </Link>
                   )}
                   {user ? (
-                    <a href="/api/auth/logout">Log Out</a>
+                    <a href="/api/auth/logout" className="text-white">Log Out</a>
                   ) : (
-                    <button className="text-white text-[20px] bg-red rounded px-4">
+                    <button className="text-white text-[20px] bg-red rounded px-4 text-center">
                       <a href="/api/auth/login">Log In</a>
                     </button>
                   )}

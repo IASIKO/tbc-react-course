@@ -57,7 +57,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className="p-4 flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-transform transform hover:scale-105">
+    <div className="p-4 flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-transform transform sm:hover:scale-105">
       {authUser?.role && authUser.role === "admin" && (
         <div className="w-full flex gap-2 p-2">
           <button

@@ -5,7 +5,6 @@ import { unstable_setRequestLocale } from "next-intl/server";
 import { getAuthUserAction, getUserCartAction } from "../../../lib/actions";
 import { getSession } from "@auth0/nextjs-auth0";
 
-
 interface DashboardLaoyoutProps {
   children: ReactNode;
   params: {
@@ -27,7 +26,10 @@ export default async function DashboardRootLayout({
 
   return (
     <>
-      <Header selectedProducts={selectedProducts[0]?.products} authUser={auth_user?.auth_user.rows[0]}/>
+      <Header
+        selectedProducts={selectedProducts[0]?.products}
+        authUser={auth_user?.auth_user.rows[0]}
+      />
       <main className="h-full">{children}</main>
       <Footer />
     </>
