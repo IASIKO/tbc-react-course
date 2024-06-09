@@ -40,7 +40,7 @@ const RateStars = ({
   };
 
   return (
-    <div className="flex">
+    <div className="flex items-center">
       {stars.map((_, index) => {
         const isActiveColor =
           (rating || temporaryRating) &&

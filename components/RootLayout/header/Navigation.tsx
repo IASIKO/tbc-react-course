@@ -58,7 +58,7 @@ const Navigation = ({
       className={`${
         isFixed
           ? "fixed top-0 left-0 right-0 z-10 bg-dark animate-fade-in-up duration-300"
-          : "absolute top-[48px] left-0 right-0 z-10 bg-dark"
+          : "bg-dark "
       }`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -84,32 +84,34 @@ const Navigation = ({
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <ul className="hidden lg:flex flex-row ml-auto">
-            {["/", "/about", "/products", "/blog", "/contact"].map((path, index) => (
-              <motion.li
-                key={path}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              >
-                <Link
-                  href={path}
-                  className={`link ${
-                    pathname === path
-                      ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
-                      : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
-                  }`}
+            {["/", "/about", "/products", "/blog", "/contact"].map(
+              (path, index) => (
+                <motion.li
+                  key={path}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                 >
-                  {t(path.substring(1) || "home")}
-                </Link>
-              </motion.li>
-            ))}
+                  <Link
+                    href={path}
+                    className={`link ${
+                      pathname === path
+                        ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
+                        : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
+                    }`}
+                  >
+                    {t(path.substring(1) || "home")}
+                  </Link>
+                </motion.li>
+              )
+            )}
           </ul>
 
           <button
             className="lg:hidden text-white text-[30px] ml-auto mr-4"
-            onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}
+            onClick={() => setMobileMenuIsOpen(true)}
           >
-            {mobileMenuIsOpen ? <IoMdClose /> : <FiMenu />}
+            <FiMenu />
           </button>
         </motion.div>
 
@@ -181,27 +183,29 @@ const Navigation = ({
               <IoMdClose />
             </button>
             <ul className="flex flex-col items-center mt-8">
-              {["/", "/about", "/products", "/blog", "/contact"].map((path, index) => (
-                <motion.li
-                  key={path}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.2 * index }}
-                  className="w-full text-center"
-                >
-                  <Link
-                    href={path}
-                    className={`block text-[24px] py-4 font-medium uppercase ${
-                      pathname === path
-                        ? "text-red"
-                        : "text-white hover:text-red"
-                    }`}
-                    onClick={() => setMobileMenuIsOpen(false)}
+              {["/", "/about", "/products", "/blog", "/contact"].map(
+                (path, index) => (
+                  <motion.li
+                    key={path}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 * index }}
+                    className="w-full text-center"
                   >
-                    {t(path.substring(1) || "home")}
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={path}
+                      className={`block text-[24px] py-4 font-medium uppercase ${
+                        pathname === path
+                          ? "text-red"
+                          : "text-white hover:text-red"
+                      }`}
+                      onClick={() => setMobileMenuIsOpen(false)}
+                    >
+                      {t(path.substring(1) || "home")}
+                    </Link>
+                  </motion.li>
+                )
+              )}
             </ul>
           </motion.div>
         )}

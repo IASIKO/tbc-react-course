@@ -48,7 +48,6 @@ export const updateRating = async (rating: number, id: number) => {
   });
 };
 
-
 // BLOGS
 
 export const getBlogs = async () => {
@@ -74,3 +73,6 @@ export const deleteBlog = async (id: number) => {
     cache: "no-store",
   });
 };
+
+// ORDERS
+
