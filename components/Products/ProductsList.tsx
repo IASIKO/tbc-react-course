@@ -132,6 +132,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
                 <p>{t("isInCart")}</p>
                 <div className="flex gap-2 mt-6">
                   <button
+                    type="button"
                     onClick={isClose}
                     className="p-2 px-6 text-lg bg-red text-white font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
                   >

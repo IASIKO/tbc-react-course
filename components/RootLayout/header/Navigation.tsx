@@ -112,6 +112,7 @@ const Navigation = ({
           </ul>
 
           <button
+            type="button"
             className="lg:hidden text-white text-[30px] ml-auto mr-4"
             onClick={() => setMobileMenuIsOpen(true)}
           >
@@ -135,6 +136,7 @@ const Navigation = ({
             </div>
           </Link>
           <button
+            type="button"
             onClick={() => setUserModalIsOpen(!userModalIsOpen)}
             className="text-white text-[32px] ml-4"
           >
@@ -167,10 +169,21 @@ const Navigation = ({
                     </Link>
                   )}
                   {user ? (
-                    <a href="/api/auth/logout" className="text-white">Log Out</a>
+                    <a
+                      href="/api/auth/logout"
+                      className="text-white"
+                      aria-label="logout"
+                    >
+                      Log Out
+                    </a>
                   ) : (
-                    <button className="text-white text-[20px] bg-red rounded px-4 text-center">
-                      <a href="/api/auth/login">Log In</a>
+                    <button
+                      type="button"
+                      className="text-white text-[20px] bg-red rounded px-4 text-center"
+                    >
+                      <a href="/api/auth/login" aria-label="login">
+                        Log In
+                      </a>
                     </button>
                   )}
                 </div>
@@ -190,6 +203,7 @@ const Navigation = ({
             className="lg:hidden bg-dark fixed inset-0 z-20 pt-[72px]"
           >
             <button
+              type="button"
               className="absolute top-4 right-4 text-white text-[30px]"
               onClick={() => setMobileMenuIsOpen(false)}
             >

@@ -61,12 +61,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {authUser?.role && authUser.role === "admin" && (
         <div className="w-full flex gap-2 p-2">
           <button
+            type="button"
             className="text-black hover:text-red dark:text-white duration-300"
             onClick={() => removeProductHandler(product.id)}
           >
             <MdDelete />
           </button>
           <button
+            type="button"
             onClick={() => onEditProductClickHandler(product.id)}
             className="text-black hover:text-red dark:text-white duration-300"
           >
@@ -106,6 +108,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {isInCart ? (
         <div className="my-4">
           <button
+            type="button"
             onClick={isOpen}
             className="p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
           >
@@ -115,6 +118,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       ) : (
         <div className="w-full my-4">
           <button
+            type="button"
             onClick={addToCartHandler}
             className="p-[7px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white w-full"
           >

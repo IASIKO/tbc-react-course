@@ -24,12 +24,16 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
         <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded">
           <div className="flex items-center">
             <button
+              type="button"
               onClick={() => removeBlogHandler(blogInfo.id)}
               className="text-white hover:text-red duration-300"
             >
               <MdDelete />
             </button>
-            <button className="text-white hover:text-red duration-300">
+            <button
+              type="button"
+              className="text-white hover:text-red duration-300"
+            >
               <MdEdit />
             </button>
           </div>

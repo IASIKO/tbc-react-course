@@ -42,6 +42,7 @@ const CartCard: React.FC<ProductCardProps> = ({
         </div>
         <div className="flex items-center space-x-4">
           <button
+            type="button"
             onClick={() => {
               handleDecrement(selectedProduct.id);
               if (selectedProduct.quantity === 1) {
@@ -61,6 +62,7 @@ const CartCard: React.FC<ProductCardProps> = ({
             {selectedProduct.quantity}
           </div>
           <button
+            type="button"
             onClick={() => {
               handleIncrement(selectedProduct.id);
               updateCartCountAction(
@@ -81,6 +83,7 @@ const CartCard: React.FC<ProductCardProps> = ({
             100}
         </span>
         <button
+          type="button"
           onClick={() => handleDelete(selectedProduct.id)}
           className="bg-red p-2 rounded-md text-white hover:bg-darkred w-[37px] items-start"
         >

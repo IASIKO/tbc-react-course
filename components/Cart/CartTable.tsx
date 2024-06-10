@@ -2,10 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { selectedProduct } from "../../types/products-types";
-import {
-  deleteProductAction,
-  resetCartAction,
-} from "../../lib/actions";
+import { deleteProductAction, resetCartAction } from "../../lib/actions";
 import Loader from "../UI/Loader";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useTranslations } from "next-intl";
@@ -111,6 +108,7 @@ const CartTable = ({
               />
             ))}
             <button
+              type="button"
               className="p-[7px] px-[25px] bg-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred"
               onClick={handleReset}
             >

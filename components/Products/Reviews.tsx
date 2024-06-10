@@ -48,7 +48,7 @@ const Reviews: React.FC<ReviewsProps> = ({
 
   const updateRatingHandler = async () => {
     await updateRatingAction(starRating, productDetails.id);
-  }
+  };
 
   const onChangeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -61,10 +61,10 @@ const Reviews: React.FC<ReviewsProps> = ({
     e.preventDefault();
     if (isUpdate) {
       await editReviewAction(review, editReviewId);
-      updateRatingHandler()
+      updateRatingHandler();
     } else {
       await addReviewAction(review);
-      updateRatingHandler()
+      updateRatingHandler();
     }
     setFormIsOpen(false);
     setIsUpdate(false);
@@ -105,15 +105,17 @@ const Reviews: React.FC<ReviewsProps> = ({
         {reviews.map((rev) => (
           <React.Fragment key={rev.id}>
             {((authUser?.role && authUser.role === "admin") ||
-              (authUser?.sub === rev.sub)) && (
+              authUser?.sub === rev.sub) && (
               <div className="w-full flex justify-end gap-2 p-2">
                 <button
+                  type="button"
                   className="text-black hover:text-red dark:text-white"
                   onClick={() => deleteReviewAction(rev.id)}
                 >
                   <MdDelete />
                 </button>
                 <button
+                  type="button"
                   onClick={() => reviewEditHandler(rev.id)}
                   className="text-black hover:text-red dark:text-white"
                 >
@@ -147,6 +149,7 @@ const Reviews: React.FC<ReviewsProps> = ({
         ))}
       </div>
       <button
+        type="button"
         onClick={() => {
           if (!user) {
             router.push("/api/auth/login");

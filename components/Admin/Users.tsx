@@ -119,12 +119,14 @@ const Users = ({ users }: UsersProps) => {
                     </td>
                     <td className="flex items-center justify-end gap-4 px-6 py-4 whitespace-nowrap ">
                       <button
+                        type="button"
                         onClick={() => userEditHandler(user.id)}
                         className="text-red hover:text-yellow cursor-pointer duration-100 hover:dark:text-yellow"
                       >
                         <MdEdit />
                       </button>
                       <button
+                        type="button"
                         onClick={() => userDeleteHandler(user.id)}
                         className="text-red hover:text-yellow cursor-pointer duration-100 hover:dark:text-yellow"
                       >

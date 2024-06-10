@@ -39,26 +39,27 @@ const Theme: React.FC = () => {
 
   return (
     <>
-        {isLoading ? (
-          <ThemeLoader />
-        ) : (
-          options.map((opt) => (
-            <button
-              className={`w-8 h-8 align-middle leading-9 text-xl rounded-full text-white ${
-                resolvedTheme === themeValue &&
-                themeValue === opt.text &&
-                "text-yellow"
-              }`}
-              onClick={() => {
-                setTheme(opt.text);
-                setThemeValue(opt.text);
-              }}
-              key={opt.text}
-            >
-              <span className="flex justify-center">{opt.icon}</span>
-            </button>
-          ))
-        )}
+      {isLoading ? (
+        <ThemeLoader />
+      ) : (
+        options.map((opt) => (
+          <button
+            type="button"
+            className={`w-8 h-8 align-middle leading-9 text-xl rounded-full text-white ${
+              resolvedTheme === themeValue &&
+              themeValue === opt.text &&
+              "text-yellow"
+            }`}
+            onClick={() => {
+              setTheme(opt.text);
+              setThemeValue(opt.text);
+            }}
+            key={opt.text}
+          >
+            <span className="flex justify-center">{opt.icon}</span>
+          </button>
+        ))
+      )}
     </>
   );
 };
