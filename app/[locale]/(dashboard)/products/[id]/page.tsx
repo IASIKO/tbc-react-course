@@ -54,7 +54,6 @@ export default async function ProductsDetails({
   const sub = session?.user?.sub;
 
   const auth_user = await getAuthUserAction(sub);
-
   const reviews = await getReviewsAction(id);
   const productsData = await getProducts();
   const selectedProducts = await getUserCartAction();

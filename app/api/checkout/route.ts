@@ -20,7 +20,7 @@ const getActiveProducts = async () => {
 };
 
 export async function POST(req: NextRequest) {
-  const { products } = await req.json();
+  const { products, profile } = await req.json();
 
   let activeProducts = await getActiveProducts();
 
@@ -66,6 +66,12 @@ export async function POST(req: NextRequest) {
   const session = await stripe.checkout.sessions.create({
     line_items: stripeItems,
     mode: "payment",
+    client_reference_id: profile.sub,
+    metadata: {
+      phone: profile.phone,
+      city: profile.city,
+      address: profile.address,
+    },
     success_url: `${BASE_URL}/orders/success`,
     cancel_url: `${BASE_URL}/orders/cancel`,
   });

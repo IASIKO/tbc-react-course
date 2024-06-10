@@ -33,3 +33,10 @@ export interface ReviewType {
 export interface AuthUser extends Profile {
   id: number;
 }
+
+export interface CheckoutProfile {
+  city: string;
+  address: string;
+  phone: string;
+  sub: string;
+}

@@ -76,3 +76,10 @@ export const deleteBlog = async (id: number) => {
 
 // ORDERS
 
+export const getOrders = async () => {
+  const res = await fetch(`${BASE_URL}/api/orders`, {
+    cache: "no-store",
+  });
+  const orders = await res.json();
+  return orders;
+};

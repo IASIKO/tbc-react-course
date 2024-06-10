@@ -24,8 +24,8 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
 
   const starReviewsSum = reviews.reduce((acc, curr) => acc + curr.rating, 0);
   const starRating =
-    (Number(productDetails.rating) + starReviewsSum) / (reviews.length + 1);
-
+  (Number(productDetails.rating) + starReviewsSum) / (reviews.length + 1);
+  
   return (
     <>
       <section className="py-12 dark:bg-gray">
@@ -41,7 +41,7 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
               </h2>
               <div className="flex gap-2 items-center mb-4">
                 <span className="text-red text-lg lg:text-xl flex gap-2 items-center font-bold">
-                  {Math.round(starRating * 10) / 10}
+                  {Math.round(starRating * 100) / 100}
                 </span>
                 <RateStars
                   defaultRating={Math.round(starRating)}

@@ -1,4 +1,8 @@
 import { unstable_setRequestLocale } from "next-intl/server";
+import { getOrders } from "../../../../lib/api";
+import { getSession } from "@auth0/nextjs-auth0";
+import { getAuthUserAction } from "../../../../lib/actions";
+import OrdersPage from "../../../../components/Orders/OrdersPage";
 
 export const metadata = {
   title: "Liquor store - Success",
@@ -12,6 +16,21 @@ export default async function Orders({
 }) {
   unstable_setRequestLocale(locale);
 
+  const orders = await getOrders();
+  const session = await getSession();
+  const sub = session?.user?.sub;
+  const auth_user = await getAuthUserAction(sub);
+  
+  const userOrders = orders.filter(
+    (order: any) =>
+      order.client_reference_id === auth_user?.auth_user.rows[0].sub
+  );
 
-  return null
+  return (
+    <section className="py-[60px] dark:bg-gray">
+      <div className="max-w-[1140px] m-auto">
+        <OrdersPage userOrders={userOrders} />
+      </div>
+    </section>
+  );
 }

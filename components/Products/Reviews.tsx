@@ -46,9 +46,9 @@ const Reviews: React.FC<ReviewsProps> = ({
     setReview({ ...review, rating: ratingValue });
   }, [ratingValue]);
 
-  useEffect(() => {
-    updateRatingAction(starRating, productDetails.id);
-  }, [starRating]);
+  const updateRatingHandler = async () => {
+    await updateRatingAction(starRating, productDetails.id);
+  }
 
   const onChangeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -61,8 +61,10 @@ const Reviews: React.FC<ReviewsProps> = ({
     e.preventDefault();
     if (isUpdate) {
       await editReviewAction(review, editReviewId);
+      updateRatingHandler()
     } else {
       await addReviewAction(review);
+      updateRatingHandler()
     }
     setFormIsOpen(false);
     setIsUpdate(false);
@@ -133,7 +135,7 @@ const Reviews: React.FC<ReviewsProps> = ({
                 </h4>
                 <div>
                   <RateStars
-                    defaultRating={Math.round(rev.rating * 2) / 2}
+                    defaultRating={Math.round(rev.rating)}
                     enable={false}
                     color="red"
                   />

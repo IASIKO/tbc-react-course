@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { selectedProduct } from "../../types/products-types";
 import {
-  checkoutAction,
   deleteProductAction,
   resetCartAction,
 } from "../../lib/actions";
@@ -11,6 +10,7 @@ import Loader from "../UI/Loader";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useTranslations } from "next-intl";
 import CartCard from "./CartCard";
+import Link from "next/link";
 
 const CartTable = ({
   selectedProducts,
@@ -71,10 +71,6 @@ const CartTable = ({
   const handleReset = () => {
     setCartProducts([]);
     resetCartAction();
-  };
-
-  const checkoutHandler = async () => {
-    await checkoutAction(cartProducts);
   };
 
   const countSubtotal = cartProducts.reduce(
@@ -147,12 +143,12 @@ const CartTable = ({
                   </span>
                 </p>
               </div>
-              <button
-                onClick={checkoutHandler}
+              <Link
+                href="/cart/checkout"
                 className="p-[7px] bg-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred w-full"
               >
                 {t("procTocCheckout")}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

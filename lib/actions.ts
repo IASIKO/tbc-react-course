@@ -12,7 +12,7 @@ import {
 } from "./api";
 import { revalidatePath } from "next/cache";
 import { getSession } from "@auth0/nextjs-auth0";
-import { Profile, ReviewType } from "../types/profile-types";
+import { CheckoutProfile, Profile, ReviewType } from "../types/profile-types";
 import { ProductForm, selectedProduct } from "../types/products-types";
 import { redirect } from "next/navigation";
 import { Blog } from "../types/blogs.type";
@@ -172,7 +172,7 @@ export const createBlogAction = async (blog: Blog) => {
 };
 
 export const removeBlogAction = async (id: number) => {
-  revalidatePath("/", "layout");
+  revalidatePath("/blog");
   await deleteBlog(id);
 };
 
@@ -180,7 +180,7 @@ export const removeBlogAction = async (id: number) => {
 // REVIEWS
 
 export async function getReviewsAction(prod_id: number) {
-  revalidatePath("/", "layout");
+  revalidatePath("/products");
   const res = await fetch(`${BASE_URL}/api/reviews/get-reviews/${prod_id}`, {
     method: "GET",
     cache: "no-store",
@@ -190,7 +190,7 @@ export async function getReviewsAction(prod_id: number) {
 }
 
 export async function addReviewAction(review: ReviewType) {
-  revalidatePath("/", "layout");
+  revalidatePath("/products");
   await fetch(BASE_URL + "/api/reviews/add-review", {
     method: "POST",
     headers: {
@@ -201,7 +201,7 @@ export async function addReviewAction(review: ReviewType) {
 }
 
 export const deleteReviewAction = async (id: number) => {
-  revalidatePath("/", "layout");
+  revalidatePath("/products");
   await fetch(`${BASE_URL}/api/reviews/delete-review`, {
     method: "DELETE",
     cache: "no-store",
@@ -210,7 +210,7 @@ export const deleteReviewAction = async (id: number) => {
 };
 
 export async function editReviewAction(review: ReviewType, id: number | null) {
-  revalidatePath("/", "layout");
+  revalidatePath("/products");
   await fetch(BASE_URL + "/api/reviews/edit-review", {
     method: "PUT",
     body: JSON.stringify({ review, id }),
@@ -219,13 +219,13 @@ export async function editReviewAction(review: ReviewType, id: number | null) {
 
 // CHECKOUT
 
-export async function checkoutAction(cartProducts: selectedProduct[]) {
+export async function checkoutAction(cartProducts: selectedProduct[], profile: CheckoutProfile) {
   await fetch(BASE_URL + "/api/checkout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ products: cartProducts }),
+    body: JSON.stringify({ products: cartProducts, profile }),
   })
     .then((response) => {
       return response.json();
@@ -236,3 +236,4 @@ export async function checkoutAction(cartProducts: selectedProduct[]) {
       }
     });
 }
+
