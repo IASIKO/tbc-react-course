@@ -45,6 +45,7 @@ const Theme: React.FC = () => {
         options.map((opt) => (
           <button
             type="button"
+            aria-label={opt.text}
             className={`w-8 h-8 align-middle leading-9 text-xl rounded-full text-white ${
               resolvedTheme === themeValue &&
               themeValue === opt.text &&

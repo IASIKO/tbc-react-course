@@ -78,18 +78,21 @@ const Header = ({
                 <p className="w-[100%] flex text-[18px]">
                   <a
                     href="#"
+                    aria-label="facebook"
                     className="h-[30px] mr-[10px] flex items-center justify-center text-white"
                   >
                     <FaFacebookF />
                   </a>
                   <a
                     href="#"
+                    aria-label="twiter"
                     className="h-[30px] mr-[10px] flex items-center justify-center text-white"
                   >
                     <FaXTwitter />
                   </a>
                   <a
                     href="#"
+                    aria-label="instagram"
                     className="h-[30px] mr-[10px] flex items-center justify-center text-white"
                   >
                     <FaInstagram />

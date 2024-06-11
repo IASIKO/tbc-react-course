@@ -14,6 +14,8 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { AuthUser, ReviewsType } from "../../types/profile-types";
 import { MdDelete, MdEdit } from "react-icons/md";
+import ThemeLoader from "../UI/ThemeLoader";
+import { useTranslations } from "next-intl";
 
 interface ReviewsProps {
   productDetails: Product;
@@ -32,6 +34,7 @@ const Reviews: React.FC<ReviewsProps> = ({
   const [ratingValue, setRatingValue] = useState(0);
   const [isUpdate, setIsUpdate] = useState(false);
   const [editReviewId, setEditReviewId] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const [review, setReview] = useState({
     prod_id: productDetails.id,
@@ -41,6 +44,7 @@ const Reviews: React.FC<ReviewsProps> = ({
   });
 
   const router = useRouter();
+  const t = useTranslations("reviews")
 
   useEffect(() => {
     setReview({ ...review, rating: ratingValue });
@@ -59,14 +63,14 @@ const Reviews: React.FC<ReviewsProps> = ({
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     if (isUpdate) {
       await editReviewAction(review, editReviewId);
-      updateRatingHandler();
+      await updateRatingHandler();
     } else {
       await addReviewAction(review);
-      updateRatingHandler();
+      await updateRatingHandler();
     }
-    setFormIsOpen(false);
     setIsUpdate(false);
     setEditReviewId(null);
     setRatingValue(0);
@@ -76,6 +80,8 @@ const Reviews: React.FC<ReviewsProps> = ({
       rating: ratingValue,
       comment: "",
     });
+    setLoading(false);
+    setFormIsOpen(false);
   };
 
   const reviewEditHandler = (id: number) => {
@@ -97,7 +103,7 @@ const Reviews: React.FC<ReviewsProps> = ({
       <h2 className="flex flex-row flex-nowrap items-center mt-24">
         <span className="flex-grow block border-t border-red"></span>
         <span className="flex-none block mx-4 px-6 py-4 text-xl leading-none font-medium bg-red text-white">
-          Reviews
+          {t('revs')}
         </span>
         <span className="flex-grow block border-t border-red"></span>
       </h2>
@@ -159,12 +165,12 @@ const Reviews: React.FC<ReviewsProps> = ({
         }}
         className="text-red"
       >
-        Write a review
+        {t('writeRev')}
       </button>
       {formIsOpen && (
         <form onSubmit={submitHandler} className="mt-4">
           <div className="flex mb-6">
-            <span className="text-red">Your Rating</span>
+            <span className="text-red">{t('yourRev')}: </span>
             <RateStars
               defaultRating={ratingValue}
               enable={true}
@@ -177,7 +183,7 @@ const Reviews: React.FC<ReviewsProps> = ({
               htmlFor="message"
               className="uppercase text-red text-sm font-medium"
             >
-              Review
+              {t('rev')}
               <span className="text-red">*</span>
             </label>
             <textarea
@@ -189,14 +195,14 @@ const Reviews: React.FC<ReviewsProps> = ({
               cols={50}
               required
               className="w-full text-md rounded shadow-none border-b border-gray focus:outline-none focus:border-red resize-none placeholder-pl-2"
-              placeholder="Review"
+              placeholder={t('rev')}
             />
           </div>
           <button
             type="submit"
-            className="p-2 px-5 border border-solid border-red text-lg text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2"
+            className="p-2 px-5 border border-solid border-red text-lg text-white bg-red hover:bg-lightred font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 w-[300px]"
           >
-            Write a review
+            {loading ? <ThemeLoader /> : t('writeRev')}
           </button>
         </form>
       )}

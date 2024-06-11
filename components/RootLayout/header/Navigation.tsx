@@ -160,6 +160,7 @@ const Navigation = ({
           </Link>
           <button
             type="button"
+            aria-label='usermodal'
             onClick={() => setUserModalIsOpen(!userModalIsOpen)}
             className="text-white text-[32px] ml-4"
           >

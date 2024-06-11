@@ -72,6 +72,12 @@
     "rating": "Rating",
     "price": "Price"
   },
+  "reviews": {
+    "revs": "Reviews",
+    "rev": "Review",
+    "writeRev": "Write a review",
+    "yourRev": "Your Rating"
+  },
   "cart": {
     "myCart": "My Cart",
     "product": "Product",

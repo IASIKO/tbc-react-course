@@ -58,6 +58,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
             <img
               src={blogInfo.user_avatar}
               alt={blogInfo.user_name}
+              width={10}
+              height={10}
               className="w-10 h-10 rounded-full mr-3"
             />
             <div>
