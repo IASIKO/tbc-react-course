@@ -6,6 +6,7 @@ import { Blog } from "../../types/blogs.type";
 import { createBlogAction } from "../../lib/actions";
 import { AuthUser } from "../../types/profile-types";
 import ThemeLoader from "../UI/ThemeLoader";
+import { useTranslations } from "next-intl";
 
 interface AddblogPageProps {
   authUser: AuthUser;
@@ -26,6 +27,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
   const [loading, setLoading] = useState(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const router = useRouter();
+  const t = useTranslations("addBlogPage")
 
   useEffect(() => {
     const hasErrors = Object.keys(errors).length > 0;
@@ -82,12 +84,12 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
           <h3 className="text-[25px] font-medium text-black dark:text-white">
-            Add Blog
+            {t("addBlog")}
           </h3>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-                Title <span className="text-red">*</span>
+              {t("title")} <span className="text-red">*</span>
               </h2>
               <input
                 type="text"
@@ -102,7 +104,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-                Description <span className="text-red">*</span>
+              {t("description")} <span className="text-red">*</span>
               </h2>
               <textarea
                 name="description"
@@ -119,7 +121,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-                Ingredients <span className="text-red">*</span>
+              {t("ingredients")} <span className="text-red">*</span>
               </h2>
               <textarea
                 name="ingredients"
@@ -136,7 +138,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-                Instructions <span className="text-red">*</span>
+              {t("instructions")} <span className="text-red">*</span>
               </h2>
               <textarea
                 name="instructions"
@@ -153,7 +155,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-                Preparation Time (minutes) <span className="text-red">*</span>
+              {t("prepTime")} <span className="text-red">*</span>
               </h2>
               <input
                 type="number"
@@ -171,7 +173,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-                Thumbnail <span className="text-red">*</span>
+              {t("thumbnail")} <span className="text-red">*</span>
               </h2>
               <input
                 type="text"
@@ -189,13 +191,13 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
             <button
               type="submit"
               disabled={!isFormValid}
-              className={`p-[7px] px-[25px] w-[150px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 ${
+              className={`p-[7px] px-[25px] w-[250px] border border-solid border-red text-[18px] text-white bg-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 ${
                 isFormValid
-                  ? "hover:bg-red hover:text-white"
+                  ? "hover:bg-lightred hover:text-white"
                   : "opacity-50 cursor-not-allowed"
               }`}
             >
-              {loading ? <ThemeLoader /> : "Add blog"}
+              {loading ? <ThemeLoader /> : t("addBlog")}
             </button>
           </form>
         </div>

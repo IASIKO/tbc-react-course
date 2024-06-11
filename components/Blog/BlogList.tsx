@@ -64,7 +64,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
             <span className="text-red text-[21px] font-normal italic">
               {t("title")}
             </span>
-            <h2 className="text-[45px] font-bold text-black leading-normal dark:text-white">
+            <h2 className="text-[45px] font-bold text-black leading-normal dark:text-white text-center">
               {t("recentBlog")}
             </h2>
             {path === "/blog" && (
@@ -75,9 +75,9 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
                 />
                 <Link
                   href="/blog/add-blog"
-                  className="p-[7px] px-6 w-[350px] text-center border border-solid border-red text-[18px] text-red font-medium duration-300 uppercase hover:bg-red hover:text-white"
+                  className="p-[7px] px-6 w-[320px] text-center border border-solid border-red text-[18px] text-red font-medium duration-300 uppercase hover:bg-red hover:text-white"
                 >
-                  Add Your Blog
+                  {t("addYourBlog")}
                 </Link>
               </div>
             )}

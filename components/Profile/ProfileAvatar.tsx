@@ -3,22 +3,31 @@
 import type { PutBlobResult } from "@vercel/blob";
 import Image from "next/image";
 import { useState, useRef } from "react";
+import ThemeLoader from "../UI/ThemeLoader";
+import { useTranslations } from "next-intl";
 
 interface ProfileAvatarProps {
-    picture: string;
-    blob: PutBlobResult | null;
-    setBlob: (blob: PutBlobResult | null) => void;
-  }
+  picture: string;
+  blob: PutBlobResult | null;
+  setBlob: (blob: PutBlobResult | null) => void;
+}
 
-const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ picture, blob, setBlob }) => {
+const ProfileAvatar: React.FC<ProfileAvatarProps> = ({
+  picture,
+  blob,
+  setBlob,
+}) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const t = useTranslations("profile")
   const MAX_FILE_SIZE_MB = 4.5;
   const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
+    setLoading(true);
 
     if (!inputFileRef.current?.files) {
       setError("No file selected");
@@ -41,29 +50,38 @@ const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ picture, blob, setBlob })
       const newBlob = (await response.json()) as PutBlobResult;
 
       setBlob(newBlob);
+      setLoading(false);
     } catch (err) {
       setError("Upload failed. Please try again.");
+      setLoading(false);
     }
   };
 
-  
-
   return (
-    <div className="flex items-center">
+    <div className="flex flex-col sm:flex-row items-center p-4 bg-gray-100 rounded-lg shadow-md">
       <Image
         src={blob ? blob.url : picture}
         alt="Profile avatar"
         width={100}
         height={100}
-        className="w-[100px] h-[100px] rounded-full"
+        className="w-[100px] h-[100px] rounded-full mb-4 sm:mb-0 sm:mr-4"
       />
-      <form onSubmit={handleSubmit}>
-        <input name="file" ref={inputFileRef} type="file" required />
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col sm:flex-row items-center"
+      >
+        <input
+          name="file"
+          ref={inputFileRef}
+          type="file"
+          required
+          className="block w-full text-sm text-red bg-white dark:bg-black rounded-lg border border-gray-300 cursor-pointer placeholder-red dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 mb-4 sm:mb-0 sm:mr-4 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-red file:text-white hover:file:bg-lightred file:cursor-pointer"
+        />
         <button
-          className="p-[7px] px-[25px] border border-solid border-red text-[12px] text-red font-medium align-middle duration-300 uppercase hover:bg-red hover:text-white"
+          className="p-[7px] px-[25px] h-10 border border-solid border-red text-[12px] text-white bg-red font-medium align-middle duration-300 uppercase hover:text-white rounded-lg hover:bg-lightred"
           type="submit"
         >
-          Upload
+          {loading ? <ThemeLoader /> : t("upload")}
         </button>
       </form>
       {error && <p className="text-red-500 text-xs mt-1">{error}</p>}

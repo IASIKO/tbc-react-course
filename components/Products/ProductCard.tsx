@@ -77,7 +77,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       )}
       <div
-        className="flex flex-col justify-center items-start cursor-pointer"
+        className="flex flex-col justify-center items-center cursor-pointer"
         onClick={onProductCardClickHandler}
       >
         <Image

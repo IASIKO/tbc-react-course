@@ -4,6 +4,7 @@ import React from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { BlogInfo } from "../../types/blogs.type";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { useTranslations } from "next-intl";
 
 interface BlogCardProps {
   blogInfo: BlogInfo;
@@ -11,7 +12,7 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
-  // const t = useTranslations("blogs");
+  const t = useTranslations("blogs");
 
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden">
@@ -39,7 +40,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
           </div>
         </div>
       </div>
-      <div className="p-6 flex flex-col justify-between h-[300px]">
+      <div className="p-6 flex flex-col justify-between h-auto">
         <div>
           <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">
             {blogInfo.title.length > 20
@@ -75,7 +76,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
             href={`/blog/${blogInfo.id}`}
             className="text-red-600 font-bold"
           >
-            Read more...
+            {t("see")}
           </Link>
         </div>
       </div>

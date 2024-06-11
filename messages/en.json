@@ -1,4 +1,18 @@
 {
+  "slogan": {
+    "good": "Good",
+    "drinks": "Drink",
+    "forGood": "for Good",
+    "moments": "Moments",
+    "shopNow": "Shop Now",
+    "readMore": "Read More"
+  },
+  "about": {
+    "1905": "Since 1905",
+    "title": "Desire Meets A New Taste",
+    "body": "Our company is based to present products that bring new joy to people’s lives, unite family and friends in sharing memories together. We pride ourselves on offering products based on innovation. Since 1905 our company  provides a superior and consistent quality. We are dedicating our time to make peoples interests variable and help them find something new and valuable. We are focused on your needs and appreciate your loyalty.",
+    "experience": "Years of Experience In Business"
+  },
   "login": {
     "title": "ACOUNT LOGIN",
     "usernameInput": "Username",
@@ -12,11 +26,13 @@
   "header": {
     "profile": "Profile",
     "logout": "Log out",
+    "login": "Log in",
     "home": "Home",
     "about": "About",
     "products": "Products",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "orders": "Orders"
   },
   "aboutPage": {
     "about": "About"
@@ -26,7 +42,9 @@
     "listTitle1": "Our Delightful offerings",
     "listTitle2": "Tastefully Yours",
     "searchInput": "Search...",
-    "sortByPrice": "Sort by Price (low to high)",
+    "sortByPriceDef": "Sort by Price (Default)",
+    "sortByPriceLow": "Sort by Price (low to high)",
+    "sortByPriceHigh": "Sort by Price (high to low)",
     "resetSort": "Reset Sort",
     "addToCart": "Add to cart",
     "removeFromCart": "Remove from cart",
@@ -37,7 +55,8 @@
     "description": "Description",
     "viewAllProducts": "View All Products",
     "warning": "Warning!",
-    "isInCart": "Product is already in the cart"
+    "isInCart": "Product is already in the cart",
+    "close": "Close"
   },
   "addProduct": {
     "addProduct": "Add Product",
@@ -75,7 +94,18 @@
     "ingredients": "Ingredients",
     "instructions": "Instructions",
     "recentBlog": "Recent Blog",
-    "seeMore": "See More..."
+    "seeMore": "See More...",
+    "addYourBlog": "add your blog",
+    "see": "See More..."
+  },
+  "addBlogPage": {
+    "addBlog": "Add Blog",
+    "title": "Title",
+    "description": "Description",
+    "ingredients": "Ingredients",
+    "instructions": "Instructions",
+    "prepTime": "Preparation Time (minutes)",
+    "thumbnail": "Thumbnail"
   },
   "contact": {
     "title": "Contact",
@@ -89,7 +119,7 @@
     "phone": "Phone",
     "website": "Website",
     "fullNameError": "FullName length is invalid",
-    "emailError" : "Email field is empty",
+    "emailError": "Email field is empty",
     "invalidEmailError": "Email is not valid",
     "subjectError": "Subject length is invalid",
     "messageError": "Message field is empty"
@@ -109,7 +139,11 @@
     "newPasswordPlaceholder": "New Password",
     "confirmNewPassword": "CONFIRM NEW PASSWORD",
     "confirmNewPasswordPlaceholder": "Confirm New Password",
-    "save": "SAVE"
+    "save": "SAVE",
+    "buyNow": "Buy now",
+    "choose": "Choose File",
+    "noFile": "No file chosen",
+    "upload": "Upload"
   },
   "footer": {
     "myAccount": "My Account",

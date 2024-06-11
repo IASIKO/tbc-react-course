@@ -15,7 +15,7 @@ const Search: React.FC<SearchProps> = ({ onChange, searchValue }) => {
       placeholder={t("searchInput")}
       value={searchValue}
       onChange={onChange}
-      className="border border-red dark:border-red px-[15px] w-[350px] outline-none"
+      className="border border-red dark:border-red px-[15px] w-[320px] outline-none"
     />
   );
 };

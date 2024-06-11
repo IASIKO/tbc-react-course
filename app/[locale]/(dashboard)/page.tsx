@@ -43,7 +43,6 @@ export default async function DashboardHome({
           <Image
             src={test}
             alt="background image"
-            priority={true}
             className="w-full h-full object-cover object-left-bottom -scale-x-100"
           />
         </div>

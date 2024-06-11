@@ -136,7 +136,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
                     onClick={isClose}
                     className="p-2 px-6 text-lg bg-red text-white font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
                   >
-                    Close
+                    {t("close")}
                   </button>
                 </div>
               </div>
@@ -158,7 +158,7 @@ const ProductsList: React.FC<ProductsListProps> = ({
             <span className="text-[#b7472a] text-[21px] font-normal italic">
               {t("listTitle1")}
             </span>
-            <h2 className="text-[45px] font-bold text-black leading-normal dark:text-white">
+            <h2 className="text-[45px] font-bold text-black leading-normal dark:text-white text-center">
               {t("listTitle2")}
             </h2>
             {path === "/products" && (

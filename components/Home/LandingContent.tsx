@@ -1,5 +1,4 @@
 import ProductsList from "../Products/ProductsList";
-import Button from "../UI/Button";
 import Link from "next/link";
 import BlogList from "../Blog/BlogList";
 import { useTranslations } from "next-intl";
@@ -9,20 +8,18 @@ import CategoriesSection from "../About/CategoriesSection";
 import { AuthUser } from "../../types/profile-types";
 import { BlogInfo } from "../../types/blogs.type";
 
-
-
 interface LandingContentProps {
   blogListData: BlogInfo[];
   productListData: Product[];
   selectedProducts: ProductObject[];
-  authUser: AuthUser
+  authUser: AuthUser;
 }
 
 const LandingContent: React.FC<LandingContentProps> = ({
   blogListData,
   productListData,
   selectedProducts,
-  authUser
+  authUser,
 }) => {
   const t = useTranslations();
   const homeBlogListData = blogListData.slice(0, 3);
@@ -33,27 +30,27 @@ const LandingContent: React.FC<LandingContentProps> = ({
       {/* <div className="absolute top-[48px] right-0 -bottom-[50px] left-0 opacity-20 bg-black"></div> */}
       <h1 className="textStroke absolute top-1/2 left-[20px]  -translate-y-1/2 text-[25px] sm:text-[45px] md:text-[60px] lg:text-[90px] leading-tight font-bold italic">
         <div className="py-[30px] rotate-[-4deg] text-center w-[300px] sm:w-[300px] md:w-[400px] lg:w-[560px] m-auto ">
-          Good <span className="text-white">Drink</span> for Good{" "}
-          <span className="text-white">Moments</span>.
+        {t("slogan.good")} <span className="text-white">{t("slogan.drinks")} </span>{t("slogan.forGood")}{" "}
+          <span className="text-white">{t("slogan.moments")}</span>.
           <p className="font-normal text-[20px] text-[#ffffff] py-[20px] leading-normal">
-            <a
-              href="#"
+            <Link
+              href="/products"
               className="cursor-pointer mr-[10px] bg-[#b7472a] border-[#b7472a] text-white rounded-[3px] py-[5px] px-[15px]"
             >
-              Shop Now
-            </a>
-            <a
-              href="#"
+              {t("slogan.shopNow")}
+            </Link>
+            <Link
+              href="/products"
               className="cursor-pointer mr-[10px] bg-transparent border-white border-[1px] border-solid text-white rounded-[3px] py-[5px] px-[15px]"
             >
-              Read more
-            </a>
+              {t("slogan.readMore")}
+            </Link>
           </p>
         </div>
       </h1>
 
       <ExperienceSection />
-      <CategoriesSection productListData={productListData}/>
+      <CategoriesSection productListData={productListData} />
 
       <section className="dark:bg-gray">
         <ProductsList
@@ -62,8 +59,11 @@ const LandingContent: React.FC<LandingContentProps> = ({
           authUser={authUser}
         />
         <div className="flex justify-center pb-[60px]">
-          <Link href="/products">
-            <Button>{t("products.viewAllProducts")}</Button>
+          <Link
+            href="/products"
+            className="p-[7px] px-6 border border-solid border-red text-[18px] text-white bg-red font-medium align-middle duration-300 uppercase gap-2 hover:bg-white hover:text-red w-[300px] text-center"
+          >
+            {t("products.viewAllProducts")}
           </Link>
         </div>
       </section>
@@ -71,8 +71,11 @@ const LandingContent: React.FC<LandingContentProps> = ({
       <section className="dark:bg-gray pb-[60px]">
         <BlogList blogListData={homeBlogListData} />
         <div className="flex justify-center">
-          <Link href="/blog">
-            <Button>{t("blogs.seeMore")}</Button>
+          <Link
+            href="/blog"
+            className="p-[7px] px-6 border border-solid border-red text-[18px] text-white bg-red font-medium align-middle duration-300 uppercase gap-2 hover:bg-white hover:text-red w-[300px] text-center"
+          >
+            {t("blogs.seeMore")}
           </Link>
         </div>
       </section>

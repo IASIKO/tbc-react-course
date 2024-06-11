@@ -115,35 +115,33 @@ const CartTable = ({
               {t("clearCart")}
             </button>
           </div>
-          <div>
-            <div className="w-[300px] border border-red p-4">
-              <div>
+          <div >
+            <div className="w-[300px] border border-red rounded p-4 flex flex-col items-center">
                 <h3 className="text-[24px] mb-4 font-normal text-black dark:text-white">
                   {t("cartTotals")}
                 </h3>
-                <p className="flex justify-between">
+                <p className="flex justify-between w-full">
                   <span className="text-[16px]">{t("subtotal")}</span>
                   <span className="text-[16px]">${subtotal}</span>
                 </p>
-                <p className="flex justify-between">
+                <p className="flex justify-between w-full">
                   <span className="text-[16px]"> {t("delivery")}</span>
                   <span className="text-[16px]">$0.00</span>
                 </p>
-                <p className="flex justify-between mb-4">
+                <p className="flex justify-between mb-4 w-full">
                   <span className="text-[16px]">{t("discount")}</span>
                   <span className="text-[16px]">$0.00</span>
                 </p>
-                <hr className="text-red" />
-                <p className="flex justify-between p-4">
+                <hr className="text-red"/>
+                <p className="flex justify-between mb-4 w-full">
                   <span className="text-[16px]">{t("total2")}</span>
                   <span className="text-[16px] text-black font-bold dark:text-white">
                     ${subtotal - 0 - 0}
                   </span>
                 </p>
-              </div>
               <Link
                 href="/cart/checkout"
-                className="p-[7px] bg-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred w-full"
+                className="p-[7px] w-full bg-red text-[18px] text-white font-medium duration-300 uppercase hover:bg-lightred text-center"
               >
                 {t("procTocCheckout")}
               </Link>

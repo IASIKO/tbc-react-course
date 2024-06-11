@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu } from "react-icons/fi";
@@ -27,6 +27,8 @@ const Navigation = ({
   const [userModalIsOpen, setUserModalIsOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+
+  const userModalRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = () => {
     if (window.scrollY > 300) {
@@ -50,6 +52,27 @@ const Navigation = ({
       document.body.style.overflow = "auto";
     }
   }, [mobileMenuIsOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        userModalRef.current &&
+        !userModalRef.current.contains(event.target as Node)
+      ) {
+        setUserModalIsOpen(false);
+      }
+    };
+
+    if (userModalIsOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [userModalIsOpen]);
 
   const selectedNumber = selectedProducts
     ? selectedProducts.reduce((acc: number, curr: ProductObject) => {
@@ -145,6 +168,7 @@ const Navigation = ({
           <AnimatePresence>
             {userModalIsOpen && (
               <motion.div
+                ref={userModalRef}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -153,12 +177,20 @@ const Navigation = ({
               >
                 <div className="flex flex-col gap-4">
                   {user?.sub && (
-                    <Link
-                      href="/profile"
-                      className="text-white text-[20px] bg-red rounded px-4 text-center"
-                    >
-                      {t("profile")}
-                    </Link>
+                    <>
+                      <Link
+                        href="/profile"
+                        className="text-white text-[20px] bg-red rounded px-4 text-center"
+                      >
+                        {t("profile")}
+                      </Link>
+                      <Link
+                        href="/orders"
+                        className="text-white text-[20px] bg-red rounded px-4 text-center"
+                      >
+                        {t("orders")}
+                      </Link>
+                    </>
                   )}
                   {authUser?.role && authUser.role === "admin" && (
                     <Link
@@ -174,7 +206,7 @@ const Navigation = ({
                       className="text-white"
                       aria-label="logout"
                     >
-                      Log Out
+                      {t("logout")}
                     </a>
                   ) : (
                     <button
@@ -182,7 +214,7 @@ const Navigation = ({
                       className="text-white text-[20px] bg-red rounded px-4 text-center"
                     >
                       <a href="/api/auth/login" aria-label="login">
-                        Log In
+                      {t("login")}
                       </a>
                     </button>
                   )}
