@@ -26,6 +26,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
           <div className="flex items-center">
             <button
               type="button"
+              aria-label="Blog delete"
               onClick={() => removeBlogHandler(blogInfo.id)}
               className="text-white hover:text-red duration-300"
             >
@@ -33,6 +34,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
             </button>
             <button
               type="button"
+              aria-label="Blog edit"
               className="text-white hover:text-red duration-300"
             >
               <MdEdit />
