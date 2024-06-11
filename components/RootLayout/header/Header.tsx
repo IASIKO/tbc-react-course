@@ -78,21 +78,21 @@ const Header = ({
                 <p className="w-[100%] flex text-[18px]">
                   <a
                     href="#"
-                    aria-label="facebook"
+                    aria-label="Social Media - Facebook"
                     className="h-[30px] mr-[10px] flex items-center justify-center text-white"
                   >
                     <FaFacebookF />
                   </a>
                   <a
                     href="#"
-                    aria-label="twiter"
+                    aria-label="Social Media - Twiter"
                     className="h-[30px] mr-[10px] flex items-center justify-center text-white"
                   >
                     <FaXTwitter />
                   </a>
                   <a
                     href="#"
-                    aria-label="instagram"
+                    aria-label="Social Media - Instagram"
                     className="h-[30px] mr-[10px] flex items-center justify-center text-white"
                   >
                     <FaInstagram />
@@ -109,7 +109,7 @@ const Header = ({
             onClick={toggleMenu}
             className="lg:hidden text-white flex justify-center items-center cursor-pointer"
           >
-            <button type="button" className="text-[30px]">
+            <button type="button" className="text-[30px]" aria-label="Header Dropdown">
               {isOpen ? <MdArrowDropUp /> : <MdArrowDropDown />}
             </button>
           </div>

@@ -136,6 +136,7 @@ const Navigation = ({
 
           <button
             type="button"
+            aria-label="Burger Menu"
             className="lg:hidden text-white text-[30px] ml-auto mr-4"
             onClick={() => setMobileMenuIsOpen(true)}
           >
