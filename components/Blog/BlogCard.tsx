@@ -58,17 +58,17 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <img
-              src={blogInfo.user_avatar}
-              alt={blogInfo.user_name}
+              src={blogInfo.picture}
+              alt={blogInfo.given_name}
               width={10}
               height={10}
               className="w-10 h-10 rounded-full mr-3"
             />
             <div>
               <p className="text-sm font-medium text-gray-900">
-                {blogInfo.user_name.length > 10
-                  ? `${blogInfo.user_name.slice(0, 10)}...`
-                  : blogInfo.user_name}
+                {blogInfo.given_name.length > 10
+                  ? `${blogInfo.given_name.slice(0, 10)}...`
+                  : blogInfo.given_name}
               </p>
               <div className="flex items-center text-sm text-gray-500">
                 <AiOutlineClockCircle />

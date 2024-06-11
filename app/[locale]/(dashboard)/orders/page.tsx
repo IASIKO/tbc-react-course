@@ -23,13 +23,13 @@ export default async function Orders({
   
   const userOrders = orders.filter(
     (order: any) =>
-      order.client_reference_id === auth_user?.auth_user.rows[0].sub
-  );
-
+      order.metadata.id === auth_user?.auth_user.rows[0].sub
+    );
+    
   return (
     <section className="py-[60px] dark:bg-gray">
       <div className="max-w-[1140px] m-auto">
-        <OrdersPage userOrders={userOrders} />
+        <OrdersPage authUser={auth_user?.auth_user.rows[0]} userOrders={auth_user?.auth_user.rows[0].role == 'admin' ? orders : userOrders} />
       </div>
     </section>
   );

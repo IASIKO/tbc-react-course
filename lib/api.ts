@@ -77,7 +77,7 @@ export const deleteBlog = async (id: number) => {
 // ORDERS
 
 export const getOrders = async () => {
-  const res = await fetch(`${BASE_URL}/api/orders`, {
+  const res = await fetch(`${BASE_URL}/api/orders/get-orders`, {
     cache: "no-store",
   });
   const orders = await res.json();

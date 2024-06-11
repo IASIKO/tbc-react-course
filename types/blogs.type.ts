@@ -1,6 +1,6 @@
 export interface Blog {
-  user_avatar: string;
-  user_name: string;
+  picture: string;
+  given_name: string;
   title: string;
   description: string;
   thumbnail: string;

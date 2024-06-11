@@ -35,16 +35,16 @@ const Reviews: React.FC<ReviewsProps> = ({
   const [isUpdate, setIsUpdate] = useState(false);
   const [editReviewId, setEditReviewId] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
-  const { user } = useUser();
   const [review, setReview] = useState({
     prod_id: productDetails.id,
     user_id: authUser && authUser.id,
     rating: ratingValue,
     comment: "",
   });
+  const { user } = useUser();
 
   const router = useRouter();
-  const t = useTranslations("reviews")
+  const t = useTranslations("reviews");
 
   useEffect(() => {
     setReview({ ...review, rating: ratingValue });
@@ -103,7 +103,7 @@ const Reviews: React.FC<ReviewsProps> = ({
       <h2 className="flex flex-row flex-nowrap items-center mt-24">
         <span className="flex-grow block border-t border-red"></span>
         <span className="flex-none block mx-4 px-6 py-4 text-xl leading-none font-medium bg-red text-white">
-          {t('revs')}
+          {t("revs")}
         </span>
         <span className="flex-grow block border-t border-red"></span>
       </h2>
@@ -165,12 +165,12 @@ const Reviews: React.FC<ReviewsProps> = ({
         }}
         className="text-red"
       >
-        {t('writeRev')}
+        {t("writeRev")}
       </button>
       {formIsOpen && (
         <form onSubmit={submitHandler} className="mt-4">
           <div className="flex mb-6">
-            <span className="text-red">{t('yourRev')}: </span>
+            <span className="text-red">{t("yourRev")}: </span>
             <RateStars
               defaultRating={ratingValue}
               enable={true}
@@ -183,7 +183,7 @@ const Reviews: React.FC<ReviewsProps> = ({
               htmlFor="message"
               className="uppercase text-red text-sm font-medium"
             >
-              {t('rev')}
+              {t("rev")}
               <span className="text-red">*</span>
             </label>
             <textarea
@@ -195,14 +195,14 @@ const Reviews: React.FC<ReviewsProps> = ({
               cols={50}
               required
               className="w-full text-md rounded shadow-none border-b border-gray focus:outline-none focus:border-red resize-none placeholder-pl-2"
-              placeholder={t('rev')}
+              placeholder={t("rev")}
             />
           </div>
           <button
             type="submit"
             className="p-2 px-5 border border-solid border-red text-lg text-white bg-red hover:bg-lightred font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 w-[300px]"
           >
-            {loading ? <ThemeLoader /> : t('writeRev')}
+            {loading ? <ThemeLoader /> : t("writeRev")}
           </button>
         </form>
       )}

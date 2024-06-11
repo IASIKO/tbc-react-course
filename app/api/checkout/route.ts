@@ -66,11 +66,13 @@ export async function POST(req: NextRequest) {
   const session = await stripe.checkout.sessions.create({
     line_items: stripeItems,
     mode: "payment",
-    client_reference_id: profile.sub,
-    metadata: {
-      phone: profile.phone,
-      city: profile.city,
-      address: profile.address,
+    payment_intent_data: {
+      metadata: {
+        id:profile.sub,
+        phone: profile.phone,
+        city: profile.city,
+        address: profile.address,
+      },
     },
     success_url: `${BASE_URL}/orders/success`,
     cancel_url: `${BASE_URL}/orders/cancel`,

@@ -7,6 +7,8 @@ import { AuthUser, ReviewsType } from "../../../types/profile-types";
 import ProductDetailsActions from "./ProductDetailsActions";
 import ProductDetailsImage from "./ProductDetailsImage";
 
+export const revalidate = 0
+
 interface ProductDetailsContentProps {
   productDetails: Product;
   selectedProduct: selectedProduct;

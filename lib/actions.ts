@@ -176,7 +176,6 @@ export const removeBlogAction = async (id: number) => {
   await deleteBlog(id);
 };
 
-
 // REVIEWS
 
 export async function getReviewsAction(prod_id: number) {
@@ -219,7 +218,10 @@ export async function editReviewAction(review: ReviewType, id: number | null) {
 
 // CHECKOUT
 
-export async function checkoutAction(cartProducts: selectedProduct[], profile: CheckoutProfile) {
+export async function checkoutAction(
+  cartProducts: selectedProduct[],
+  profile: CheckoutProfile
+) {
   await fetch(BASE_URL + "/api/checkout", {
     method: "POST",
     headers: {
@@ -237,3 +239,13 @@ export async function checkoutAction(cartProducts: selectedProduct[], profile: C
     });
 }
 
+export async function createRefund(charge: string) {
+  revalidatePath("/orders");
+  await fetch(BASE_URL + "/api/orders/create-refund", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ charge }),
+  });
+}
