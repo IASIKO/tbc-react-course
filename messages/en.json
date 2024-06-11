@@ -60,6 +60,7 @@
   },
   "addProduct": {
     "addProduct": "Add Product",
+    "editProduct": "Edit Product",
     "title": "Title",
     "category": "Category",
     "description": "Description",
@@ -165,11 +166,22 @@
   },
   "admin": {
     "admin": "Admin",
-    "name": "NAME",
+    "default": "Default",
     "email": "Email",
     "addUser": "Add User",
     "updateUser": "UPDATE USER",
     "createUser": "CREATE USER",
-    "save": "SAVE"
+    "save": "SAVE",
+    "users": "users",
+    "addProduct": "Add Product",
+    "addBlog": "add Blog post",
+    "picture": "picture",
+    "role": "role",
+    "name": "NAME",
+    "lastName": "LastName",
+    "country": "country",
+    "city": "City",
+    "address": "Address",
+    "phone": "Phone"
   }
 }

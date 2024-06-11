@@ -30,6 +30,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
   const [loading, setLoading] = useState(false);
 
   const t = useTranslations("profile");
+  const adminT = useTranslations("admin");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -59,7 +60,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
           <h3 className="text-[25px] font-medium text-black dark:text-white">
-            Edit User
+            {adminT("updateUser")}
           </h3>
           <ProfileAvatar
             picture={profile.picture}
@@ -159,7 +160,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
               </div>
             </div>
             <div className="mb-4">
-              <h2 className="text-black font-normal dark:text-white">Role</h2>
+              <h2 className="text-black font-normal dark:text-white">{adminT("role")}</h2>
               <select
                 id="role"
                 name="role"
@@ -167,13 +168,13 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
                 onChange={handleChange}
                 className="p-2 px-8 border border-red"
               >
-                <option value="default">Default</option>
-                <option value="admin">Admin</option>
+                <option value="default">{adminT("default")}</option>
+                <option value="admin">{adminT("admin")}</option>
               </select>
             </div>
             <button
               type="submit"
-              className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred"
+              className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred w-[150px]"
             >
               {loading ? <ThemeLoader /> : t("save")}
             </button>

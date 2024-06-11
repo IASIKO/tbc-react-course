@@ -5,6 +5,7 @@ import { createProductAction } from "../../lib/actions";
 import { ProductForm } from "../../types/products-types";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import ThemeLoader from "../UI/ThemeLoader";
 
 const AddProductPage = () => {
   const [product, setProduct] = useState<ProductForm>({
@@ -16,12 +17,13 @@ const AddProductPage = () => {
     rating: 5,
     stock: 0,
     brand: "",
-    weight: 0,
+    weight: 50,
     thumbnail: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const t = useTranslations("addProduct");
 
@@ -63,6 +65,7 @@ const AddProductPage = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -70,6 +73,7 @@ const AddProductPage = () => {
     }
     await createProductAction(product);
     router.push("/products");
+    setLoading(false);
   };
 
   return (
@@ -183,7 +187,7 @@ const AddProductPage = () => {
                   name="weight"
                   value={product.weight}
                   onChange={handleChange}
-                  min={0}
+                  min={50}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
                   required
                 />
@@ -274,13 +278,13 @@ const AddProductPage = () => {
             <button
               type="submit"
               disabled={!isFormValid}
-              className={`p-[7px] px-[25px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 ${
+              className={`p-[7px] px-[25px] border border-solid border-red text-[18px] text-white bg-red hover:bg-lightred font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 w-[300px] ${
                 isFormValid
                   ? "hover:bg-red hover:text-white"
                   : "opacity-50 cursor-not-allowed"
               }`}
             >
-              {t("addProduct")}
+              {loading ? <ThemeLoader /> : t("addProduct")}
             </button>
           </form>
         </div>

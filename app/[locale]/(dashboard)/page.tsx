@@ -1,4 +1,3 @@
-// import bg from "../../../public/Assets/images/bg_1.jpg";
 import test from '../../../public/Assets/images/test.jpg'
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
@@ -44,6 +43,7 @@ export default async function DashboardHome({
             src={test}
             alt="background image"
             className="w-full h-full object-cover object-left-bottom -scale-x-100"
+            priority={true}
           />
         </div>
       </div>

@@ -177,7 +177,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
             </div>
             <button
               type="submit"
-              className="p-2 px-6 border border-solid border-red text-lg text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white"
+              className="p-2 px-6 border border-solid border-red text-lg text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white w-[300px]"
             >
               {loading ? <ThemeLoader /> : t("save")}
             </button>

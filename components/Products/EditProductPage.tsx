@@ -5,6 +5,7 @@ import { editProductAction } from "../../lib/actions";
 import { Product, ProductForm } from "../../types/products-types";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import ThemeLoader from "../UI/ThemeLoader";
 
 const EditProductPage = ({productInfo} : {productInfo: Product}) => {
   const [product, setProduct] = useState<ProductForm>({
@@ -22,6 +23,7 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const t = useTranslations("addProduct");
 
@@ -63,6 +65,7 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true)
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -70,6 +73,7 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
     }
     await editProductAction(product, productInfo.id);
     router.push("/products");
+    setLoading(false)
   };
 
   return (
@@ -77,7 +81,7 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
           <h3 className="text-[25px] font-medium text-black dark:text-white">
-            Edit Product
+            {t("editProduct")}
           </h3>
           <form onSubmit={handleSubmit}>
             <div className="flex gap-5">
@@ -183,7 +187,7 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
                   name="weight"
                   value={product.weight}
                   onChange={handleChange}
-                  min={0}
+                  min={50}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
                   required
                 />
@@ -274,13 +278,13 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
             <button
               type="submit"
               disabled={!isFormValid}
-              className={`p-[7px] px-[25px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 ${
+              className={`p-[7px] px-[25px] border border-solid border-red text-[18px] text-white bg-red hover:bg-lightred font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 w-[300px] ${
                 isFormValid
                   ? "hover:bg-red hover:text-white"
                   : "opacity-50 cursor-not-allowed"
               }`}
             >
-              Edit Product
+              {loading ? <ThemeLoader /> : t("editProduct")}
             </button>
           </form>
         </div>

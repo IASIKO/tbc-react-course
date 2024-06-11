@@ -203,7 +203,7 @@ const Navigation = ({
                   {user ? (
                     <a
                       href="/api/auth/logout"
-                      className="text-white"
+                      className="text-red text-[20px] bg-white rounded px-4 text-center"
                       aria-label="logout"
                     >
                       {t("logout")}

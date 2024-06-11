@@ -1,6 +1,10 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const AdminMenu = () => {
+
+  const t = useTranslations('admin')
+
   return (
     <section className="py-[60px] dark:bg-gray">
       <div className="max-w-[1140px] m-auto">
@@ -9,20 +13,20 @@ const AdminMenu = () => {
             href="/admin/users"
             className="w-[300px] p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
           >
-            Users
+           {t("users")}
           </Link>
 
           <Link
             href="/products/add-product"
             className="w-[300px] p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
           >
-            Add Product
+            {t("addProduct")}
           </Link>
           <Link
             href="/products/add-product"
             className="w-[300px] p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
           >
-            Add Blog Post
+            {t("addBlog")}
           </Link>
         </div>
       </div>

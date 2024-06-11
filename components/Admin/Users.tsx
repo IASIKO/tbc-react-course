@@ -37,31 +37,31 @@ const Users = ({ users }: UsersProps) => {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    Picture
+                    {t("picture")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
                     {t("email")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    Role
+                    {t("role")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    Name
+                  {t("name")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    LastName
+                  {t("lastName")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    Country
+                  {t("country")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    City
+                  {t("city")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    address
+                  {t("address")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                    phone
+                  {t("phone")}
                   </th>
                 </tr>
               </thead>
