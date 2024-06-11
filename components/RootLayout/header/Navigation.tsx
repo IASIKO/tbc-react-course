@@ -160,7 +160,7 @@ const Navigation = ({
           </Link>
           <button
             type="button"
-            aria-label='usermodal'
+            aria-label="usermodal"
             onClick={() => setUserModalIsOpen(!userModalIsOpen)}
             className="text-white text-[32px] ml-4"
           >
@@ -180,12 +180,14 @@ const Navigation = ({
                   {user?.sub && (
                     <>
                       <Link
+                        onClick={() => setUserModalIsOpen(false)}
                         href="/profile"
                         className="text-white text-[20px] bg-red rounded px-4 text-center"
                       >
                         {t("profile")}
                       </Link>
                       <Link
+                        onClick={() => setUserModalIsOpen(false)}
                         href="/orders"
                         className="text-white text-[20px] bg-red rounded px-4 text-center"
                       >
@@ -195,6 +197,7 @@ const Navigation = ({
                   )}
                   {authUser?.role && authUser.role === "admin" && (
                     <Link
+                      onClick={() => setUserModalIsOpen(false)}
                       href="/admin"
                       className="text-white text-[20px] bg-red rounded px-4 text-center"
                     >
@@ -215,7 +218,7 @@ const Navigation = ({
                       className="text-white text-[20px] bg-red rounded px-4 text-center"
                     >
                       <a href="/api/auth/login" aria-label="login">
-                      {t("login")}
+                        {t("login")}
                       </a>
                     </button>
                   )}

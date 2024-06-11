@@ -54,7 +54,7 @@ a {
 .textStroke {
   color: transparent;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--gray);
+  -webkit-text-stroke-color: var(--gray-dark);
 }
 
 ::-webkit-scrollbar {

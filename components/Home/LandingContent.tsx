@@ -29,18 +29,18 @@ const LandingContent: React.FC<LandingContentProps> = ({
     <>
       <h1 className="textStroke absolute top-1/2 left-[20px] -translate-y-1/2 text-[25px] sm:text-[45px] md:text-[60px] lg:text-[90px] leading-tight font-bold italic">
         <div className="py-[30px] rotate-[-4deg] text-center w-[300px] sm:w-[300px] md:w-[400px] lg:w-[560px] m-auto ">
-        {t("slogan.good")} <span className="text-gray">{t("slogan.drinks")} </span>{t("slogan.forGood")}{" "}
-          <span className="text-gray">{t("slogan.moments")}</span>.
+        {t("slogan.good")} <span className="text-gray-dark">{t("slogan.drinks")} </span>{t("slogan.forGood")}{" "}
+          <span className="text-gray-dark">{t("slogan.moments")}</span>.
           <p className="font-normal text-[20px] text-[#ffffff] py-[20px] leading-normal">
             <Link
               href="/products"
-              className="cursor-pointer mr-[10px] bg-[#b7472a] border-[#b7472a] text-white rounded-[3px] py-[5px] px-[15px]"
+              className="cursor-pointer mr-[10px] bg-gray-dark border-gray-dark text-white rounded-[3px] py-[5px] px-[15px]"
             >
               {t("slogan.shopNow")}
             </Link>
             <Link
               href="/products"
-              className="cursor-pointer mr-[10px] bg-transparent border-white border-[1px] border-solid text-white rounded-[3px] py-[5px] px-[15px]"
+              className="cursor-pointer mr-[10px] bg-transparent border-gray-dark border-[1px] border-solid text-gray-dark rounded-[3px] py-[5px] px-[15px]"
             >
               {t("slogan.readMore")}
             </Link>
