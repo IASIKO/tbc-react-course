@@ -1,10 +1,13 @@
 'use client'
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 
 const CancelPage = () => {
+  const t = useTranslations('resPay')
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,14 +22,14 @@ const CancelPage = () => {
         transition={{ duration: 0.5 }}
         className="mb-6 text-2xl font-bold text-red uppercase"
       >
-        Your order was Cancaled!
+        {t("cancel")}
       </motion.h2>
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="bg-[#f04d2e] text-white border-none py-2 px-4 text-lg cursor-pointer rounded-md"
       >
-        <Link href="/cart">Try again</Link>
+        <Link href="/cart">{t("try")}</Link>
       </motion.button>
     </motion.div>
   );

@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const OrdersPage = ({ userOrders }: { userOrders: any }) => {
+
+  const t = useTranslations("orders")
+
   return (
     <div className="py-4 m-auto w-full max-w-5xl animate-fade-in-up">
       <div className="p-4 flex gap-8 flex-col lg:flex-row lg:items-start items-center">
@@ -19,29 +23,29 @@ const OrdersPage = ({ userOrders }: { userOrders: any }) => {
                 >
                   <div className="mb-4">
                     <p className="text-xl font-semibold">
-                      Price:{" "}
+                      {t("price")}:{" "}
                       <span className="text-red">
                         ${(order.amount_total / 100).toFixed(2)}
                       </span>
                     </p>
                     <p className="text-sm text-gray-500">
-                      Currency: {order.currency.toUpperCase()}
+                    {t("currency")}: {order.currency.toUpperCase()}
                     </p>
                   </div>
                   <div className="space-y-2">
                     <p className="text-gray-700">
-                      Address: {order.metadata.address}
+                    {t("address")}: {order.metadata.address}
                     </p>
                     <p className="text-gray-700">City: {order.metadata.city}</p>
                     <p className="text-gray-700">
-                      Phone: {order.metadata.phone}
+                    {t("phone")}: {order.metadata.phone}
                     </p>
-                    <p className="text-green">Status: {order.payment_status}</p>
+                    <p className="text-green">{t("status")}: {order.payment_status}</p>
                   </div>
                 </motion.div>
               );
             } else {
-              return <div>There are not orders</div>
+              return <div>{t("message")}</div>
             }
           })}
         </div>

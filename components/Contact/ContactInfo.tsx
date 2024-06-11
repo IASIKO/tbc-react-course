@@ -30,15 +30,15 @@ const ContactInfo = () => {
     },
   ];
   return (
-    <div className="flex justify-around">
+    <div className="flex flex-wrap justify-around">
       {contactInfoData.map((infoItem, index) => (
-        <div key={index} className="flex flex-col items-center">
-          <div className="w-[100px] h-[100px] rounded-[50%] bg-[#b7472a] my-0 mx-auto mb-[20px] flex justify-center items-center">
-            <span className="text-[35px] text-white">{infoItem.icon}</span>
+        <div key={index} className="flex flex-col items-center p-4 sm:w-1/2 lg:w-1/4">
+          <div className="w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] rounded-full bg-[#b7472a] mb-5 flex justify-center items-center">
+            <span className="text-2xl lg:text-[35px] text-white">{infoItem.icon}</span>
           </div>
-          <div className="w-[200px]">
-            <p className="text-center dark:text-white">
-              <span className="text-black font-medium dark:text-white">
+          <div className="text-center w-full">
+            <p className="text-sm lg:text-base dark:text-white">
+              <span className="font-medium text-black dark:text-white">
                 {infoItem.contactKey}:{" "}
               </span>
               {infoItem.contactValue}

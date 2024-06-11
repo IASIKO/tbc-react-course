@@ -119,10 +119,10 @@
     "address": "Address",
     "phone": "Phone",
     "website": "Website",
-    "fullNameError": "FullName length is invalid",
+    "fullNameError": "FullName is require",
     "emailError": "Email field is empty",
-    "invalidEmailError": "Email is not valid",
-    "subjectError": "Subject length is invalid",
+    "invalidEmailError": "Email is require",
+    "subjectError": "Subject is require",
     "messageError": "Message field is empty"
   },
   "profile": {
@@ -183,5 +183,20 @@
     "city": "City",
     "address": "Address",
     "phone": "Phone"
+  },
+  "resPay": {
+    "succ": "YOUR ORDER WAS SUCCEED!",
+    "seeOrders": "See your orders",
+    "cancel": "YOUR ORDER WAS CANCALED!",
+    "try": "Try again"
+  },
+  "orders": {
+    "price": "Price",
+    "currency": "Currency",
+    "address": "Address",
+    "city": "City",
+    "phone": "Phone",
+    "status": "Status",
+    "message": "There are not orders"
   }
 }
