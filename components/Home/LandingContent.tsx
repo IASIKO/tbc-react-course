@@ -68,7 +68,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
       </section>
 
       <section className="dark:bg-gray pb-[60px]">
-        <BlogList blogListData={homeBlogListData} />
+        <BlogList blogListData={homeBlogListData} authUser={authUser}/>
         <div className="flex justify-center">
           <Link
             href="/blog"

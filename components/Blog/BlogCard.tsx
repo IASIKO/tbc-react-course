@@ -7,13 +7,19 @@ import { BlogInfo } from "../../types/blogs.type";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { AuthUser } from "../../types/profile-types";
 
 interface BlogCardProps {
   blogInfo: BlogInfo;
   removeBlogHandler: (id: number) => void;
+  authUser: AuthUser;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
+const BlogCard: React.FC<BlogCardProps> = ({
+  blogInfo,
+  removeBlogHandler,
+  authUser,
+}) => {
   const t = useTranslations("blogs");
   const router = useRouter();
 
@@ -28,26 +34,29 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
           alt={blogInfo.title}
           className="w-full h-80 object-cover"
         />
-        <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded">
-          <div className="flex items-center">
-            <button
-              type="button"
-              aria-label="Blog delete"
-              onClick={() => removeBlogHandler(blogInfo.id)}
-              className="text-white hover:text-red duration-300"
-            >
-              <MdDelete />
-            </button>
-            <button
-              type="button"
-              aria-label="Blog edit"
-              onClick={() => onEditBlogClickHandler(blogInfo.id)}
-              className="text-white hover:text-red duration-300"
-            >
-              <MdEdit />
-            </button>
+        {((authUser?.role && authUser.role === "admin") ||
+          authUser?.sub === blogInfo.sub) && (
+          <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded">
+            <div className="flex items-center">
+              <button
+                type="button"
+                aria-label="Blog delete"
+                onClick={() => removeBlogHandler(blogInfo.id)}
+                className="text-white hover:text-red duration-300"
+              >
+                <MdDelete />
+              </button>
+              <button
+                type="button"
+                aria-label="Blog edit"
+                onClick={() => onEditBlogClickHandler(blogInfo.id)}
+                className="text-white hover:text-red duration-300"
+              >
+                <MdEdit />
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="p-6 flex flex-col justify-between h-auto">
         <div>

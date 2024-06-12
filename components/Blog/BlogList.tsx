@@ -5,15 +5,17 @@ import BlogCard from "./BlogCard";
 import { useTranslations } from "next-intl";
 import { BlogInfo } from "../../types/blogs.type";
 import Search from "../Search";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { removeBlogAction } from "../../lib/actions";
+import { AuthUser } from "../../types/profile-types";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface BlogListProps {
   blogListData: BlogInfo[];
+  authUser: AuthUser;
 }
 
-const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
+const BlogList: React.FC<BlogListProps> = ({ blogListData, authUser }) => {
   const [searchValue, setSearchValue] = useState("");
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const [filteredProducts, setFilteredProducts] = useState<BlogInfo[]>([]);
@@ -21,6 +23,8 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
   const path = usePathname();
 
   const t = useTranslations("blogs");
+  const router = useRouter();
+  const { user } = useUser();
 
   useEffect(() => {
     setblogsListData(blogListData);
@@ -56,6 +60,14 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
     removeBlogAction(id);
   };
 
+  const addBlogClickHandler = () => {
+    if (!user) {
+      router.push("/api/auth/login");
+    } else {
+      router.push("/blog/add-blog");
+    }
+  };
+
   return (
     <section className="py-[60px] relative dark:bg-gray animate-fade-in-up">
       <div className="max-w-[1140px] px-[15px] m-auto">
@@ -73,12 +85,12 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
                   onChange={onSearchInputChangeHandler}
                   searchValue={searchValue}
                 />
-                <Link
-                  href="/blog/add-blog"
+                <button
+                  onClick={addBlogClickHandler}
                   className="p-[7px] px-6 w-[320px] text-center border border-solid border-red text-[18px] text-red font-medium duration-300 uppercase hover:bg-red hover:text-white"
                 >
                   {t("addYourBlog")}
-                </Link>
+                </button>
               </div>
             )}
           </div>
@@ -89,6 +101,7 @@ const BlogList: React.FC<BlogListProps> = ({ blogListData }) => {
               blogInfo={listItem}
               key={index}
               removeBlogHandler={removeBlogHandler}
+              authUser={authUser}
             />
           ))}
         </div>
