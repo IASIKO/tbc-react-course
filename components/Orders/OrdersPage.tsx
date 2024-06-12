@@ -117,7 +117,7 @@ const OrdersPage = ({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={isClose}
-                className="fixed inset-0 z-30 flex items-center justify-center"
+                className="fixed inset-0 z-30 bg-black bg-opacity-80 flex items-center justify-center"
               >
                 <motion.div
                   initial={{ scale: 0, rotate: "12.5deg" }}
@@ -127,7 +127,7 @@ const OrdersPage = ({
                   className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black"
                 >
                   <div className="flex items-center flex-col justify-center">
-                    <h2 className="text-white uppercase tracking-widest mb-6 dark:text-white text-center">
+                    <h2 className="text-white uppercase tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
                       Are you sure you want to proceed with the refund?
                     </h2>
                     {loading ? (

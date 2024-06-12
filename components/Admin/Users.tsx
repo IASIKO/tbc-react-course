@@ -8,6 +8,8 @@ import { useState } from "react";
 import { deleteAuthUserAction } from "../../lib/actions";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+import ThemeLoader from "../UI/ThemeLoader";
 
 interface UsersProps {
   users: UsersType[];
@@ -15,17 +17,37 @@ interface UsersProps {
 
 const Users = ({ users }: UsersProps) => {
   const [usersData, setUsersData] = useState([...users]);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const t = useTranslations("admin");
   const router = useRouter();
 
-  const userDeleteHandler = async (id: number) => {
-    const filteredUsers = usersData.filter((user) => user.id !== id);
-    setUsersData(filteredUsers);
-    await deleteAuthUserAction(id);
+  const userDeleteHandler = async () => {
+    if (selectedId) {
+      setLoading(true);
+      const filteredUsers = usersData.filter((user) => user.id !== selectedId);
+      setUsersData(filteredUsers);
+      await deleteAuthUserAction(selectedId);
+      setLoading(false);
+      setModalIsOpen(false);
+    }
   };
 
   const userEditHandler = (id: number) => {
     router.push(`/admin/users/edit-user/${id}`);
+  };
+
+  const isClose = () => {
+    document.body.style.overflow = "unset";
+    setModalIsOpen(false);
+    setSelectedId(null);
+  };
+
+  const isOpen = (selectedId: number) => {
+    document.body.style.overflow = "hidden";
+    setModalIsOpen(true);
+    setSelectedId(selectedId);
   };
 
   return (
@@ -46,22 +68,22 @@ const Users = ({ users }: UsersProps) => {
                     {t("role")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                  {t("name")}
+                    {t("name")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                  {t("lastName")}
+                    {t("lastName")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                  {t("country")}
+                    {t("country")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                  {t("city")}
+                    {t("city")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                  {t("address")}
+                    {t("address")}
                   </th>
                   <th className="px-6 py-3 text-left text-sm font-large text-black uppercase tracking-wider dark:text-white">
-                  {t("phone")}
+                    {t("phone")}
                   </th>
                 </tr>
               </thead>
@@ -127,7 +149,7 @@ const Users = ({ users }: UsersProps) => {
                       </button>
                       <button
                         type="button"
-                        onClick={() => userDeleteHandler(user.id)}
+                        onClick={() => isOpen(user.id)}
                         className="text-red hover:text-yellow cursor-pointer duration-100 hover:dark:text-yellow"
                       >
                         <MdDelete />
@@ -138,6 +160,52 @@ const Users = ({ users }: UsersProps) => {
               </tbody>
             </table>
           </div>
+          <AnimatePresence>
+            {modalIsOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={isClose}
+                className="fixed inset-0 z-30 bg-black bg-opacity-80 flex items-center justify-center"
+              >
+                <motion.div
+                  initial={{ scale: 0, rotate: "12.5deg" }}
+                  animate={{ scale: 1, rotate: "0deg" }}
+                  exit={{ scale: 0, rotate: "0deg" }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black"
+                >
+                  <div className="flex items-center flex-col justify-center">
+                    <h2 className="text-white uppercase tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
+                      Are you sure you want to proceed with deleting user
+                      information?
+                    </h2>
+                    {loading ? (
+                      <ThemeLoader />
+                    ) : (
+                      <div className="flex gap-2 mt-6">
+                        <button
+                          type="button"
+                          onClick={userDeleteHandler}
+                          className="p-2 px-6 text-lg bg-white text-red font-medium align-middle duration-300 uppercase flex items-center gap-2"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          type="button"
+                          onClick={isClose}
+                          className="p-2 px-6 text-lg bg-white text-red font-medium align-middle duration-300 uppercase flex items-center gap-2"
+                        >
+                          No
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
     </>

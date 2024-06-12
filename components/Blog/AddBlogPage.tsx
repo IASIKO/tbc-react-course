@@ -15,7 +15,7 @@ interface AddblogPageProps {
 const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
   const [blog, setBlog] = useState<Blog>({
     title: "",
-    given_name: authUser.given_name,
+    given_name: authUser.given_name.length ? authUser.given_name : authUser.email,
     description: "",
     thumbnail: "",
     ingredients: "",
@@ -28,6 +28,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const router = useRouter();
   const t = useTranslations("addBlogPage")
+  
 
   useEffect(() => {
     const hasErrors = Object.keys(errors).length > 0;
@@ -74,7 +75,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
       setErrors(newErrors);
       return;
     }
-    await createBlogAction(blog);
+    await createBlogAction(blog, authUser.id);
     router.push("/blog");
     setLoading(false);
   };

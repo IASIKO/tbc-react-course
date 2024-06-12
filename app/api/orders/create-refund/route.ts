@@ -6,7 +6,6 @@ export const revalidate = 0;
 
 export async function POST(req: NextRequest) {
   const { chargeId } = await req.json();
-  console.log("🚀 ~ POST ~ charge:", chargeId)
 
   try {
     await stripe.refunds.create({
@@ -15,7 +14,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({}, { status: 200 });
   } catch (error) {
-    console.log("🚀 ~ POST ~ error:", error)
     return NextResponse.json({ error }, { status: 500 });
   }
 }

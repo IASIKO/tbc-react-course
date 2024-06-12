@@ -7,6 +7,7 @@ import {
   createProduct,
   deleteBlog,
   deleteProduct,
+  editBlog,
   editProduct,
   updateRating,
 } from "./api";
@@ -160,13 +161,18 @@ export const updateRatingAction = async (rating: number, id: number) => {
 };
 
 // BLOGS
-export const createBlogAction = async (blog: Blog) => {
-  return createBlog(blog);
+export const createBlogAction = async (blog: Blog, userId: number) => {
+  return createBlog(blog, userId);
 };
 
 export const removeBlogAction = async (id: number) => {
   revalidatePath("/blog");
   await deleteBlog(id);
+};
+
+export const editBlogAction = async (blog: Blog, id: number) => {
+  revalidatePath("/", "layout");
+  await editBlog(blog, id);
 };
 
 // REVIEWS

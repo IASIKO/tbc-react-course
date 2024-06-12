@@ -1,10 +1,12 @@
-// import { useTranslations } from "next-intl";
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { BlogInfo } from "../../types/blogs.type";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 interface BlogCardProps {
   blogInfo: BlogInfo;
@@ -13,7 +15,11 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
   const t = useTranslations("blogs");
+  const router = useRouter();
 
+  const onEditBlogClickHandler = (id: number) => {
+    router.push(`/blog/edit-blog/${id}`);
+  };
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden">
       <div className="relative">
@@ -35,6 +41,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blogInfo, removeBlogHandler }) => {
             <button
               type="button"
               aria-label="Blog edit"
+              onClick={() => onEditBlogClickHandler(blogInfo.id)}
               className="text-white hover:text-red duration-300"
             >
               <MdEdit />

@@ -2,12 +2,10 @@ import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const { blog } = await request.json();
+  const { blog, userId } = await request.json();
 
   const {
     title,
-    user_name,
-    user_avatar,
     description,
     ingredients,
     instructions,
@@ -18,17 +16,18 @@ export async function POST(request: Request) {
   try {
     if (!blog)
       throw new Error(
-        "title, user_name, user_avatar, description, ingredients, instructions, rating, prep_min, thumbnail are required"
+        "title, user_id, description, ingredients, instructions, prep_min, thumbnail are required"
       );
 
-    await sql`INSERT INTO blogs (user_name, user_avatar,
+    await sql`INSERT INTO blogs (
         title,
         description,
         thumbnail,
         ingredients,
         instructions,
-        prep_min
-        ) VALUES (${user_name}, ${user_avatar}, ${title}, ${description}, ${thumbnail}, ${ingredients}, ${instructions}, ${prep_min});`;
+        prep_min,
+        user_id
+        ) VALUES (${title}, ${description}, ${thumbnail}, ${ingredients}, ${instructions}, ${prep_min}, ${userId});`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

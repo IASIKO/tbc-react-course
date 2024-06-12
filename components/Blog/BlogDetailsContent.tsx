@@ -40,11 +40,9 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({
                   />
                   <div className="text-gray-600 dark:text-gray-400">
                     <p className="font-medium">{blogDetails.given_name}</p>
-                    <p className="text-sm">
-                      {t("prepTime", { minutes: blogDetails.prep_min })}
-                    </p>
                   </div>
                 </div>
+                <p className="text-sm font-bold">Preparation Time: {blogDetails.prep_min} minutes</p>
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                   {blogDetails.description}
                 </p>

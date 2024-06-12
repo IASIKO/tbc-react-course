@@ -8,7 +8,7 @@ export const metadata = {
   description: "Add Blog Posts page",
 };
 
-export default async function Blog({
+export default async function AddBlog({
   params: { locale },
 }: {
   params: { locale: string };

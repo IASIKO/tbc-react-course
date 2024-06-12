@@ -11,4 +11,6 @@ export interface Blog {
 
 export interface BlogInfo extends Blog {
   id: number
+  user_id: number
+  email: string
 }
