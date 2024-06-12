@@ -15,13 +15,13 @@ interface AddblogPageProps {
 const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
   const [blog, setBlog] = useState<Blog>({
     title: "",
-    user_name: authUser.given_name,
-    user_avatar: authUser.picture,
+    given_name: authUser.given_name,
     description: "",
     thumbnail: "",
     ingredients: "",
     instructions: "",
     prep_min: 0,
+    picture: authUser.picture
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);

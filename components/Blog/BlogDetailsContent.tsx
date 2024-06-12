@@ -32,14 +32,14 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({
                 </h2>
                 <div className="flex items-center space-x-4 mb-6">
                   <Image
-                    src={blogDetails.user_avatar}
-                    alt={`Avatar of ${blogDetails.user_name}`}
+                    src={blogDetails.picture}
+                    alt={`Avatar of ${blogDetails.given_name}`}
                     className="w-10 h-10 rounded-full"
                     width={40}
                     height={40}
                   />
                   <div className="text-gray-600 dark:text-gray-400">
-                    <p className="font-medium">{blogDetails.user_name}</p>
+                    <p className="font-medium">{blogDetails.given_name}</p>
                     <p className="text-sm">
                       {t("prepTime", { minutes: blogDetails.prep_min })}
                     </p>
