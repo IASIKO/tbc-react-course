@@ -8,10 +8,8 @@ import Navigation from "./Navigation";
 import Language from "../../UI/Language";
 import Theme from "../../UI/Theme";
 import { ProductObject } from "../../../types/products-types";
-import { AuthUser, Profile } from "../../../types/profile-types";
-import { useEffect, useState } from "react";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import { createAuthUserAction } from "../../../lib/actions";
+import { AuthUser } from "../../../types/profile-types";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 const Header = ({
@@ -21,32 +19,11 @@ const Header = ({
   selectedProducts: ProductObject[];
   authUser: AuthUser;
 }) => {
-  const { user } = useUser();
-  const [profile] = useState<Profile>({
-    given_name: (user?.given_name as string) || "",
-    family_name: (user?.family_name as string) || "",
-    country: "",
-    city: "",
-    address: "",
-    phone: "",
-    email: user?.email || "",
-    sub: user?.sub || "",
-    picture: user?.picture || "",
-    role: authUser?.role && authUser.role === "admin" ? "admin" : "default",
-  });
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  useEffect(() => {
-    if (user !== undefined) {
-      if (user?.picture && !authUser) {
-        createAuthUserAction(profile, user?.picture);
-      }
-    }
-  }, [user]);
 
   return (
     <header>
@@ -109,7 +86,11 @@ const Header = ({
             onClick={toggleMenu}
             className="lg:hidden text-white flex justify-center items-center cursor-pointer"
           >
-            <button type="button" className="text-[30px]" aria-label="Header Dropdown">
+            <button
+              type="button"
+              className="text-[30px]"
+              aria-label="Header Dropdown"
+            >
               {isOpen ? <MdArrowDropUp /> : <MdArrowDropDown />}
             </button>
           </div>

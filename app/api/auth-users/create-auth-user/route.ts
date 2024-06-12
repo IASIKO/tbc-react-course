@@ -1,38 +1,25 @@
 import { sql } from "@vercel/postgres";
-import { NextRequest, NextResponse } from "next/server";
-import { updateAuthUserAction } from "../../../../lib/actions";
+import { NextRequest } from "next/server";
+import { getSession } from "@auth0/nextjs-auth0";
+import { redirect } from "next/navigation";
 
 export const revalidate = 0;
 
-export async function POST(request: NextRequest) {
-  const { profile, picture } = await request.json();
-  const {
-    given_name,
-    family_name,
-    country,
-    city,
-    address,
-    phone,
-    email,
-    sub,
-    role,
-  } = profile;
-
+export async function GET(_: NextRequest) {
   try {
-    if (!profile || !picture) throw new Error("name and email are required");
+    const session = await getSession();
 
-    const authUser = await sql`SELECT * FROM auth_users where sub = ${sub}`;
-    if (!authUser.rows.length) {
-      await sql`INSERT INTO auth_users (given_name, family_name, country, city, address, phone, email, sub, picture, role) VALUES (${given_name}, ${family_name}, ${country}, ${city}, ${address}, ${phone}, ${email}, ${sub}, ${picture}, ${
-       role && role === 'admin' ? 'admin' : 'default'
-      });`;
-    } else {
-      updateAuthUserAction(profile, picture);
+    if (session?.user) {
+      const { sub, email, picture } = session.user;
+
+      const authUser = await sql`SELECT * FROM auth_users where sub = ${sub}`;
+      if (!authUser.rows.length) {
+        await sql`INSERT INTO auth_users (given_name, family_name, country, city, address, phone, email, sub, picture, role) VALUES ('', '', '', '', '', '+123', ${email}, ${sub}, ${picture}, 'default');`;
+      }
     }
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return redirect("/api/auth/logout");
   }
 
-  const auth_user = await sql`SELECT * FROM auth_users;`;
-  return NextResponse.json({ auth_user }, { status: 200 });
+  return redirect("/");
 }

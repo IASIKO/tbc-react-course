@@ -4,9 +4,10 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { AuthUser, Profile } from "../../types/profile-types";
 import { PutBlobResult } from "@vercel/blob";
 import { useTranslations } from "next-intl";
-import { createAuthUserAction } from "../../lib/actions";
+import { updateAuthUserAction } from "../../lib/actions";
 import ProfileAvatar from "../Profile/ProfileAvatar";
 import ThemeLoader from "../UI/ThemeLoader";
+import { useRouter } from "next/navigation";
 
 interface EditUserFormProps {
   authUser: AuthUser;
@@ -31,6 +32,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
 
   const t = useTranslations("profile");
   const adminT = useTranslations("admin");
+  const router = useRouter()
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -42,16 +44,17 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
-    await createAuthUserAction(
+    await updateAuthUserAction(
       { ...profile },
       blob ? blob.url : profile.picture
     );
+    router.push('/admin/users')
     setLoading(false);
   };
 
   useEffect(() => {
     if (blob !== null) {
-      createAuthUserAction(profile, blob.url);
+      updateAuthUserAction(profile, blob.url);
     }
   }, [blob]);
 
@@ -160,7 +163,9 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
               </div>
             </div>
             <div className="mb-4">
-              <h2 className="text-black font-normal dark:text-white">{adminT("role")}</h2>
+              <h2 className="text-black font-normal dark:text-white">
+                {adminT("role")}
+              </h2>
               <select
                 id="role"
                 name="role"

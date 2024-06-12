@@ -6,7 +6,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import ProfileAvatar from "./ProfileAvatar";
 import { AuthUser, Profile } from "../../types/profile-types";
 import { PutBlobResult } from "@vercel/blob";
-import { createAuthUserAction } from "../../lib/actions";
+import { updateAuthUserAction } from "../../lib/actions";
 import ThemeLoader from "../UI/ThemeLoader";
 
 interface ProfileDetailsProps {
@@ -58,7 +58,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
-    await createAuthUserAction(
+    await updateAuthUserAction(
       { ...profile },
       blob ? blob.url : profile.picture
     );
@@ -67,7 +67,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
 
   useEffect(() => {
     if (blob !== null) {
-      createAuthUserAction(profile, blob.url);
+      updateAuthUserAction(profile, blob.url);
     }
   }, [blob]);
 

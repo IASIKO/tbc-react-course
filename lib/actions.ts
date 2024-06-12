@@ -120,13 +120,6 @@ export const deleteAuthUserAction = async (userId: number) => {
   });
 };
 
-export async function createAuthUserAction(profile: Profile, picture: string) {
-  await fetch(`${BASE_URL}/api/auth-users/create-auth-user`, {
-    method: "POST",
-    body: JSON.stringify({ profile, picture }),
-  });
-}
-
 export async function updateAuthUserAction(profile: Profile, picture: string) {
   await fetch(BASE_URL + "/api/auth-users/update-auth-user", {
     method: "PUT",
