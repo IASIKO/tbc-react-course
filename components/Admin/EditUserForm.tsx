@@ -32,7 +32,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
 
   const t = useTranslations("profile");
   const adminT = useTranslations("admin");
-  const router = useRouter()
+  const router = useRouter();
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -48,7 +48,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
       { ...profile },
       blob ? blob.url : profile.picture
     );
-    router.push('/admin/users')
+    router.push("/admin/users");
     setLoading(false);
   };
 
@@ -179,7 +179,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({ authUser }) => {
             </div>
             <button
               type="submit"
-              className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred w-[150px]"
+              className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred w-[300px]"
             >
               {loading ? <ThemeLoader /> : t("save")}
             </button>

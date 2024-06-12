@@ -232,13 +232,13 @@ export async function checkoutAction(
     });
 }
 
-export async function createRefund(charge: string) {
+export async function createRefund(chargeId: string) {
   revalidatePath("/orders");
   await fetch(BASE_URL + "/api/orders/create-refund", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ charge }),
+    body: JSON.stringify({ chargeId }),
   });
 }

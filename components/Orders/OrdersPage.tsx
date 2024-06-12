@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { AuthUser } from "../../types/profile-types";
 import { IoReceiptSharp } from "react-icons/io5";
@@ -15,19 +15,37 @@ const OrdersPage = ({
   userOrders: any;
   authUser: AuthUser;
 }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [selectedChargeId, setSelectedChargeId] = useState<string | null>(null);
   const t = useTranslations("orders");
-  
-  const refundHandler = async (charge: string) => {
-    setLoading(true);
-    await createRefund(charge);
-    setLoading(false);
+
+  const refundHandler = async () => {
+    if (selectedChargeId) {
+      setLoading(true);
+      await createRefund(selectedChargeId);
+      setModalIsOpen(false);
+      setLoading(false);
+      setSelectedChargeId(null);
+    }
+  };
+
+  const isClose = () => {
+    document.body.style.overflow = "unset";
+    setModalIsOpen(false);
+    setSelectedChargeId(null);
+  };
+
+  const isOpen = (chargeId: string) => {
+    document.body.style.overflow = "hidden";
+    setModalIsOpen(true);
+    setSelectedChargeId(chargeId);
   };
 
   return (
     <div className="py-4 m-auto w-full max-w-5xl animate-fade-in-up">
       <div className="p-4 flex gap-8 flex-col lg:flex-row lg:items-start items-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {userOrders.map((order: any) => (
             <motion.div
               key={order.latest_charge.id}
@@ -82,16 +100,61 @@ const OrdersPage = ({
                 {authUser.role === "admin" &&
                   order.latest_charge.refunded === false && (
                     <button
-                      onClick={() => refundHandler(order.latest_charge.id)}
+                      onClick={() => isOpen(order.latest_charge.id)}
                       type="button"
                       className="p-1 px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred w-[150px]"
                     >
-                      {loading ? <ThemeLoader /> : "Refund"}
+                      Refund
                     </button>
                   )}
               </div>
             </motion.div>
           ))}
+          <AnimatePresence>
+            {modalIsOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={isClose}
+                className="fixed inset-0 z-30 flex items-center justify-center"
+              >
+                <motion.div
+                  initial={{ scale: 0, rotate: "12.5deg" }}
+                  animate={{ scale: 1, rotate: "0deg" }}
+                  exit={{ scale: 0, rotate: "0deg" }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black"
+                >
+                  <div className="flex items-center flex-col justify-center">
+                    <h2 className="text-white uppercase tracking-widest mb-6 dark:text-white text-center">
+                      Are you sure you want to proceed with the refund?
+                    </h2>
+                    {loading ? (
+                      <ThemeLoader />
+                    ) : (
+                      <div className="flex gap-2 mt-6">
+                        <button
+                          type="button"
+                          onClick={refundHandler}
+                          className="p-2 px-6 text-lg bg-white text-red font-medium align-middle duration-300 uppercase flex items-center gap-2"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          type="button"
+                          onClick={isClose}
+                          className="p-2 px-6 text-lg bg-white text-red font-medium align-middle duration-300 uppercase flex items-center gap-2"
+                        >
+                          No
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
