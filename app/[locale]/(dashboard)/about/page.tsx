@@ -1,5 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 import ExperienceSection from "../../../../components/About/ExperienceSection";
+import PartnersSlider from "../../../../components/About/PartnersSlider";
 
 export const metadata = {
   title: "Liquor store - About",
@@ -16,6 +17,7 @@ export default function About({
   return (
     <>
       <ExperienceSection />
+      <PartnersSlider />
     </>
   );
 }

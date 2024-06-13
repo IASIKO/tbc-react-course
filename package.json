@@ -19,6 +19,7 @@
     "next-intl": "^3.12.1",
     "next-share": "^0.27.0",
     "next-themes": "^0.3.0",
+    "popmotion": "^11.0.5",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.1.0",

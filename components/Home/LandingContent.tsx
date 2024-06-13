@@ -7,6 +7,7 @@ import ExperienceSection from "../About/ExperienceSection";
 import CategoriesSection from "../About/CategoriesSection";
 import { AuthUser } from "../../types/profile-types";
 import { BlogInfo } from "../../types/blogs.type";
+import PartnersSlider from "../About/PartnersSlider";
 
 interface LandingContentProps {
   blogListData: BlogInfo[];
@@ -29,7 +30,9 @@ const LandingContent: React.FC<LandingContentProps> = ({
     <>
       <h1 className="textStroke absolute top-1/2 left-[20px] -translate-y-1/2 text-[25px] sm:text-[45px] md:text-[60px] lg:text-[90px] leading-tight font-bold italic">
         <div className="py-[30px] rotate-[-4deg] text-center w-[300px] sm:w-[300px] md:w-[400px] lg:w-[560px] m-auto ">
-        {t("slogan.good")} <span className="text-gray-dark">{t("slogan.drinks")} </span>{t("slogan.forGood")}{" "}
+          {t("slogan.good")}{" "}
+          <span className="text-gray-dark">{t("slogan.drinks")} </span>
+          {t("slogan.forGood")}{" "}
           <span className="text-gray-dark">{t("slogan.moments")}</span>.
           <p className="font-normal text-[20px] text-[#ffffff] py-[20px] leading-normal">
             <Link
@@ -68,7 +71,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
       </section>
 
       <section className="dark:bg-gray pb-[60px]">
-        <BlogList blogListData={homeBlogListData} authUser={authUser}/>
+        <BlogList blogListData={homeBlogListData} authUser={authUser} />
         <div className="flex justify-center">
           <Link
             href="/blog"
@@ -78,6 +81,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
           </Link>
         </div>
       </section>
+      <PartnersSlider />
     </>
   );
 };
