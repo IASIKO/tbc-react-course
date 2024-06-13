@@ -124,7 +124,7 @@ const OrdersPage = ({
                   animate={{ scale: 1, rotate: "0deg" }}
                   exit={{ scale: 0, rotate: "0deg" }}
                   onClick={(e) => e.stopPropagation()}
-                  className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black"
+                  className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black mx-2"
                 >
                   <div className="flex items-center flex-col justify-center">
                     <h2 className="text-white uppercase tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
@@ -137,14 +137,14 @@ const OrdersPage = ({
                         <button
                           type="button"
                           onClick={refundHandler}
-                          className="p-2 px-6 text-lg bg-white text-red font-medium align-middle duration-300 uppercase flex items-center gap-2"
+                          className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
                         >
                           Yes
                         </button>
                         <button
                           type="button"
                           onClick={isClose}
-                          className="p-2 px-6 text-lg bg-white text-red font-medium align-middle duration-300 uppercase flex items-center gap-2"
+                          className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
                         >
                           No
                         </button>

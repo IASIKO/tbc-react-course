@@ -2,8 +2,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const AdminMenu = () => {
-
-  const t = useTranslations('admin')
+  const t = useTranslations("admin");
 
   return (
     <section className="py-[60px] dark:bg-gray">
@@ -13,7 +12,7 @@ const AdminMenu = () => {
             href="/admin/users"
             className="w-[300px] p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
           >
-           {t("users")}
+            {t("users")}
           </Link>
 
           <Link
@@ -23,10 +22,16 @@ const AdminMenu = () => {
             {t("addProduct")}
           </Link>
           <Link
-            href="/products/add-product"
+            href="/blog/add-blog"
             className="w-[300px] p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
           >
             {t("addBlog")}
+          </Link>
+          <Link
+            href="/orders"
+            className="w-[300px] p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
+          >
+            Orders
           </Link>
         </div>
       </div>

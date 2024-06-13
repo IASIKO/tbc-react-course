@@ -54,7 +54,7 @@ const Users = ({ users }: UsersProps) => {
     <>
       <section className="py-[60px] dark:bg-gray">
         <div className="max-w-[1140px] m-auto">
-          <div className="py-4 m-auto w-[600px] overflow-x-auto">
+          <div className="py-4 px-4 m-auto sm:w-full overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 rounded-lg shadow dark:bg-dark">
               <thead className="bg-gray-50">
                 <tr>
@@ -174,7 +174,7 @@ const Users = ({ users }: UsersProps) => {
                   animate={{ scale: 1, rotate: "0deg" }}
                   exit={{ scale: 0, rotate: "0deg" }}
                   onClick={(e) => e.stopPropagation()}
-                  className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black"
+                  className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black mx-2"
                 >
                   <div className="flex items-center flex-col justify-center">
                     <h2 className="text-white uppercase tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
@@ -188,14 +188,14 @@ const Users = ({ users }: UsersProps) => {
                         <button
                           type="button"
                           onClick={userDeleteHandler}
-                          className="p-2 px-6 text-lg bg-white text-red font-medium align-middle duration-300 uppercase flex items-center gap-2"
+                          className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
                         >
                           Yes
                         </button>
                         <button
                           type="button"
                           onClick={isClose}
-                          className="p-2 px-6 text-lg bg-white text-red font-medium align-middle duration-300 uppercase flex items-center gap-2"
+                          className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
                         >
                           No
                         </button>

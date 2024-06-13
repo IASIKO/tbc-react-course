@@ -28,12 +28,12 @@ const ProductDetailsImage: React.FC<ProductDetailsImageProps> = ({
     <>
       <div
         onClick={() => openZoomedImage(thumbnail)}
-        className="w-1/2 h-auto lg:h-[600px] mb-8 lg:mb-0 cursor-zoom-in"
+        className="lg:w-1/2 w-full h-auto lg:h-[600px] mb-8 lg:mb-0 cursor-zoom-in"
       >
         <Image
           src={thumbnail}
           alt={title}
-          className="w-ful h-auto lg:h-[600px] object-cover mb-8 lg:mb-0"
+          className="w-full h-auto lg:h-[600px] object-cover mb-8 lg:mb-0"
           width={400}
           height={600}
           priority={true}
@@ -41,7 +41,7 @@ const ProductDetailsImage: React.FC<ProductDetailsImageProps> = ({
       </div>
       {zoomedImage && (
         <div
-          className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 flex justify-center items-center z-50 cursor-pointer `}
+          className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 flex justify-center items-center z-50 cursor-pointer`}
           onClick={closeZoomedImage}
         >
           <Image
@@ -49,7 +49,7 @@ const ProductDetailsImage: React.FC<ProductDetailsImageProps> = ({
             alt="zoomed-image"
             width={700}
             height={900}
-            className="max-w-[90vh] max-h-[90vh] m-auto"
+            className="max-w-[90vh] max-h-[90vh] m-auto mx-2"
           />
         </div>
       )}

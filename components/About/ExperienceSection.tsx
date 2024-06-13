@@ -32,7 +32,7 @@ const ExperienceSection = () => {
       <div className="max-w-[1140px] px-[15px] flex flex-col lg:flex-row justify-center items-center m-auto">
         <div
           style={{ backgroundImage: `url(${aboutImg.src})` }}
-          className="h-[620px] w-[100%] flex flex-wrap  bg-cover bg-no-repeat bg-center "
+          className="h-[320px] sm:h-[620px] w-[100%] flex flex-wrap  bg-cover bg-no-repeat bg-center "
         ></div>
         <div className="pl-[30px] py-[30px] lg:max-w-[50%] flex flex-[0_0_50%] flex-col animate-fade-in-up">
           <span className="text-red text-[21px] font-normal italic">

@@ -76,7 +76,7 @@ const CartCard: React.FC<ProductCardProps> = ({
           </button>
         </div>
       </div>
-      <div className="text-gray-900 dark:text-white italic h-full flex flex-col justify-between">
+      <div className="text-gray-900 dark:text-white italic h-full flex flex-col justify-between items-end">
         <span>
           $
           {Math.round(selectedProduct.price * selectedProduct.quantity * 100) /
@@ -85,7 +85,7 @@ const CartCard: React.FC<ProductCardProps> = ({
         <button
           type="button"
           onClick={() => handleDelete(selectedProduct.id)}
-          className="bg-red p-2 rounded-md text-white hover:bg-darkred w-[37px] items-start"
+          className="bg-red p-2 rounded-md text-white hover:bg-darkred w-[37px]"
         >
           <RiDeleteBin2Fill />
         </button>
