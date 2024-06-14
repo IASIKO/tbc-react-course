@@ -40,3 +40,23 @@ export interface CheckoutProfile {
   phone: string;
   sub: string;
 }
+
+export interface OrderMetadata {
+  id: string;
+  address: string;
+  city: string;
+  phone: string;
+}
+
+export interface LatestCharge {
+  id: string;
+  receipt_url: string;
+  refunded: boolean;
+}
+
+export interface Order {
+  amount: number;
+  currency: string;
+  latest_charge: LatestCharge;
+  metadata: OrderMetadata;
+}

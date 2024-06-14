@@ -3,10 +3,11 @@ import { getOrders } from "../../../../lib/api";
 import { getSession } from "@auth0/nextjs-auth0";
 import { getAuthUserAction } from "../../../../lib/actions";
 import OrdersPage from "../../../../components/Orders/OrdersPage";
+import { Order } from "../../../../types/profile-types";
 
 export const metadata = {
-  title: "Liquor store - Success",
-  description: "Succsess page",
+  title: "Liquor store - Orders",
+  description: "Orders page",
 };
 
 export default async function Orders({
@@ -22,7 +23,7 @@ export default async function Orders({
   const auth_user = await getAuthUserAction(sub);
   
   const userOrders = orders.filter(
-    (order: any) =>
+    (order: Order) =>
       order.metadata.id === auth_user?.auth_user.rows[0].sub
     );
     
