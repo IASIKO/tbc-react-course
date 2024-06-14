@@ -14,7 +14,7 @@ const images = [askem, buzz, vine, whisky];
 
 const PartnersSlider = () => {
   const [[page, direction], setPage] = useState([0, 0]);
-  const t = useTranslations("about")
+  const t = useTranslations("about");
   const imageIndex = wrap(0, images.length, page);
 
   useEffect(() => {
@@ -52,10 +52,11 @@ const PartnersSlider = () => {
   return (
     <div className="bg-white dark:bg-gray py-8 relative">
       <h2 className="text-center text-red dark:text-white sm:text-[30px] text-[20px] font-bold mb-4 italic">
-        {t('partners')}
+        {t("partners")}
       </h2>
       <div className="w-full h-[250px] sm:h-32 mx-auto flex items-center overflow-hidden relative">
         <button
+          aria-label="Slider Changer Left Button"
           className="absolute left-2 top-1/2 transform -translate-y-1/2 rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
           onClick={() => paginate(-1)}
         >
@@ -88,6 +89,7 @@ const PartnersSlider = () => {
           </motion.div>
         </AnimatePresence>
         <button
+          aria-label="Slider Changer Right Button"
           className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
           onClick={() => paginate(1)}
         >
