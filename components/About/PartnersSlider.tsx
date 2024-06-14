@@ -9,6 +9,7 @@ import buzz from "../../public/Assets/images/partners/buzzfeed.png";
 import vine from "../../public/Assets/images/partners/vinepair.webp";
 import whisky from "../../public/Assets/images/partners/whisky-advocate.webp";
 import { useTranslations } from "next-intl";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const images = [askem, buzz, vine, whisky];
 
@@ -56,11 +57,11 @@ const PartnersSlider = () => {
       </h2>
       <div className="w-full h-[250px] sm:h-32 mx-auto flex items-center overflow-hidden relative">
         <button
-          aria-label="Slider Changer Left Button"
+          aria-label="Click left button"
           className="absolute left-2 top-1/2 transform -translate-y-1/2 rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
           onClick={() => paginate(-1)}
         >
-          {"‹"}
+          <FaAngleLeft />
         </button>
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -89,11 +90,11 @@ const PartnersSlider = () => {
           </motion.div>
         </AnimatePresence>
         <button
-          aria-label="Slider Changer Right Button"
+          aria-label="Click right button"
           className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
           onClick={() => paginate(1)}
         >
-          {"›"}
+         <FaAngleRight />
         </button>
       </div>
     </div>
