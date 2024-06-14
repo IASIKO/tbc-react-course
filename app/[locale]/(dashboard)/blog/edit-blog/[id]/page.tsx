@@ -1,7 +1,7 @@
 import { unstable_setRequestLocale } from "next-intl/server";
-import EditBlogPage from "../../../../../../components/Blog/EditBlogPage";
 import { getBlogs } from "../../../../../../lib/api";
 import { BlogInfo } from "../../../../../../types/blogs.type";
+import EditBlogPage from "../../../../../../components/Blog/EditBlog/EditBlogPage";
 
 export const metadata = {
   title: "Liquor store - Edit Blog",

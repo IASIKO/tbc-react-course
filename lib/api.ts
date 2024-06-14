@@ -59,10 +59,10 @@ export const getBlogs = async () => {
   return blogs.rows;
 };
 
-export const createBlog = async (blog: Blog, userId: number) => {
+export const createBlog = async (blog: Blog, userId: number, thumbnail: string) => {
   await fetch(`${BASE_URL}/api/blogs/create-blog`, {
     method: "POST",
-    body: JSON.stringify({ blog, userId }),
+    body: JSON.stringify({ blog, userId, thumbnail }),
     cache: "no-store",
   });
 };
@@ -74,10 +74,10 @@ export const deleteBlog = async (id: number) => {
   });
 };
 
-export const editBlog = async (blog: Blog, id: number) => {
+export const editBlog = async (blog: Blog, id: number, thumbnail: string) => {
   await fetch(`${BASE_URL}/api/blogs/edit-blog`, {
     method: "PUT",
-    body: JSON.stringify({ blog, id }),
+    body: JSON.stringify({ blog, id, thumbnail }),
     cache: "no-store",
   });
 };

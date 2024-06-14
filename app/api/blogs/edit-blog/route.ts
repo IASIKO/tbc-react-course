@@ -2,9 +2,9 @@ import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(request: NextRequest) {
-  const { blog, id } = await request.json();
+  const { blog, id, thumbnail } = await request.json();
 
-  const { title, description, ingredients, instructions, prep_min, thumbnail } =
+  const { title, description, ingredients, instructions, prep_min } =
     blog;
 
   try {

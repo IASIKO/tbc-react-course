@@ -161,8 +161,8 @@ export const updateRatingAction = async (rating: number, id: number) => {
 };
 
 // BLOGS
-export const createBlogAction = async (blog: Blog, userId: number) => {
-  return createBlog(blog, userId);
+export const createBlogAction = async (blog: Blog, userId: number, thumbnail: string) => {
+  return createBlog(blog, userId, thumbnail);
 };
 
 export const removeBlogAction = async (id: number) => {
@@ -170,9 +170,9 @@ export const removeBlogAction = async (id: number) => {
   await deleteBlog(id);
 };
 
-export const editBlogAction = async (blog: Blog, id: number) => {
+export const editBlogAction = async (blog: Blog, id: number, thumbnail: string) => {
   revalidatePath("/", "layout");
-  await editBlog(blog, id);
+  await editBlog(blog, id, thumbnail);
 };
 
 // REVIEWS

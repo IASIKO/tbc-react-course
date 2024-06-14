@@ -1,7 +1,7 @@
 import { unstable_setRequestLocale } from "next-intl/server";
-import AddBlogPage from "../../../../../components/Blog/AddBlogPage";
 import { getAuthUserAction } from "../../../../../lib/actions";
 import { getSession } from "@auth0/nextjs-auth0";
+import AddBlogPage from "../../../../../components/Blog/AddBlog/AddBlogPage";
 
 export const metadata = {
   title: "Liquor store - Add Blog",

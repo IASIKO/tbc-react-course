@@ -58,7 +58,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
           </div>
         )}
       </div>
-      <div className="p-6 flex flex-col justify-between h-auto">
+      <div className="p-6 flex flex-col justify-between sm:h-[300px] h-auto">
         <div>
           <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">
             {blogInfo.title.length > 20

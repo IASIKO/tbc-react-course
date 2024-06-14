@@ -3,15 +3,19 @@ export interface Blog {
   given_name: string;
   title: string;
   description: string;
-  thumbnail: string;
   ingredients: string;
   instructions: string;
   prep_min: number;
 }
 
+export interface EditBlog extends Blog {
+  thumbnail: string;
+}
+
 export interface BlogInfo extends Blog {
-  id: number
-  user_id: number
-  email: string
-  sub: string
+  thumbnail: string;
+  id: number;
+  user_id: number;
+  email: string;
+  sub: string;
 }

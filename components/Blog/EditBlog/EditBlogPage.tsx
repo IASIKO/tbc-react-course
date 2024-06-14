@@ -1,34 +1,33 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Blog } from "../../types/blogs.type";
-import { createBlogAction } from "../../lib/actions";
-import { AuthUser } from "../../types/profile-types";
-import ThemeLoader from "../UI/ThemeLoader";
+import { BlogInfo, EditBlog } from "../../../types/blogs.type";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { editBlogAction } from "../../../lib/actions";
+import ThemeLoader from "../../UI/ThemeLoader";
+import EditBlogAvatar from "./EditBlogAvatar";
+import { PutBlobResult } from "@vercel/blob";
 
-interface AddblogPageProps {
-  authUser: AuthUser;
-}
-
-const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
-  const [blog, setBlog] = useState<Blog>({
-    title: "",
-    given_name: authUser.given_name.length ? authUser.given_name : authUser.email,
-    description: "",
-    thumbnail: "",
-    ingredients: "",
-    instructions: "",
-    prep_min: 0,
-    picture: authUser.picture
+const EditBlogPage = ({ blogInfo }: { blogInfo: BlogInfo }) => {
+  const [blog, setBlog] = useState<EditBlog>({
+    title: blogInfo.title,
+    given_name: blogInfo.given_name.length
+      ? blogInfo.given_name
+      : blogInfo.email,
+    description: blogInfo.description,
+    thumbnail: blogInfo.thumbnail,
+    ingredients: blogInfo.ingredients,
+    instructions: blogInfo.instructions,
+    prep_min: blogInfo.prep_min,
+    picture: blogInfo.picture,
   });
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const router = useRouter();
-  const t = useTranslations("addBlogPage")
-  
+  const t = useTranslations("addBlogPage");
 
   useEffect(() => {
     const hasErrors = Object.keys(errors).length > 0;
@@ -59,7 +58,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
   const validate = () => {
     const newErrors: Record<string, string> = {};
     Object.keys(blog).forEach((key) => {
-      const value = blog[key as keyof Blog];
+      const value = blog[key as keyof EditBlog];
       if ((value ?? "").toString().trim() === "") {
         newErrors[key] = `${key} is required`;
       }
@@ -75,7 +74,9 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
       setErrors(newErrors);
       return;
     }
-    await createBlogAction(blog, authUser.id);
+    if (blob) {
+      await editBlogAction(blog, blogInfo.id, blob.url);
+    }
     router.push("/blog");
     setLoading(false);
   };
@@ -85,12 +86,17 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
           <h3 className="text-[25px] font-medium text-black dark:text-white">
-            {t("addBlog")}
+            Edit blog
           </h3>
+          <EditBlogAvatar
+            blob={blob}
+            setBlob={setBlob}
+            thumbnail={blog.thumbnail}
+          />
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-              {t("title")} <span className="text-red">*</span>
+                {t("title")} <span className="text-red">*</span>
               </h2>
               <input
                 type="text"
@@ -105,7 +111,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-              {t("description")} <span className="text-red">*</span>
+                {t("description")} <span className="text-red">*</span>
               </h2>
               <textarea
                 name="description"
@@ -122,7 +128,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-              {t("ingredients")} <span className="text-red">*</span>
+                {t("ingredients")} <span className="text-red">*</span>
               </h2>
               <textarea
                 name="ingredients"
@@ -139,7 +145,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-              {t("instructions")} <span className="text-red">*</span>
+                {t("instructions")} <span className="text-red">*</span>
               </h2>
               <textarea
                 name="instructions"
@@ -156,7 +162,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <div className="flex flex-col w-[100%] my-[10px]">
               <h2 className="text-black font-normal dark:text-white">
-              {t("prepTime")} <span className="text-red">*</span>
+                {t("prepTime")} <span className="text-red">*</span>
               </h2>
               <input
                 type="number"
@@ -172,23 +178,6 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
               )}
             </div>
 
-            <div className="flex flex-col w-[100%] my-[10px]">
-              <h2 className="text-black font-normal dark:text-white">
-              {t("thumbnail")} <span className="text-red">*</span>
-              </h2>
-              <input
-                type="text"
-                name="thumbnail"
-                value={blog.thumbnail}
-                onChange={handleChange}
-                className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
-                required
-              />
-              {errors.thumbnail && (
-                <span className="text-red">{errors.thumbnail}</span>
-              )}
-            </div>
-
             <button
               type="submit"
               disabled={!isFormValid}
@@ -198,7 +187,7 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
                   : "opacity-50 cursor-not-allowed"
               }`}
             >
-              {loading ? <ThemeLoader /> : t("addBlog")}
+              {loading ? <ThemeLoader /> : "Edit blog"}
             </button>
           </form>
         </div>
@@ -207,4 +196,4 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
   );
 };
 
-export default AddBlogPage;
+export default EditBlogPage;
