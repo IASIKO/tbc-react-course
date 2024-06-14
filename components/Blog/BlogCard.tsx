@@ -88,7 +88,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
               </p>
               <div className="flex items-center text-sm text-gray-500">
                 <AiOutlineClockCircle />
-                <span className="ml-2">24/12/24</span>
+                <span className="ml-2">{blogInfo.added_on.slice(0,10)}</span>
               </div>
             </div>
           </div>

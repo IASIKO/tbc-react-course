@@ -18,4 +18,5 @@ export interface BlogInfo extends Blog {
   user_id: number;
   email: string;
   sub: string;
+  added_on: string
 }

@@ -78,7 +78,7 @@ const ContactForm = () => {
           title="198 West 21th Street, Suite 721 New York NY 10016"
         ></iframe>
       </div>
-      <div className="px-4 md:px-8 py-8 md:py-0 w-full md:w-3/5 bg-white dark:bg-gray">
+      <div className="px-4 md:px-8 py-8 md:py-4 w-full md:w-3/5 bg-white dark:bg-gray">
         <h3 className="mb-4 text-lg md:text-xl lg:text-2xl font-normal dark:text-white">
           {t("contactUs")}
         </h3>

@@ -104,7 +104,9 @@
     "recentBlog": "Cocktail recipes",
     "seeMore": "See More...",
     "addYourBlog": "add your blog",
-    "see": "See More..."
+    "see": "See More...",
+    "prepTime" : "Preparation Time",
+    "min": "minutes"
   },
   "addBlogPage": {
     "addBlog": "Add Blog",
