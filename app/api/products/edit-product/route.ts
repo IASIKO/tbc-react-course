@@ -2,7 +2,7 @@ import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(request: NextRequest) {
-  const { product, id } = await request.json();
+  const { product, id, thumbnail } = await request.json();
 
   const {
     title,
@@ -14,7 +14,6 @@ export async function PUT(request: NextRequest) {
     stock,
     brand,
     weight,
-    thumbnail,
   } = product;
 
   try {

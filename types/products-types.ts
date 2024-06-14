@@ -22,6 +22,9 @@ export interface ProductForm {
   stock: number;
   brand: string;
   weight: number;
+}
+
+export interface EditProductForm extends ProductForm {
   thumbnail: string;
 }
 

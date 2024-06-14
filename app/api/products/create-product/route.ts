@@ -2,7 +2,7 @@ import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const { product } = await request.json();
+  const { product, thumbnail } = await request.json();
 
   const {
     title,
@@ -14,7 +14,6 @@ export async function POST(request: Request) {
     stock,
     brand,
     weight,
-    thumbnail,
   } = product;
 
   try {

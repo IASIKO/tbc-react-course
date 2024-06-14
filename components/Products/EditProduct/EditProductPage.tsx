@@ -1,14 +1,16 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { editProductAction } from "../../lib/actions";
-import { Product, ProductForm } from "../../types/products-types";
+import { editProductAction } from "../../../lib/actions";
+import { Product, EditProductForm } from "../../../types/products-types";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import ThemeLoader from "../UI/ThemeLoader";
+import ThemeLoader from "../../UI/ThemeLoader";
+import { PutBlobResult } from "@vercel/blob";
+import EditProductAvatar from "./EditProductAvatar";
 
-const EditProductPage = ({productInfo} : {productInfo: Product}) => {
-  const [product, setProduct] = useState<ProductForm>({
+const EditProductPage = ({ productInfo }: { productInfo: Product }) => {
+  const [product, setProduct] = useState<EditProductForm>({
     title: productInfo.title,
     category: productInfo.category,
     description: productInfo.description,
@@ -18,9 +20,10 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
     stock: productInfo.stock,
     brand: productInfo.brand,
     weight: productInfo.weight,
-    thumbnail: productInfo.thumbnail
+    thumbnail: productInfo.thumbnail,
   });
 
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
@@ -56,7 +59,7 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
   const validate = () => {
     const newErrors: Record<string, string> = {};
     Object.keys(product).forEach((key) => {
-      if (product[key as keyof ProductForm].toString().trim() === "") {
+      if (product[key as keyof EditProductForm].toString().trim() === "") {
         newErrors[key] = `${key} is required`;
       }
     });
@@ -65,15 +68,17 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-    await editProductAction(product, productInfo.id);
+    if (blob) {
+      await editProductAction(product, productInfo.id, blob.url);
+    }
     router.push("/products");
-    setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -83,6 +88,11 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
           <h3 className="text-[25px] font-medium text-black dark:text-white">
             {t("editProduct")}
           </h3>
+          <EditProductAvatar
+            blob={blob}
+            setBlob={setBlob}
+            thumbnail={product.thumbnail}
+          />
           <form onSubmit={handleSubmit}>
             <div className="flex gap-5 flex-col sm:flex-row">
               <div className="flex flex-col w-full sm:w-[50%] my-[10px]">
@@ -197,19 +207,21 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
               </div>
               <div className="flex flex-col w-full sm:w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  {t("thumbnail")}
+                  {t("price")}
                   <span className="text-red">*</span>
                 </h2>
                 <input
-                  type="text"
-                  name="thumbnail"
-                  value={product.thumbnail}
+                  type="number"
+                  name="price"
+                  value={product.price}
                   onChange={handleChange}
+                  min={0.01}
+                  step={0.01}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
                   required
                 />
-                {errors.thumbnail && (
-                  <span className="text-red">{errors.thumbnail}</span>
+                {errors.price && (
+                  <span className="text-red">{errors.price}</span>
                 )}
               </div>
             </div>
@@ -252,28 +264,6 @@ const EditProductPage = ({productInfo} : {productInfo: Product}) => {
                   <span className="text-red">{errors.rating}</span>
                 )}
               </div>
-            </div>
-            <div className="flex gap-5 flex-col sm:flex-row">
-              <div className="flex flex-col w-full sm:w-[50%] my-[10px]">
-                <h2 className="text-black font-normal dark:text-white">
-                  {t("price")}
-                  <span className="text-red">*</span>
-                </h2>
-                <input
-                  type="number"
-                  name="price"
-                  value={product.price}
-                  onChange={handleChange}
-                  min={0.01}
-                  step={0.01}
-                  className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
-                  required
-                />
-                {errors.price && (
-                  <span className="text-red">{errors.price}</span>
-                )}
-              </div>
-              <div className="flex flex-col w-full sm:w-[50%] my-[10px]"></div>
             </div>
             <button
               type="submit"

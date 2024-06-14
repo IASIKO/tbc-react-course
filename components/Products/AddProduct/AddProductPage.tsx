@@ -1,13 +1,19 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { createProductAction } from "../../lib/actions";
-import { ProductForm } from "../../types/products-types";
+import { createProductAction } from "../../../lib/actions";
+import { ProductForm } from "../../../types/products-types";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import ThemeLoader from "../UI/ThemeLoader";
+import ThemeLoader from "../../UI/ThemeLoader";
+import { PutBlobResult } from "@vercel/blob";
+import ProductAvatar from "./ProductAvatar";
 
 const AddProductPage = () => {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [product, setProduct] = useState<ProductForm>({
     title: "",
     category: "",
@@ -18,12 +24,7 @@ const AddProductPage = () => {
     stock: 0,
     brand: "",
     weight: 50,
-    thumbnail: "",
   });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isFormValid, setIsFormValid] = useState<boolean>(false);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const t = useTranslations("addProduct");
 
@@ -71,10 +72,15 @@ const AddProductPage = () => {
       setErrors(newErrors);
       return;
     }
-    await createProductAction(product);
+
+    if (blob) {
+      await createProductAction(product, blob.url);
+    }
     router.push("/products");
     setLoading(false);
   };
+
+  const isDisabled = !isFormValid || blob === null || product.price === 0;
 
   return (
     <section className="py-[60px] dark:bg-gray">
@@ -83,6 +89,7 @@ const AddProductPage = () => {
           <h3 className="text-[25px] font-medium text-black dark:text-white">
             {t("addProduct")}
           </h3>
+          <ProductAvatar blob={blob} setBlob={setBlob} />
           <form onSubmit={handleSubmit}>
             <div className="flex gap-5 flex-col sm:flex-row">
               <div className="flex flex-col w-full sm:w-[50%] my-[10px]">
@@ -197,19 +204,21 @@ const AddProductPage = () => {
               </div>
               <div className="flex flex-col w-full sm:w-[50%] my-[10px]">
                 <h2 className="text-black font-normal dark:text-white">
-                  {t("thumbnail")}
+                  {t("price")}
                   <span className="text-red">*</span>
                 </h2>
                 <input
-                  type="text"
-                  name="thumbnail"
-                  value={product.thumbnail}
+                  type="number"
+                  name="price"
+                  value={product.price}
                   onChange={handleChange}
+                  min={0.01}
+                  step={0.01}
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
                   required
                 />
-                {errors.thumbnail && (
-                  <span className="text-red">{errors.thumbnail}</span>
+                {errors.price && (
+                  <span className="text-red">{errors.price}</span>
                 )}
               </div>
             </div>
@@ -253,35 +262,13 @@ const AddProductPage = () => {
                 )}
               </div>
             </div>
-            <div className="flex gap-5 flex-col sm:flex-row">
-              <div className="flex flex-col w-full sm:w-[50%] my-[10px]">
-                <h2 className="text-black font-normal dark:text-white">
-                  {t("price")}
-                  <span className="text-red">*</span>
-                </h2>
-                <input
-                  type="number"
-                  name="price"
-                  value={product.price}
-                  onChange={handleChange}
-                  min={0.01}
-                  step={0.01}
-                  className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
-                  required
-                />
-                {errors.price && (
-                  <span className="text-red">{errors.price}</span>
-                )}
-              </div>
-              <div className="flex flex-col w-full sm:w-[50%] my-[10px]"></div>
-            </div>
             <button
               type="submit"
-              disabled={!isFormValid}
+              disabled={isDisabled}
               className={`p-[7px] px-[25px] border border-solid border-red text-[18px] text-white bg-red hover:bg-lightred font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 sm:w-[300px] w-full mt-4 ${
-                isFormValid
-                  ? "hover:bg-red hover:text-white"
-                  : "opacity-50 cursor-not-allowed"
+                isDisabled
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-red hover:text-white"
               }`}
             >
               {loading ? <ThemeLoader /> : t("addProduct")}

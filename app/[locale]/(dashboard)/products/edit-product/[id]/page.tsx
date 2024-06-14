@@ -1,4 +1,4 @@
-import EditProductPage from "../../../../../../components/Products/EditProductPage";
+import EditProductPage from "../../../../../../components/Products/EditProduct/EditProductPage";
 import { getProducts } from "../../../../../../lib/api";
 import { Product } from "../../../../../../types/products-types";
 

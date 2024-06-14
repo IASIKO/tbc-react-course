@@ -1,4 +1,4 @@
-import AddProductPage from "../../../../../components/Products/AddProductPage";
+import AddProductPage from "../../../../../components/Products/AddProduct/AddProductPage";
 
 export const metadata = {
   title: "Liquor store - Add Product",

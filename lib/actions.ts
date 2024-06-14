@@ -141,8 +141,8 @@ export async function getAuthUserAction(sub: string) {
 
 // PRODUCTS
 
-export const createProductAction = async (product: ProductForm) => {
-  return createProduct(product);
+export const createProductAction = async (product: ProductForm, thumbnail: string) => {
+  return createProduct(product, thumbnail);
 };
 
 export const removeProductAction = async (id: number) => {
@@ -150,9 +150,9 @@ export const removeProductAction = async (id: number) => {
   await deleteProduct(id);
 };
 
-export const editProductAction = async (product: ProductForm, id: number) => {
+export const editProductAction = async (product: ProductForm, id: number, thumbnail: string) => {
   revalidatePath("/", "layout");
-  await editProduct(product, id);
+  await editProduct(product, id, thumbnail);
 };
 
 export const updateRatingAction = async (rating: number, id: number) => {

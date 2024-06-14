@@ -17,10 +17,10 @@ export const getProducts = async () => {
   return products.rows;
 };
 
-export const createProduct = async (product: ProductForm) => {
+export const createProduct = async (product: ProductForm, thumbnail: string) => {
   await fetch(`${BASE_URL}/api/products/create-product`, {
     method: "POST",
-    body: JSON.stringify({ product }),
+    body: JSON.stringify({ product, thumbnail }),
     cache: "no-store",
   });
 };
@@ -32,10 +32,10 @@ export const deleteProduct = async (productId: number) => {
   });
 };
 
-export const editProduct = async (product: ProductForm, id: number) => {
+export const editProduct = async (product: ProductForm, id: number, thumbnail: string) => {
   await fetch(`${BASE_URL}/api/products/edit-product`, {
     method: "PUT",
-    body: JSON.stringify({ product, id }),
+    body: JSON.stringify({ product, id, thumbnail}),
     cache: "no-store",
   });
 };
