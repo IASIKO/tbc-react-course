@@ -74,9 +74,7 @@ const EditBlogPage = ({ blogInfo }: { blogInfo: BlogInfo }) => {
       setErrors(newErrors);
       return;
     }
-    if (blob) {
-      await editBlogAction(blog, blogInfo.id, blob.url);
-    }
+    await editBlogAction(blog, blogInfo.id, blob ? blob.url : blog.thumbnail);
     router.push("/blog");
     setLoading(false);
   };
@@ -86,7 +84,7 @@ const EditBlogPage = ({ blogInfo }: { blogInfo: BlogInfo }) => {
       <div className="max-w-[1140px] m-auto">
         <div className="p-[15px]">
           <h3 className="text-[25px] font-medium text-black dark:text-white">
-            Edit blog
+            {t("editBlog")}
           </h3>
           <EditBlogAvatar
             blob={blob}
@@ -187,7 +185,7 @@ const EditBlogPage = ({ blogInfo }: { blogInfo: BlogInfo }) => {
                   : "opacity-50 cursor-not-allowed"
               }`}
             >
-              {loading ? <ThemeLoader /> : "Edit blog"}
+              {loading ? <ThemeLoader /> : t("editBlog")}
             </button>
           </form>
         </div>

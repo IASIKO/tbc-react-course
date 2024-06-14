@@ -8,11 +8,13 @@ import askem from "../../public/Assets/images/partners/askmen.png";
 import buzz from "../../public/Assets/images/partners/buzzfeed.png";
 import vine from "../../public/Assets/images/partners/vinepair.webp";
 import whisky from "../../public/Assets/images/partners/whisky-advocate.webp";
+import { useTranslations } from "next-intl";
 
 const images = [askem, buzz, vine, whisky];
 
 const PartnersSlider = () => {
   const [[page, direction], setPage] = useState([0, 0]);
+  const t = useTranslations("about")
   const imageIndex = wrap(0, images.length, page);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const PartnersSlider = () => {
   return (
     <div className="bg-white dark:bg-gray py-8 relative">
       <h2 className="text-center text-red dark:text-white sm:text-[30px] text-[20px] font-bold mb-4 italic">
-        Our Partners
+        {t('partners')}
       </h2>
       <div className="w-full h-[250px] sm:h-32 mx-auto flex items-center overflow-hidden relative">
         <button
@@ -68,10 +70,10 @@ const PartnersSlider = () => {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
           >
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="w-1/3 flex-shrink-0 sm:p-16">
+              <div key={i} className="w-1/3 flex-shrink-0 sm:p-24">
                 <Image
                   src={images[wrap(0, images.length, imageIndex + i)]}
                   alt={`Partners ${

@@ -11,7 +11,8 @@
     "1905": "Since 1905",
     "title": "Desire Meets A New Taste",
     "body": "Our company is based to present products that bring new joy to people’s lives, unite family and friends in sharing memories together. We pride ourselves on offering products based on innovation. Since 1905 our company  provides a superior and consistent quality. We are dedicating our time to make peoples interests variable and help them find something new and valuable. We are focused on your needs and appreciate your loyalty.",
-    "experience": "Years of Experience In Business"
+    "experience": "Years of Experience In Business",
+    "partners": "Partners"
   },
   "login": {
     "title": "ACOUNT LOGIN",
@@ -100,7 +101,7 @@
     "continue": "Continue",
     "ingredients": "Ingredients",
     "instructions": "Instructions",
-    "recentBlog": "Recent Blog",
+    "recentBlog": "Cocktail recipes",
     "seeMore": "See More...",
     "addYourBlog": "add your blog",
     "see": "See More..."
@@ -112,7 +113,8 @@
     "ingredients": "Ingredients",
     "instructions": "Instructions",
     "prepTime": "Preparation Time (minutes)",
-    "thumbnail": "Thumbnail"
+    "thumbnail": "Thumbnail",
+    "editBlog": "Edit blog"
   },
   "contact": {
     "title": "Contact",
@@ -188,10 +190,14 @@
     "country": "country",
     "city": "City",
     "address": "Address",
-    "phone": "Phone"
+    "phone": "Phone",
+    "modalText": "Are you sure you want to delete user information?",
+    "yes": "Yes",
+    "no": "No",
+    "orders": "Orders"
   },
   "resPay": {
-    "succ": "YOUR ORDER WAS SUCCEED!",
+    "succ": "YOUR ORDER WAS SUCCESSFUL!",
     "seeOrders": "See your orders",
     "cancel": "YOUR ORDER WAS CANCALED!",
     "try": "Try again"
@@ -203,6 +209,12 @@
     "city": "City",
     "phone": "Phone",
     "status": "Status",
-    "message": "There are not orders"
+    "message": "There are not orders",
+    "modalText": "Are you sure you want to request a refund?",
+    "refund": "Refund",
+    "refunded": "Refunded",
+    "paid": "Paid",
+    "yes": "Yes",
+    "no": "No"
   }
 }

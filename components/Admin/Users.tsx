@@ -28,7 +28,7 @@ const Users = ({ users }: UsersProps) => {
       setLoading(true);
       const filteredUsers = usersData.filter((user) => user.id !== selectedId);
       setUsersData(filteredUsers);
-      await deleteAuthUserAction(selectedId);
+      deleteAuthUserAction(selectedId);
       setLoading(false);
       setModalIsOpen(false);
     }
@@ -177,9 +177,8 @@ const Users = ({ users }: UsersProps) => {
                   className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black mx-2"
                 >
                   <div className="flex items-center flex-col justify-center">
-                    <h2 className="text-white uppercase tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
-                      Are you sure you want to proceed with deleting user
-                      information?
+                    <h2 className="text-white tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
+                      {t("modalText")}
                     </h2>
                     {loading ? (
                       <ThemeLoader />
@@ -190,14 +189,14 @@ const Users = ({ users }: UsersProps) => {
                           onClick={userDeleteHandler}
                           className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
                         >
-                          Yes
+                          {t("yes")}
                         </button>
                         <button
                           type="button"
                           onClick={isClose}
                           className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
                         >
-                          No
+                          {t("no")}
                         </button>
                       </div>
                     )}

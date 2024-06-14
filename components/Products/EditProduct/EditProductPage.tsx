@@ -74,9 +74,8 @@ const EditProductPage = ({ productInfo }: { productInfo: Product }) => {
       setErrors(newErrors);
       return;
     }
-    if (blob) {
-      await editProductAction(product, productInfo.id, blob.url);
-    }
+   
+      await editProductAction(product, productInfo.id, blob? blob.url : product.thumbnail);
     router.push("/products");
     setLoading(false);
   };

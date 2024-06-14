@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import ThemeLoader from "../../UI/ThemeLoader";
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
@@ -59,11 +58,9 @@ const EditBlogAvatar: React.FC<EditBlogAvatarProps> = ({
 
   return (
     <div className="flex flex-col sm:flex-row items-center p-4 bg-gray-100 rounded-lg shadow-md">
-      <Image
+      <img
         src={blob ? blob.url : thumbnail}
         alt="Blog avatar"
-        width={100}
-        height={100}
         className="w-[100px] h-[100px] rounded mb-4 sm:mb-0 sm:mr-4"
       />
       <form

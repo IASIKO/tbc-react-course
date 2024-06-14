@@ -31,7 +31,7 @@ const AdminMenu = () => {
             href="/orders"
             className="w-[300px] p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
           >
-            Orders
+            {t("orders")}
           </Link>
         </div>
       </div>

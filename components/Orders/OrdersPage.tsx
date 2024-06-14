@@ -46,7 +46,13 @@ const OrdersPage = ({
   return (
     <div className="py-4 m-auto w-full max-w-5xl animate-fade-in-up">
       <div className="p-4 flex gap-8 flex-col lg:flex-row lg:items-start items-center">
-        <div className={userOrders.length ? `m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8` : `w-full flex justify-center`}>
+        <div
+          className={
+            userOrders.length
+              ? `m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`
+              : `w-full flex justify-center`
+          }
+        >
           {userOrders.length ? (
             userOrders.map((order) => (
               <motion.div
@@ -77,11 +83,11 @@ const OrdersPage = ({
                     <IoReceiptSharp />
                   </a>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 flex flex-col justify-between h-auto sm:h-[250px] mb-4">
                   <p className="text-gray-700">
                     {t("address")}: {order.metadata.address}
                   </p>
-                  <p className="text-gray-700">City: {order.metadata.city}</p>
+                  <p className="text-gray-700">{t("city")}: {order.metadata.city}</p>
                   <p className="text-gray-700">
                     {t("phone")}: {order.metadata.phone}
                   </p>
@@ -95,10 +101,11 @@ const OrdersPage = ({
                       }`}
                     >
                       {order.latest_charge.refunded === true
-                        ? "Refunded"
-                        : "Paid"}
+                        ? t("refunded")
+                        : t("paid")}
                     </span>
                   </p>
+                </div>
                   {authUser.role === "admin" &&
                     order.latest_charge.refunded === false && (
                       <button
@@ -106,10 +113,9 @@ const OrdersPage = ({
                         type="button"
                         className="p-1 px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred w-[150px]"
                       >
-                        Refund
+                        {t("refund")}
                       </button>
                     )}
-                </div>
               </motion.div>
             ))
           ) : (
@@ -132,8 +138,8 @@ const OrdersPage = ({
                   className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black mx-2"
                 >
                   <div className="flex items-center flex-col justify-center">
-                    <h2 className="text-white uppercase tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
-                      Are you sure you want to proceed with the refund?
+                    <h2 className="text-white tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
+                    {t("modalText")}
                     </h2>
                     {loading ? (
                       <ThemeLoader />
@@ -144,14 +150,14 @@ const OrdersPage = ({
                           onClick={refundHandler}
                           className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
                         >
-                          Yes
+                          {t("yes")}
                         </button>
                         <button
                           type="button"
                           onClick={isClose}
                           className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
                         >
-                          No
+                          {t("no")}
                         </button>
                       </div>
                     )}
