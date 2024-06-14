@@ -56,13 +56,12 @@ const PartnersSlider = () => {
         {t("partners")}
       </h2>
       <div className="w-full h-[250px] sm:h-32 mx-auto flex items-center overflow-hidden relative">
-        <button
-          aria-label="click here"
+        <div
           className="absolute left-2 top-1/2 transform -translate-y-1/2 rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
           onClick={() => paginate(-1)}
         >
           <FaAngleLeft />
-        </button>
+        </div>
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             className="w-full h-full flex flex-col sm:flex-row items-center justify-center"
@@ -89,13 +88,12 @@ const PartnersSlider = () => {
             ))}
           </motion.div>
         </AnimatePresence>
-        <button
-          aria-label="click here"
+        <div
           className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
           onClick={() => paginate(1)}
         >
          <FaAngleRight />
-        </button>
+        </div>
       </div>
     </div>
   );
