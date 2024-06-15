@@ -11,7 +11,12 @@ import whisky from "../../public/Assets/images/partners/whisky-advocate.webp";
 import { useTranslations } from "next-intl";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-const images = [askem, buzz, vine, whisky];
+const images = [
+  { src: askem, alt: "AskMen Partner Logo" },
+  { src: buzz, alt: "BuzzFeed Partner Logo" },
+  { src: vine, alt: "VinePair Partner Logo" },
+  { src: whisky, alt: "Whisky Advocate Partner Logo" },
+];
 
 const PartnersSlider = () => {
   const [[page, direction], setPage] = useState([0, 0]);
@@ -57,7 +62,7 @@ const PartnersSlider = () => {
       </h2>
       <div className="w-full h-[250px] sm:h-32 mx-auto flex items-center overflow-hidden relative">
         <div
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 rounded-full w-[40px] h-[40px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
           onClick={() => paginate(-1)}
         >
           <FaAngleLeft />
@@ -76,10 +81,8 @@ const PartnersSlider = () => {
             {[...Array(3)].map((_, i) => (
               <div key={i} className="w-1/3 flex-shrink-0 sm:p-24">
                 <Image
-                  src={images[wrap(0, images.length, imageIndex + i)]}
-                  alt={`Partners ${
-                    images[wrap(0, images.length, imageIndex + i)]
-                  }`}
+                  src={images[wrap(0, images.length, imageIndex + i)].src}
+                  alt={images[wrap(0, images.length, imageIndex + i)].alt}
                   width={150}
                   height={150}
                   className="w-full h-full object-cover rounded-md"
@@ -89,10 +92,10 @@ const PartnersSlider = () => {
           </motion.div>
         </AnimatePresence>
         <div
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full w-[40px] h-[40px] md:w-[40px] md:h-[40px] flex justify-center items-center select-none cursor-pointer font-bold text-[18px] z-20 hover:bg-gray-200"
           onClick={() => paginate(1)}
         >
-         <FaAngleRight />
+          <FaAngleRight />
         </div>
       </div>
     </div>
