@@ -33,7 +33,7 @@ export default async function DashboardHome({
   return (
     <>
       <div
-        className="relative h-screen w-ful"
+        className="relative h-screen w-full"
         style={{
           clipPath: "inset(0 0 0 0)",
         }}

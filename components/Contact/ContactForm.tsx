@@ -65,6 +65,12 @@ const ContactForm = () => {
       window.location.href = mailtoLink;
     }
     setLoading(false);
+    setForm({
+      fullName: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
   };
 
   return (

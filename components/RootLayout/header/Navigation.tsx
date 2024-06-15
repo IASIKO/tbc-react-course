@@ -12,6 +12,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { AuthUser } from "../../../types/profile-types";
+import Language from "../../UI/Language";
+import Theme from "../../UI/Theme";
 
 const Navigation = ({
   selectedProducts,
@@ -84,7 +86,7 @@ const Navigation = ({
     <motion.nav
       className={`${
         isFixed
-          ? "fixed top-0 left-0 right-0 z-10 bg-dark animate-fade-in-up duration-300"
+          ? "fixed top-0 left-0 right-0 z-50 bg-dark animate-fade-in-up duration-300"
           : "bg-dark "
       }`}
       initial={{ opacity: 0 }}
@@ -246,6 +248,10 @@ const Navigation = ({
             >
               <IoMdClose />
             </button>
+            <Language />
+            <div className="duration-300 rounded flex justify-center w-[100px] m-auto">
+              <Theme />
+            </div>
             <ul className="flex flex-col items-center mt-8">
               {["/", "/about", "/products", "/blog", "/contact"].map(
                 (path, index) => (

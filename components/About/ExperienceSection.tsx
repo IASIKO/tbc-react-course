@@ -9,7 +9,7 @@ const ExperienceSection = () => {
   const t = useTranslations("about");
   const objRef = useRef<HTMLDivElement>(null);
   const start = 0;
-  const end = 115;
+  const end = 119;
   const duration = 3000;
 
   useEffect(() => {

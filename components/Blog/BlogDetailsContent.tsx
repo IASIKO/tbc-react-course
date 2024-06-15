@@ -43,12 +43,12 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({
                     <p className="font-medium text-[16px]">{blogDetails.added_on.slice(0,10)}</p>
                   </div>
                 </div>
-                <p className="text-sm font-bold">{t("prepTime")}: {blogDetails.prep_min} {t("min")}</p>
+                <p className="text-sm font-bold dark:text-white">{t("prepTime")}: {blogDetails.prep_min} {t("min")}</p>
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                   {blogDetails.description}
                 </p>
                 <div>
-                  <h3 className="text-xl font-bold text-red-500 mb-2">
+                  <h3 className="text-xl font-bold text-red-500 mb-2 dark:text-white">
                     {t("ingredients")}
                   </h3>
                   <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6">
@@ -56,7 +56,7 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-red-500 mb-2">
+                  <h3 className="text-xl font-bold text-red-500 mb-2 dark:text-white">
                     {t("instructions")}
                   </h3>
                   <ol className="list-decimal list-inside text-gray-700 dark:text-gray-300">

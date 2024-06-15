@@ -106,13 +106,13 @@ const ProductDetailsActions: React.FC<ProductDetailsActionsProps> = ({
         <button
           type="button"
           onClick={addToCartHandler}
-          className="p-3 px-6 border border-solid border-red text-lg text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
+          className="p-3 px-6 border border-solid border-red text-lg text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white w-[300px] m-auto sm:ml-0"
         >
           {t("addToCart")}
         </button>
       ) : (
         <div className="flex flex-col lg:flex-row justify-between gap-4">
-          <div className="flex gap-4">
+          <div className="flex gap-4 m-auto sm:ml-0">
             <button
               type="button"
               onClick={() => handleDecrement(productDetails.id)}
@@ -138,7 +138,7 @@ const ProductDetailsActions: React.FC<ProductDetailsActionsProps> = ({
           <button
             type="button"
             onClick={() => handleDelete(productDetails.id)}
-            className="px-3 py-2 border border-solid border-red text-lg text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
+            className="px-3 py-2 border border-solid border-red text-lg text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white w-[300px] m-auto sm:ml-0"
             disabled={cartProducts[0]?.quantity === undefined}
           >
             {t("removeFromCart")}
