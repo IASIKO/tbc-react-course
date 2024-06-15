@@ -75,7 +75,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
           <div className="flex items-center">
             <img
               src={blogInfo.picture}
-              alt={blogInfo.given_name}
+              alt={`User ${blogInfo.given_name} avatar`}
               width={10}
               height={10}
               className="w-10 h-10 rounded-full mr-3"
