@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import aboutImg from "../../public/Assets/images/about-image.jpg";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 const ExperienceSection = () => {
   const [value, setValue] = useState(0);
@@ -30,10 +31,11 @@ const ExperienceSection = () => {
   return (
     <section className="py-[60px] relative dark:bg-gray">
       <div className="max-w-[1140px] px-[15px] flex flex-col lg:flex-row justify-center items-center m-auto">
-        <div
-          style={{ backgroundImage: `url(${aboutImg.src})` }}
-          className="h-[320px] sm:h-[620px] w-[100%] flex flex-wrap  bg-cover bg-no-repeat bg-center "
-        ></div>
+        <Image
+          src={aboutImg}
+          alt="About Page thumbnail"
+          className="h-[320px] sm:h-[620px] w-[100%] flex flex-wrap object-cover"
+        />
         <div className="pl-[30px] py-[30px] lg:max-w-[50%] flex flex-[0_0_50%] flex-col animate-fade-in-up">
           <span className="text-red text-[21px] font-normal italic">
             {t("1905")}
