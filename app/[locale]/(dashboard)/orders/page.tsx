@@ -25,7 +25,6 @@ export default async function Orders({
   const userOrders = orders.filter(
     (order: Order) => order.metadata.id === auth_user?.auth_user.rows[0].sub
   );
-  console.log("🚀 ~ userOrders:", userOrders[0].payment_method_options)
 
   return (
     <section className="py-[60px] dark:bg-gray">

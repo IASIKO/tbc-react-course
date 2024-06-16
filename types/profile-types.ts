@@ -52,6 +52,7 @@ export interface LatestCharge {
   id: string;
   receipt_url: string;
   refunded: boolean;
+  receipt_number: string;
 }
 
 export interface Order {

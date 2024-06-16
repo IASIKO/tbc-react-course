@@ -62,6 +62,9 @@ const OrdersPage = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
+                <p className="flex items-center justify-center mb-2">
+                  REC-{order.latest_charge.receipt_number}
+                </p>
                 <div className="mb-4 flex justify-between">
                   <div>
                     <p className="text-xl font-semibold">
@@ -87,7 +90,9 @@ const OrdersPage = ({
                   <p className="text-gray-700">
                     {t("address")}: {order.metadata.address}
                   </p>
-                  <p className="text-gray-700">{t("city")}: {order.metadata.city}</p>
+                  <p className="text-gray-700">
+                    {t("city")}: {order.metadata.city}
+                  </p>
                   <p className="text-gray-700">
                     {t("phone")}: {order.metadata.phone}
                   </p>
@@ -106,16 +111,16 @@ const OrdersPage = ({
                     </span>
                   </p>
                 </div>
-                  {authUser.role === "admin" &&
-                    order.latest_charge.refunded === false && (
-                      <button
-                        onClick={() => isOpen(order.latest_charge.id)}
-                        type="button"
-                        className="p-1 px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred w-[150px]"
-                      >
-                        {t("refund")}
-                      </button>
-                    )}
+                {authUser.role === "admin" &&
+                  order.latest_charge.refunded === false && (
+                    <button
+                      onClick={() => isOpen(order.latest_charge.id)}
+                      type="button"
+                      className="p-1 px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred w-[150px]"
+                    >
+                      {t("refund")}
+                    </button>
+                  )}
               </motion.div>
             ))
           ) : (
@@ -139,7 +144,7 @@ const OrdersPage = ({
                 >
                   <div className="flex items-center flex-col justify-center">
                     <h2 className="text-white tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
-                    {t("modalText")}
+                      {t("modalText")}
                     </h2>
                     {loading ? (
                       <ThemeLoader />
