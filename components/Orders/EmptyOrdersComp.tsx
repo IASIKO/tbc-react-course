@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 
 const EmptyOrdersComp = () => {
+
+  const t = useTranslations('orders')
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,14 +21,14 @@ const EmptyOrdersComp = () => {
         transition={{ duration: 0.5 }}
         className="mb-6 text-2xl font-bold text-red uppercase"
       >
-        You have not orders
+        {t('empty')}
       </motion.h2>
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="bg-[#f04d2e] text-white border-none py-2 px-4 text-lg cursor-pointer rounded-md"
       >
-        <Link href="/products">See products</Link>
+        <Link href="/products">{t('seeProd')}</Link>
       </motion.button>
     </motion.div>
   )

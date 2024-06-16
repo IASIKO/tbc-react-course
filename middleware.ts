@@ -1,16 +1,50 @@
 import createIntlMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
-// import { cookies } from "next/headers";
-// import { AUTH_COOKIE_KEY } from "./lib/constants";
+import { NextRequest, NextResponse } from "next/server";
+import { getSession } from "@auth0/nextjs-auth0/edge";
+import { checkAdmin } from "./lib/api";
 
 export default async function middleware(request: NextRequest) {
-  // const { pathname } = request.nextUrl;
+  const { pathname } = request.nextUrl;
+
   // Checking authentification
-  // if (!cookies().has(AUTH_COOKIE_KEY) && pathname !== "/login") {
+  const res = NextResponse.next();
+
+  const session = await getSession(request, res);
+  const sub = session?.user?.sub;
+
+  const protectedRoutes = [
+    "/admin",
+    "/products/add-product",
+    "/blog/add-blog",
+    "/profile",
+    "/orders",
+    "/orders/cancel",
+    "/orders/success",
+  ];
+
+  const isProtectedRoute = protectedRoutes.includes(pathname);
+
+  if (
+    !sub &&
+    (isProtectedRoute ||
+      pathname.startsWith("/products/edit-product") ||
+      pathname.startsWith("/blog/edit-blog"))
+  ) {
+    return NextResponse.redirect(new URL("/api/auth/login", request.url));
+  } else {
+    const role = await checkAdmin(sub);
+    const isAdmin = role === "admin" ? true : false;
+    const adminProtectedRoutes = ["/admin", "/products/add-product"];
+    const isAdminProtectedRoute = adminProtectedRoutes.includes(pathname);
+    if (
+      (!isAdmin && isAdminProtectedRoute) ||
+      pathname.startsWith("/products/edit-product")
+    ) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
+  // if () && pathname !== "/login") {
   //   return NextResponse.redirect(new URL("/login", request.url));
-  // }
-  // if (cookies().has(AUTH_COOKIE_KEY) && pathname === "/login") {
-  //   return NextResponse.redirect(new URL("/", request.url));
   // }
 
   // Rewriting on the supported language

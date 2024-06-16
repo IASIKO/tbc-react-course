@@ -122,7 +122,7 @@ const Checkout = ({
         </div>
         <button
           type="submit"
-          className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white bg-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred hover:text-white my-4 w-[300px]"
+          className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white bg-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-lightred hover:text-white my-4 w-full sm:w-[300px]"
         >
           {loading ? <ThemeLoader /> : t("buyNow")}
         </button>

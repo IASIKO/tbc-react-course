@@ -91,3 +91,13 @@ export const getOrders = async () => {
   const orders = await res.json();
   return orders;
 };
+
+// AUTH_USER
+
+export const checkAdmin = async (userId: string) => {
+  const res = await fetch(`${BASE_URL}/api/auth-users/check-admin/${userId}`, {
+    cache: "no-store",
+    });
+  const admin = await res.json();
+  return admin.admin.rows[0]?.role;
+};
