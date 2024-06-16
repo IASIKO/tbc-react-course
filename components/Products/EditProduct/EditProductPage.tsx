@@ -253,10 +253,7 @@ const EditProductPage = ({ productInfo }: { productInfo: Product }) => {
                   name="rating"
                   value={product.rating}
                   onChange={handleChange}
-                  min={0.1}
-                  max={5}
-                  step={0.1}
-                  required
+                  disabled
                   className="border-[1px] border-solid border-red py-[5px] pl-[20px] dark:text-white"
                 />
                 {errors.rating && (

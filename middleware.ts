@@ -21,7 +21,7 @@ export default async function middleware(request: NextRequest) {
     "/orders",
     "/orders/cancel",
     "/orders/success",
-    "/cart/checkout"
+    "/cart/checkout",
   ];
 
   const isProtectedRoute = protectedRoutes.includes(pathname);
@@ -43,8 +43,8 @@ export default async function middleware(request: NextRequest) {
     ];
     const isAdminProtectedRoute = adminProtectedRoutes.includes(pathname);
     if (
-      (!isAdmin && isAdminProtectedRoute) ||
-      pathname.startsWith("/products/edit-product")
+      !isAdmin &&
+      (isAdminProtectedRoute || pathname.startsWith("/products/edit-product"))
     ) {
       return NextResponse.redirect(new URL("/", request.url));
     }
