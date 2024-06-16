@@ -14,12 +14,14 @@ export default async function middleware(request: NextRequest) {
 
   const protectedRoutes = [
     "/admin",
+    "/admin/users",
     "/products/add-product",
     "/blog/add-blog",
     "/profile",
     "/orders",
     "/orders/cancel",
     "/orders/success",
+    "/cart/checkout"
   ];
 
   const isProtectedRoute = protectedRoutes.includes(pathname);
@@ -34,7 +36,11 @@ export default async function middleware(request: NextRequest) {
   } else {
     const role = await checkAdmin(sub);
     const isAdmin = role === "admin" ? true : false;
-    const adminProtectedRoutes = ["/admin", "/products/add-product"];
+    const adminProtectedRoutes = [
+      "/admin",
+      "/admin/users",
+      "/products/add-product",
+    ];
     const isAdminProtectedRoute = adminProtectedRoutes.includes(pathname);
     if (
       (!isAdmin && isAdminProtectedRoute) ||
@@ -43,9 +49,6 @@ export default async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/", request.url));
     }
   }
-  // if () && pathname !== "/login") {
-  //   return NextResponse.redirect(new URL("/login", request.url));
-  // }
 
   // Rewriting on the supported language
   const localeRewrite = createIntlMiddleware({

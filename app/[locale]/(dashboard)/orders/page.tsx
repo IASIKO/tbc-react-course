@@ -21,16 +21,20 @@ export default async function Orders({
   const session = await getSession();
   const sub = session?.user?.sub;
   const auth_user = await getAuthUserAction(sub);
-  
+
   const userOrders = orders.filter(
-    (order: Order) =>
-      order.metadata.id === auth_user?.auth_user.rows[0].sub
-    );
-    
+    (order: Order) => order.metadata.id === auth_user?.auth_user.rows[0].sub
+  );
+
   return (
     <section className="py-[60px] dark:bg-gray">
       <div className="max-w-[1140px] m-auto">
-        <OrdersPage authUser={auth_user?.auth_user.rows[0]} userOrders={auth_user?.auth_user.rows[0].role == 'admin' ? orders : userOrders} />
+        <OrdersPage
+          authUser={auth_user?.auth_user.rows[0]}
+          userOrders={
+            auth_user?.auth_user.rows[0].role == "admin" ? orders : userOrders
+          }
+        />
       </div>
     </section>
   );
