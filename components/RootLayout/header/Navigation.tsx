@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ProductObject } from "../../../types/products-types";
-import { useEffect, useState   } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu } from "react-icons/fi";
@@ -102,7 +102,7 @@ const Navigation = ({
                     href={path}
                     className={`link ${
                       pathname === path
-                        ? "text-red text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
+                        ? "text-red font-bold text-[18px] py-[15px] px-[20px] uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all"
                         : "text-white text-[18px] py-[15px] px-[20px] font-medium uppercase tracking-[1px] opacity-100 hover:cursor-pointer hover:text-red hover:transition-all dark:text-white dark:hover:text-red"
                     }`}
                   >
@@ -224,7 +224,9 @@ const Navigation = ({
             >
               <IoMdClose />
             </button>
-            <Language />
+            <div className="mb-2">
+              <Language />
+            </div>
             <div className="duration-300 rounded flex justify-center w-[100px] m-auto">
               <Theme />
             </div>

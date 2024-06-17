@@ -76,14 +76,14 @@ const Header = ({
             <div className="w-full font-extralight flex items-center justify-between px-2">
               <a
                 href="#"
-                className="text-[#ffffff] text-[15px] mr-[5px]"
+                className="text-white text-[16px] mr-[5px]"
                 aria-label="phone"
               >
                 <span>+00 1234 567</span>
               </a>
               <a
                 href="#"
-                className="text-[#ffffff] text-[15px] mr-[5px]"
+                className="text-white text-[16px] mr-[5px]"
                 aria-label="email"
               >
                 <span>youremail@email.com</span>
