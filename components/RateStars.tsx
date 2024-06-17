@@ -1,6 +1,12 @@
 "use client";
 
-import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { MdStarRate } from "react-icons/md";
 
 const defaultCount = 5;
@@ -24,9 +30,14 @@ const RateStars = ({
   iconSize?: number;
   enable?: boolean;
   setRatingValue?: Dispatch<SetStateAction<number>>;
+  reviewRating?: boolean;
 }) => {
-  const [rating, setRating] = useState(defaultRating);
+  const [rating, setRating] = useState(0);
   const [temporaryRating, setTemporaryRating] = useState(0);
+
+  useEffect(() => {
+    setRating(defaultRating);
+  }, [defaultRating]);
 
   let stars = Array(count || defaultCount).fill(icon || defaultIcon);
 

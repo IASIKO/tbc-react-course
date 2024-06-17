@@ -141,7 +141,10 @@ export async function getAuthUserAction(sub: string) {
 
 // PRODUCTS
 
-export const createProductAction = async (product: ProductForm, thumbnail: string) => {
+export const createProductAction = async (
+  product: ProductForm,
+  thumbnail: string
+) => {
   return createProduct(product, thumbnail);
 };
 
@@ -150,7 +153,11 @@ export const removeProductAction = async (id: number) => {
   await deleteProduct(id);
 };
 
-export const editProductAction = async (product: ProductForm, id: number, thumbnail: string) => {
+export const editProductAction = async (
+  product: ProductForm,
+  id: number,
+  thumbnail: string
+) => {
   revalidatePath("/", "layout");
   await editProduct(product, id, thumbnail);
 };
@@ -161,7 +168,11 @@ export const updateRatingAction = async (rating: number, id: number) => {
 };
 
 // BLOGS
-export const createBlogAction = async (blog: Blog, userId: number, thumbnail: string) => {
+export const createBlogAction = async (
+  blog: Blog,
+  userId: number,
+  thumbnail: string
+) => {
   return createBlog(blog, userId, thumbnail);
 };
 
@@ -170,7 +181,11 @@ export const removeBlogAction = async (id: number) => {
   await deleteBlog(id);
 };
 
-export const editBlogAction = async (blog: Blog, id: number, thumbnail: string) => {
+export const editBlogAction = async (
+  blog: Blog,
+  id: number,
+  thumbnail: string
+) => {
   revalidatePath("/", "layout");
   await editBlog(blog, id, thumbnail);
 };
@@ -198,7 +213,7 @@ export async function addReviewAction(review: ReviewType) {
   });
 }
 
-export const deleteReviewAction = async (id: number) => {
+export const deleteReviewAction = async (id: number | null) => {
   revalidatePath("/products");
   await fetch(`${BASE_URL}/api/reviews/delete-review`, {
     method: "DELETE",

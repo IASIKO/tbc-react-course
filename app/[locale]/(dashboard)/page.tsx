@@ -41,7 +41,7 @@ export default async function DashboardHome({
             src={test}
             alt="background image"
             className="w-full h-full object-cover object-left-bottom -scale-x-100"
-            priority={false}
+            priority={true}
             object-fit="cover"
             fill={true}
           />

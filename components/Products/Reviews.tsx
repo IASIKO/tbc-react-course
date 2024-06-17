@@ -16,6 +16,7 @@ import { AuthUser, ReviewsType } from "../../types/profile-types";
 import { MdDelete, MdEdit } from "react-icons/md";
 import ThemeLoader from "../UI/ThemeLoader";
 import { useTranslations } from "next-intl";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface ReviewsProps {
   productDetails: Product;
@@ -41,6 +42,9 @@ const Reviews: React.FC<ReviewsProps> = ({
     rating: ratingValue,
     comment: "",
   });
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [selectedReviewId, setSelectedReviewId] = useState<number | null>(null);
   const { user } = useUser();
 
   const router = useRouter();
@@ -98,6 +102,26 @@ const Reviews: React.FC<ReviewsProps> = ({
     setEditReviewId(id);
   };
 
+  const deleteHandler = (selectedId: number) => {
+    document.body.style.overflow = "hidden";
+    setModalIsOpen(true);
+    setSelectedReviewId(selectedId);
+  };
+
+  const deleteReview = async () => {
+    setDeleteLoading(true);
+    await deleteReviewAction(selectedReviewId);
+    setDeleteLoading(false);
+    setModalIsOpen(false);
+    document.body.style.overflow = "unset";
+  };
+
+  const isClose = () => {
+    document.body.style.overflow = "unset";
+    setModalIsOpen(false);
+    setSelectedReviewId(null);
+  };
+
   return (
     <div className="mt-10">
       <h2 className="flex flex-row flex-nowrap items-center mt-24">
@@ -107,6 +131,7 @@ const Reviews: React.FC<ReviewsProps> = ({
         </span>
         <span className="flex-grow block border-t border-red"></span>
       </h2>
+
       <div className="mt-9 px-4 lg:px-24 py-8">
         {reviews.map((rev) => (
           <React.Fragment key={rev.id}>
@@ -116,7 +141,7 @@ const Reviews: React.FC<ReviewsProps> = ({
                 <button
                   type="button"
                   className="text-black hover:text-red dark:text-white"
-                  onClick={() => deleteReviewAction(rev.id)}
+                  onClick={() => deleteHandler(rev.id)}
                 >
                   <MdDelete />
                 </button>
@@ -151,6 +176,51 @@ const Reviews: React.FC<ReviewsProps> = ({
                 <p className="text-md lg:text-lg">{rev.comment}</p>
               </div>
             </div>
+            <AnimatePresence>
+              {modalIsOpen && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={isClose}
+                  className="fixed inset-0 z-30 bg-[#000000bf] bg-opacity-90 flex items-center justify-center"
+                >
+                  <motion.div
+                    initial={{ scale: 0, rotate: "12.5deg" }}
+                    animate={{ scale: 1, rotate: "0deg" }}
+                    exit={{ scale: 0, rotate: "0deg" }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="relative z-50 p-8 border border-red rounded-xl bg-red dark:bg-gray dark:border-black mx-2"
+                  >
+                    <div className="flex items-center flex-col justify-center">
+                      <h2 className="text-white tracking-widest mb-6 dark:text-white text-center max-w-[400px]">
+                        {t("modalText")}
+                      </h2>
+                      {deleteLoading ? (
+                        <ThemeLoader />
+                      ) : (
+                        <div className="flex gap-2 mt-6">
+                          <button
+                            type="button"
+                            onClick={deleteReview}
+                            className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
+                          >
+                            {t("yes")}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={isClose}
+                            className="p-2 px-6 text-lg bg-white text-red dark:text-black font-medium align-middle duration-300 uppercase flex items-center gap-2 w-[100px] justify-center"
+                          >
+                            {t("no")}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </React.Fragment>
         ))}
       </div>

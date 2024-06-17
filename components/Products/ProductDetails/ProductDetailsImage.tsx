@@ -36,7 +36,6 @@ const ProductDetailsImage: React.FC<ProductDetailsImageProps> = ({
           className="w-full h-auto lg:h-[600px] object-cover mb-8 lg:mb-0"
           width={400}
           height={600}
-          priority={true}
         />
       </div>
       {zoomedImage && (

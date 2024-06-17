@@ -28,6 +28,7 @@ const OrdersPage = ({
       setModalIsOpen(false);
       setLoading(false);
       setSelectedChargeId(null);
+      document.body.style.overflow = "unset";
     }
   };
 

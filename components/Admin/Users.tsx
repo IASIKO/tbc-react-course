@@ -24,6 +24,7 @@ const Users = ({ users }: UsersProps) => {
   const router = useRouter();
 
   const userDeleteHandler = async () => {
+    document.body.style.overflow = "unset";
     if (selectedId) {
       setLoading(true);
       const filteredUsers = usersData.filter((user) => user.id !== selectedId);

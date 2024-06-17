@@ -26,8 +26,8 @@ const ProductDetailsContent: React.FC<ProductDetailsContentProps> = ({
 
   const starReviewsSum = reviews.reduce((acc, curr) => acc + curr.rating, 0);
   const starRating =
-    (Number(productDetails.rating) + starReviewsSum) / (reviews.length + 1);
-
+  (Number(productDetails.rating) + starReviewsSum) / (reviews.length + 1);
+  
   return (
     <>
       <section className="py-12 dark:bg-gray">
