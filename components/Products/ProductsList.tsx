@@ -10,8 +10,9 @@ import { removeProductAction } from "../../lib/actions";
 import Button from "../UI/Button";
 import Link from "next/link";
 import { AuthUser } from "../../types/profile-types";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Sort from "../Sort";
+import ProductIsInCartModal from "./ProductIsInCartModal";
 
 interface ProductsListProps {
   productListData: Product[];
@@ -111,51 +112,21 @@ const ProductsList: React.FC<ProductsListProps> = ({
     <>
       <AnimatePresence>
         {modalIsOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={isClose}
-            className="fixed inset-0 z-30 bg-[#000000bf] opacity-90 flex items-center justify-center"
-          >
-            <motion.div
-              initial={{ scale: 0, rotate: "12.5deg" }}
-              animate={{ scale: 1, rotate: "0deg" }}
-              exit={{ scale: 0, rotate: "0deg" }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative z-50 p-8 border border-red rounded-xl bg-white dark:bg-gray dark:border-black"
-            >
-              <div className="flex items-center flex-col justify-center">
-                <h2 className="text-red uppercase tracking-widest mb-6 dark:text-white">
-                  {t("warning")}
-                </h2>
-                <p>{t("isInCart")}</p>
-                <div className="flex gap-2 mt-6">
-                  <button
-                    type="button"
-                    onClick={isClose}
-                    className="p-2 px-6 text-lg bg-red text-white font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
-                  >
-                    {t("close")}
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+          <ProductIsInCartModal isClose={isClose}/>
         )}
       </AnimatePresence>
       {authUser?.role && authUser.role === "admin" && (
         <Link
           href="/products/add-product"
-          className="fixed top-80 left-0 transform -translate-x-[50%] hover:-translate-x-[40%] rotate-90 z-50 duration-300"
+          className="fixed top-80 left-0 transform -translate-x-[50%] hover:-translate-x-[45%] rotate-90 z-50 duration-300"
         >
-          <Button>Add Product</Button>
+          <Button>{t('addProduct')}</Button>
         </Link>
       )}
       <section className="py-[60px] dark:bg-gray animate-fade-in-up">
         <div className="max-w-[1140px] mx-auto">
           <div className="pb-[30px] flex-col flex justify-center items-center">
-            <span className="text-[#b7472a] text-[21px] font-normal italic">
+            <span className="text-[#b7472a] text-[21px] font-normal italic text-center">
               {t("listTitle1")}
             </span>
             <h2 className="text-[45px] font-bold text-black leading-normal dark:text-white text-center">

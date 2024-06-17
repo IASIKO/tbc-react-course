@@ -1,9 +1,18 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   console.log(error);
+
+  const t = useTranslations("error");
 
   return (
     <motion.div
@@ -19,7 +28,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         transition={{ duration: 0.5 }}
         className="mb-6 text-2xl font-bold"
       >
-        Something went wrong!
+        {t("wrong")}
       </motion.h2>
       <motion.button
         whileHover={{ scale: 1.1 }}
@@ -27,7 +36,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         onClick={() => reset()}
         className="bg-[#f04d2e] text-white border-none py-2 px-4 text-lg cursor-pointer rounded-md"
       >
-        Try again
+        {t("try")}
       </motion.button>
     </motion.div>
   );

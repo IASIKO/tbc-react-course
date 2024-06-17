@@ -57,7 +57,8 @@
     "viewAllProducts": "View All Products",
     "warning": "Warning!",
     "isInCart": "Product is already in the cart",
-    "close": "Close"
+    "close": "Close",
+    "addProduct": "Add Product"
   },
   "addProduct": {
     "addProduct": "Add Product",
@@ -220,5 +221,9 @@
     "no": "No",
     "empty": "You don't have orders!",
     "seeProd": "See products"
+  },
+  "error": {
+    "wrong": "Something went wrong!",
+    "try":"Try again"
   }
 }
