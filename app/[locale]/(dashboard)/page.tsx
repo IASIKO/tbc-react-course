@@ -1,12 +1,10 @@
-import test from '../../../public/Assets/images/test.jpg'
+import test from "../../../public/Assets/images/test.jpg";
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { getAuthUserAction, getUserCartAction } from "../../../lib/actions";
 import { getBlogs, getProducts } from "../../../lib/api";
 import { getSession } from "@auth0/nextjs-auth0";
-
-
 
 export const metadata = {
   title: "Liquor store - Home",
@@ -44,6 +42,7 @@ export default async function DashboardHome({
             alt="background image"
             className="w-full h-full object-cover object-left-bottom -scale-x-100"
             priority={true}
+            object-fit="contain"
           />
         </div>
       </div>
