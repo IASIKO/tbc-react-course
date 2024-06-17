@@ -1,5 +1,3 @@
-import React from "react";
-
 const Loader = () => {
   return (
     <div className="flex flex-col h-[300px] sm:h-[500px] items-center justify-center p-[100px] my-auto">

@@ -14,6 +14,7 @@ const Header = ({
   selectedProducts: ProductObject[];
   authUser: AuthUser;
 }) => {
+
   return (
     <header>
       <div className="relative w-[100%] bg-red">
@@ -72,7 +73,22 @@ const Header = ({
             </div>
           </div>
           <div className="lg:hidden text-white flex justify-center items-center cursor-pointer">
-            <div className="w-full font-extralight flex items-center justify-between px-2"></div>
+            <div className="w-full font-extralight flex items-center justify-between px-2">
+              <a
+                href="#"
+                className="text-white text-[16px] mr-[5px] font-bold"
+                aria-label="phone"
+              >
+                <span>+00 1234 567</span>
+              </a>
+              <a
+                href="#"
+                className="text-white text-[16px] mr-[5px] font-bold"
+                aria-label="email"
+              >
+                <span>youremail@email.com</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
