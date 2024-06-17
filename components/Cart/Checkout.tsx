@@ -3,7 +3,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { selectedProduct } from "../../types/products-types";
 import { AuthUser, CheckoutProfile } from "../../types/profile-types";
-import { checkoutAction } from "../../lib/actions";
+import { checkoutAction, resetCartAction } from "../../lib/actions";
 import { useTranslations } from "next-intl";
 import ThemeLoader from "../UI/ThemeLoader";
 
@@ -50,6 +50,7 @@ const Checkout = ({
     e.preventDefault();
     await checkoutAction(cartProducts, profile);
     setLoading(false);
+    resetCartAction()
   };
 
   const countSubtotal = cartProducts.reduce(

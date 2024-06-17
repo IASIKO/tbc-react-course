@@ -55,26 +55,26 @@ const Navigation = ({
     }
   }, [mobileMenuIsOpen]);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        userModalRef.current &&
-        !userModalRef.current.contains(event.target as Node)
-      ) {
-        setUserModalIsOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (
+  //       userModalRef.current &&
+  //       !userModalRef.current.contains(event.target as Node)
+  //     ) {
+  //       setUserModalIsOpen(false);
+  //     }
+  //   };
 
-    if (userModalIsOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
+  //   if (userModalIsOpen) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //   } else {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   }
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [userModalIsOpen]);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [userModalIsOpen]);
 
   const selectedNumber = selectedProducts
     ? selectedProducts.reduce((acc: number, curr: ProductObject) => {
