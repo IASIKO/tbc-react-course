@@ -8,6 +8,7 @@ import { AuthUser, Profile } from "../../types/profile-types";
 import { PutBlobResult } from "@vercel/blob";
 import { updateAuthUserAction } from "../../lib/actions";
 import ThemeLoader from "../UI/ThemeLoader";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ProfileDetailsProps {
   authUser: AuthUser;
@@ -30,6 +31,8 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
 
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
 
   const t = useTranslations("profile");
 
@@ -58,11 +61,20 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
-    await updateAuthUserAction(
-      { ...profile },
-      blob ? blob.url : profile.picture
-    );
+    try {
+      await updateAuthUserAction(
+        { ...profile },
+        blob ? blob.url : profile.picture
+      );
+      setMessage("Profile change successful!");
+    } catch (error) {
+      setMessage("Something went wrong!");
+    }
     setLoading(false);
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 5000);
   };
 
   useEffect(() => {
@@ -175,12 +187,27 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
                 />
               </div>
             </div>
-            <button
-              type="submit"
-              className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred sm:w-[300px] w-full mt-4"
-            >
-              {loading ? <ThemeLoader /> : t("save")}
-            </button>
+            <div className="flex items-center flex-col gap-4 sm:flex-row justify-between h-[140px] sm:h-auto">
+              <button
+                type="submit"
+                className="p-[7px] px-[25px] border border-solid border-red text-[18px] text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 bg-red hover:bg-lightred sm:w-[300px] w-full mt-4"
+              >
+                {loading ? <ThemeLoader /> : t("save")}
+              </button>
+              <AnimatePresence>
+                {showMessage && (
+                  <motion.div
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 5 }}
+                    className="text-[20px] px-4 p-1 rounded bg-success text-white font-bold sm:w-[300px] w-full mt-4"
+                  >
+                    {message}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </form>
         </div>
       </div>
