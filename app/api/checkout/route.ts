@@ -7,6 +7,9 @@ interface StripeData {
   price: string;
   quantity: number;
   images?: string[];
+  metadata?: {
+    price: string;
+  };
 }
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -28,7 +31,8 @@ export async function POST(req: NextRequest) {
     for (const product of products) {
       const stripeProduct = activeProducts?.find(
         (stripeP: StripeData) =>
-          stripeP?.name?.toLowerCase() == product.title.toLowerCase()
+          stripeP?.name?.toLowerCase() == product.title.toLowerCase() &&
+          stripeP?.metadata?.price === product.price
       );
       if (stripeProduct == undefined) {
         await stripe.products.create({
@@ -37,6 +41,9 @@ export async function POST(req: NextRequest) {
           default_price_data: {
             unit_amount: product.price * 100,
             currency: "usd",
+          },
+          metadata: {
+            price: product.price,
           },
         });
       }
@@ -52,7 +59,8 @@ export async function POST(req: NextRequest) {
   for (const product of products) {
     const stripeProduct = activeProducts?.find(
       (prod: StripeData) =>
-        prod?.name?.toLowerCase() == product.title.toLowerCase()
+        prod?.name?.toLowerCase() == product.title.toLowerCase() &&
+        prod?.metadata?.price === product.price
     );
 
     if (stripeProduct) {
@@ -68,7 +76,7 @@ export async function POST(req: NextRequest) {
     mode: "payment",
     payment_intent_data: {
       metadata: {
-        id:profile.sub,
+        id: profile.sub,
         phone: profile.phone,
         city: profile.city,
         address: profile.address,
