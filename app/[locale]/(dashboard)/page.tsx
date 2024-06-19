@@ -44,6 +44,7 @@ export default async function DashboardHome({
             width={1920}
             height={1080}
             className="w-full h-full object-cover object-left-bottom -scale-x-100 hidden sm:block"
+            priority={true}
           />
           <Image
             src={testMobile}
@@ -51,6 +52,7 @@ export default async function DashboardHome({
             width={360}
             height={760}
             className="w-full h-full object-cover object-left-bottom -scale-x-100 block sm:hidden"
+            priority={true}
           />
         </div>
       </div>
