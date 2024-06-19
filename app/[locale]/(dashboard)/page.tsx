@@ -1,5 +1,5 @@
 import test from "../../../public/Assets/images/test.jpg";
-import testMobile from "../../../public/Assets/images/test-mobile1.jpg";
+// import testMobile from "../../../public/Assets/images/test-mobile.webp";
 import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -44,12 +44,12 @@ export default async function DashboardHome({
             className="w-full h-full object-cover object-left-bottom -scale-x-100 hidden sm:block"
             priority
           />
-          <Image
+          {/* <Image
             src={testMobile}
             alt="background image for mobile"
             className="w-full h-full object-cover object-left-bottom -scale-x-100 block sm:hidden"
             priority
-          />
+          /> */}
         </div>
       </div>
       <LandingContent
