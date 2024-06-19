@@ -37,7 +37,7 @@ export default async function DashboardHome({
           clipPath: "inset(0 0 0 0)",
         }}
       >
-        <div className="fixed h-full w-full left-0 top-0">
+        {/* <div className="fixed h-full w-full left-0 top-0"> */}
           <Image
             src={test}
             alt="background image"
@@ -50,7 +50,7 @@ export default async function DashboardHome({
             className="w-full h-full object-cover object-left-bottom -scale-x-100 block sm:hidden"
             priority
           />
-        </div>
+        {/* </div> */}
       </div>
       <LandingContent
         blogListData={blogListData}
