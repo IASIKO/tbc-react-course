@@ -67,56 +67,53 @@ Navigate to `http://localhost:3000` to view the application. The application wil
 
 The project structure is organized as follows:
 
-liquor-store/
-├── app/
-│ ├── about/
-│ ├── admin/
-│ ├── api/
-│ │ └── [route handlers]
-│ ├── blog/
-│ ├── blog/[id]/
-│ ├── blog/add-blog/
-│ ├── blog/edit-blog/[id]
-│ ├── cart/
-│ ├── cart/checkout/
-│ ├── contact/
-│ ├── orders/
-│ ├── products/
-│ ├── products/[id]/
-│ ├── products/add-product/
-│ ├── products/edit-product/[id]
-│ ├── profile/
-│ ├── success/
-│ ├── cancel/
-├── components/
-│ ├── About/
-│ ├── Admin/
-│ ├── Blog/
-│ ├── Cart/
-│ ├── Contact/
-│ ├── Home/
-│ ├── Orders/
-│ ├── Products/
-│ ├── Profile/
-│ ├── RootLayout/
-│ ├── UI/
-├── lib/
-│ └── actions.ts
-│ └── api.ts
-│ └── constants.ts
-├── messages/
-├── public/
-│ ├── images/
-│ ├── fonts/
-├── middleware.ts
-├── .env.local
-├── i18n.ts
-├── next.config.mjs
-├── tailwind.config.js
-├── tsconfig.json
-
-markdown
-Copy code
+tbc-react-course/<br/> 
+├── app/ <br/> 
+│   ├── about/ <br/> 
+│   ├── admin/ <br/> 
+│   ├── api/ <br/> 
+│   │   └── [route handlers]<br/> 
+│   ├── blog/<br/> 
+│   ├── blog/[id]/<br/> 
+│   ├── blog/add-blog/<br/> 
+│   ├── blog/edit-blog/[id]/<br/> 
+│   ├── cart/<br/> 
+│   │   ├── cart/checkout/<br/> 
+│   ├── contact/<br/> 
+│   ├── orders/<br/> 
+│   │   ├── orders/success/<br/> 
+│   │   ├── orders/cancel/<br/> 
+│   ├── products/<br/> 
+│   ├── products/[id]/<br/> 
+│   ├── products/add-product/<br/> 
+│   ├── products/edit-product/[id]/<br/> 
+│   ├── profile/<br/> 
+├── components/<br/> 
+│   ├── About/<br/> 
+│   ├── Admin/<br/> 
+│   ├── Blog/<br/> 
+│   ├── Cart/<br/> 
+│   ├── Contact/<br/> 
+│   ├── Home/<br/> 
+│   ├── Orders/<br/> 
+│   ├── Products/<br/> 
+│   ├── Profile/<br/> 
+│   ├── RootLayout/<br/> 
+│   ├── UI/<br/> 
+├── lib/<br/> 
+│   ├── actions.ts<br/> 
+│   ├── api.ts<br/> 
+│   ├── constants.ts<br/> 
+├── messages/<br/> 
+├── public/<br/> 
+│   ├── images/<br/> 
+│   ├── fonts/<br/> 
+├── middleware.ts<br/> 
+├── .env.local<br/> 
+├── i18n.ts<br/> 
+├── next.config.mjs<br/> 
+├── tailwind.config.js<br/> 
+├── tsconfig.json<br/> 
 
 ## Pages
 
@@ -180,6 +177,9 @@ Components are organized according to the page they belong to:
 - `popmotion`: For animations.
 - `framer-motion`: For animations.
 - `next-share`: For social media sharing.
+- `stripe`: For payment.
+- `auth0`: For authentication and authorization.
+- `tailwind`: For CSS.
 
 ## APIs and Database
 
@@ -189,12 +189,8 @@ Components are organized according to the page they belong to:
 
 ## Middleware
 
-The `middleware` folder contains files for protected routes and internationalization.
+The `middleware` file contains files for protected routes and internationalization.
 
 ## Public Folder
 
 The `public` folder contains project assets like images and fonts.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
