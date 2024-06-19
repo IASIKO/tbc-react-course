@@ -41,16 +41,12 @@ export default async function DashboardHome({
           <Image
             src={test}
             alt="background image"
-            width={1920}
-            height={1080}
             className="w-full h-full object-cover object-left-bottom -scale-x-100 hidden sm:block"
             priority
           />
           <Image
             src={testMobile}
             alt="background image for mobile"
-            width={360}
-            height={760}
             className="w-full h-full object-cover object-left-bottom -scale-x-100 block sm:hidden"
             priority
           />
