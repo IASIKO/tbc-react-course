@@ -110,7 +110,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <button
             type="button"
             onClick={isOpen}
-            className="p-[7px] px-6 border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-red hover:text-white"
+            className="p-[7px] px-6 border border-solid border-red text-[18px] bg-red text-white font-medium align-middle duration-300 uppercase flex items-center gap-2 hover:bg-white hover:text-red"
           >
             {t("inCart")}
           </button>
@@ -120,7 +120,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <button
             type="button"
             onClick={addToCartHandler}
-            className="p-[7px] border border-solid border-red text-[18px] text-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-red hover:text-white w-full"
+            className="p-[7px] border border-solid border-red text-[18px] bg-red text-white font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 hover:bg-white hover:text-red w-full"
           >
             <HiOutlineShoppingBag />
             {t("addToCart")}
