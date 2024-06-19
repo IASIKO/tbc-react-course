@@ -158,7 +158,9 @@
     "buyNow": "Buy now",
     "choose": "Choose File",
     "noFile": "No file chosen",
-    "upload": "Upload"
+    "upload": "Upload",
+    "succMessage": "Profile update successful!",
+    "errMessage": "Something went wrong!"
   },
   "footer": {
     "myAccount": "My Account",

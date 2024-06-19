@@ -66,9 +66,9 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
         { ...profile },
         blob ? blob.url : profile.picture
       );
-      setMessage("Profile change successful!");
+      setMessage(t('succMessage'));
     } catch (error) {
-      setMessage("Something went wrong!");
+      setMessage(t('errMessage'));
     }
     setLoading(false);
     setShowMessage(true);
@@ -201,7 +201,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ authUser }) => {
                     animate={{ opacity: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 5 }}
-                    className="text-[20px] px-4 p-1 rounded bg-success text-white font-bold sm:w-[300px] w-full mt-4"
+                    className="text-[20px] px-4 p-1 rounded bg-success text-white font-bold sm:w-[350px] w-full mt-4 text-center"
                   >
                     {message}
                   </motion.div>
