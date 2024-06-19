@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
-import { AiOutlineClockCircle } from "react-icons/ai";
+import { FaCalendar } from "react-icons/fa";
 import { BlogInfo } from "../../types/blogs.type";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { useTranslations } from "next-intl";
@@ -86,9 +86,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
                   ? `${blogInfo.given_name.slice(0, 10)}...`
                   : blogInfo.given_name}
               </p>
-              <div className="flex items-center text-sm text-gray-500">
-                <AiOutlineClockCircle />
-                <span className="ml-2">{blogInfo.added_on.slice(0,10)}</span>
+              <div className="flex text-sm text-gray-500 pt-1">
+                <FaCalendar />
+                <span className="ml-2">{blogInfo.added_on.slice(0, 10)}</span>
               </div>
             </div>
           </div>

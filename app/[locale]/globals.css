@@ -76,12 +76,3 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-.blog-text {
-  display: -webkit-box;
-  -webkit-line-clamp: 6; 
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 150px; 
-}
