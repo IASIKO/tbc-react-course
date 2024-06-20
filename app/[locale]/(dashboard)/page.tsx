@@ -1,6 +1,6 @@
 import test from "../../../public/Assets/images/test.jpg";
 import testMobile from "../../../public/Assets/images/test-mobile.webp";
-import Image from "next/image";
+// import Image from "next/image";
 import LandingContent from "../../../components/Home/LandingContent";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { getAuthUserAction, getUserCartAction } from "../../../lib/actions";
@@ -38,7 +38,7 @@ export default async function DashboardHome({
         }}
       >
         <div className="fixed h-full w-full left-0 top-0">
-          <Image
+          {/* <Image
             src={test}
             alt="background image"
             className="w-full h-full object-cover object-left-bottom -scale-x-100 hidden sm:block"
@@ -49,7 +49,24 @@ export default async function DashboardHome({
             alt="background image for mobile"
             className="w-full h-full object-cover object-left-bottom -scale-x-100 block sm:hidden"
             priority
-          />
+          /> */}
+          <picture>
+            <source
+              srcSet={testMobile.src}
+              media="(max-width: 600px)"
+              type="image/webp"
+            />
+            <source
+              srcSet={test.src}
+              media="(min-width: 601px)"
+              type="image/jpeg"
+            />
+            <img
+              src={test.src}
+              alt="background image"
+              className="w-full h-full object-cover object-left-bottom -scale-x-100"
+            />
+          </picture>
         </div>
       </div>
       <LandingContent
