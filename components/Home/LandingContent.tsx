@@ -27,7 +27,7 @@ const LandingContent: React.FC<LandingContentProps> = ({
 
   return (
     <>
-      <h1 className="textStroke absolute top-1/3 lg:top-1/2 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-[30px] -translate-y-1/2 text-[25px] sm:text-[45px] md:text-[60px] lg:text-[90px] leading-tight font-bold italic">
+      <h1 className="textStroke absolute top-1/3 lg:top-1/2 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-[30px] -translate-y-1/2 text-[25px] sm:text-[40px] md:text-[60px] lg:text-[90px] leading-tight font-bold italic">
         <div className="py-[30px] rotate-[-4deg] text-center w-[300px] sm:w-[300px] md:w-[400px] lg:w-[560px] m-auto ">
           {t("slogan.good")}{" "}
           <span className="text-gray-dark">{t("slogan.drinks")} </span>
