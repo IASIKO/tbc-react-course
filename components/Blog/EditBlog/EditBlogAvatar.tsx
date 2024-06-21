@@ -77,7 +77,7 @@ const EditBlogAvatar: React.FC<EditBlogAvatarProps> = ({
               className="block w-full text-sm text-red bg-white dark:bg-black rounded-lg border border-gray-300 cursor-pointer placeholder-red dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 mb-4 sm:mb-0 sm:mr-4 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-red file:text-white hover:file:bg-lightred file:cursor-pointer"
             />
             <button
-              className="p-[7px] px-[25px] h-10 border border-solid border-red text-[12px] text-white bg-red font-medium duration-300 uppercase hover:text-white rounded-lg hover:bg-lightred"
+              className="p-[7px] h-10 border border-solid border-red text-[12px] text-white bg-red font-medium duration-300 uppercase hover:text-white rounded-lg hover:bg-lightred w-[120px]"
               type="submit"
             >
               {loading ? <ThemeLoader /> : t("upload")}
