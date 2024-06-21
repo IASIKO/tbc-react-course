@@ -60,7 +60,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
       </div>
       <div className="p-6 flex flex-col justify-between sm:h-[300px] h-auto">
         <div>
-          <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">
+          <h3 className="text-xl font-semibold mb-2 text-black">
             {blogInfo.title.length > 20
               ? `${blogInfo.title.slice(0, 20)}...`
               : blogInfo.title}
