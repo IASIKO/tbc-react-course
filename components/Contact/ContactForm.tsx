@@ -108,7 +108,7 @@ const ContactForm = () => {
                 required
               />
               {errors.fullName && (
-                <span className="text-red-500 text-xs mt-1 dark:text-white">
+                <span className="text-red text-xs mt-1 dark:text-white">
                   {errors.fullName}
                 </span>
               )}
@@ -131,7 +131,7 @@ const ContactForm = () => {
                 required
               />
               {errors.email && (
-                <span className="text-red-500 text-xs mt-1 dark:text-white">
+                <span className="text-red text-xs mt-1 dark:text-white">
                   {errors.email}
                 </span>
               )}
@@ -155,7 +155,7 @@ const ContactForm = () => {
               required
             />
             {errors.subject && (
-              <span className="text-red-500 text-xs mt-1 dark:text-white">
+              <span className="text-red text-xs mt-1 dark:text-white">
                 {errors.subject}
               </span>
             )}
@@ -178,7 +178,7 @@ const ContactForm = () => {
               required
             />
             {errors.message && (
-              <span className="text-red-500 text-xs mt-1 dark:text-white">
+              <span className="text-red text-xs mt-1 dark:text-white">
                 {errors.message}
               </span>
             )}

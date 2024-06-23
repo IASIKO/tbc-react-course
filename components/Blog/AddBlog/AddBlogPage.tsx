@@ -85,6 +85,8 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
     setLoading(false);
   };
 
+  const isDisabled = !isFormValid || blob === null
+
   return (
     <section className="py-[60px] dark:bg-gray">
       <div className="max-w-[1140px] m-auto">
@@ -180,9 +182,9 @@ const AddBlogPage: React.FC<AddblogPageProps> = ({ authUser }) => {
 
             <button
               type="submit"
-              disabled={!isFormValid}
+              disabled={isDisabled}
               className={`p-[7px] px-[25px] border border-solid border-red text-[18px] text-white bg-red font-medium align-middle duration-300 uppercase flex items-center justify-center gap-2 sm:w-[300px] w-full mt-4 ${
-                isFormValid
+                !isDisabled
                   ? "hover:bg-lightred hover:text-white"
                   : "opacity-50 cursor-not-allowed"
               }`}
