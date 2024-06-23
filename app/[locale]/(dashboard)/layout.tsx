@@ -30,7 +30,7 @@ export default async function DashboardRootLayout({
         selectedProducts={selectedProducts[0]?.products}
         authUser={auth_user?.auth_user.rows[0]}
       />
-      <main className="h-full">{children}</main>
+      <main className="min-h-[100vh]">{children}</main>
       <Footer />
     </>
   );
