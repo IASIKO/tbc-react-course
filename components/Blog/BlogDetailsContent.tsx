@@ -15,7 +15,7 @@ const BlogDetailsContent: React.FC<BlogDetailsContentProps> = ({
     <>
       <section className="py-16 dark:bg-gray-900">
         {blogDetails && (
-          <div className="container mx-auto px-4 lg:px-0">
+          <div className="container mx-auto px-8 lg:px-4">
             <div className="flex flex-col lg:flex-row lg:space-x-8">
               <div className="lg:w-2/5">
                 <img
