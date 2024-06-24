@@ -1,6 +1,10 @@
 # Liquor Store
 
-Welcome to the Liquor Store repository! This is a Next.js 14 app router built with TypeScript, Tailwind CSS, and various other libraries to provide a comprehensive online liquor store with internationalization, dark mode, payment processing, authentication, and much more.
+Welcome to the Liquor Store! This is a Next.js 14 app router built with TypeScript, Tailwind CSS, and various other libraries to provide a comprehensive online liquor store with internationalization, dark mode, payment processing, authentication, and much more.
+
+## Live
+
+Demo URL: https://tbc-react-course-mu.vercel.app/
 
 ## Table of Contents
 
